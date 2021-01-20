@@ -561,6 +561,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 64a6f2c88a3b91e4e85cdbc5c7347b8c, type: 2}
+    - target: {fileID: -5754084199372789682, guid: c6b6be67802ffbc40b6e04f45666766e, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2124705421725058983, guid: b6c05d37ef5da2d43bb1c54a3e7ff400, type: 3}
     - target: {fileID: 919132149155446097, guid: c6b6be67802ffbc40b6e04f45666766e, type: 3}
       propertyPath: m_Name
       value: circle
@@ -5592,6 +5596,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 73111526ad96007459b7bab508cfec7d, type: 2}
+    - target: {fileID: -5754084199372789682, guid: c1fb6cb75322b464596549d5b993fbb0, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -4483398263678897133, guid: f37da89c18768c14680554db8a47809a, type: 3}
     - target: {fileID: 919132149155446097, guid: c1fb6cb75322b464596549d5b993fbb0, type: 3}
       propertyPath: m_Name
       value: Spaceship2
