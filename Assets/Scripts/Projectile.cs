@@ -104,7 +104,8 @@ public class Projectile : MonoBehaviour
         if (lifeTimeLeft < disableDamageThreshold) return;
         if (other.CompareTag(enemyTag))
         {
-            LeanPool.Spawn(impactPrefab, transform.position + Vector3.up * 3f, Quaternion.identity);
+            GameObject go = LeanPool.Spawn(impactPrefab, transform.position + Vector3.up * 3f, Quaternion.identity);
+            LeanPool.Despawn(go, 2f);
             Despawn();
         }
     }

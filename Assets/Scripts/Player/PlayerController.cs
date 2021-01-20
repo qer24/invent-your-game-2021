@@ -83,7 +83,9 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         rb.velocity = Vector3.zero;
-        rb.AddForce(-transform.forward * knockbackForce, ForceMode.Impulse);
+        Vector3 direction = (collision.transform.position - transform.position).normalized;
+        direction.y = 0;
+        rb.AddForce(-direction * knockbackForce, ForceMode.Impulse);
     }
 
     private void RotateToMouse()
