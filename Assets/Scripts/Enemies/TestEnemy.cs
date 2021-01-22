@@ -20,11 +20,11 @@ public class TestEnemy : MonoBehaviour
     string playerTag = "Player";
     private IEnumerator coroutine;
     private bool reload = false;
-
+    private bool escape = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Vector3 dir = Vector3.zero - transform.position;
+        Vector3 dir = Vector3.zero.normalized - transform.position;
 
         //once spawned outside of the map go towards the center for x seconds - done
         float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
@@ -43,14 +43,16 @@ public class TestEnemy : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
             reload = false;
             Shoot();
-            Escape();
-            yield return new WaitForSeconds(waitTime * 2);
+            randomAngle = Random.Range(90f, 180f);
+            escape = true;
+            yield return new WaitForSeconds(waitTime);
+            escape = false;
         }
 
     }
     void Update()
     {
-        randomAngle = Random.Range(0.1f, 1f);
+        
         if (reload == true)
         {
             //rotate towards player for 1-2sec - done
@@ -61,17 +63,16 @@ public class TestEnemy : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             rb.AddForce(transform.forward * moveForce * 0.01f);
         }
-    }
-
-    private void Escape()
-    {
-        //rotate in a random direction away from the player and escape - malfunction
-        GameObject player = GameObject.FindGameObjectWithTag(playerTag);
-        Vector3 dir = player.GetComponent<Transform>().position - transform.position;
-        float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
-        Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.up);
-        transform.rotation = targetRotation * Quaternion.AngleAxis(-randomAngle, Vector3.up);
-        rb.AddForce(transform.forward * moveForce * 25f);
+        if (escape == true)
+        {
+            //rotate in a random direction away from the player and escape - done?
+            GameObject player = GameObject.FindGameObjectWithTag(playerTag);
+            Vector3 dir = player.GetComponent<Transform>().position.normalized - transform.position;
+            float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
+            Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.up);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation * Quaternion.AngleAxis(-randomAngle, Vector3.up), rotationSpeed * Time.deltaTime);
+            rb.AddForce(transform.forward * moveForce * 0.02f);
+        }
     }
     private void Shoot()
     {
