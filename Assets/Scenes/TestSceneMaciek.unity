@@ -180,9 +180,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1398064836}
+  - component: {fileID: 1398064839}
+  - component: {fileID: 1398064840}
   - component: {fileID: 1398064837}
   - component: {fileID: 1398064838}
-  - component: {fileID: 1398064839}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -233,7 +234,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 32
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1398064839
 MonoBehaviour:
@@ -247,6 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0129c49b28865bb4bb1cc1fa35c268d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenConfiner: {fileID: 1398064840}
   moveForce: 400
   bulletPrefab: {fileID: 8680174522787570404, guid: fa1e27bebc4a44f48b775d8635ffccec, type: 3}
   shootPoint: {fileID: 1866290579}
@@ -254,6 +256,19 @@ MonoBehaviour:
   rotationSpeed: 3
   bulletSpeed: 60
   bulletLifetime: 3
+--- !u!114 &1398064840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398064835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d782d210ef16afb4f9c79395e0946397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenEdge: 0.02
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,17 +517,9 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 6389092550164280058, guid: 4e0848be2b572354b848d979a7561dcd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6389092550229795250, guid: 4e0848be2b572354b848d979a7561dcd, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6389092550229795257, guid: 4e0848be2b572354b848d979a7561dcd, type: 3}
-      propertyPath: m_Center.z
-      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 6389092550229795260, guid: 4e0848be2b572354b848d979a7561dcd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -558,17 +565,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6389092550229795261, guid: 4e0848be2b572354b848d979a7561dcd, type: 3}
-      propertyPath: knockbackForce
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6389092550229795263, guid: 4e0848be2b572354b848d979a7561dcd, type: 3}
-      propertyPath: m_Drag
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6854518970467863643, guid: 4e0848be2b572354b848d979a7561dcd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.13
+    - target: {fileID: 6389092550229795262, guid: 4e0848be2b572354b848d979a7561dcd, type: 3}
+      propertyPath: bulletSeekDistance
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e0848be2b572354b848d979a7561dcd, type: 3}

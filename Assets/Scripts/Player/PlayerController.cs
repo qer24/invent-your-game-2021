@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] TrailRenderer[] movementTrails = null;
     [SerializeField] ParticleSystem movementParticles = null;
 
+    [SerializeField] KeepOnScreen screenConfiner = null;
+
     public float knockbackForce = 100f;
 
     Camera mainCam;
@@ -24,55 +26,20 @@ public class PlayerController : MonoBehaviour
     {
         mainCam = Camera.main;
         rb = GetComponent<Rigidbody>();
+
+        screenConfiner.OnTeleportStart += DisableParticles;
+        screenConfiner.OnTeleportEnd += EnableParticles;
     }
 
-    private void CheckScreenEdges()
+    private void OnDisable()
     {
-        Vector3 pos = mainCam.WorldToViewportPoint(transform.position);
-
-        bool posChanged = false;
-        if (pos.x < -0.03f)
-        {
-            pos = new Vector3(1.0f, pos.y, pos.z);
-            posChanged = true;
-        }
-        else if (pos.x >= 1.03f)
-        {
-            pos = new Vector3(0.0f, pos.y, pos.z);
-            posChanged = true;
-        }
-
-        if (pos.y < -0.03f)
-        {
-            pos = new Vector3(pos.x, 1.0f, pos.z);
-            posChanged = true;
-        }
-        else if (pos.y >= 1.03f)
-        {
-            pos = new Vector3(pos.x, 0.0f, pos.z);
-            posChanged = true;
-        }
-
-        if(posChanged)
-        {
-            movementParticles.Pause();
-
-            transform.position = mainCam.ViewportToWorldPoint(pos);
-
-            movementParticles.Play();
-
-            foreach (var trail in movementTrails)
-            {
-                trail.Clear();
-            }
-        }
+        screenConfiner.OnTeleportStart -= DisableParticles;
+        screenConfiner.OnTeleportEnd -= EnableParticles;
     }
 
     private void FixedUpdate()
     {
         RotateToMouse();
-
-        CheckScreenEdges();
 
         if (Input.GetMouseButton(0))
         {
@@ -101,5 +68,20 @@ public class PlayerController : MonoBehaviour
         Quaternion gfxRotation = Quaternion.Euler(0, 0, gfxAngle);
 
         gfx.localRotation = Quaternion.Slerp(gfx.localRotation, gfxRotation, gfxRotationSpeed * Time.deltaTime);
+    }
+
+    void DisableParticles()
+    {
+        movementParticles.Pause();
+    }
+
+    void EnableParticles()
+    {
+        movementParticles.Play();
+
+        foreach (var trail in movementTrails)
+        {
+            trail.Clear();
+        }
     }
 }

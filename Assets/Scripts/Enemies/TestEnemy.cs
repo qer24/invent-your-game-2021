@@ -12,14 +12,16 @@ public enum TestEnemyState
 
 public class TestEnemy : MonoBehaviour
 {
-    [SerializeField] float moveForce = 25;
+    public KeepOnScreen screenConfiner;
+
+    public float moveForce = 25;
     public GameObject bulletPrefab;
     public Transform shootPoint;
 
     public float timeBetweenActions = 2f;
     public float rotationSpeed = 10f;
 
-    [Header("BulletStats")]
+    [Header("Bullet Stats")]
     public float bulletSpeed;
     public float bulletLifetime = 2f;
 
@@ -41,6 +43,8 @@ public class TestEnemy : MonoBehaviour
         enemyMaterial = GetComponentInChildren<Renderer>().material;
         rb = GetComponent<Rigidbody>();
 
+        screenConfiner.enabled = false;
+
         //once spawned outside of the map go towards the center for x seconds - done
         Vector3 dir = Vector3.zero.normalized - transform.position;
         float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
@@ -54,6 +58,7 @@ public class TestEnemy : MonoBehaviour
     {
         rb.AddForce(transform.forward * moveForce * 2f);
         yield return new WaitForSeconds(waitTime);
+        screenConfiner.enabled = true;
         while (true)
         {
             currentState = TestEnemyState.Reloading;
