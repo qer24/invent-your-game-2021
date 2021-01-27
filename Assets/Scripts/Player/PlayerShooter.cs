@@ -9,6 +9,10 @@ public class PlayerShooter : MonoBehaviour
     public GameObject bulletPrefab;
     public float shootCooldown = 0.2f;
     public Transform shootPoint;
+
+    [Header("Bullet stats")]
+    //TODO: Make some player stats script that holds all player stats including these
+    public float bulletDamage = 5f;
     public float bulletSpeed;
     public float bulletLifetime = 2f;
     public float bulletRotationSpeed = 1f;
@@ -37,6 +41,6 @@ public class PlayerShooter : MonoBehaviour
 
         GameObject go = LeanPool.Spawn(bulletPrefab, shootPoint.position, transform.rotation);
         go.GetComponent<Rigidbody>().AddForce(go.transform.forward * bulletSpeed);
-        go.GetComponent<Projectile>().Init(bulletSpeed, bulletLifetime, gameObject.tag, "Enemy", bulletRotationSpeed, bulletSeekDistance);
+        go.GetComponent<Projectile>().Init(bulletDamage, bulletSpeed, bulletLifetime, gameObject.tag, "Enemy", bulletRotationSpeed, bulletSeekDistance);
     }
 }

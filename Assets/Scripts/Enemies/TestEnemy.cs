@@ -22,6 +22,8 @@ public class TestEnemy : MonoBehaviour
     public float rotationSpeed = 10f;
 
     [Header("Bullet Stats")]
+    //TODO: Use EntityStats.cs
+    public float bulletDamage = 5f;
     public float bulletSpeed;
     public float bulletLifetime = 2f;
 
@@ -113,7 +115,7 @@ public class TestEnemy : MonoBehaviour
         GameObject go = LeanPool.Spawn(bulletPrefab, shootPoint.position, transform.rotation);
         go.GetComponent<Renderer>().material = enemyMaterial;
         go.GetComponent<Rigidbody>().AddForce(go.transform.forward * bulletSpeed);
-        go.GetComponent<Projectile>().Init(bulletSpeed, bulletLifetime, gameObject.tag, playerTag, 0, 0);
+        go.GetComponent<Projectile>().Init(bulletDamage, bulletSpeed, bulletLifetime, gameObject.tag, playerTag, 0, 0);
     }
 
     private Vector3 PredictedPosition(Vector3 targetPosition, Vector3 targetVelocity, float projectileSpeed)

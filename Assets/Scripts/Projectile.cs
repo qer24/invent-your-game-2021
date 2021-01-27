@@ -9,6 +9,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] AnimationCurve scalingCurve = null;
     [SerializeField] GameObject impactPrefab = null;
 
+    float damage = 0;
+
     float velocity = 500;
     float totalLifeTime = 5f;
     float lifeTimeLeft = 5f;
@@ -24,8 +26,9 @@ public class Projectile : MonoBehaviour
 
     Vector3 startScale;
 
-    public void Init(float _velocity, float _lifetime, string _alliedTag, string _enemyTag, float _rotationSpeed, float _seekDistance)
+    public void Init(float _damage, float _velocity, float _lifetime, string _alliedTag, string _enemyTag, float _rotationSpeed, float _seekDistance)
     {
+        damage = _damage;
         velocity = _velocity;
         totalLifeTime = _lifetime;
         alliedTag = _alliedTag;
@@ -107,6 +110,11 @@ public class Projectile : MonoBehaviour
             GameObject go = LeanPool.Spawn(impactPrefab, transform.position + Vector3.up * 3f, Quaternion.identity);
             LeanPool.Despawn(go, 2f);
             Despawn();
+
+            if (other.TryGetComponent<IDamagable>(out var damagable))
+            {
+                damagable.TakeDamage(damage);
+            }
         }
     }
 

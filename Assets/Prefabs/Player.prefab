@@ -567,6 +567,8 @@ GameObject:
   - component: {fileID: 6389092550229795261}
   - component: {fileID: 6389092550229795262}
   - component: {fileID: 1210913771}
+  - component: {fileID: 6044696332138826940}
+  - component: {fileID: 4567514064662832210}
   - component: {fileID: 6389092550229795263}
   - component: {fileID: 6389092550229795257}
   m_Layer: 0
@@ -652,6 +654,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenEdge: 0.03
+--- !u!114 &6044696332138826940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6389092550229795250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7adcc98e6eb798d4abc11cbac90dc072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHitParticles: {fileID: 0}
+  onHitFreezeTime: 0.25
+  hp: {fileID: 0}
+--- !u!114 &4567514064662832210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6389092550229795250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 564321a2eb4da2944a5ed30735de8dd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 0}
+  currentHealth: 0
+  isDead: 0
+  playerStats: {fileID: 0}
+  healthSlider: {fileID: 0}
+  healthLerpSpeed: 3
 --- !u!54 &6389092550229795263
 Rigidbody:
   m_ObjectHideFlags: 0
