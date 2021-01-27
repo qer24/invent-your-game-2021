@@ -16,7 +16,7 @@ public class PlayerDamagable : MonoBehaviour, IDamagable
         if (hp.isDead) return;
         if (!enabled) return;
 
-        CinemachineShake.Instance.ShakeCamera(amount * 2f, 0.6f);
+        CinemachineShake.Instance.ShakeCamera(amount, 0.6f);
         //TimeStopManager.Instance.FreezeTime(onHitFreezeTime);
         //onHitParticles.Play();
 

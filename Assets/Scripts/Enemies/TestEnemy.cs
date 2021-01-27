@@ -21,6 +21,8 @@ public class TestEnemy : MonoBehaviour
     public float timeBetweenActions = 2f;
     public float rotationSpeed = 10f;
 
+    public ParticleSystem reloadParticles, shootParticles;
+
     [Header("Bullet Stats")]
     //TODO: Use EntityStats.cs
     public float bulletDamage = 5f;
@@ -53,6 +55,10 @@ public class TestEnemy : MonoBehaviour
         Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.up);
         transform.rotation = targetRotation;
 
+        var main = reloadParticles.main;
+        main.duration = timeBetweenActions;
+        main.startLifetime = timeBetweenActions;
+
         StartCoroutine(SearchAndDestroy(timeBetweenActions));
     }
 
@@ -64,6 +70,7 @@ public class TestEnemy : MonoBehaviour
         while (true)
         {
             currentState = TestEnemyState.Reloading;
+            reloadParticles.Play();
             yield return new WaitForSeconds(waitTime);
             Shoot();
             yield return new WaitForSeconds(waitTime * 0.125f);
@@ -112,6 +119,8 @@ public class TestEnemy : MonoBehaviour
 
     void Shoot()
     {
+        shootParticles.Play();
+
         GameObject go = LeanPool.Spawn(bulletPrefab, shootPoint.position, transform.rotation);
         go.GetComponent<Renderer>().material = enemyMaterial;
         go.GetComponent<Rigidbody>().AddForce(go.transform.forward * bulletSpeed);
