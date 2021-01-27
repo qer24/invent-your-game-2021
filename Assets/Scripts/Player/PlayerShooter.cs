@@ -21,6 +21,12 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] VisualEffect muzzleFlash = null;
 
     float shootTimer;
+    Material bulletMaterial;
+
+    private void Start()
+    {
+        bulletMaterial = GetComponentInChildren<Renderer>().material;
+    }
 
     private void Update()
     {
@@ -42,5 +48,6 @@ public class PlayerShooter : MonoBehaviour
         GameObject go = LeanPool.Spawn(bulletPrefab, shootPoint.position, transform.rotation);
         go.GetComponent<Rigidbody>().AddForce(go.transform.forward * bulletSpeed);
         go.GetComponent<Projectile>().Init(bulletDamage, bulletSpeed, bulletLifetime, gameObject.tag, "Enemy", bulletRotationSpeed, bulletSeekDistance);
+        go.GetComponent<Renderer>().material = bulletMaterial;
     }
 }
