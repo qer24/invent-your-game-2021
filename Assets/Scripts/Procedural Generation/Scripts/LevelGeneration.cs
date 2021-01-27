@@ -58,7 +58,7 @@ public class LevelGeneration : MonoBehaviour
 					iterations++;
 				}while (NumberOfNeighbors(checkPos, takenPositions) > 1 && iterations < 100);
 
-				if (iterations >= 50)
+				if (iterations >= 3000)
 					print("error: could not create with fewer neighbors than : " + NumberOfNeighbors(checkPos, takenPositions));
 			}
 
@@ -148,7 +148,7 @@ public class LevelGeneration : MonoBehaviour
 			checkingPos = new Vector2(x,y);
 		}while (takenPositions.Contains(checkingPos) || x >= gridSizeX || x < -gridSizeX || y >= gridSizeY || y < -gridSizeY);
 
-		if (inc >= 100){ // break loop if it takes too long: this loop isnt garuanteed to find solution, which is fine for this
+		if (inc >= 1000){ // break loop if it takes too long: this loop isnt garuanteed to find solution, which is fine for this
 			print("Error: could not find position with only one neighbor");
 		}
 
