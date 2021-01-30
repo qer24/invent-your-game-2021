@@ -2,21 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum RoomTypes
+namespace ProcGen
 {
-    Normal = 0,
-    Start,
-    Boss
-}
-
-public class Room
-{
-	public Vector2 gridPos;
-	public RoomTypes type;
-
-	public Room(Vector2 _gridPos, RoomTypes _type)
+    public enum RoomTypes
     {
-		gridPos = _gridPos;
-		type = _type;
-	}
+        Normal = 0,
+        Start,
+        Boss
+    }
+
+    public class Room
+    {
+        public Vector2 gridPos;
+        public RoomTypes type;
+
+        public Room(Vector2 _gridPos, RoomTypes _type)
+        {
+            gridPos = _gridPos;
+            type = _type;
+        }
+    }
 }
