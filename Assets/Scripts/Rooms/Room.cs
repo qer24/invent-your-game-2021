@@ -5,9 +5,9 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     [Header("Waves to spawn")]
-    [SerializeField] Wave[] waves;
+    public List<Wave> waves = new List<Wave>();
 
     [Space]
     [Header("RoomSettings")]
-    [SerializeField] float maxTimeBetweenWaves = 15;
+    public float maxTimeBetweenWaves = 15;
 }
