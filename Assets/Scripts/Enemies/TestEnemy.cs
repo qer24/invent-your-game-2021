@@ -64,7 +64,8 @@ public class TestEnemy : MonoBehaviour
 
     IEnumerator SearchAndDestroy(float waitTime)
     {
-        rb.AddForce(transform.forward * moveForce * 2f);
+        float distance = Vector3.Distance(transform.position, Vector3.zero);
+        rb.AddForce(transform.forward * distance * distance * 0.25f);
         yield return new WaitForSeconds(waitTime);
         screenConfiner.enabled = true;
         while (true)

@@ -2,6 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum RoomSpawnPoints
+{
+    Top = 0,
+    TopMiddleRight,
+    TopRight,
+    RightTop,
+    RightMiddleTop,
+    Right,
+    RightMiddleBottom,
+    RightBottom,
+    BottomRight,
+    BottomMiddleRight,
+    Bottom,
+    BottomMiddleLeft,
+    BottomLeft,
+    LeftBottom,
+    LeftMiddleBottom,
+    Left,
+    LeftMiddleTop,
+    LeftTop,
+    TopLeft,
+    TopMiddleLeft
+}
+
 public class RoomManager : MonoBehaviour
 {
     [SerializeField] Vector2[] spawnPointViewportPositions = null;
@@ -29,10 +53,9 @@ public class RoomManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    Vector3 WorldPositionFromSpawnPoint(RoomSpawnPoints spawnPoint)
     {
-        
+        return spawnPointPositions[(int)spawnPoint];
     }
 
     // TODO: obliterate, cease this function, let it be gone.
