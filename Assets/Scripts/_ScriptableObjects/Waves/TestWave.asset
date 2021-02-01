@@ -15,5 +15,5 @@ MonoBehaviour:
   enemiesToSpawn:
   - enemy: {fileID: 6670750346828716433, guid: 9bc787fd110d060408150c7feb269fcd, type: 3}
     spawnPoint: 7
-  - enemy: {fileID: 0}
-    spawnPoint: 0
+  - enemy: {fileID: 6670750346828716433, guid: 9bc787fd110d060408150c7feb269fcd, type: 3}
+    spawnPoint: 5

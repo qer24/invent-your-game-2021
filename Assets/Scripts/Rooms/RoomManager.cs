@@ -29,7 +29,7 @@ public enum RoomSpawnPoints
 public class RoomManager : MonoBehaviour
 {
     [SerializeField] Vector2[] spawnPointViewportPositions = null;
-    Vector3[] spawnPointPositions;
+    static Vector3[] spawnPointPositions;
 
     Camera mainCam;
 
@@ -37,6 +37,8 @@ public class RoomManager : MonoBehaviour
     void Start()
     {
         mainCam = Camera.main;
+
+        ConvertScreenSpawnpointsToWorld();
     }
 
     void ConvertScreenSpawnpointsToWorld()
@@ -53,7 +55,7 @@ public class RoomManager : MonoBehaviour
         }
     }
 
-    Vector3 WorldPositionFromSpawnPoint(RoomSpawnPoints spawnPoint)
+    public static Vector3 WorldPositionFromSpawnPoint(RoomSpawnPoints spawnPoint)
     {
         return spawnPointPositions[(int)spawnPoint];
     }
