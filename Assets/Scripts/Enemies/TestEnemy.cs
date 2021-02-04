@@ -10,8 +10,9 @@ public enum TestEnemyState
     Escaping
 }
 
-public class TestEnemy : MonoBehaviour
+public class TestEnemy : Enemy
 {
+    [Header("Test enemy")]
     public KeepOnScreen screenConfiner;
 
     public float moveForce = 25;
@@ -23,29 +24,19 @@ public class TestEnemy : MonoBehaviour
 
     public ParticleSystem reloadParticles, shootParticles;
 
-    [Header("Bullet Stats")]
-    //TODO: Use EntityStats.cs
-    public float bulletDamage = 5f;
-    public float bulletSpeed;
-    public float bulletLifetime = 2f;
-
-    static string playerTag = "Player";
-
-    Rigidbody player;
-    Rigidbody rb;
     float randomAngle;
     int randomSign;
     Material enemyMaterial;
 
     TestEnemyState currentState;
 
-    void Start()
+    public override void Start()
     {
-        player = GameObject.FindGameObjectWithTag(playerTag).GetComponent<Rigidbody>();
+        base.Start();
+
         currentState = TestEnemyState.Idle;
 
         enemyMaterial = GetComponentInChildren<Renderer>().material;
-        rb = GetComponent<Rigidbody>();
 
         screenConfiner.enabled = false;
 
@@ -95,7 +86,7 @@ public class TestEnemy : MonoBehaviour
     {
         if (currentState == TestEnemyState.Idle) return;
 
-        Vector3 dirToPlayer = PredictedPosition(player.position, player.velocity, bulletSpeed) - transform.position;
+        Vector3 dirToPlayer = PredictedPosition(player.position, player.velocity, stats.projectileSpeed) - transform.position;
         float angle = Mathf.Atan2(dirToPlayer.x, dirToPlayer.z) * Mathf.Rad2Deg;
         Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.up);
 
@@ -124,8 +115,16 @@ public class TestEnemy : MonoBehaviour
 
         GameObject go = LeanPool.Spawn(bulletPrefab, shootPoint.position, transform.rotation);
         go.GetComponent<Renderer>().material = enemyMaterial;
-        go.GetComponent<Rigidbody>().AddForce(go.transform.forward * bulletSpeed);
-        go.GetComponent<Projectile>().Init(bulletDamage, bulletSpeed, bulletLifetime, gameObject.tag, playerTag, 0, 0);
+        go.GetComponent<Rigidbody>().AddForce(go.transform.forward * stats.projectileSpeed);
+        go.GetComponent<Projectile>().Init(
+            stats.projectileDamage, 
+            stats.projectileSpeed,
+            stats.projectileLifetime,
+            gameObject.tag, 
+            playerTag, 
+            stats.projectileRotationSpeed, 
+            stats.projectileSeekDistance
+        );
     }
 
     private Vector3 PredictedPosition(Vector3 targetPosition, Vector3 targetVelocity, float projectileSpeed)
@@ -141,6 +140,6 @@ public class TestEnemy : MonoBehaviour
     {
         if (player == null) return;
 
-        Gizmos.DrawWireSphere(PredictedPosition(player.position, player.velocity, bulletSpeed), 0.5f);
+        Gizmos.DrawWireSphere(PredictedPosition(player.position, player.velocity, stats.projectileSpeed), 0.5f);
     }
 }

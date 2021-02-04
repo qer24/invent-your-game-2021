@@ -55,16 +55,20 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        Transform target = FindClosestTarget();
-        if (target != null)
-        {
-            RotateToTarget(target);
-        }
         if (lifeTimeLeft < scaleThreshold)
         {
             Vector3 scale = Vector3.Lerp(startScale, Vector3.zero, 1 - scalingCurve.Evaluate((scaleThreshold - lifeTimeLeft) / scaleThreshold));
             transform.localScale = scale;
         }
+
+        if (seekDistance <= 0) return;
+
+        Transform target = FindClosestTarget();
+        if (target != null)
+        {
+            RotateToTarget(target);
+        }
+        
     }
 
     Transform FindClosestTarget()

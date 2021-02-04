@@ -7,5 +7,10 @@ using UnityEngine;
 public class EntityStats : ScriptableObject
 {
     public int maxHealth;
-    public int damage;
+
+    public float projectileDamage = 5f;
+    public float projectileSpeed = 60;
+    public float projectileLifetime = 2f;
+    public float projectileRotationSpeed = 0f;
+    public float projectileSeekDistance = 0f;
 }

@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f30347387a6e24fba14ccaafe15f5b, type: 3}
   m_Name: TestEnemyStats
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  damage: 5
+  maxHealth: 50
+  projectileDamage: 5
+  projectileSpeed: 60
+  projectileLifetime: 2
+  projectileRotationSpeed: 0
+  projectileSeekDistance: 0

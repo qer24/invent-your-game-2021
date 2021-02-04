@@ -11,12 +11,12 @@ namespace ProcGen
         Boss
     }
 
-    public class Room
+    public class ProceduralRoom
     {
         public Vector2 gridPos;
         public RoomTypes type;
 
-        public Room(Vector2 _gridPos, RoomTypes _type)
+        public ProceduralRoom(Vector2 _gridPos, RoomTypes _type)
         {
             gridPos = _gridPos;
             type = _type;

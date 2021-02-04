@@ -7,12 +7,15 @@ namespace ProcGen
     public class LevelGeneration : MonoBehaviour
     {
         Vector2 worldSize = new Vector2(4, 4);
-        Room[,] rooms;
+        ProceduralRoom[,] rooms;
         List<Vector2> takenPositions = new List<Vector2>();
-        int gridSizeX, gridSizeY, numberOfRooms = 20;
+        int gridSizeX, gridSizeY;
+        public int numberOfRooms = 20;
 
-        public GameObject roomWhiteObj;
+        [Space]
+        public GameObject emptyRoom;
         public Transform mapRoot;
+        public RoomManager roomManager;
 
         void Start()
         {
@@ -28,13 +31,14 @@ namespace ProcGen
             CreateRooms(); //lays out the actual map
             DrawMap(); //instantiates objects to make up a map
                        //GetComponent<SheetAssigner>().Assign(rooms); //passes room info to another script which handles generatating the level geometry
+            roomManager.enabled = true;
         }
 
         void CreateRooms()
         {
             //setup
-            rooms = new Room[gridSizeX * 2, gridSizeY * 2];
-            rooms[gridSizeX, gridSizeY] = new Room(Vector2.zero, RoomTypes.Start);
+            rooms = new ProceduralRoom[gridSizeX * 2, gridSizeY * 2];
+            rooms[gridSizeX, gridSizeY] = new ProceduralRoom(Vector2.zero, RoomTypes.Start);
             takenPositions.Insert(0, Vector2.zero);
             Vector2 checkPos = Vector2.zero;
 
@@ -68,7 +72,8 @@ namespace ProcGen
                 RoomTypes finalType = i == numberOfRooms - 2 ? RoomTypes.Boss : RoomTypes.Normal;
 
                 //finalize position
-                rooms[(int)checkPos.x + gridSizeX, (int)checkPos.y + gridSizeY] = new Room(checkPos, finalType);
+                rooms[(int)checkPos.x + gridSizeX, (int)checkPos.y + gridSizeY] = new ProceduralRoom(checkPos, finalType);
+                
                 takenPositions.Insert(0, checkPos);
             }
         }
@@ -195,7 +200,7 @@ namespace ProcGen
 
         void DrawMap()
         {
-            foreach (Room room in rooms)
+            foreach (ProceduralRoom room in rooms)
             {
                 if (room == null)
                 {
@@ -207,11 +212,15 @@ namespace ProcGen
                 drawPos.y *= 16;
 
                 //create map obj and assign its variables
-                MapSpriteSelector mapper = Object.Instantiate(roomWhiteObj, drawPos, Quaternion.identity).GetComponent<MapSpriteSelector>();
+                RoomContentGenerator mapper = Instantiate(emptyRoom, drawPos, Quaternion.identity).GetComponent<RoomContentGenerator>();
                 mapper.type = room.type;
-                mapper.gameObject.transform.parent = mapRoot;
+                mapper.gameObject.transform.SetParent(mapRoot, false);
+
+                if (room.type == RoomTypes.Start)
+                {
+                    mapper.gameObject.transform.SetAsFirstSibling();
+                }
             }
         }
-
     }
 }

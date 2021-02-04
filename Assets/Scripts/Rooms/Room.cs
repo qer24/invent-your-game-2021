@@ -2,23 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Lean.Pool;
+using ProcGen;
 
 public class Room : MonoBehaviour
 {
     public List<Wave> waves = new List<Wave>();
     public float maxTimeBetweenWaves = 15;
 
+    RoomManager roomManager;
+    int id = 0;
+
     public static List<GameObject> enemiesAlive = new List<GameObject>();
     float waveTimer;
 
-    private void Start()
+    bool waveFinished = false;
+
+    private void Awake()
     {
+        roomManager = GetComponentInParent<RoomManager>();
+        id = GetComponent<RoomContentGenerator>().id;
+
         waveTimer = 3;
+        waveFinished = true;
+
+        enemiesAlive = new List<GameObject>();
+
+        enabled = false;
     }
 
     private void Update()
     {
         if (waves.Count < 1) return;
+
+        for (int i = 0; i < enemiesAlive.Count; i++)
+        {
+            if (enemiesAlive[i] == null)
+            {
+                enemiesAlive.RemoveAt(i);
+            }
+        }
+
+        if (!waveFinished && enemiesAlive.Count <= 0)
+        {
+            waveFinished = true;
+            waveTimer = 0.1f * maxTimeBetweenWaves;
+        }
 
         waveTimer -= Time.deltaTime;
 
@@ -29,11 +57,18 @@ public class Room : MonoBehaviour
         }
     }
 
+    public void GoToThisRoom()
+    {
+        roomManager.GoToRoom(GetComponent<RoomContentGenerator>().id);
+    }
+
     void NextWave()
     {
+        waveFinished = false;
+
         foreach (var enemySpawn in waves[0].enemiesToSpawn)
         {
-            GameObject go = LeanPool.Spawn(enemySpawn.enemy, RoomManager.WorldPositionFromSpawnPoint(enemySpawn.spawnPoint), Quaternion.identity);
+            GameObject go = Instantiate(enemySpawn.enemy, roomManager.WorldPositionFromSpawnPoint(enemySpawn.spawnPoint), Quaternion.identity);
             enemiesAlive.Add(go);
         }
         waves.RemoveAt(0);

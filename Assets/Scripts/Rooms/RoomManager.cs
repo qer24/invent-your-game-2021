@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum RoomSpawnPoints
 {
@@ -31,14 +33,19 @@ public class RoomManager : MonoBehaviour
     [SerializeField] Vector2[] spawnPointViewportPositions = null;
     static Vector3[] spawnPointPositions;
 
+    Room[] allRoomsInLevel;
+    Room currentRoom = null;
+
     Camera mainCam;
 
     // Start is called before the first frame update
     void Start()
     {
         mainCam = Camera.main;
-
         ConvertScreenSpawnpointsToWorld();
+
+        allRoomsInLevel = GetComponentsInChildren<Room>();
+        GoToRoom(0);
     }
 
     void ConvertScreenSpawnpointsToWorld()
@@ -55,9 +62,20 @@ public class RoomManager : MonoBehaviour
         }
     }
 
-    public static Vector3 WorldPositionFromSpawnPoint(RoomSpawnPoints spawnPoint)
+    public Vector3 WorldPositionFromSpawnPoint(RoomSpawnPoints spawnPoint)
     {
+        ConvertScreenSpawnpointsToWorld();
+
         return spawnPointPositions[(int)spawnPoint];
+    }
+
+    public void GoToRoom(int id)
+    {
+        if(currentRoom != null)
+            currentRoom.enabled = false;
+        allRoomsInLevel[id].enabled = true;
+
+        currentRoom = allRoomsInLevel[id];
     }
 
     // TODO: obliterate, cease this function, let it be gone.

@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.65080994, g: 0.666729, b: 0.7075472, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.05
@@ -325,7 +325,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 150
   field of view: 75
   orthographic: 1
   orthographic size: 40
@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 368332439}
   - component: {fileID: 368332440}
   m_Layer: 0
-  m_Name: Room
+  m_Name: Room 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -457,7 +457,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368332438}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a922df0d0349af4998e4f3f69237476, type: 3}
   m_Name: 
@@ -465,6 +465,52 @@ MonoBehaviour:
   waves:
   - {fileID: 11400000, guid: d2033a3ae22fe074ca16432f1cb7f157, type: 2}
   - {fileID: 11400000, guid: d2033a3ae22fe074ca16432f1cb7f157, type: 2}
+  - {fileID: 11400000, guid: d5d11f41a64e43d43bb14765ebef40fe, type: 2}
+  maxTimeBetweenWaves: 15
+--- !u!1 &538501334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 538501335}
+  - component: {fileID: 538501336}
+  m_Layer: 0
+  m_Name: Room 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &538501335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538501334}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1632932027}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &538501336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538501334}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a922df0d0349af4998e4f3f69237476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
   - {fileID: 11400000, guid: d5d11f41a64e43d43bb14765ebef40fe, type: 2}
   maxTimeBetweenWaves: 15
 --- !u!1 &973386729
@@ -564,7 +610,7 @@ MonoBehaviour:
     FieldOfView: 75
     OrthographicSize: 40
     NearClipPlane: 0.3
-    FarClipPlane: 1000
+    FarClipPlane: 150
     Dutch: 0
     LensShift: {x: 0, y: 0}
   m_Transitions:
@@ -700,6 +746,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 368332439}
+  - {fileID: 538501335}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
