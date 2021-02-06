@@ -31,6 +31,7 @@ namespace ProcGen
             CreateRooms(); //lays out the actual map
             DrawMap(); //instantiates objects to make up a map
                        //GetComponent<SheetAssigner>().Assign(rooms); //passes room info to another script which handles generatating the level geometry
+            roomManager.roomMap = rooms;
             roomManager.enabled = true;
         }
 
@@ -215,6 +216,8 @@ namespace ProcGen
                 RoomContentGenerator mapper = Instantiate(emptyRoom, drawPos, Quaternion.identity).GetComponent<RoomContentGenerator>();
                 mapper.type = room.type;
                 mapper.gameObject.transform.SetParent(mapRoot, false);
+                mapper.GetComponent<Room>().mapRoom = room;
+                room.worldRoom = mapper;
 
                 if (room.type == RoomTypes.Start)
                 {

@@ -9,6 +9,8 @@ public class Room : MonoBehaviour
     public List<Wave> waves = new List<Wave>();
     public float maxTimeBetweenWaves = 15;
 
+    public ProceduralRoom mapRoom = null;
+
     RoomManager roomManager;
     int id = 0;
 
@@ -17,7 +19,7 @@ public class Room : MonoBehaviour
 
     bool waveFinished = false;
 
-    private void Awake()
+    private void Start()
     {
         roomManager = GetComponentInParent<RoomManager>();
         id = GetComponent<RoomContentGenerator>().id;
@@ -59,7 +61,7 @@ public class Room : MonoBehaviour
 
     public void GoToThisRoom()
     {
-        roomManager.GoToRoom(GetComponent<RoomContentGenerator>().id);
+        roomManager.GoToRoom(id);
     }
 
     void NextWave()

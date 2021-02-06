@@ -15,6 +15,7 @@ namespace ProcGen
     {
         public Vector2 gridPos;
         public RoomTypes type;
+        public RoomContentGenerator worldRoom;
 
         public ProceduralRoom(Vector2 _gridPos, RoomTypes _type)
         {
