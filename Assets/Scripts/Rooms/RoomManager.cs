@@ -26,11 +26,14 @@ namespace ProcGen
         LeftMiddleTop,
         LeftTop,
         TopLeft,
-        TopMiddleLeft
+        TopMiddleLeft,
+        Random
     }
 
     public class RoomManager : MonoBehaviour
     {
+        [SerializeField] MapPanel mapUI = null;
+
         [SerializeField] Vector2[] spawnPointViewportPositions = null;
         static Vector3[] spawnPointPositions;
 
@@ -39,6 +42,8 @@ namespace ProcGen
         Room currentRoom = null;
 
         Camera mainCam;
+
+        bool isGoingToRoom = false;
 
         // Start is called before the first frame update
         void Start()
@@ -67,6 +72,11 @@ namespace ProcGen
         public Vector3 WorldPositionFromSpawnPoint(RoomSpawnPoints spawnPoint)
         {
             ConvertScreenSpawnpointsToWorld();
+
+            if (spawnPoint == RoomSpawnPoints.Random)
+            {
+                return spawnPointPositions[Random.Range(0, spawnPointPositions.Length)];
+            }
 
             return spawnPointPositions[(int)spawnPoint];
         }
@@ -126,6 +136,9 @@ namespace ProcGen
 
         public void GoToRoom(int id)
         {
+            if (isGoingToRoom) return;
+            isGoingToRoom = true;
+
             if (currentRoom != null)
                 currentRoom.enabled = false;
             allRoomsInLevel[id].enabled = true;
@@ -134,6 +147,8 @@ namespace ProcGen
 
             allRoomsInLevel[id].GetComponent<RoomContentGenerator>().Visit();
             RevealNeighbours(id);
+
+            mapUI.Close(() => isGoingToRoom = false);
         }
 
         // TODO: obliterate, cease this function, let it be gone.

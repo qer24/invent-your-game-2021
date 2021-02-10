@@ -30,6 +30,8 @@ public class PlayerShooter : MonoBehaviour
 
     private void Update()
     {
+        if (MapPanel.IsOpen) return;
+
         if (Input.GetMouseButton(1) && shootTimer <= 0) //left mouse button
         {
             shootTimer = shootCooldown;

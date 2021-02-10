@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
 
     public float knockbackForce = 100f;
 
+    [Header("Do not change")]
+    public bool moveToPoint = false;
+    public Vector3 movePoint;
+
     Camera mainCam;
     Rigidbody rb;
 
@@ -39,12 +43,29 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        RotateToMouse();
+        if (MapPanel.IsOpen) return;
+        if (moveToPoint)
+        {
+            screenConfiner.enabled = false;
+            MoveToPoint();
+            return;
+        }else
+        {
+            screenConfiner.enabled = true;
+        }
+
+        RotateToPoint(mainCam.ScreenToWorldPoint(Input.mousePosition));
 
         if (Input.GetMouseButton(0))
         {
             rb.AddForce(transform.forward * moveForce * 0.01f);
         }
+    }
+
+    private void MoveToPoint()
+    {
+        RotateToPoint(movePoint);
+        rb.AddForce(transform.forward * moveForce * 0.03f);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -55,9 +76,9 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(-direction * knockbackForce, ForceMode.Impulse);
     }
 
-    private void RotateToMouse()
+    private void RotateToPoint(Vector3 target)
     {
-        Vector3 dir = (mainCam.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+        Vector3 dir = (target - transform.position).normalized;
         float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
         Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.up);
 
