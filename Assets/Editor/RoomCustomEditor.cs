@@ -17,7 +17,12 @@ public class RoomCustomEditor : Editor
             for (int i = 0; i < room.waves.Count; i++)
             {
                 GUILayout.BeginHorizontal();
+                EditorGUI.BeginChangeCheck();
                 room.waves[i] = (Wave)EditorGUILayout.ObjectField(room.waves[i], typeof(Wave), true);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    PrefabUtility.SavePrefabAsset(room.gameObject);
+                }
 
                 if (room.waves[i] != null)
                 {
