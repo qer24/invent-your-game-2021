@@ -33,6 +33,7 @@ namespace ProcGen
     public class RoomManager : MonoBehaviour
     {
         [SerializeField] MapPanel mapUI = null;
+        [SerializeField] Image roomTransitionUI = null;
 
         [SerializeField] Vector2[] spawnPointViewportPositions = null;
         static Vector3[] spawnPointPositions;
@@ -43,12 +44,15 @@ namespace ProcGen
 
         Camera mainCam;
 
+        PlayerController player;
+
         bool isGoingToRoom = false;
 
         // Start is called before the first frame update
         void Start()
         {
             mainCam = Camera.main;
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
             ConvertScreenSpawnpointsToWorld();
 
             allRoomsInLevel = GetComponentsInChildren<Room>();
@@ -138,6 +142,8 @@ namespace ProcGen
         {
             if (isGoingToRoom) return;
             isGoingToRoom = true;
+            if (id != 0)
+                StartCoroutine(PlayerTravelToNextRoom());
 
             if (currentRoom != null)
                 currentRoom.enabled = false;
@@ -149,6 +155,34 @@ namespace ProcGen
             RevealNeighbours(id);
 
             mapUI.Close(() => isGoingToRoom = false);
+        }
+
+        IEnumerator PlayerTravelToNextRoom()
+        {
+            player.StartMovingToPoint(WorldPositionFromSpawnPoint(RoomSpawnPoints.Random));
+
+            LeanTween.alpha(roomTransitionUI.rectTransform, 1, 0.25f).setDelay(1f);
+            yield return new WaitForSeconds(1.5f);
+
+            player.DisableParticles();
+            player.transform.position = WorldPositionFromSpawnPoint(RoomSpawnPoints.Random);
+            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            player.EnableParticles();
+
+            var dir = (Vector3.zero - player.transform.position).normalized;
+            float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
+            Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.up);
+            player.transform.localRotation = targetRotation * Quaternion.Euler(0, Random.Range(-25f, 25f), 0);
+
+            player.StartMovingToPoint(Vector3.zero, 0.75f);
+
+            yield return new WaitForSeconds(0.25f);
+
+            LeanTween.alpha(roomTransitionUI.rectTransform, 0, 0.25f);
+
+            yield return new WaitForSeconds(0.25f);
+
+            player.StopMovingToPoint();
         }
 
         // TODO: obliterate, cease this function, let it be gone.

@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     [Header("Do not change")]
     public bool moveToPoint = false;
     public Vector3 movePoint;
+    float moveToPointVelocityScale = 1;
 
     Camera mainCam;
     Rigidbody rb;
@@ -62,10 +63,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void StartMovingToPoint(Vector3 newPoint, float newVelocityScale = 1)
+    {
+        movePoint = newPoint;
+        moveToPointVelocityScale = newVelocityScale;
+
+        moveToPoint = true;
+    }
+
+    public void StopMovingToPoint()
+    {
+        moveToPoint = false;
+    }
+
     private void MoveToPoint()
     {
-        RotateToPoint(movePoint);
-        rb.AddForce(transform.forward * moveForce * 0.03f);
+        RotateToPoint(movePoint, 2f);
+        rb.AddForce(transform.forward * moveForce * 0.03f * moveToPointVelocityScale);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -76,7 +90,7 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(-direction * knockbackForce, ForceMode.Impulse);
     }
 
-    private void RotateToPoint(Vector3 target)
+    private void RotateToPoint(Vector3 target, float multiplier = 1f)
     {
         Vector3 dir = (target - transform.position).normalized;
         float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
@@ -88,15 +102,15 @@ public class PlayerController : MonoBehaviour
         //gfxAngle = Mathf.Clamp(gfxAngle, -70, 70);
         Quaternion gfxRotation = Quaternion.Euler(0, 0, gfxAngle);
 
-        gfx.localRotation = Quaternion.Slerp(gfx.localRotation, gfxRotation, gfxRotationSpeed * Time.deltaTime);
+        gfx.localRotation = Quaternion.Slerp(gfx.localRotation, gfxRotation, gfxRotationSpeed * Time.deltaTime * multiplier);
     }
 
-    void DisableParticles()
+    public void DisableParticles()
     {
         movementParticles.Pause();
     }
 
-    void EnableParticles()
+    public void EnableParticles()
     {
         movementParticles.Play();
 
