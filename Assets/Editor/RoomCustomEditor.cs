@@ -24,6 +24,7 @@ public class RoomCustomEditor : Editor
                     if (GUILayout.Button("Edit", GUILayout.MaxWidth(40)))
                     {
                         WaveCustomEditorWindow.Open(room.waves[i]);
+                        PrefabUtility.SavePrefabAsset(room.gameObject);
                     }
                 }
                 else
@@ -31,12 +32,14 @@ public class RoomCustomEditor : Editor
                     if (GUILayout.Button("New", GUILayout.MaxWidth(40)))
                     {
                         room.waves[i] = CreateNewWaveObject();
+                        PrefabUtility.SavePrefabAsset(room.gameObject);
                     }
                 }
 
                 if (GUILayout.Button("X", GUILayout.MaxWidth(25)))
                 {
                     room.waves.RemoveAt(i);
+                    PrefabUtility.SavePrefabAsset(room.gameObject);
                 }
                 GUILayout.EndHorizontal();
 
@@ -47,6 +50,7 @@ public class RoomCustomEditor : Editor
         if (GUILayout.Button("Add wave"))
         {
             room.waves.Add(null);
+            PrefabUtility.SavePrefabAsset(room.gameObject);
         }
 
         GUILayout.Space(25);

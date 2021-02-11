@@ -100,7 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a922df0d0349af4998e4f3f69237476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves: []
+  waves:
+  - {fileID: 11400000, guid: d2033a3ae22fe074ca16432f1cb7f157, type: 2}
+  - {fileID: 11400000, guid: d5d11f41a64e43d43bb14765ebef40fe, type: 2}
   maxTimeBetweenWaves: 15
 --- !u!222 &3923252490440601337
 CanvasRenderer:
