@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Lean.Pool;
 using ProcGen;
+using System;
 
 public class Room : MonoBehaviour
 {
     public List<Wave> waves = new List<Wave>();
+    List<Wave> roomWaves = new List<Wave>();
     public float maxTimeBetweenWaves = 15;
 
     public ProceduralRoom mapRoom = null;
@@ -18,6 +20,7 @@ public class Room : MonoBehaviour
     float waveTimer;
 
     bool waveFinished = false;
+    public Action OnRoomCompleted;
 
     private void Start()
     {
@@ -28,14 +31,13 @@ public class Room : MonoBehaviour
         waveFinished = true;
 
         enemiesAlive = new List<GameObject>();
+        roomWaves = waves;
 
         enabled = false;
     }
 
     private void Update()
     {
-        if (waves.Count < 1) return;
-
         for (int i = 0; i < enemiesAlive.Count; i++)
         {
             if (enemiesAlive[i] == null)
@@ -43,6 +45,17 @@ public class Room : MonoBehaviour
                 enemiesAlive.RemoveAt(i);
             }
         }
+
+        if (roomWaves.Count < 1)
+        {
+            if (enemiesAlive.Count <= 0)
+            {
+                OnRoomCompleted?.Invoke();
+                enabled = false;
+            }
+            return;
+        }
+
 
         if (!waveFinished && enemiesAlive.Count <= 0)
         {
@@ -68,11 +81,11 @@ public class Room : MonoBehaviour
     {
         waveFinished = false;
 
-        foreach (var enemySpawn in waves[0].enemiesToSpawn)
+        foreach (var enemySpawn in roomWaves[0].enemiesToSpawn)
         {
             GameObject go = Instantiate(enemySpawn.enemy, roomManager.WorldPositionFromSpawnPoint(enemySpawn.spawnPoint), Quaternion.identity);
             enemiesAlive.Add(go);
         }
-        waves.RemoveAt(0);
+        roomWaves.RemoveAt(0);
     }
 }

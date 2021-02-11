@@ -275,6 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 198892218f1ddd8408402ec37dfcd00e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapButton: {fileID: 1675053162}
   mapUI: {fileID: 768971018}
   roomTransitionUI: {fileID: 1010335018}
   spawnPointViewportPositions:
@@ -1173,8 +1174,9 @@ GameObject:
   - component: {fileID: 1675053164}
   - component: {fileID: 1675053163}
   - component: {fileID: 1675053162}
+  - component: {fileID: 1675053165}
   m_Layer: 0
-  m_Name: Button
+  m_Name: Map Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1305,6 +1307,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1675053160}
   m_CullTransparentMesh: 0
+--- !u!114 &1675053165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675053160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b437a76307e84b94795c1782c76cf091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inType: 6
+  outType: 0
+  duration: 0.5
+  delay: 0
+  scaleAxis: 0
 --- !u!1 &1940039686
 GameObject:
   m_ObjectHideFlags: 0

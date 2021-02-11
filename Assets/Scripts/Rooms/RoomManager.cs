@@ -32,6 +32,7 @@ namespace ProcGen
 
     public class RoomManager : MonoBehaviour
     {
+        [SerializeField] Button mapButton = null;
         [SerializeField] MapPanel mapUI = null;
         [SerializeField] Image roomTransitionUI = null;
 
@@ -154,7 +155,16 @@ namespace ProcGen
             allRoomsInLevel[id].GetComponent<RoomContentGenerator>().Visit();
             RevealNeighbours(id);
 
+            allRoomsInLevel[id].OnRoomCompleted += FinishRoom;
+
             mapUI.Close(() => isGoingToRoom = false);
+        }
+
+        void FinishRoom()
+        {
+            currentRoom.OnRoomCompleted -= FinishRoom;
+
+            mapButton.gameObject.SetActive(true);
         }
 
         IEnumerator PlayerTravelToNextRoom()
@@ -172,7 +182,7 @@ namespace ProcGen
             var dir = (Vector3.zero - player.transform.position).normalized;
             float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
             Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.up);
-            player.transform.localRotation = targetRotation * Quaternion.Euler(0, Random.Range(-25f, 25f), 0);
+            player.transform.localRotation = targetRotation * Quaternion.Euler(0, Random.Range(-40f, 40f), 0);
 
             player.StartMovingToPoint(Vector3.zero, 0.75f);
 
