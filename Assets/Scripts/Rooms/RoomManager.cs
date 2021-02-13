@@ -34,7 +34,7 @@ namespace ProcGen
     {
         [SerializeField] Button mapButton = null;
         [SerializeField] MapPanel mapUI = null;
-        [SerializeField] Image roomTransitionUI = null;
+        [SerializeField] Animator roomTransitionUI = null;
 
         [SerializeField] Vector2[] spawnPointViewportPositions = null;
         static Vector3[] spawnPointPositions;
@@ -171,8 +171,9 @@ namespace ProcGen
         {
             player.StartMovingToPoint(WorldPositionFromSpawnPoint(RoomSpawnPoints.Random));
 
-            LeanTween.alpha(roomTransitionUI.rectTransform, 1, 0.25f).setDelay(1f);
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1f);
+            roomTransitionUI.SetTrigger("Fade");
+            yield return new WaitForSeconds(0.5f);
 
             player.DisableParticles();
             player.transform.position = WorldPositionFromSpawnPoint(RoomSpawnPoints.Random);
@@ -187,9 +188,7 @@ namespace ProcGen
             player.StartMovingToPoint(Vector3.zero, 0.75f);
 
             yield return new WaitForSeconds(0.25f);
-
-            LeanTween.alpha(roomTransitionUI.rectTransform, 0, 0.25f);
-
+            roomTransitionUI.SetTrigger("Fade");
             yield return new WaitForSeconds(0.25f);
 
             player.StopMovingToPoint();
