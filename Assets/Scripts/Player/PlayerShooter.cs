@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Lean.Pool;
 using UnityEngine.VFX;
+using UnityEngine.UI;
 
 public class PlayerShooter : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerShooter : MonoBehaviour
     public Transform shootPoint;
 
     public InventoryManager inventory;
+    public Image chargeUI;
 
     [Header("Bullet stats")]
     //TODO: Make some player stats script that holds all player stats including these
@@ -20,6 +22,7 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] VisualEffect muzzleFlash = null;
 
     float shootTimer;
+    float chargeTimer;
     Material bulletMaterial;
 
     private void Start()
@@ -30,15 +33,40 @@ public class PlayerShooter : MonoBehaviour
     private void Update()
     {
         if (MapPanel.IsOpen) return;
-
-        if (Input.GetMouseButton(1) && shootTimer <= 0) //left mouse button
+        if (inventory.CurrentWeapon.isCharged)
         {
-            shootTimer = inventory.CurrentWeapon.baseAttackRate;
-            Shoot();
+            chargeUI.fillAmount = chargeTimer / inventory.CurrentWeapon.timeToCharge;
+
+            if (Input.GetMouseButton(1) && shootTimer <= 0) //left mouse button
+            {
+                chargeTimer += Time.deltaTime;
+            }
+            else
+            {
+                shootTimer -= Time.deltaTime;
+            }
+
+            if (Input.GetMouseButtonUp(1) && chargeTimer >= inventory.CurrentWeapon.timeToCharge)
+            {
+                chargeTimer = 0;
+                shootTimer = inventory.CurrentWeapon.baseAttackRate;
+                Shoot();
+            }else if (Input.GetMouseButtonUp(1))
+            {
+                chargeTimer = 0;
+            }
         }
         else
         {
-            shootTimer -= Time.deltaTime;
+            if (Input.GetMouseButton(1) && shootTimer <= 0) //left mouse button
+            {
+                shootTimer = inventory.CurrentWeapon.baseAttackRate;
+                Shoot();
+            }
+            else
+            {
+                shootTimer -= Time.deltaTime;
+            }
         }
     }
 
