@@ -1,5 +1,14 @@
 using UnityEngine;
 
+public enum WeaponRarities
+{
+    Common, //grey
+    Rare, //blue
+    Epic, //purple
+    Legendary, //gold
+    Mythic //red
+}
+
 public abstract class Weapon : MonoBehaviour
 {
     [Header("Tooltip")]
