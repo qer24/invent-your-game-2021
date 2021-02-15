@@ -5,6 +5,8 @@ using Lean.Pool;
 
 public class TestWeapon : Weapon
 {
+    public GameObject test;
+
     public override void Shoot(Vector3 position, Quaternion rotation, string allyTag, string enemyTag, float projectileRotationSpeed, float projectileSeekDistance, Material projectileMaterial)
     {
         GameObject go = LeanPool.Spawn(projectilePrefab, position, rotation);
