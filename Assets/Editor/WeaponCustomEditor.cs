@@ -8,6 +8,7 @@ using UnityEngine;
 public class WeaponCustomEditor : Editor
 {
     string[] propertiesInBaseClass;
+    private Object go;
 
     private void OnEnable()
     {
@@ -23,6 +24,8 @@ public class WeaponCustomEditor : Editor
     {
         Weapon weapon = (Weapon)target;
 
+        EditorGUI.BeginChangeCheck();
+
         EditorGUILayout.LabelField("Tooltip", EditorStyles.boldLabel);
 
         weapon.name = EditorGUILayout.TextField("Name", weapon.name);
@@ -35,10 +38,14 @@ public class WeaponCustomEditor : Editor
         EditorGUILayout.LabelField("Generic variables", EditorStyles.boldLabel);
         weapon.baseDamage = EditorGUILayout.FloatField("Base Damage", weapon.baseDamage);
         weapon.baseAttackRate = EditorGUILayout.FloatField("Base Attack Rate", weapon.baseAttackRate);
-        weapon.isCharged = EditorGUILayout.Toggle("IsCharged", weapon.isCharged);
-        weapon.isProjectile = EditorGUILayout.Toggle("Is Projectile", weapon.isProjectile);
+        weapon.isCharged = EditorGUILayout.Toggle("Is Charged", weapon.isCharged);
+        if (weapon.isCharged)
+        {
+            weapon.timeToCharge = EditorGUILayout.FloatField("Time to charge", weapon.timeToCharge);
+            EditorGUILayout.Space();
+        }
 
-        EditorGUILayout.Space();
+        weapon.isProjectile = EditorGUILayout.Toggle("Is Projectile", weapon.isProjectile);
 
         if (weapon.isProjectile)
         {
@@ -49,6 +56,18 @@ public class WeaponCustomEditor : Editor
             EditorGUILayout.Space();
         }
 
+        if(!weapon.isProjectile && !weapon.isCharged)
+        {
+            EditorGUILayout.Space();
+        }
+
         DrawPropertiesExcluding(serializedObject, propertiesInBaseClass);
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            if (PrefabUtility.GetPrefabAssetType(weapon.gameObject) != PrefabAssetType.NotAPrefab)
+                PrefabUtility.SavePrefabAsset(weapon.gameObject);
+            Undo.RegisterCompleteObjectUndo(weapon, "Undo change weapon");
+        }
     }
 }

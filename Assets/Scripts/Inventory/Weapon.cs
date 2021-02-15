@@ -12,7 +12,9 @@ public abstract class Weapon : MonoBehaviour
     public bool isCharged = false;
     public bool isProjectile = true;
 
-    [Space]
+    [Header("Charged weapon variables")]
+    public float timeToCharge = 0.5f;
+
     [Header("Projectile weapon variables")]
     public GameObject projectilePrefab = null;
     public float projectileSpeed = 80f;
