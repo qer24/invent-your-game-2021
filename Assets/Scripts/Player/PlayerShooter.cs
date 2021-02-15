@@ -28,6 +28,12 @@ public class PlayerShooter : MonoBehaviour
     private void Start()
     {
         bulletMaterial = GetComponentInChildren<Renderer>().material;
+        inventory.OnWeaponSwap += ResetWeaponState;
+    }
+
+    private void OnDisable()
+    {
+        inventory.OnWeaponSwap -= ResetWeaponState;
     }
 
     private void Update()
@@ -68,6 +74,13 @@ public class PlayerShooter : MonoBehaviour
                 shootTimer -= Time.deltaTime;
             }
         }
+    }
+
+    void ResetWeaponState()
+    {
+        chargeUI.fillAmount = 0;
+        chargeTimer = 0;
+        shootTimer = 0.1f;
     }
 
     private void Shoot()

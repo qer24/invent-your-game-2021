@@ -1,14 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
     [SerializeField] List<Weapon> weapons = new List<Weapon>();
-    public Weapon CurrentWeapon { get => weapons[0];}
 
     [SerializeField] LeanTweenType tweenType = LeanTweenType.linear;
     [SerializeField] float tweenDuration = 0.2f;
+
+    public Weapon CurrentWeapon { get => weapons[0];}
+    public Action OnWeaponSwap;
 
     float switchCooldownTimer;
 
@@ -32,6 +36,8 @@ public class InventoryManager : MonoBehaviour
 
     void SwapWeapon()
     {
+        OnWeaponSwap?.Invoke();
+
         Vector3 firstWeaponPos = weapons[0].transform.parent.position;
         Vector3 secondWeaponPos = weapons[1].transform.parent.position;
 
