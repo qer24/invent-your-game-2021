@@ -9,6 +9,9 @@ public class ScaleTween : MonoBehaviour
     public float duration;
     public float delay;
 
+    [HideInInspector] public bool isClosing = false;
+    [HideInInspector] public bool isOpening = false;
+
     public enum ScaleAxis
     {
         All,
@@ -21,29 +24,38 @@ public class ScaleTween : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
+        isOpening = true;
+
         switch (scaleAxis)
         {
             case ScaleAxis.X:
                 transform.localScale = new Vector3(0, transform.localScale.y, transform.localScale.z);
-                LeanTween.scaleX(gameObject, 1, duration).setDelay(delay).setEase(inType).setIgnoreTimeScale(true);
+                LeanTween.scaleX(gameObject, 1, duration).setDelay(delay).setEase(inType).setIgnoreTimeScale(true).setOnComplete(FinishOpening);
                 break;
             case ScaleAxis.Y:
                 transform.localScale = new Vector3(transform.localScale.x, 0, transform.localScale.z);
-                LeanTween.scaleY(gameObject, 1, duration).setDelay(delay).setEase(inType).setIgnoreTimeScale(true);
+                LeanTween.scaleY(gameObject, 1, duration).setDelay(delay).setEase(inType).setIgnoreTimeScale(true).setOnComplete(FinishOpening);
                 break;
             case ScaleAxis.Z:
                 transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 0);
-                LeanTween.scaleZ(gameObject, 1, duration).setDelay(delay).setEase(inType).setIgnoreTimeScale(true);
+                LeanTween.scaleZ(gameObject, 1, duration).setDelay(delay).setEase(inType).setIgnoreTimeScale(true).setOnComplete(FinishOpening);
                 break;
             case ScaleAxis.All:
                 transform.localScale = Vector3.zero;
-                LeanTween.scale(gameObject, Vector3.one, duration).setDelay(delay).setEase(inType).setIgnoreTimeScale(true);
+                LeanTween.scale(gameObject, Vector3.one, duration).setDelay(delay).setEase(inType).setIgnoreTimeScale(true).setOnComplete(FinishOpening);
                 break;
         }
     }
 
+    void FinishOpening()
+    {
+        isOpening = false;
+    }
+
     public void Close()
     {
+        isClosing = true;
+
         switch (scaleAxis)
         {
             case ScaleAxis.X:
@@ -63,6 +75,8 @@ public class ScaleTween : MonoBehaviour
 
     void DisableSelf()
     {
+        isClosing = false;
+
         gameObject.SetActive(false);
     }
 }
