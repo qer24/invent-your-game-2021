@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 422937074476249443}
   - component: {fileID: 422937074476249442}
   - component: {fileID: 422937074476249441}
+  - component: {fileID: 4581262072572461922}
+  - component: {fileID: -90587542432894665}
   m_Layer: 5
   m_Name: TestWeaponCharged
   m_TagString: Untagged
@@ -97,8 +99,81 @@ MonoBehaviour:
   isCharged: 1
   isProjectile: 1
   rarity: 0
+  rarityString: Common
   modSlots: 1
   timeToCharge: 0.5
   projectilePrefab: {fileID: 8680174522787570404, guid: fa1e27bebc4a44f48b775d8635ffccec, type: 3}
   projectileSpeed: 130
   projectileLifetime: 3
+--- !u!114 &4581262072572461922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422937074476249446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:30fdf5af6ac80024c8fd48266c159a1a
+    m_TableEntryReference:
+      m_KeyId: 124826656768
+      m_Key: 
+    m_FallbackState: 0
+  m_FormatArguments:
+  - {fileID: 422937074476249441}
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 422937074476249441}
+        m_TargetAssemblyTypeName: Weapon, Assembly-CSharp
+        m_MethodName: UpdateName
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-90587542432894665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422937074476249446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:30fdf5af6ac80024c8fd48266c159a1a
+    m_TableEntryReference:
+      m_KeyId: 157668057088
+      m_Key: 
+    m_FallbackState: 0
+  m_FormatArguments:
+  - {fileID: 422937074476249441}
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 422937074476249441}
+        m_TargetAssemblyTypeName: Weapon, Assembly-CSharp
+        m_MethodName: UpdateDescription
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

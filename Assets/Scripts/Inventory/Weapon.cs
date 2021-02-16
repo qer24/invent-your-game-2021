@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 
 public enum WeaponRarities
 {
@@ -17,10 +19,12 @@ public abstract class Weapon : MonoBehaviour
 
     [Header("Generic variables")]
     public float baseDamage = 10;
-    [Tooltip("Per second")] public float baseAttackRate = 0.5f;
+    public float baseAttackRate = 0.5f;
+    public float AttackRatePerSecond { get => 1/baseAttackRate; }
     public bool isCharged = false;
     public bool isProjectile = true;
     public WeaponRarities rarity = WeaponRarities.Common;
+    public string rarityString = "Common";
     public int modSlots = 0;
 
     [Header("Charged weapon variables")]
@@ -30,6 +34,43 @@ public abstract class Weapon : MonoBehaviour
     public GameObject projectilePrefab = null;
     public float projectileSpeed = 80f;
     public float projectileLifetime = 2f;
+
+    public Action OnTooltipUpdate;
+
+    public virtual void Start()
+    {
+        UpdateRarityString();
+    }
+
+    public void UpdateName(string newName)
+    {
+        name = newName;
+
+        UpdateRarityString();
+    }
+
+    public void UpdateDescription(string newDesc)
+    {
+        description = newDesc;
+    }
+
+    void UpdateRarityString()
+    {
+        var op = LocalizationSettings.StringDatabase.GetLocalizedStringAsync("UI Rarity Text", rarity.ToString());
+        if (op.IsDone)
+        {
+            rarityString = op.Result;
+            OnTooltipUpdate?.Invoke();
+        }
+        else
+        {
+            op.Completed += (o) => 
+            {
+                rarityString = op.Result;
+                OnTooltipUpdate?.Invoke();
+            };
+        }
+    }
 
     //non projectile weapons
     public virtual void Attack()

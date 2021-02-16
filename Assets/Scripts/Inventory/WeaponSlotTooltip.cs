@@ -16,6 +16,12 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
     private void OnEnable()
     {
         UpdateUI();
+        currentWeapon.OnTooltipUpdate += UpdateUI;
+    }
+
+    private void OnDisable()
+    {
+        currentWeapon.OnTooltipUpdate -= UpdateUI;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -39,7 +45,7 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
         {
             modSlots[i].SetActive(i <= (currentWeapon.modSlots - 1) ? true : false);
         }
-        nameText.text = $"{currentWeapon.rarity.ToString()}\n{currentWeapon.name}";
+        nameText.text = $"{currentWeapon.rarityString}\n{currentWeapon.name}";
         descriptionText.text = currentWeapon.description;
     }
 }
