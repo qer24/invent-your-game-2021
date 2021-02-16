@@ -20,6 +20,8 @@ public abstract class Weapon : MonoBehaviour
     [Tooltip("Per second")] public float baseAttackRate = 0.5f;
     public bool isCharged = false;
     public bool isProjectile = true;
+    public WeaponRarities rarity = WeaponRarities.Common;
+    public int modSlots = 0;
 
     [Header("Charged weapon variables")]
     public float timeToCharge = 0.5f;
@@ -38,6 +40,6 @@ public abstract class Weapon : MonoBehaviour
     //projectile weapons
     public virtual void Shoot(Vector3 position, Quaternion rotation, string allyTag, string enemyTag, float projectileRotationSpeed, float projectileSeekDistance, Material projectileMaterial)
     {
-        Debug.LogWarning("Attack not implemented");
+        Debug.LogWarning("Projectile attack not implemented");
     }
 }

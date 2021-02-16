@@ -38,6 +38,8 @@ public class WeaponCustomEditor : Editor
         EditorGUILayout.LabelField("Generic variables", EditorStyles.boldLabel);
         weapon.baseDamage = EditorGUILayout.FloatField("Base Damage", weapon.baseDamage);
         weapon.baseAttackRate = EditorGUILayout.FloatField("Base Attack Rate", weapon.baseAttackRate);
+        weapon.rarity = (WeaponRarities)EditorGUILayout.EnumPopup("Rarity", weapon.rarity);
+        weapon.modSlots = EditorGUILayout.IntField("Base mod slots", weapon.modSlots);
         weapon.isCharged = EditorGUILayout.Toggle("Is Charged", weapon.isCharged);
         if (weapon.isCharged)
         {

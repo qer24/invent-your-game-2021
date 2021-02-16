@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Polish (pl)
   m_EditorClassIdentifier: 
   m_Identifier:
-    m_Code: pl
+    m_Code: pl-PL
   m_Metadata:
     m_Items: []
   m_CustomFormatCultureCode: 

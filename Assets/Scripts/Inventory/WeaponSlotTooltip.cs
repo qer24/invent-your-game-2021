@@ -8,13 +8,14 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
 {
     [SerializeField] Weapon currentWeapon = null;
     [SerializeField] ScaleTween tooltip = null;
+    [SerializeField] GameObject[] modSlots = null; 
 
     [SerializeField] TextMeshProUGUI nameText = null;
     [SerializeField] TextMeshProUGUI descriptionText = null;
 
     private void OnEnable()
     {
-        UpdateText();
+        UpdateUI();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -27,9 +28,18 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
         tooltip.gameObject.SetActive(false);
     }
 
-    void UpdateText()
+    void UpdateUI()
     {
-        nameText.text = currentWeapon.name;
+        if (currentWeapon.modSlots > 8 || currentWeapon.modSlots < 0)
+        {
+            Debug.LogError("Invalid mod slot count");
+        }
+
+        for (int i = 0; i < modSlots.Length; i++)
+        {
+            modSlots[i].SetActive(i <= (currentWeapon.modSlots - 1) ? true : false);
+        }
+        nameText.text = $"{currentWeapon.rarity.ToString()}\n{currentWeapon.name}";
         descriptionText.text = currentWeapon.description;
     }
 }
