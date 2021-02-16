@@ -16,7 +16,36 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: 30fdf5af6ac80024c8fd48266c159a1a, type: 2}
   m_Metadata:
-    m_Items: []
-  m_TableData: []
+    m_Items:
+    - id: 0
+  m_TableData:
+  - m_Id: 43507490816
+    m_Localized: Gun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99774078976
+    m_Localized: "Damage - {baseDamage}\nAttack rate - {AttackRatePerSecond} / s\nProjectile
+      - {projectilePrefab.name}\nProjectile speed - {projectileSpeed}\nProjectile
+      lifetime - {projectileLifetime}\n\nPretty standard anti-covid\nweapon, shoots
+      basic \nbullets."
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 124826656768
+    m_Localized: Charged Gun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 157668057088
+    m_Localized: "Damage - {baseDamage}\nAttack cooldown - {baseAttackRate}\nProjectile
+      - {projectilePrefab.name}\nProjectile speed - {projectileSpeed}\nProjectile
+      lifetime - {projectileLifetime}\nCharge time - {timeToCharge}\n\nImma shooting
+      muh \none singular\nbullet."
+    m_Metadata:
+      m_Items:
+      - id: 0
   references:
     version: 1
+    00000000:
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00a0ff3a1700000000a0bfb524000000

@@ -13,8 +13,26 @@ MonoBehaviour:
   m_Name: UI Item Text Shared Data
   m_EditorClassIdentifier: 
   m_TableCollectionName: UI Item Text
-  m_TableCollectionNameGuidString: 00000000000000000000000000000000
-  m_Entries: []
+  m_TableCollectionNameGuidString: 30fdf5af6ac80024c8fd48266c159a1a
+  m_Entries:
+  - m_Id: 43507490816
+    m_Key: Test gun name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99774078976
+    m_Key: Test gun description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124826656768
+    m_Key: Test charged gun name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 157668057088
+    m_Key: 'Test charged gun description
+
+'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

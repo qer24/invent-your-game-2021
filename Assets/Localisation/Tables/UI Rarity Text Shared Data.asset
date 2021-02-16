@@ -13,8 +13,28 @@ MonoBehaviour:
   m_Name: UI Rarity Text Shared Data
   m_EditorClassIdentifier: 
   m_TableCollectionName: UI Rarity Text
-  m_TableCollectionNameGuidString: 00000000000000000000000000000000
-  m_Entries: []
+  m_TableCollectionNameGuidString: e478757a942746345b16b46218786448
+  m_Entries:
+  - m_Id: 21281873920
+    m_Key: Common
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26013048832
+    m_Key: Rare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28798066688
+    m_Key: Epic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31377563648
+    m_Key: Legendary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33692819456
+    m_Key: Mythic
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

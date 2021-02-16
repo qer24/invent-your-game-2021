@@ -16,8 +16,52 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 56b960f8f3228dc42b5d86c1f5e9ecd4
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 0720f4a51b46b284dba3d672794db473
+    m_Address: UI Item Text_pl-PL
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pl-PL
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 2e2bca272f5aadf46ba8e5fcc3b60124
+    m_Address: UI Item Text_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 98fdb2eeea37fcf4e9a71b3e33a779a9
+    m_Address: UI Rarity Text_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: d7012259304b63741b787be2f0026a85
+    m_Address: UI Rarity Text_pl-PL
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pl-PL
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: bf1a724c498d9e145b25ff39f3640e3d
+    m_Address: UI Text_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 4fb627a9f1787974b865409d04fd0031
+    m_Address: UI Text_pl-PL
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pl-PL
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: fd1d4b947b13c11468568e1d7e9aa973, type: 2}
   m_SchemaSet:
-    m_Schemas: []
+    m_Schemas:
+    - {fileID: 11400000, guid: 58fa0caac3d19134bba1911fdff63093, type: 2}
+    - {fileID: 11400000, guid: 7b8707c8c6d92de46a2a84564392a199, type: 2}

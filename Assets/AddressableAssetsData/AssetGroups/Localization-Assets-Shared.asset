@@ -16,8 +16,28 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: ff7cc670887053b40b1eec727df96991
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 30fdf5af6ac80024c8fd48266c159a1a
+    m_Address: UI Item Text Shared Data
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: e478757a942746345b16b46218786448
+    m_Address: UI Rarity Text Shared Data
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 71739676c9cb41b4fabe49f3ce5c3b6e
+    m_Address: UI Text Shared Data
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: fd1d4b947b13c11468568e1d7e9aa973, type: 2}
   m_SchemaSet:
-    m_Schemas: []
+    m_Schemas:
+    - {fileID: 11400000, guid: 65c68518a93a578498ff0b6eeb10fc70, type: 2}
+    - {fileID: 11400000, guid: 72c51d507346bb642b1f729eed99e42a, type: 2}
