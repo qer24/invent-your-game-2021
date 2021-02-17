@@ -78,9 +78,12 @@ public class InventoryManager : MonoBehaviour
         {
             weapons[slot].transform.SetParent(dropsCanvas.transform);
             weapons[slot].transform.position = mainCam.WorldToScreenPoint(new Vector3(0, 0, 0));
+            weapons[slot].GetComponent<WeaponPickup>().isInWorld = true;
         }
         currentClosestWeaponPickup.transform.SetParent(weaponSlots[slot].transform.parent);
+        currentClosestWeaponPickup.isInWorld = false;
         weapons[slot] = currentClosestWeaponPickup.GetComponent<Weapon>();
+        weaponSlots[slot].transform.parent.GetComponent<WeaponSlotTooltip>().ConnectWeapon(weapons[slot]);
     }
 
     WeaponPickup GetClosestWeaponPickup()

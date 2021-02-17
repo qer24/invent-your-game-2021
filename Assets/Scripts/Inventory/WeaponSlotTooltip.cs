@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] Weapon currentWeapon = null;
+    public Weapon currentWeapon = null;
     [SerializeField] ScaleTween tooltip = null;
     [SerializeField] GameObject[] modSlots = null; 
 
@@ -17,9 +17,7 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         if (currentWeapon != null)
         {
-            currentWeapon.OnTooltipUpdate += UpdateUI;
-            Debug.Log("subscribed");
-            Debug.Log(currentWeapon.OnTooltipUpdate.GetInvocationList()[0].Method.Name);
+            ConnectWeapon();
         }
     }
 
@@ -27,7 +25,7 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         if (currentWeapon != null)
         {
-            currentWeapon.OnTooltipUpdate -= UpdateUI;
+            DisconnectWeapon();
         }
     }
 
@@ -35,7 +33,6 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         if (currentWeapon != null)
         {
-            UpdateUI();
             tooltip.gameObject.SetActive(true);
         }
     }
@@ -51,7 +48,16 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public void ConnectWeapon()
     {
         currentWeapon.OnTooltipUpdate += UpdateUI;
-        Debug.Log("connected");
+    }
+
+    public void ConnectWeapon(Weapon newWeapon)
+    {
+        if(currentWeapon != null)
+        {
+            DisconnectWeapon();
+        }
+        currentWeapon = newWeapon;
+        ConnectWeapon();
         UpdateUI();
     }
 
@@ -72,7 +78,6 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
             modSlots[i].SetActive(i <= (currentWeapon.modSlots - 1) ? true : false);
         }
         string weaponName = $"{currentWeapon.rarityString}{currentWeapon.rodzajnikString}\n{currentWeapon.name}";
-        Debug.Log(currentWeapon.name);
         nameText.text = weaponName;
         descriptionText.text = currentWeapon.description;
     }

@@ -56,15 +56,11 @@ public abstract class Weapon : MonoBehaviour
         name = newName;
 
         UpdateRarityString();
-        Debug.Log("OnTooltipUpdate.Invoke();");
-        OnTooltipUpdate?.Invoke();
     }
 
     public void UpdateDescription(string newDesc)
     {
         description = newDesc;
-        Debug.Log("OnTooltipUpdate.Invoke();");
-        OnTooltipUpdate?.Invoke();
     }
 
     void UpdateRarityString()
@@ -80,7 +76,6 @@ public abstract class Weapon : MonoBehaviour
             {
                 rodzajnikString = GetFinishedRodzajnik();
             }
-            Debug.Log("OnTooltipUpdate.Invoke();");
             OnTooltipUpdate?.Invoke();
         }
         else
@@ -95,7 +90,6 @@ public abstract class Weapon : MonoBehaviour
                 {
                     rodzajnikString = "e";
                 }
-                Debug.Log("OnTooltipUpdate.Invoke();");
                 OnTooltipUpdate?.Invoke();
             };
         }
@@ -104,7 +98,6 @@ public abstract class Weapon : MonoBehaviour
         if (op.IsDone)
         {
             rarityString = op.Result;
-            Debug.Log("OnTooltipUpdate.Invoke();");
             OnTooltipUpdate?.Invoke();
         }
         else
@@ -112,7 +105,6 @@ public abstract class Weapon : MonoBehaviour
             op.Completed += (o) => 
             {
                 rarityString = op.Result;
-                Debug.Log("OnTooltipUpdate.Invoke();");
                 OnTooltipUpdate?.Invoke();
             };
         }

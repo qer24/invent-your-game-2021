@@ -19,23 +19,23 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 21281873920
-    m_Localized: Pospolity
+    m_Localized: Pospolit
     m_Metadata:
       m_Items: []
   - m_Id: 26013048832
-    m_Localized: Rzadki
+    m_Localized: Rzadk
     m_Metadata:
       m_Items: []
   - m_Id: 28798066688
-    m_Localized: Epicki
+    m_Localized: Epick
     m_Metadata:
       m_Items: []
   - m_Id: 31377563648
-    m_Localized: Legendarny
+    m_Localized: Legendarn
     m_Metadata:
       m_Items: []
   - m_Id: 33692819456
-    m_Localized: Mityczny
+    m_Localized: Mityczn
     m_Metadata:
       m_Items: []
   references:
