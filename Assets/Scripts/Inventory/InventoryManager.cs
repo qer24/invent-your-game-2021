@@ -13,8 +13,8 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] Transform mouseFollowPoint = null;
     [SerializeField] float pickupRadius = 0.5f;
-    [SerializeField] GameObject[] keyTooltipsUI = null;
-    [SerializeField] GameObject[] weaponSlots = null;
+    [SerializeField] List<GameObject> keyTooltipsUI = null;
+    [SerializeField] List<GameObject> weaponSlots = null;
     [SerializeField] Canvas dropsCanvas = null;
 
     public Weapon CurrentWeapon { get => weapons[0];}
@@ -82,10 +82,9 @@ public class InventoryManager : MonoBehaviour
             weapons[slot].transform.position = zero;
             weapons[slot].GetComponent<WeaponPickup>().isInWorld = true;
         }
-        currentClosestWeaponPickup.transform.SetParent(weaponSlots[slot].transform.parent);
+        currentClosestWeaponPickup.transform.SetParent(weaponSlots[slot].transform);
         currentClosestWeaponPickup.isInWorld = false;
         weapons[slot] = currentClosestWeaponPickup.GetComponent<Weapon>();
-        weaponSlots[slot].transform.parent.GetComponent<WeaponSlotTooltip>().ConnectWeapon(weapons[slot]);
     }
 
     WeaponPickup GetClosestWeaponPickup()
@@ -131,12 +130,14 @@ public class InventoryManager : MonoBehaviour
     {
         OnWeaponSwap?.Invoke();
 
-        Vector3 firstWeaponPos = weaponSlots[0].transform.parent.position;
-        Vector3 secondWeaponPos = weaponSlots[1].transform.parent.position;
+        Vector3 firstWeaponPos = weaponSlots[0].transform.position;
+        Vector3 secondWeaponPos = weaponSlots[1].transform.position;
 
-        LeanTween.moveX(weaponSlots[0].transform.parent.gameObject, secondWeaponPos.x, tweenDuration).setEase(tweenType);
-        LeanTween.moveX(weaponSlots[1].transform.parent.gameObject, firstWeaponPos.x, tweenDuration).setEase(tweenType);
+        LeanTween.moveX(weaponSlots[0].gameObject, secondWeaponPos.x, tweenDuration).setEase(tweenType);
+        LeanTween.moveX(weaponSlots[1].gameObject, firstWeaponPos.x, tweenDuration).setEase(tweenType);
 
         weapons.Reverse();
+        keyTooltipsUI.Reverse();
+        weaponSlots.Reverse();
     }
 }

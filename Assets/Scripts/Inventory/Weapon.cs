@@ -61,6 +61,8 @@ public abstract class Weapon : MonoBehaviour
     public void UpdateDescription(string newDesc)
     {
         description = newDesc;
+
+        UpdateRarityString();
     }
 
     void UpdateRarityString()
