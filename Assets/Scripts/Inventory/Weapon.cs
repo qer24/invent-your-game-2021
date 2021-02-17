@@ -11,6 +11,13 @@ public enum WeaponRarities
     Mythic //red
 }
 
+public enum Rodzajniki
+{
+    Meski,
+    Zenski,
+    Nijaki
+}
+
 public abstract class Weapon : MonoBehaviour
 {
     [Header("Tooltip")]
@@ -24,6 +31,8 @@ public abstract class Weapon : MonoBehaviour
     public bool isCharged = false;
     public bool isProjectile = true;
     public WeaponRarities rarity = WeaponRarities.Common;
+    public Rodzajniki rodzajnik = Rodzajniki.Meski;
+    public string rodzajnikString = string.Empty;
     public string rarityString = "Common";
     public int modSlots = 0;
 
@@ -56,6 +65,33 @@ public abstract class Weapon : MonoBehaviour
 
     void UpdateRarityString()
     {
+        var operation = LocalizationSettings.SelectedLocaleAsync;
+        if (operation.IsDone)
+        {
+            if (operation.Result.Identifier == "en")
+            {
+                rodzajnikString = string.Empty;
+            }
+            else
+            {
+                rodzajnikString = GetFinishedRodzajnik();
+            }
+        }
+        else
+        {
+            operation.Completed += (o) =>
+            {
+                if (operation.Result.Identifier == "en")
+                {
+                    rodzajnikString = string.Empty;
+                }
+                else
+                {
+                    rodzajnikString = "e";
+                }
+            };
+        }
+
         var op = LocalizationSettings.StringDatabase.GetLocalizedStringAsync("UI Rarity Text", rarity.ToString());
         if (op.IsDone)
         {
@@ -70,6 +106,33 @@ public abstract class Weapon : MonoBehaviour
                 OnTooltipUpdate?.Invoke();
             };
         }
+    }
+
+    string GetFinishedRodzajnik()
+    {
+        switch (rodzajnik)
+        {
+            case Rodzajniki.Meski:
+                if (rarity == WeaponRarities.Common || rarity == WeaponRarities.Legendary || rarity == WeaponRarities.Mythic)
+                {
+                    return "y";
+                }else
+                {
+                    return "i";
+                }
+            case Rodzajniki.Zenski:
+                return "a";
+            case Rodzajniki.Nijaki:
+                if (rarity == WeaponRarities.Common || rarity == WeaponRarities.Legendary || rarity == WeaponRarities.Mythic)
+                {
+                    return "e";
+                }
+                else
+                {
+                    return "ie";
+                }
+        }
+        return string.Empty;
     }
 
     //non projectile weapons

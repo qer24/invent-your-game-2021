@@ -45,7 +45,7 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
         {
             modSlots[i].SetActive(i <= (currentWeapon.modSlots - 1) ? true : false);
         }
-        nameText.text = $"{currentWeapon.rarityString}\n{currentWeapon.name}";
+        nameText.text = $"{currentWeapon.rarityString}{currentWeapon.rodzajnikString}\n{currentWeapon.name}";
         descriptionText.text = currentWeapon.description;
     }
 }
