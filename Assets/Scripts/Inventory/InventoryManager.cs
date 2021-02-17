@@ -77,7 +77,9 @@ public class InventoryManager : MonoBehaviour
         if (weapons[slot] != null)
         {
             weapons[slot].transform.SetParent(dropsCanvas.transform);
-            weapons[slot].transform.position = mainCam.WorldToScreenPoint(new Vector3(0, 0, 0));
+            Vector3 zero = mainCam.WorldToScreenPoint(new Vector3(0, 0, 0));
+            zero.z = 0;
+            weapons[slot].transform.position = zero;
             weapons[slot].GetComponent<WeaponPickup>().isInWorld = true;
         }
         currentClosestWeaponPickup.transform.SetParent(weaponSlots[slot].transform.parent);
@@ -97,6 +99,7 @@ public class InventoryManager : MonoBehaviour
 
             Vector3 worldPos = mainCam.ScreenToWorldPoint(pickup.transform.position);
             worldPos.y = 0;
+            Debug.DrawLine(mouseFollowPoint.transform.position, worldPos);
             float distance = Vector3.Distance(worldPos, mouseFollowPoint.position);
             if (distance < minDistance)
             {
