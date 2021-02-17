@@ -17,7 +17,9 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         if (currentWeapon != null)
         {
-            ConnectWeapon();
+            currentWeapon.OnTooltipUpdate += UpdateUI;
+            Debug.Log("subscribed");
+            Debug.Log(currentWeapon.OnTooltipUpdate.GetInvocationList()[0].Method.Name);
         }
     }
 
@@ -25,7 +27,7 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         if (currentWeapon != null)
         {
-            DisconnectWeapon();
+            currentWeapon.OnTooltipUpdate -= UpdateUI;
         }
     }
 
@@ -42,15 +44,15 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         if (currentWeapon != null)
         {
-            UpdateUI();
             tooltip.gameObject.SetActive(false);
         }
     }
 
     public void ConnectWeapon()
     {
-        UpdateUI();
         currentWeapon.OnTooltipUpdate += UpdateUI;
+        Debug.Log("connected");
+        UpdateUI();
     }
 
     public void DisconnectWeapon()
@@ -69,9 +71,9 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
         {
             modSlots[i].SetActive(i <= (currentWeapon.modSlots - 1) ? true : false);
         }
-        Debug.Log($"{currentWeapon.rarityString}{currentWeapon.rodzajnikString}\n{currentWeapon.name}");
-        nameText.text = $"{currentWeapon.rarityString}{currentWeapon.rodzajnikString}\n{currentWeapon.name}";
+        string weaponName = $"{currentWeapon.rarityString}{currentWeapon.rodzajnikString}\n{currentWeapon.name}";
+        Debug.Log(currentWeapon.name);
+        nameText.text = weaponName;
         descriptionText.text = currentWeapon.description;
-
     }
 }
