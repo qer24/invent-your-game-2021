@@ -56,11 +56,15 @@ public abstract class Weapon : MonoBehaviour
         name = newName;
 
         UpdateRarityString();
+        OnTooltipUpdate?.Invoke();
     }
 
     public void UpdateDescription(string newDesc)
     {
         description = newDesc;
+
+        UpdateRarityString();
+        OnTooltipUpdate?.Invoke();
     }
 
     void UpdateRarityString()

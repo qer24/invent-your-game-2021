@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9137255, g: 0.7176471, b: 0.1764706, a: 1}
+  m_Color: {r: 0.9137255, g: 0.7176471, b: 0.1764706, a: 0.07058824}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -104,7 +104,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6100766792464245003}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -167,10 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e87d80b1a37e184190d65a40cae66b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Gun
-  description: "Damage - 10\nAttack rate - 5 / s\nProjectile - Bullet\nProjectile
-    speed - 80\nProjectile lifetime - 2s\n\nPretty standard anti-covid\nweapon, shoots
-    basic \nbullets."
+  name: Test Weapon
+  description: a
   baseDamage: 10
   baseAttackRate: 0.2
   isCharged: 0

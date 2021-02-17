@@ -33,6 +33,7 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         if (currentWeapon != null)
         {
+            UpdateUI();
             tooltip.gameObject.SetActive(true);
         }
     }
@@ -41,6 +42,7 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         if (currentWeapon != null)
         {
+            UpdateUI();
             tooltip.gameObject.SetActive(false);
         }
     }
@@ -67,7 +69,9 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
         {
             modSlots[i].SetActive(i <= (currentWeapon.modSlots - 1) ? true : false);
         }
+        Debug.Log($"{currentWeapon.rarityString}{currentWeapon.rodzajnikString}\n{currentWeapon.name}");
         nameText.text = $"{currentWeapon.rarityString}{currentWeapon.rodzajnikString}\n{currentWeapon.name}";
         descriptionText.text = currentWeapon.description;
+
     }
 }
