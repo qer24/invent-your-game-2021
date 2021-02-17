@@ -15,23 +15,45 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     private void OnEnable()
     {
-        UpdateUI();
-        currentWeapon.OnTooltipUpdate += UpdateUI;
+        if (currentWeapon != null)
+        {
+            ConnectWeapon();
+        }
     }
 
     private void OnDisable()
     {
-        currentWeapon.OnTooltipUpdate -= UpdateUI;
+        if (currentWeapon != null)
+        {
+            DisconnectWeapon();
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        tooltip.gameObject.SetActive(true);
+        if (currentWeapon != null)
+        {
+            tooltip.gameObject.SetActive(true);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        tooltip.gameObject.SetActive(false);
+        if (currentWeapon != null)
+        {
+            tooltip.gameObject.SetActive(false);
+        }
+    }
+
+    public void ConnectWeapon()
+    {
+        UpdateUI();
+        currentWeapon.OnTooltipUpdate += UpdateUI;
+    }
+
+    public void DisconnectWeapon()
+    {
+        currentWeapon.OnTooltipUpdate -= UpdateUI;
     }
 
     void UpdateUI()
