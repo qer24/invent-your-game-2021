@@ -73,6 +73,8 @@ public class InventoryManager : MonoBehaviour
 
     void SwitchWeapon(int slot)
     {
+        OnWeaponSwap?.Invoke();
+
         LeanTween.move(currentClosestWeaponPickup.GetComponent<RectTransform>(), Vector3.zero, 0.5f).setEase(LeanTweenType.easeOutQuart);
         if (weapons[slot] != null)
         {
