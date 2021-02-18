@@ -26,14 +26,14 @@ public class WeaponCustomEditor : Editor
 
         EditorGUI.BeginChangeCheck();
 
-        EditorGUILayout.LabelField("Tooltip", EditorStyles.boldLabel);
+        //EditorGUILayout.LabelField("Tooltip", EditorStyles.boldLabel);
 
-        weapon.name = EditorGUILayout.TextField("Name", weapon.name);
+        //weapon.name = EditorGUILayout.TextField("Name", weapon.name);
 
-        EditorGUILayout.LabelField("Description");
-        weapon.description = EditorGUILayout.TextArea(weapon.description, GUILayout.MinHeight(40));
+        //EditorGUILayout.LabelField("Description");
+        //weapon.description = EditorGUILayout.TextArea(weapon.description, GUILayout.MinHeight(40));
 
-        EditorGUILayout.Space();
+        //EditorGUILayout.Space();
 
         EditorGUILayout.LabelField("Generic variables", EditorStyles.boldLabel);
         weapon.baseDamage = EditorGUILayout.FloatField("Base Damage", weapon.baseDamage);
