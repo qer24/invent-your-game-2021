@@ -6,25 +6,31 @@ using UnityEngine.EventSystems;
 
 public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public Weapon currentWeapon = null;
+    Weapon weapon;
+    WeaponPickup pickup;
     [SerializeField] ScaleTween tooltip = null;
     [SerializeField] GameObject[] modSlots = null; 
 
     [SerializeField] TextMeshProUGUI nameText = null;
     [SerializeField] TextMeshProUGUI descriptionText = null;
 
-    private void OnEnable()
+    private void Start()
     {
-        currentWeapon.OnTooltipUpdate += UpdateUI;
+        weapon = GetComponent<Weapon>();
+        pickup = GetComponent<WeaponPickup>();
+
+        weapon.OnTooltipUpdate += UpdateUI;
     }
 
     private void OnDisable()
     {
-        currentWeapon.OnTooltipUpdate -= UpdateUI;
+        weapon.OnTooltipUpdate -= UpdateUI;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (pickup.isInWorld && ModDrop.draggingMod) return;
+
         tooltip.gameObject.SetActive(true);
     }
 
@@ -35,17 +41,17 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     void UpdateUI()
     {
-        if (currentWeapon.modSlots > 8 || currentWeapon.modSlots < 0)
+        if (weapon.modSlots > 8 || weapon.modSlots < 0)
         {
             Debug.LogError("Invalid mod slot count");
         }
 
         for (int i = 0; i < modSlots.Length; i++)
         {
-            modSlots[i].SetActive(i <= (currentWeapon.modSlots - 1) ? true : false);
+            modSlots[i].SetActive(i <= (weapon.modSlots - 1) ? true : false);
         }
-        string weaponName = $"{currentWeapon.rarityString}{currentWeapon.rodzajnikString}\n{currentWeapon.name}";
+        string weaponName = $"{weapon.rarityString}{weapon.rodzajnikString}\n{weapon.name}";
         nameText.text = weaponName;
-        descriptionText.text = currentWeapon.description;
+        descriptionText.text = weapon.description;
     }
 }

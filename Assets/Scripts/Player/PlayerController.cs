@@ -18,9 +18,8 @@ public class PlayerController : MonoBehaviour
 
     public float knockbackForce = 100f;
 
-    [Header("Do not change")]
-    public bool moveToPoint = false;
-    public Vector3 movePoint;
+    [HideInInspector] public bool moveToPoint = false;
+    [HideInInspector] public Vector3 movePoint;
     float moveToPointVelocityScale = 1;
 
     Camera mainCam;
@@ -44,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (MapPanel.IsOpen) return;
+        if (MapPanel.IsOpen || ModDrop.draggingMod) return;
         if (moveToPoint)
         {
             screenConfiner.enabled = false;

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -79,9 +80,9 @@ public class InventoryManager : MonoBehaviour
         if (weapons[slot] != null)
         {
             weapons[slot].transform.SetParent(dropsCanvas.transform);
-            Vector3 zero = mainCam.WorldToScreenPoint(new Vector3(0, 0, 0));
-            zero.z = 0;
-            weapons[slot].transform.position = zero;
+            Vector3 pos = mainCam.WorldToScreenPoint(new Vector3(Random.Range(-6, 6f), Random.Range(-6f, 6f), 0));
+            pos.z = 0;
+            LeanTween.move(weapons[slot].gameObject, pos, 0.5f).setEase(LeanTweenType.easeOutQuart);
             weapons[slot].GetComponent<WeaponPickup>().isInWorld = true;
         }
         currentClosestWeaponPickup.transform.SetParent(weaponSlots[slot].transform);
@@ -91,6 +92,8 @@ public class InventoryManager : MonoBehaviour
 
     WeaponPickup GetClosestWeaponPickup()
     {
+        if (ModDrop.draggingMod) return null;
+
         WeaponPickup closestPickup = null;
 
         float minDistance = Mathf.Infinity;

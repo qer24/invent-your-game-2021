@@ -38,7 +38,7 @@ public class PlayerShooter : MonoBehaviour
 
     private void Update()
     {
-        if (MapPanel.IsOpen) return;
+        if (MapPanel.IsOpen || ModDrop.draggingMod) return;
         if (inventory.CurrentWeapon.isCharged)
         {
             chargeUI.fillAmount = chargeTimer / inventory.CurrentWeapon.timeToCharge;
