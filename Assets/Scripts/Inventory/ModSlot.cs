@@ -17,13 +17,24 @@ public class ModSlot : MonoBehaviour, IDropHandler
         }
     }
 
+    Weapon weapon;
+
+    private void Start()
+    {
+        weapon = GetComponentInParent<Weapon>();
+    }
+
     public void OnDrop(PointerEventData eventData)
     {
         if (!item)
         {
-            ModDrop.modBeingDragged.transform.SetParent(transform);
-            ModDrop.modBeingDragged.isInSlot = true;
-            LeanTween.move(ModDrop.modBeingDragged.gameObject, transform.position, 0.1f).setEase(LeanTweenType.easeOutExpo);
+            ModDrop draggedMod = ModDrop.modBeingDragged;
+            draggedMod.transform.SetParent(transform);
+            draggedMod.isInSlot = true;
+            LeanTween.move(draggedMod.gameObject, transform.position, 0.1f).setEase(LeanTweenType.easeOutExpo);
+
+            draggedMod.GetComponent<Mod>().AttachToWeapon(weapon);
+
             enabled = false;
         }
     }

@@ -10,17 +10,12 @@ public class ModDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
     [SerializeField] ScaleTween tooltip = null;
     RectTransform tooltipRectTransform = null;
 
-    //[SerializeField] TextMeshProUGUI nameText = null;
-    //[SerializeField] TextMeshProUGUI descriptionText = null;
-
     [SerializeField] Image pickupIndicator = null;
     [SerializeField] Color highlightColor = Color.white;
     Color startingColor;
 
     Vector3 startPos;
     Transform startParent;
-
-    bool showingTooltip = false;
 
     public bool isInSlot = false;
 
