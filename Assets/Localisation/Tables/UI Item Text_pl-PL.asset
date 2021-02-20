@@ -24,7 +24,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 99774078976
-    m_Localized: "Obra\u017Cenia - {baseDamage}\nPr\u0119dko\u015B\u0107 ataku -
+    m_Localized: "Obra\u017Cenia - {FinalDamage}\nPr\u0119dko\u015B\u0107 ataku -
       {AttackRatePerSecond} / s\nPocisk - {projectilePrefab.name}\nSzybko\u015B\u0107
       pocisku - {projectileSpeed}\nCzas \u017Cycia pocisku - {projectileLifetime}\n\nCa\u0142kiem
       standardowa\nbro\u0144 anty covidowa."
@@ -36,7 +36,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 157668057088
-    m_Localized: "Obra\u017Cenia - {baseDamage}\nCzas odnowienia - {baseAttackRate}\nPocisk
+    m_Localized: "Obra\u017Cenia - {FinalDamage}\nCzas odnowienia - {baseAttackRate}\nPocisk
       - {projectilePrefab.name}\nSzybko\u015B\u0107 pocisku - {projectileSpeed}\nCzas
       \u017Cycia pocisku - {projectileLifetime}\nCzas \u0142adowanie - {timeToCharge}\n\nStzelam
       pojedy\u0144cz\u0105\nkul\u0105, brrr"

@@ -24,7 +24,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 99774078976
-    m_Localized: "Damage - {baseDamage}\nAttack rate - {AttackRatePerSecond} / s\nProjectile
+    m_Localized: "Damage - {FinalDamage}\nAttack rate - {AttackRatePerSecond} / s\nProjectile
       - {projectilePrefab.name}\nProjectile speed - {projectileSpeed}\nProjectile
       lifetime - {projectileLifetime}\n\nPretty standard anti-covid\nweapon, shoots
       basic \nbullets."
@@ -36,7 +36,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 157668057088
-    m_Localized: "Damage - {baseDamage}\nAttack cooldown - {baseAttackRate}\nProjectile
+    m_Localized: "Damage - {FinalDamage}\nAttack cooldown - {baseAttackRate}\nProjectile
       - {projectilePrefab.name}\nProjectile speed - {projectileSpeed}\nProjectile
       lifetime - {projectileLifetime}\nCharge time - {timeToCharge}\n\nImma shooting
       muh \none singular\nbullet."

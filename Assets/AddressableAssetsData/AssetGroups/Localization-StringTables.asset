@@ -59,6 +59,20 @@ MonoBehaviour:
     - Locale-pl-PL
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 6c3161f8833d222408dfb4218f788ba1
+    m_Address: UI Mods text_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 25977010e63025146bad2d1bce782610
+    m_Address: UI Mods text_pl-PL
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pl-PL
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: fd1d4b947b13c11468568e1d7e9aa973, type: 2}
   m_SchemaSet:

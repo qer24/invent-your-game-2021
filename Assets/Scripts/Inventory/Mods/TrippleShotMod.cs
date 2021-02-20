@@ -11,9 +11,9 @@ public class TrippleShotMod : Mod
 
     DamageModifier damageModifier;
 
-    public override void AttachToWeapon(Weapon weapon)
+    public override void AttachWeapon(Weapon weapon)
     {
-        base.AttachToWeapon(weapon);
+        base.AttachWeapon(weapon);
 
         if(attachedWeapon.isProjectile)
         {
@@ -25,13 +25,6 @@ public class TrippleShotMod : Mod
             damageModifier = new DamageModifier(0, damageMultiplierForNonProjectile);
             attachedWeapon.damageModifiers.Add(damageModifier);
         }
-    }
-
-    private void OnDestroy()
-    {
-        if (attachedWeapon == null) return;
-
-        DetachWeapon();
     }
 
     public override void DetachWeapon()

@@ -33,7 +33,7 @@ public class ModSlot : MonoBehaviour, IDropHandler
             draggedMod.isInSlot = true;
             LeanTween.move(draggedMod.gameObject, transform.position, 0.1f).setEase(LeanTweenType.easeOutExpo);
 
-            draggedMod.GetComponent<Mod>().AttachToWeapon(weapon);
+            draggedMod.GetComponent<Mod>().AttachWeapon(weapon);
 
             enabled = false;
         }

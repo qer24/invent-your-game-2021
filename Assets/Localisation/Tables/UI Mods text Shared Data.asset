@@ -13,8 +13,16 @@ MonoBehaviour:
   m_Name: UI Mods text Shared Data
   m_EditorClassIdentifier: 
   m_TableCollectionName: UI Mods text
-  m_TableCollectionNameGuidString: 00000000000000000000000000000000
-  m_Entries: []
+  m_TableCollectionNameGuidString: df40cff1211b4fb4ab2ab543e63b5c12
+  m_Entries:
+  - m_Id: 21378342912
+    m_Key: Tripple shot name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50734276608
+    m_Key: Tripple shot description
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

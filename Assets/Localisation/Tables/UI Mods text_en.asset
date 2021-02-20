@@ -17,6 +17,15 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: df40cff1211b4fb4ab2ab543e63b5c12, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 21378342912
+    m_Localized: Tripple Shot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50734276608
+    m_Localized: "+2 projectiles\nx0.6 damage\n\nFor non projectile \nweapons: x1.25
+      damage"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
