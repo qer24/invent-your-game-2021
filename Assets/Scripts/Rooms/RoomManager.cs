@@ -147,7 +147,11 @@ namespace ProcGen
                 StartCoroutine(PlayerTravelToNextRoom());
 
             if (currentRoom != null)
+            {
+                currentRoom.DisableDrops();
                 currentRoom.enabled = false;
+            }
+
             allRoomsInLevel[id].enabled = true;
 
             currentRoom = allRoomsInLevel[id];

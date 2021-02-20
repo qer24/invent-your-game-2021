@@ -80,8 +80,7 @@ public class InventoryManager : MonoBehaviour
         if (weapons[slot] != null)
         {
             weapons[slot].transform.SetParent(dropsCanvas.transform);
-            Vector3 pos = mainCam.WorldToScreenPoint(new Vector3(Random.Range(-6, 6f), Random.Range(-6f, 6f), 0));
-            pos.z = 0;
+            Vector3 pos = mainCam.WorldToScreenPoint(new Vector3(Random.Range(-6, 6f), 0, Random.Range(-6f, 6f)));
             LeanTween.move(weapons[slot].gameObject, pos, 0.5f).setEase(LeanTweenType.easeOutQuart);
             weapons[slot].GetComponent<WeaponPickup>().isInWorld = true;
         }
