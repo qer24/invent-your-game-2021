@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Wave", menuName = "ScriptableObjects/Wave")]
-public class Wave : ScriptableObject
+namespace ProcGen
 {
-    public EnemySpawn[] enemiesToSpawn;
+    [CreateAssetMenu(fileName = "Wave", menuName = "ScriptableObjects/Wave")]
+    public class Wave : ScriptableObject
+    {
+        public EnemySpawn[] enemiesToSpawn;
+    }
 }

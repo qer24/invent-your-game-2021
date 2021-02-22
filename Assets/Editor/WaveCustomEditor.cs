@@ -4,30 +4,33 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.Callbacks;
 
-public class AssetHandler
+namespace ProcGen
 {
-    [OnOpenAsset()]
-    public static bool OpenEditor(int instanceId, int line)
+    public class AssetHandler
     {
-        Wave obj = EditorUtility.InstanceIDToObject(instanceId) as Wave;
-        if(obj != null)
+        [OnOpenAsset()]
+        public static bool OpenEditor(int instanceId, int line)
         {
-            WaveCustomEditorWindow.Open(obj);
-            return true;
+            Wave obj = EditorUtility.InstanceIDToObject(instanceId) as Wave;
+            if (obj != null)
+            {
+                WaveCustomEditorWindow.Open(obj);
+                return true;
+            }
+
+            return false;
         }
-
-        return false;
     }
-}
 
-[CustomEditor(typeof(Wave))]
-public class WaveCustomEditor : Editor
-{
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(Wave))]
+    public class WaveCustomEditor : Editor
     {
-        if(GUILayout.Button("Edit wave"))
+        public override void OnInspectorGUI()
         {
-            WaveCustomEditorWindow.Open((Wave)target);
+            if (GUILayout.Button("Edit wave"))
+            {
+                WaveCustomEditorWindow.Open((Wave)target);
+            }
         }
     }
 }

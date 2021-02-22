@@ -3,80 +3,83 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(Room))]
-public class RoomCustomEditor : Editor
+namespace ProcGen
 {
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(Room))]
+    public class RoomCustomEditor : Editor
     {
-        Room room = (Room)target;
-
-        GUILayout.Label("Waves to spawn: ");
-
-        if (room.waves.Count > 0)
+        public override void OnInspectorGUI()
         {
-            for (int i = 0; i < room.waves.Count; i++)
+            Room room = (Room)target;
+
+            GUILayout.Label("Waves to spawn: ");
+
+            if (room.waves.Count > 0)
             {
-                GUILayout.BeginHorizontal();
-                EditorGUI.BeginChangeCheck();
-                room.waves[i] = (Wave)EditorGUILayout.ObjectField(room.waves[i], typeof(Wave), true);
-                if (EditorGUI.EndChangeCheck())
+                for (int i = 0; i < room.waves.Count; i++)
                 {
-                    if (PrefabUtility.GetPrefabAssetType(room.gameObject) != PrefabAssetType.NotAPrefab)
-                        PrefabUtility.SavePrefabAsset(room.gameObject);
-                }
-
-                if (room.waves[i] != null)
-                {
-                    if (GUILayout.Button("Edit", GUILayout.MaxWidth(40)))
+                    GUILayout.BeginHorizontal();
+                    EditorGUI.BeginChangeCheck();
+                    room.waves[i] = (Wave)EditorGUILayout.ObjectField(room.waves[i], typeof(Wave), true);
+                    if (EditorGUI.EndChangeCheck())
                     {
-                        WaveCustomEditorWindow.Open(room.waves[i]);
                         if (PrefabUtility.GetPrefabAssetType(room.gameObject) != PrefabAssetType.NotAPrefab)
                             PrefabUtility.SavePrefabAsset(room.gameObject);
                     }
-                }
-                else
-                {
-                    if (GUILayout.Button("New", GUILayout.MaxWidth(40)))
+
+                    if (room.waves[i] != null)
                     {
-                        room.waves[i] = CreateNewWaveObject();
+                        if (GUILayout.Button("Edit", GUILayout.MaxWidth(40)))
+                        {
+                            WaveCustomEditorWindow.Open(room.waves[i]);
+                            if (PrefabUtility.GetPrefabAssetType(room.gameObject) != PrefabAssetType.NotAPrefab)
+                                PrefabUtility.SavePrefabAsset(room.gameObject);
+                        }
+                    }
+                    else
+                    {
+                        if (GUILayout.Button("New", GUILayout.MaxWidth(40)))
+                        {
+                            room.waves[i] = CreateNewWaveObject();
+                            if (PrefabUtility.GetPrefabAssetType(room.gameObject) != PrefabAssetType.NotAPrefab)
+                                PrefabUtility.SavePrefabAsset(room.gameObject);
+                        }
+                    }
+
+                    if (GUILayout.Button("X", GUILayout.MaxWidth(25)))
+                    {
+                        room.waves.RemoveAt(i);
                         if (PrefabUtility.GetPrefabAssetType(room.gameObject) != PrefabAssetType.NotAPrefab)
                             PrefabUtility.SavePrefabAsset(room.gameObject);
                     }
-                }
+                    GUILayout.EndHorizontal();
 
-                if (GUILayout.Button("X", GUILayout.MaxWidth(25)))
-                {
-                    room.waves.RemoveAt(i);
-                    if (PrefabUtility.GetPrefabAssetType(room.gameObject) != PrefabAssetType.NotAPrefab)
-                        PrefabUtility.SavePrefabAsset(room.gameObject);
+                    GUILayout.Space(10);
                 }
-                GUILayout.EndHorizontal();
-
-                GUILayout.Space(10);
             }
+
+            if (GUILayout.Button("Add wave"))
+            {
+                room.waves.Add(null);
+                if (PrefabUtility.GetPrefabAssetType(room.gameObject) != PrefabAssetType.NotAPrefab)
+                    PrefabUtility.SavePrefabAsset(room.gameObject);
+            }
+
+            GUILayout.Space(25);
+
+            room.maxTimeBetweenWaves = EditorGUILayout.FloatField("Max time between waves: ", room.maxTimeBetweenWaves);
         }
 
-        if (GUILayout.Button("Add wave"))
+        Wave CreateNewWaveObject()
         {
-            room.waves.Add(null);
-            if (PrefabUtility.GetPrefabAssetType(room.gameObject) != PrefabAssetType.NotAPrefab)
-                PrefabUtility.SavePrefabAsset(room.gameObject);
+            Wave asset = CreateInstance<Wave>();
+
+            AssetDatabase.CreateAsset(asset, "Assets/Scripts/_ScriptableObjects/Waves/NewWave.asset");
+            AssetDatabase.SaveAssets();
+
+            EditorUtility.FocusProjectWindow();
+
+            return asset;
         }
-
-        GUILayout.Space(25);
-
-        room.maxTimeBetweenWaves = EditorGUILayout.FloatField("Max time between waves: ", room.maxTimeBetweenWaves);
-    }
-
-    Wave CreateNewWaveObject()
-    {
-        Wave asset = CreateInstance<Wave>();
-
-        AssetDatabase.CreateAsset(asset, "Assets/Scripts/_ScriptableObjects/Waves/NewWave.asset");
-        AssetDatabase.SaveAssets();
-
-        EditorUtility.FocusProjectWindow();
-
-        return asset;
     }
 }

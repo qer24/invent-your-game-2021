@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using ProcGen;
 
-[System.Serializable]
-public class EnemySpawn
+namespace ProcGen
 {
-    public GameObject enemy;
-    public RoomSpawnPoints spawnPoint;
+    [System.Serializable]
+    public class EnemySpawn
+    {
+        public GameObject enemy;
+        public RoomSpawnPoints spawnPoint;
+    }
 }

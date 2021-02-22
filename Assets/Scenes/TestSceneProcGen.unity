@@ -1592,26 +1592,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2360741687438193312, guid: 52f78d8b5625793409c3f954ed289662, type: 3}
-      propertyPath: modPool.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2360741687438193312, guid: 52f78d8b5625793409c3f954ed289662, type: 3}
-      propertyPath: weaponPool.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2360741687438193312, guid: 52f78d8b5625793409c3f954ed289662, type: 3}
-      propertyPath: modPool.Array.data[0]
-      value: 
-      objectReference: {fileID: 624427275121574067, guid: a04d4a39619f8af4892eb8892c42a25d, type: 3}
-    - target: {fileID: 2360741687438193312, guid: 52f78d8b5625793409c3f954ed289662, type: 3}
-      propertyPath: weaponPool.Array.data[0]
-      value: 
-      objectReference: {fileID: 5540810424131588800, guid: 313af354557ab4844a9ad90be6a173a0, type: 3}
-    - target: {fileID: 2360741687438193312, guid: 52f78d8b5625793409c3f954ed289662, type: 3}
-      propertyPath: weaponPool.Array.data[1]
-      value: 
-      objectReference: {fileID: 7112642364836261584, guid: f294766e8baced241a884fc9b6e73c28, type: 3}
     - target: {fileID: 5188112700604928768, guid: 52f78d8b5625793409c3f954ed289662, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1694,10 +1674,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5188112700604928768, guid: 52f78d8b5625793409c3f954ed289662, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5188112700604928770, guid: 52f78d8b5625793409c3f954ed289662, type: 3}
-      propertyPath: m_MatchWidthOrHeight
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5188112700604928772, guid: 52f78d8b5625793409c3f954ed289662, type: 3}

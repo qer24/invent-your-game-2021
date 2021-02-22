@@ -75,7 +75,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 601080}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -111,3 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b183d6fd6bcacf4b95755e8f9425b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponPool:
+  - {fileID: 5540810424131588800, guid: 313af354557ab4844a9ad90be6a173a0, type: 3}
+  - {fileID: 7112642364836261584, guid: f294766e8baced241a884fc9b6e73c28, type: 3}
+  modPool:
+  - {fileID: 8850280604662442854, guid: 6bf1131d4cd04304893cbf06e6017fcb, type: 3}
+  - {fileID: 624427275121574067, guid: a04d4a39619f8af4892eb8892c42a25d, type: 3}

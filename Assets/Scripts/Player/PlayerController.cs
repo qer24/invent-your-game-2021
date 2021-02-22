@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (MapPanel.IsOpen || ModDrop.draggingMod) return;
+        if (ProcGen.MapPanel.IsOpen || ModDrop.draggingMod) return;
         if (moveToPoint)
         {
             screenConfiner.enabled = false;

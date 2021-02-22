@@ -3,56 +3,59 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class WaveCustomEditorWindow : ExtendedEditorWindow
+namespace ProcGen
 {
-    static string newName = null;
-
-    public static void Open(Wave waveObject)
+    public class WaveCustomEditorWindow : ExtendedEditorWindow
     {
-        WaveCustomEditorWindow window = GetWindow<WaveCustomEditorWindow>("Wave editor");
-        window.serializedObject = new SerializedObject(waveObject);
+        static string newName = null;
 
-        newName = window.serializedObject.targetObject.name;
-    }
-
-    private void OnGUI()
-    {
-        newName = EditorGUILayout.TextField("Name: ", newName);
-
-        currentProperty = serializedObject.FindProperty("enemiesToSpawn");
-
-        EditorGUILayout.BeginHorizontal();
-
-        EditorGUILayout.BeginVertical("box", GUILayout.MaxWidth(150), GUILayout.ExpandHeight(true));
-
-        DrawSidebar(currentProperty);
-
-        EditorGUILayout.EndVertical();
-
-        EditorGUILayout.BeginVertical("box", GUILayout.ExpandHeight(true));
-
-        if (selectedProperty != null)
+        public static void Open(Wave waveObject)
         {
-            DrawProperties(selectedProperty, true);
+            WaveCustomEditorWindow window = GetWindow<WaveCustomEditorWindow>("Wave editor");
+            window.serializedObject = new SerializedObject(waveObject);
+
+            newName = window.serializedObject.targetObject.name;
         }
-        else
+
+        private void OnGUI()
         {
-            EditorGUILayout.LabelField("Select an item from the list");
+            newName = EditorGUILayout.TextField("Name: ", newName);
+
+            currentProperty = serializedObject.FindProperty("enemiesToSpawn");
+
+            EditorGUILayout.BeginHorizontal();
+
+            EditorGUILayout.BeginVertical("box", GUILayout.MaxWidth(150), GUILayout.ExpandHeight(true));
+
+            DrawSidebar(currentProperty);
+
+            EditorGUILayout.EndVertical();
+
+            EditorGUILayout.BeginVertical("box", GUILayout.ExpandHeight(true));
+
+            if (selectedProperty != null)
+            {
+                DrawProperties(selectedProperty, true);
+            }
+            else
+            {
+                EditorGUILayout.LabelField("Select an item from the list");
+            }
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.EndHorizontal();
+
+            Apply();
         }
-        EditorGUILayout.EndVertical();
-        EditorGUILayout.EndHorizontal();
 
-        Apply();
-    }
+        void OnDestroy()
+        {
+            var scriptableObject = serializedObject.targetObject;
 
-    void OnDestroy()
-    {
-        var scriptableObject = serializedObject.targetObject;
+            if (newName == scriptableObject.name) return;
 
-        if (newName == scriptableObject.name) return;
-
-        string assetPath = AssetDatabase.GetAssetPath(scriptableObject.GetInstanceID());
-        AssetDatabase.RenameAsset(assetPath, newName);
-        AssetDatabase.SaveAssets();
+            string assetPath = AssetDatabase.GetAssetPath(scriptableObject.GetInstanceID());
+            AssetDatabase.RenameAsset(assetPath, newName);
+            AssetDatabase.SaveAssets();
+        }
     }
 }

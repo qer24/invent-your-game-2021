@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+
 namespace ProcGen
 {
     public enum RoomSpawnPoints
@@ -41,7 +42,7 @@ namespace ProcGen
 
         public ProceduralRoom[,] roomMap;
         Room[] allRoomsInLevel;
-        Room currentRoom = null;
+        public static Room CurrentRoom = null;
 
         Camera mainCam;
 
@@ -146,15 +147,15 @@ namespace ProcGen
             if (id != 0)
                 StartCoroutine(PlayerTravelToNextRoom());
 
-            if (currentRoom != null)
+            if (CurrentRoom != null)
             {
-                currentRoom.DisableDrops();
-                currentRoom.enabled = false;
+                CurrentRoom.DisableDrops();
+                CurrentRoom.enabled = false;
             }
 
             allRoomsInLevel[id].enabled = true;
 
-            currentRoom = allRoomsInLevel[id];
+            CurrentRoom = allRoomsInLevel[id];
 
             allRoomsInLevel[id].GetComponent<RoomContentGenerator>().Visit();
             RevealNeighbours(id);
@@ -166,7 +167,7 @@ namespace ProcGen
 
         void FinishRoom()
         {
-            currentRoom.OnRoomCompleted -= FinishRoom;
+            CurrentRoom.OnRoomCompleted -= FinishRoom;
 
             mapButton.gameObject.SetActive(true);
         }
