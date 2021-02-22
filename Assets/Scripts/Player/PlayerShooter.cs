@@ -14,11 +14,6 @@ public class PlayerShooter : MonoBehaviour
     public InventoryManager inventory;
     public Image chargeUI;
 
-    [Header("Bullet stats")]
-    //TODO: Make some player stats script that holds all player stats including these
-    public float bulletRotationSpeed = 1f;
-    public float bulletSeekDistance = 4f;
-
     [SerializeField] VisualEffect muzzleFlash = null;
 
     float shootTimer;
@@ -89,7 +84,7 @@ public class PlayerShooter : MonoBehaviour
 
         if(inventory.CurrentWeapon.isProjectile)
         {
-            inventory.CurrentWeapon.Shoot(shootPoint.position, transform.rotation, gameObject.tag, "Enemy", bulletRotationSpeed, bulletSeekDistance, bulletMaterial);
+            inventory.CurrentWeapon.Shoot(shootPoint.position, transform.rotation, gameObject.tag, "Enemy", bulletMaterial);
         }else
         {
             inventory.CurrentWeapon.Attack();

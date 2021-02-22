@@ -17,10 +17,15 @@ public abstract class Mod : MonoBehaviour
 
     IEnumerator UpdateWeaponTooltip()
     {
+        var currentLocale = LocalizationSettings.SelectedLocale;
         //hack to refresh the localised string database
-        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[0];
+        if (currentLocale.Identifier == "en")
+            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[1];
+        else
+            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[0];
+
         yield return null;
-        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[1];
+        LocalizationSettings.SelectedLocale = currentLocale;
 
         attachedWeapon.OnTooltipUpdate?.Invoke();
     }

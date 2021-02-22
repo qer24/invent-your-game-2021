@@ -121,9 +121,7 @@ public class TestEnemy : Enemy
             stats.projectileSpeed,
             stats.projectileLifetime,
             gameObject.tag, 
-            playerTag, 
-            stats.projectileRotationSpeed, 
-            stats.projectileSeekDistance
+            playerTag
         );
     }
 

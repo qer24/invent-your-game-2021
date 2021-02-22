@@ -62,9 +62,10 @@ public abstract class Weapon : MonoBehaviour
     public Action OnTooltipUpdate;
 
     public Action OnAttack;
-    public Action<Vector3, Quaternion, string, string, float, float, Material> OnProjectileAttack;
+    public Action<Vector3, Quaternion, string, string, Material> OnProjectileAttack;
 
     public List<DamageModifier> damageModifiers;
+    public Action<GameObject> OnProjectileCreated;
 
     public float FinalDamage
     {
@@ -106,7 +107,7 @@ public abstract class Weapon : MonoBehaviour
         UpdateRarityString();
     }
 
-    void UpdateRarityString()
+    public void UpdateRarityString()
     {
         var operation = LocalizationSettings.SelectedLocaleAsync;
         if (operation.IsDone)
@@ -145,10 +146,9 @@ public abstract class Weapon : MonoBehaviour
         }
         else
         {
-            op.Completed += (o) => 
+            op.Completed += (o) =>
             {
                 rarityString = op.Result;
-                OnTooltipUpdate?.Invoke();
             };
         }
     }
@@ -187,17 +187,19 @@ public abstract class Weapon : MonoBehaviour
     }
 
     //projectile weapons
-    public virtual void Shoot(Vector3 position, Quaternion rotation, string allyTag, string enemyTag, float projectileRotationSpeed, float projectileSeekDistance, Material projectileMaterial)
+    public virtual void Shoot(Vector3 position, Quaternion rotation, string allyTag, string enemyTag, Material projectileMaterial)
     {
-        OnProjectileAttack?.Invoke(position, rotation, allyTag, enemyTag, projectileRotationSpeed, projectileSeekDistance, projectileMaterial);
+        OnProjectileAttack?.Invoke(position, rotation, allyTag, enemyTag, projectileMaterial);
     }
 
-    public void ShootProjectile(Vector3 position, Quaternion rotation, string allyTag, string enemyTag, float projectileRotationSpeed, float projectileSeekDistance, Material projectileMaterial)
+    public void ShootProjectile(Vector3 position, Quaternion rotation, string allyTag, string enemyTag, Material projectileMaterial)
     {
         GameObject go = LeanPool.Spawn(projectilePrefab, position, rotation);
 
         go.GetComponent<Rigidbody>().AddForce(go.transform.forward * projectileSpeed);
-        go.GetComponent<Projectile>().Init(FinalDamage, projectileSpeed, projectileLifetime, allyTag, enemyTag, projectileRotationSpeed, projectileSeekDistance);
+        go.GetComponent<Projectile>().Init(FinalDamage, projectileSpeed, projectileLifetime, allyTag, enemyTag);
         go.GetComponent<Renderer>().material = projectileMaterial;
+
+        OnProjectileCreated?.Invoke(go);
     }
 }

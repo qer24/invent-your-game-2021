@@ -5,10 +5,10 @@ using Lean.Pool;
 
 public class TestChargedWeapon : Weapon
 {
-    public override void Shoot(Vector3 position, Quaternion rotation, string allyTag, string enemyTag, float projectileRotationSpeed, float projectileSeekDistance, Material projectileMaterial)
+    public override void Shoot(Vector3 position, Quaternion rotation, string allyTag, string enemyTag, Material projectileMaterial)
     {
-        base.Shoot(position, rotation, allyTag, enemyTag, projectileRotationSpeed, projectileSeekDistance, projectileMaterial);
+        base.Shoot(position, rotation, allyTag, enemyTag, projectileMaterial);
 
-        ShootProjectile(position, rotation, allyTag, enemyTag, projectileRotationSpeed, projectileSeekDistance, projectileMaterial);
+        ShootProjectile(position, rotation, allyTag, enemyTag, projectileMaterial);
     }
 }

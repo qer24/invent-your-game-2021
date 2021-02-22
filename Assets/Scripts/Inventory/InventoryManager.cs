@@ -16,10 +16,11 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] float pickupRadius = 0.5f;
     [SerializeField] List<GameObject> keyTooltipsUI = null;
     [SerializeField] List<GameObject> weaponSlots = null;
-    [SerializeField] Canvas dropsCanvas = null;
 
     public Weapon CurrentWeapon { get => weapons[0];}
     public Action OnWeaponSwap;
+
+    Canvas dropsCanvas = null;
 
     float switchCooldownTimer;
     WeaponPickup currentClosestWeaponPickup;
@@ -30,6 +31,8 @@ public class InventoryManager : MonoBehaviour
     {
         mainCam = Camera.main;
         switchCooldownTimer = tweenDuration;
+
+        dropsCanvas = DropManager.Instance.GetComponent<Canvas>();
     }
 
     public void Update()

@@ -38,9 +38,9 @@ public class TrippleShotMod : Mod
         base.DetachWeapon();
     }
 
-    void ShootAdditionalBullets(Vector3 position, Quaternion rotation, string allyTag, string enemyTag, float projectileRotationSpeed, float projectileSeekDistance, Material projectileMaterial)
+    void ShootAdditionalBullets(Vector3 position, Quaternion rotation, string allyTag, string enemyTag, Material projectileMaterial)
     {
-        attachedWeapon.ShootProjectile(position, rotation * Quaternion.AngleAxis(angle, Vector3.up), allyTag, enemyTag, projectileRotationSpeed, projectileSeekDistance, projectileMaterial);
-        attachedWeapon.ShootProjectile(position, rotation * Quaternion.AngleAxis(-angle, Vector3.up), allyTag, enemyTag, projectileRotationSpeed, projectileSeekDistance, projectileMaterial);
+        attachedWeapon.ShootProjectile(position, rotation * Quaternion.AngleAxis(angle, Vector3.up), allyTag, enemyTag, projectileMaterial);
+        attachedWeapon.ShootProjectile(position, rotation * Quaternion.AngleAxis(-angle, Vector3.up), allyTag, enemyTag, projectileMaterial);
     }
 }

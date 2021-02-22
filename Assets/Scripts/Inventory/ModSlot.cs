@@ -28,7 +28,16 @@ public class ModSlot : MonoBehaviour, IDropHandler
     {
         if (!item)
         {
+
             ModDrop draggedMod = ModDrop.modBeingDragged;
+
+            //prevent from equipping 2 of the same mod
+            var component = transform.parent.parent.GetComponentInChildren(draggedMod.GetComponent<Mod>().GetType());
+            if (component != null)
+            {
+                return;
+            }
+
             draggedMod.transform.SetParent(transform);
             draggedMod.isInSlot = true;
             LeanTween.move(draggedMod.gameObject, transform.position, 0.1f).setEase(LeanTweenType.easeOutExpo);

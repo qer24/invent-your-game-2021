@@ -43,6 +43,14 @@ public class ModDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
         }
     }
 
+    private void OnDisable()
+    {
+        if (tooltip.gameObject.activeSelf)
+        {
+            tooltip.gameObject.SetActive(false);
+        }
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         if(!draggingMod)

@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Lean.Pool;
+using System;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] Rigidbody rb = null;
+    public Rigidbody rb = null;
     [SerializeField] AnimationCurve scalingCurve = null;
     [SerializeField] GameObject impactPrefab = null;
 
@@ -18,23 +19,20 @@ public class Projectile : MonoBehaviour
     float scaleThreshold = 2f;
     float disableDamageThreshold = 1f;
 
-    float rotationSpeed = 5;
-    float seekDistance = 4f;
-
     string alliedTag = "Player";
-    string enemyTag = "Enemy";
+    [HideInInspector] public string enemyTag = "Enemy";
 
     Vector3 startScale;
 
-    public void Init(float _damage, float _velocity, float _lifetime, string _alliedTag, string _enemyTag, float _rotationSpeed, float _seekDistance)
+    public Action OnDespawn;
+
+    public void Init(float _damage, float _velocity, float _lifetime, string _alliedTag, string _enemyTag)
     {
         damage = _damage;
         velocity = _velocity;
         totalLifeTime = _lifetime;
         alliedTag = _alliedTag;
         enemyTag = _enemyTag;
-        rotationSpeed = _rotationSpeed;
-        seekDistance = _seekDistance;
 
         lifeTimeLeft = totalLifeTime;
 
@@ -60,50 +58,6 @@ public class Projectile : MonoBehaviour
             Vector3 scale = Vector3.Lerp(startScale, Vector3.zero, 1 - scalingCurve.Evaluate((scaleThreshold - lifeTimeLeft) / scaleThreshold));
             transform.localScale = scale;
         }
-
-        if (seekDistance <= 0) return;
-
-        Transform target = FindClosestTarget();
-        if (target != null)
-        {
-            RotateToTarget(target);
-        }
-        
-    }
-
-    Transform FindClosestTarget()
-    {
-        GameObject[] allTargets = GameObject.FindGameObjectsWithTag(enemyTag);
-
-        GameObject closest = null;
-        float closestDistance = Mathf.Infinity;
-        foreach (var target in allTargets)
-        {
-            float distance = Vector3.Distance(transform.position, target.transform.position);
-            if (distance > seekDistance)
-            {
-                continue;
-            }
-
-            if (distance < closestDistance)
-            {
-                closest = target;
-                closestDistance = distance;
-            }
-        }
-
-        if (closest == null) return null;
-
-        Debug.DrawLine(transform.position, closest.transform.position, Color.red);
-        return closest.transform;
-    }
-
-    private void RotateToTarget(Transform target)
-    {
-        Vector3 direction = target.position - rb.position;
-        direction.Normalize();
-        float rotateAmount = Vector3.Cross(direction, transform.forward).y;
-        rb.angularVelocity = new Vector3(0, -rotationSpeed * rotateAmount, 0);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -124,6 +78,8 @@ public class Projectile : MonoBehaviour
 
     void Despawn()
     {
+        OnDespawn?.Invoke();
+
         LeanPool.Despawn(gameObject);
     }
 }

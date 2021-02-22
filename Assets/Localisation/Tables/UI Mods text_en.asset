@@ -27,5 +27,14 @@ MonoBehaviour:
       damage"
     m_Metadata:
       m_Items: []
+  - m_Id: 696433376206848
+    m_Localized: Homing Shot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696461842948096
+    m_Localized: "Projectiles home to targets\n\nFor non projectile \nweapons: x1.1
+      damage"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

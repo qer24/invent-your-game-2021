@@ -27,5 +27,14 @@ MonoBehaviour:
       \nx1.25 obra\u017Ce\u0144"
     m_Metadata:
       m_Items: []
+  - m_Id: 696461842948096
+    m_Localized: "Pociski naprowadzaj\u0105\nna przeciwnik\xF3w\n\nDla broni nie-pociskowych:
+      \nx1.1 obra\u017Ce\u0144"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696433376206848
+    m_Localized: "Naprowadzaj\u0105cy\nstrza\u0142"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
