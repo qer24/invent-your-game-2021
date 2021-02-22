@@ -24,7 +24,10 @@ public class Projectile : MonoBehaviour
 
     Vector3 startScale;
 
+    [HideInInspector] public bool despawnOnCollision = true;
+
     public Action OnDespawn;
+    public Action<Collider> OnCollision;
 
     public void Init(float _damage, float _velocity, float _lifetime, string _alliedTag, string _enemyTag)
     {
@@ -39,6 +42,8 @@ public class Projectile : MonoBehaviour
         startScale = transform.localScale;
         scaleThreshold = totalLifeTime * 0.6f;
         disableDamageThreshold = totalLifeTime * 0.2f;
+
+        despawnOnCollision = true;
     }
 
     // Update is called once per frame
@@ -65,9 +70,13 @@ public class Projectile : MonoBehaviour
         if (lifeTimeLeft < disableDamageThreshold) return;
         if (other.CompareTag(enemyTag))
         {
+            OnCollision?.Invoke(other);
+
             GameObject go = LeanPool.Spawn(impactPrefab, transform.position + Vector3.up * 3f, Quaternion.identity);
             LeanPool.Despawn(go, 2f);
-            Despawn();
+
+            if(despawnOnCollision)
+                Despawn();
 
             if (other.TryGetComponent<IDamagable>(out var damagable))
             {

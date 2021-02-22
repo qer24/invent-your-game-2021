@@ -36,5 +36,14 @@ MonoBehaviour:
       damage"
     m_Metadata:
       m_Items: []
+  - m_Id: 904467121676288
+    m_Localized: Piercing Shot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 904499782721536
+    m_Localized: "Projectiles pierce through enemies\n\nFor non projectile \nweapons:
+      x1.1 damage"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

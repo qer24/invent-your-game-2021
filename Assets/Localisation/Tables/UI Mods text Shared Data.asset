@@ -33,6 +33,14 @@ MonoBehaviour:
 '
     m_Metadata:
       m_Items: []
+  - m_Id: 904467121676288
+    m_Key: Piercing shot name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 904499782721536
+    m_Key: Piercing shot description
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

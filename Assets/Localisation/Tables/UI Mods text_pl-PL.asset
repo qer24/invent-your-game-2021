@@ -36,5 +36,14 @@ MonoBehaviour:
     m_Localized: "Naprowadzaj\u0105cy\nstrza\u0142"
     m_Metadata:
       m_Items: []
+  - m_Id: 904467121676288
+    m_Localized: "Przebijaj\u0105cy\nstrza\u0142"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 904499782721536
+    m_Localized: "Pociski przebijaj\u0105\nprzeciwnik\xF3w na wylot\n\nDla broni
+      nie-pociskowych: \nx1.1 obra\u017Ce\u0144"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
