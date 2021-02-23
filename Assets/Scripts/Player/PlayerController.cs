@@ -83,10 +83,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        rb.velocity = Vector3.zero;
         Vector3 direction = (collision.transform.position - transform.position).normalized;
         direction.y = 0;
-        rb.AddForce(-direction * knockbackForce, ForceMode.Impulse);
+        float impactForce = collision.rigidbody.velocity.magnitude * 0.5f * rb.velocity.magnitude * 0.5f;
+        rb.AddForce(-direction * knockbackForce * impactForce * 0.0005f, ForceMode.Impulse);
+        collision.rigidbody.AddForce(direction * knockbackForce * impactForce * 0.0001f, ForceMode.Impulse); 
     }
 
     private void RotateToPoint(Vector3 target, float multiplier = 1f)
