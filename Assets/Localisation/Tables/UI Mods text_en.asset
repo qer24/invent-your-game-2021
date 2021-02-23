@@ -45,5 +45,23 @@ MonoBehaviour:
       x1.1 damage"
     m_Metadata:
       m_Items: []
+  - m_Id: 930018620317696
+    m_Localized: Bouncy shot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 930023229857792
+    m_Localized: "Projectiles bounce off\nof enemies\n\nFor non projectile \nweapons:
+      x1.1 damage"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 975071040479232
+    m_Localized: Punch Shot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 975100492881920
+    m_Localized: "Projectiles knock back\nenemies\n+4 damage\n\nFor non projectile
+      \nweapons: x1.15 damage"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

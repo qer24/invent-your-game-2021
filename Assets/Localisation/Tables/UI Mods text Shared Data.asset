@@ -41,6 +41,22 @@ MonoBehaviour:
     m_Key: Piercing shot description
     m_Metadata:
       m_Items: []
+  - m_Id: 930018620317696
+    m_Key: Bouncy shot name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 930023229857792
+    m_Key: Bouncy shot description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 975071040479232
+    m_Key: Punch shot name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 975100492881920
+    m_Key: Punch shot description
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -8,7 +8,9 @@ public class ProjectileMod : Mod
     public UnityEngine.Object projectileBehaviour;
 
     public float damageMultiplierForProjectile = 1f;
+    public float addedDamageForProjectile = 0f;
     public float damageMultiplierForNonProjectile = 1f;
+    public float addedDamageForNonProjectile = 0f;
 
     DamageModifier damageModifier;
 
@@ -18,12 +20,12 @@ public class ProjectileMod : Mod
 
         if (attachedWeapon.isProjectile)
         {
-            damageModifier = new DamageModifier(0, damageMultiplierForProjectile);
+            damageModifier = new DamageModifier(addedDamageForProjectile, damageMultiplierForProjectile);
             attachedWeapon.damageModifiers.Add(damageModifier);
         }
         else
         {
-            damageModifier = new DamageModifier(0, damageMultiplierForNonProjectile);
+            damageModifier = new DamageModifier(addedDamageForNonProjectile, damageMultiplierForNonProjectile);
             attachedWeapon.damageModifiers.Add(damageModifier);
         }
 

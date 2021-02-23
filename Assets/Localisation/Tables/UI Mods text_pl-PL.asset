@@ -45,5 +45,23 @@ MonoBehaviour:
       nie-pociskowych: \nx1.1 obra\u017Ce\u0144"
     m_Metadata:
       m_Items: []
+  - m_Id: 930018620317696
+    m_Localized: "Spr\u0119\u017Cysty strza\u0142"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 930023229857792
+    m_Localized: "Pociski odbijaj\u0105 si\u0119 od\nprzeciwnik\xF3w\n\nDla broni
+      nie-pociskowych: \nx1.1 obra\u017Ce\u0144"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 975071040479232
+    m_Localized: "Odpychaj\u0105cy\nstrza\u0142"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 975100492881920
+    m_Localized: "Pociski odpychaj\u0105\nprzeciwnik\xF3w do ty\u0142u\n+4 obra\u017Ce\u0144\n\nDla
+      broni nie-pociskowych: \nx1.15 obra\u017Ce\u0144"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
