@@ -6,7 +6,7 @@ public abstract class Enemy : MonoBehaviour
 {
     [Header("Base script")]
     public Health health;
-    public EntityStats stats;
+    public EnemyCard stats;
 
     protected static string playerTag = "Player";
 

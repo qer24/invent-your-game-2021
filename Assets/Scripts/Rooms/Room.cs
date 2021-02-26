@@ -10,7 +10,7 @@ namespace ProcGen
 {
     public class Room : MonoBehaviour
     {
-        public List<Wave> waves = new List<Wave>();
+        List<ProceduralWave> waves = new List<ProceduralWave>();
         List<Wave> roomWaves = new List<Wave>();
         public float maxTimeBetweenWaves = 15;
 

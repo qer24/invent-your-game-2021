@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public EntityStats stats;
+    public EnemyCard stats;
     [HideInInspector] public float currentHealth = 0;
 
     public delegate void HealthAction(float currentHealthAmount);

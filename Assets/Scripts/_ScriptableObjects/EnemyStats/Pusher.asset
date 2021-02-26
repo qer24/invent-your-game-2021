@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f30347387a6e24fba14ccaafe15f5b, type: 3}
   m_Name: Pusher
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  projectileDamage: 5
-  projectileSpeed: 60
-  projectileLifetime: 2
+  maxHealth: 25
+  projectileDamage: 0
+  projectileSpeed: 0
+  projectileLifetime: 0
