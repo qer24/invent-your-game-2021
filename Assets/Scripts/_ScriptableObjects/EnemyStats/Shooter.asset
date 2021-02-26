@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Shooter
   m_EditorClassIdentifier: 
   maxHealth: 50
+  prefab: {fileID: 6670750346828716437, guid: 9bc787fd110d060408150c7feb269fcd, type: 3}
+  weight: 1
+  cost: 1
+  canSpawn: 1
   projectileDamage: 5
   projectileSpeed: 60
   projectileLifetime: 2

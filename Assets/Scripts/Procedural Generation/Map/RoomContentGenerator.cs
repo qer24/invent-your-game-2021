@@ -109,10 +109,10 @@ namespace ProcGen
                 case RoomTypes.Normal:
                     break;
                 case RoomTypes.Start:
-                    thisRoom.waves = new List<Wave>();
+                    thisRoom.waveCount = 0;
                     break;
                 case RoomTypes.Boss:
-                    thisRoom.waves = new List<Wave>();
+                    thisRoom.waveCount = 0;
                     break;
             }
         }

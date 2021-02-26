@@ -133,6 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 253163123}
   - component: {fileID: 253163122}
+  - component: {fileID: 253163125}
+  - component: {fileID: 253163124}
   m_Layer: 0
   m_Name: GameManagers
   m_TagString: Untagged
@@ -166,6 +168,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &253163124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253163121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d505406654adc654cbc525de9534aa16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLevel: {fileID: 1306703127}
+--- !u!114 &253163125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253163121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f387f34309344744a8aaf66c41a35a27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentDifficulty: 1
 --- !u!1 &515037728
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,6 +684,10 @@ PrefabInstance:
       propertyPath: m_MatchWidthOrHeight
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7344807889733541949, guid: 4e0848be2b572354b848d979a7561dcd, type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 11400000, guid: c78fb45c366444d4990b120b2371babe, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e0848be2b572354b848d979a7561dcd, type: 3}
 --- !u!1 &1010335016
@@ -951,6 +983,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1306703124}
+  - component: {fileID: 1306703127}
   - component: {fileID: 1306703121}
   - component: {fileID: 1306703123}
   - component: {fileID: 1306703122}
@@ -1075,6 +1108,21 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &1306703127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306703120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91aa4e96c6185c34a87aa841f8604738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allEnemyCardsInLevel:
+  - {fileID: 11400000, guid: 61af15c164fd95b44897155fef3c9d7d, type: 2}
+  - {fileID: 11400000, guid: 5bd33874473698c4fa6c927ce3a8207a, type: 2}
 --- !u!1 &1391362633
 GameObject:
   m_ObjectHideFlags: 3

@@ -86,7 +86,7 @@ public class TestEnemy : Enemy
     {
         if (currentState == TestEnemyState.Idle) return;
 
-        Vector3 dirToPlayer = PredictedPosition(player.position, player.velocity, stats.projectileSpeed) - transform.position;
+        Vector3 dirToPlayer = PredictedPosition(player.position, player.velocity, enemyCard.projectileSpeed) - transform.position;
         float angle = Mathf.Atan2(dirToPlayer.x, dirToPlayer.z) * Mathf.Rad2Deg;
         Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.up);
 
@@ -115,11 +115,11 @@ public class TestEnemy : Enemy
 
         GameObject go = LeanPool.Spawn(bulletPrefab, shootPoint.position, transform.rotation);
         go.GetComponent<Renderer>().material = enemyMaterial;
-        go.GetComponent<Rigidbody>().AddForce(go.transform.forward * stats.projectileSpeed);
+        go.GetComponent<Rigidbody>().AddForce(go.transform.forward * enemyCard.projectileSpeed);
         go.GetComponent<Projectile>().Init(
-            stats.projectileDamage, 
-            stats.projectileSpeed,
-            stats.projectileLifetime,
+            enemyCard.projectileDamage, 
+            enemyCard.projectileSpeed,
+            enemyCard.projectileLifetime,
             gameObject.tag, 
             playerTag
         );
@@ -138,6 +138,6 @@ public class TestEnemy : Enemy
     {
         if (player == null) return;
 
-        Gizmos.DrawWireSphere(PredictedPosition(player.position, player.velocity, stats.projectileSpeed), 0.5f);
+        Gizmos.DrawWireSphere(PredictedPosition(player.position, player.velocity, enemyCard.projectileSpeed), 0.5f);
     }
 }

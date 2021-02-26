@@ -32,10 +32,13 @@ public class ModSlot : MonoBehaviour, IDropHandler
             ModDrop draggedMod = ModDrop.modBeingDragged;
 
             //prevent from equipping 2 of the same mod
-            var component = transform.parent.parent.GetComponentInChildren(draggedMod.GetComponent<Mod>().GetType());
-            if (component != null)
+            var allMods = transform.parent.parent.GetComponentsInChildren<Mod>();
+            foreach (var mod in allMods)
             {
-                return;
+                if (mod.gameObject.name == draggedMod.gameObject.name)
+                {
+                    return;
+                }
             }
 
             draggedMod.transform.SetParent(transform);

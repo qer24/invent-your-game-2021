@@ -6,7 +6,7 @@ public abstract class Enemy : MonoBehaviour
 {
     [Header("Base script")]
     public Health health;
-    public EnemyCard stats;
+    [HideInInspector] public EnemyCard enemyCard;
 
     protected static string playerTag = "Player";
 
@@ -18,6 +18,7 @@ public abstract class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag(playerTag).GetComponent<Rigidbody>();
         rb = GetComponent<Rigidbody>();
 
+        health.stats = enemyCard;
         health.OnDeath += OnDeath;
     }
 

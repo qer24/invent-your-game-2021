@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+/*
 namespace ProcGen
 {
     [CustomEditor(typeof(Room))]
@@ -83,3 +84,4 @@ namespace ProcGen
         }
     }
 }
+*/

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class PlayerHealth : Health
 {
+    public Stats playerStats;
+
     [SerializeField] Slider healthSlider = null;
     [SerializeField] float healthLerpSpeed = 3f;
 
@@ -13,8 +15,9 @@ public class PlayerHealth : Health
 
     public override void Start()
     {
-        currentHealth = stats.maxHealth;
-        isDead = false;
+        stats = playerStats;
+
+        base.Start();
         currentFillAmount = 1;
 
         OnHealthChanged += UpdateUI;

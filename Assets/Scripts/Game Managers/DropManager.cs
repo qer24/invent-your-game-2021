@@ -45,6 +45,7 @@ public class DropManager : MonoBehaviour
         GameObject go = Instantiate(array[random], pos, Quaternion.identity, transform).gameObject;
         go.transform.localScale = Vector3.zero;
         LeanTween.scale(go, Vector3.one, 0.4f).setEase(LeanTweenType.easeOutBack);
+        go.name = array[random].gameObject.name;
 
         return go;
     }

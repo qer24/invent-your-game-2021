@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AnnoyingEnemy : Enemy
 {
+    [Header("Pusher")]
+    public KeepOnScreen screenConfiner;
+
     public float rotationSpeed = 10f;
     public float moveForce = 25;
     public float boostForce = 2400;
@@ -11,6 +14,23 @@ public class AnnoyingEnemy : Enemy
     public override void Start()
     {
         base.Start();
+
+        screenConfiner.enabled = false;
+        StartCoroutine(Behaviour());
+    }
+
+    IEnumerator Behaviour()
+    {
+        Vector3 dir = Vector3.zero.normalized - transform.position;
+        float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
+        Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.up);
+        transform.rotation = targetRotation;
+
+        float distance = Vector3.Distance(transform.position, Vector3.zero);
+        rb.AddForce(transform.forward * distance * distance * 0.25f);
+
+        yield return new WaitForSeconds(2f);
+        screenConfiner.enabled = true;
 
         InvokeRepeating("Boost", 1f, 2f);
     }

@@ -10,8 +10,9 @@ namespace ProcGen
 {
     public class Room : MonoBehaviour
     {
-        List<ProceduralWave> waves = new List<ProceduralWave>();
-        List<Wave> roomWaves = new List<Wave>();
+        public float waveCount = 2;
+        List<ProceduralWave> waves;
+
         public float maxTimeBetweenWaves = 15;
 
         public ProceduralRoom mapRoom = null;
@@ -25,7 +26,7 @@ namespace ProcGen
         bool waveFinished = false;
         public Action OnRoomCompleted;
 
-        public List<GameObject> dropsInThisRoom;
+        [HideInInspector] public List<GameObject> dropsInThisRoom;
 
         bool completed = false;
 
@@ -38,7 +39,14 @@ namespace ProcGen
             waveFinished = true;
 
             enemiesAlive = new List<GameObject>();
-            roomWaves = waves;
+            waves = new List<ProceduralWave>();
+            for (int i = 0; i < waveCount; i++)
+            {
+                waves.Add(new ProceduralWave(
+                    DifficultyManager.Instance.currentDifficulty, 
+                    LevelManager.Instance.currentLevel.allEnemyCardsInLevel, 
+                    3 + DifficultyManager.Instance.currentDifficulty * 2));
+            }
 
             dropsInThisRoom = new List<GameObject>();
 
@@ -68,7 +76,7 @@ namespace ProcGen
                 }
             }
 
-            if (roomWaves.Count < 1)
+            if (waves.Count < 1)
             {
                 if (enemiesAlive.Count <= 0)
                 {
@@ -121,12 +129,13 @@ namespace ProcGen
         {
             waveFinished = false;
 
-            foreach (var enemySpawn in roomWaves[0].enemiesToSpawn)
+            foreach (var enemySpawn in waves[0].EnemiesToSpawn)
             {
-                GameObject go = Instantiate(enemySpawn.enemy, roomManager.WorldPositionFromSpawnPoint(enemySpawn.spawnPoint), Quaternion.identity);
+                GameObject go = Instantiate(enemySpawn.enemy.gameObject, roomManager.WorldPositionFromSpawnPoint(enemySpawn.spawnPoint), Quaternion.identity);
+                go.GetComponent<Enemy>().enemyCard = enemySpawn.enemyCard;
                 enemiesAlive.Add(go);
             }
-            roomWaves.RemoveAt(0);
+            waves.RemoveAt(0);
         }
     }
 }

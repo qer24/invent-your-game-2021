@@ -4938,7 +4938,7 @@ Transform:
   m_GameObject: {fileID: 3617158106750521340}
   m_LocalRotation: {x: 0.00000008940696, y: 0.00000019896153, z: 0.00000002039612, w: 1}
   m_LocalPosition: {x: 0, y: -0.2, z: -0}
-  m_LocalScale: {x: 1, y: 1.6000001, z: 1.2}
+  m_LocalScale: {x: 1.25, y: 1.6000001, z: 1.5}
   m_Children: []
   m_Father: {fileID: 3617158107608288834}
   m_RootOrder: 0
@@ -9903,7 +9903,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3617158107608288825}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 53.56, y: 0, z: 2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9925,10 +9925,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 3617158107608288835}
-  stats: {fileID: 11400000, guid: 61af15c164fd95b44897155fef3c9d7d, type: 2}
+  enemyCard: {fileID: 0}
+  screenConfiner: {fileID: 3617158107608288828}
   rotationSpeed: 10
   moveForce: 300
-  boostForce: 500
+  boostForce: 800
 --- !u!114 &3617158107608288828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9982,7 +9983,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 1.65
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3617158107608288830
 Rigidbody:
