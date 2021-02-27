@@ -1599,7 +1599,7 @@ MonoBehaviour:
   baseAttackRate: 0.2
   isCharged: 0
   isProjectile: 1
-  rarity: 4
+  rarity: 0
   rodzajnik: 2
   rodzajnikString: 
   rarityString: Common

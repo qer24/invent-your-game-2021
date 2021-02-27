@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
+using Random = UnityEngine.Random;
 
 public enum WeaponRarities
 {
@@ -42,7 +43,7 @@ public abstract class Weapon : MonoBehaviour
     [Header("Generic variables")]
     public float baseDamage = 10;
     public float baseAttackRate = 0.5f;
-    public float AttackRatePerSecond => 1 / FinalFireRate;
+    public float AttackRatePerSecond => Mathf.Round(1 / FinalFireRate * 100f) / 100f;
     public bool isCharged = false;
     public bool isProjectile = true;
     public WeaponRarities rarity = WeaponRarities.Common;
@@ -86,8 +87,8 @@ public abstract class Weapon : MonoBehaviour
             return value;
         }
     }
-
-    public float FinalFireRate => baseAttackRate / RarityMultiplier;
+    public float FinalFireRate => Mathf.Round((baseAttackRate / RarityMultiplier) * 100f) / 100f;
+    public float FinalChargeTime => Mathf.Round((timeToCharge / (RarityMultiplier * RarityMultiplier)) * 100f) / 100f;
 
     float RarityMultiplier
     {
@@ -102,9 +103,9 @@ public abstract class Weapon : MonoBehaviour
                 case WeaponRarities.Epic:
                     return 1.2f;
                 case WeaponRarities.Legendary:
-                    return 1.35f;
+                    return 1.4f;
                 case WeaponRarities.Mythic:
-                    return 1.5f;
+                    return 1.6f;
             }
             return 1f;
         }
@@ -116,6 +117,62 @@ public abstract class Weapon : MonoBehaviour
         damageModifiers.Add(new DamageModifier(0, RarityMultiplier));
 
         UpdateRarityString();
+    }
+
+    public void GenerateWeapon()
+    {
+        float randomValue = Random.value;
+        int modAmount = 1;
+        if (randomValue <= 0.4)
+        {
+            rarity = WeaponRarities.Common;
+            modAmount = Random.Range(1, 3);
+        }
+        else if (randomValue > 0.4 && randomValue <= 0.7f)
+        {
+            rarity = WeaponRarities.Rare;
+            modAmount = Random.Range(2, 5);
+        }
+        else if (randomValue > 0.7 && randomValue <= 0.88f)
+        {
+            rarity = WeaponRarities.Epic;
+            modAmount = Random.Range(3, 7);
+        }
+        else if (randomValue > 0.88f && randomValue <= 0.97f)
+        {
+            rarity = WeaponRarities.Legendary;
+            modAmount = Random.Range(5, 8);
+        }
+        else if (randomValue > 0.97)
+        {
+            rarity = WeaponRarities.Mythic;
+            modAmount = Random.Range(7, 9);
+        }
+
+        modSlots = modAmount;
+
+        damageModifiers = new List<DamageModifier>();
+        damageModifiers.Add(new DamageModifier(0, RarityMultiplier));
+
+        StartCoroutine(nameof(ForceReloadTooltip));
+        UpdateRarityString();
+    }
+
+    System.Collections.IEnumerator ForceReloadTooltip()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        var currentLocale = LocalizationSettings.SelectedLocale;
+        //hack to refresh the localised string database
+        if (currentLocale.Identifier == "en")
+            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[1];
+        else
+            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[0];
+
+        yield return null;
+        LocalizationSettings.SelectedLocale = currentLocale;
+
+        OnTooltipUpdate?.Invoke();
     }
 
     public void UpdateName(string newName)

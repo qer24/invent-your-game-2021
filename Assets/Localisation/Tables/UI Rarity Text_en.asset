@@ -19,23 +19,23 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 21281873920
-    m_Localized: Common
+    m_Localized: <color=#d6d6d6>Common
     m_Metadata:
       m_Items: []
   - m_Id: 26013048832
-    m_Localized: Rare
+    m_Localized: <color=#33aaff>Rare
     m_Metadata:
       m_Items: []
   - m_Id: 28798066688
-    m_Localized: Epic
+    m_Localized: <color=#db23d9>Epic
     m_Metadata:
       m_Items: []
   - m_Id: 31377563648
-    m_Localized: Legendary
+    m_Localized: <color=#edda28>Legendary
     m_Metadata:
       m_Items: []
   - m_Id: 33692819456
-    m_Localized: Mythic
+    m_Localized: <color=#ff6666>Mythic
     m_Metadata:
       m_Items: []
   references:

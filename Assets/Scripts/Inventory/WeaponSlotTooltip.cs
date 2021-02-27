@@ -52,7 +52,7 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
         {
             modSlots[i].SetActive(i <= (weapon.modSlots - 1) ? true : false);
         }
-        string weaponName = $"{weapon.rarityString}{weapon.rodzajnikString}\n{weapon.name}";
+        string weaponName = $"{weapon.rarityString}{weapon.rodzajnikString}</color>\n{weapon.name}";
         nameText.text = weaponName;
         descriptionText.text = weapon.description;
     }

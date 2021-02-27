@@ -36,7 +36,7 @@ public class PlayerShooter : MonoBehaviour
         if (ProcGen.MapPanel.IsOpen || ModDrop.draggingMod) return;
         if (inventory.CurrentWeapon.isCharged)
         {
-            chargeUI.fillAmount = chargeTimer / inventory.CurrentWeapon.timeToCharge;
+            chargeUI.fillAmount = chargeTimer / inventory.CurrentWeapon.FinalChargeTime;
 
             if (Input.GetMouseButton(1) && shootTimer <= 0) //left mouse button
             {
@@ -47,7 +47,7 @@ public class PlayerShooter : MonoBehaviour
                 shootTimer -= Time.deltaTime;
             }
 
-            if (Input.GetMouseButtonUp(1) && chargeTimer >= inventory.CurrentWeapon.timeToCharge)
+            if (Input.GetMouseButtonUp(1) && chargeTimer >= inventory.CurrentWeapon.FinalChargeTime)
             {
                 chargeTimer = 0;
                 shootTimer = inventory.CurrentWeapon.FinalFireRate;
