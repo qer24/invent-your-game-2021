@@ -42,7 +42,7 @@ public abstract class Weapon : MonoBehaviour
     [Header("Generic variables")]
     public float baseDamage = 10;
     public float baseAttackRate = 0.5f;
-    public float AttackRatePerSecond { get => 1/baseAttackRate; }
+    public float AttackRatePerSecond => 1 / FinalFireRate;
     public bool isCharged = false;
     public bool isProjectile = true;
     public WeaponRarities rarity = WeaponRarities.Common;
@@ -82,13 +82,38 @@ public abstract class Weapon : MonoBehaviour
             {
                 value *= modifier.damageMultiplier;
             }
+
             return value;
+        }
+    }
+
+    public float FinalFireRate => baseAttackRate / RarityMultiplier;
+
+    float RarityMultiplier
+    {
+        get
+        {
+            switch (rarity)
+            {
+                case WeaponRarities.Common:
+                    return 1f;
+                case WeaponRarities.Rare:
+                    return 1.1f;
+                case WeaponRarities.Epic:
+                    return 1.2f;
+                case WeaponRarities.Legendary:
+                    return 1.35f;
+                case WeaponRarities.Mythic:
+                    return 1.5f;
+            }
+            return 1f;
         }
     }
 
     private void Awake()
     {
         damageModifiers = new List<DamageModifier>();
+        damageModifiers.Add(new DamageModifier(0, RarityMultiplier));
 
         UpdateRarityString();
     }

@@ -50,7 +50,7 @@ public class PlayerShooter : MonoBehaviour
             if (Input.GetMouseButtonUp(1) && chargeTimer >= inventory.CurrentWeapon.timeToCharge)
             {
                 chargeTimer = 0;
-                shootTimer = inventory.CurrentWeapon.baseAttackRate;
+                shootTimer = inventory.CurrentWeapon.FinalFireRate;
                 Shoot();
             }else if (Input.GetMouseButtonUp(1))
             {
@@ -61,7 +61,7 @@ public class PlayerShooter : MonoBehaviour
         {
             if (Input.GetMouseButton(1) && shootTimer <= 0) //left mouse button
             {
-                shootTimer = inventory.CurrentWeapon.baseAttackRate;
+                shootTimer = inventory.CurrentWeapon.FinalFireRate;
                 Shoot();
             }
             else
