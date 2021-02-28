@@ -19,6 +19,12 @@ MonoBehaviour:
     m_Key: Mods
     m_Metadata:
       m_Items: []
+  - m_Id: 4324970742128640
+    m_Key: 'Upgrades
+
+'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

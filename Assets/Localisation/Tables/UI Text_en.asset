@@ -22,5 +22,9 @@ MonoBehaviour:
     m_Localized: Mods
     m_Metadata:
       m_Items: []
+  - m_Id: 4324970742128640
+    m_Localized: Upgrades
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

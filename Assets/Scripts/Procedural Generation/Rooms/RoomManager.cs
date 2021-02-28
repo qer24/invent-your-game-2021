@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +51,9 @@ namespace ProcGen
 
         bool isGoingToRoom = false;
 
+        public static Action OnRoomComplete;
+        public static Action OnRoomChanged;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -81,7 +85,7 @@ namespace ProcGen
 
             if (spawnPoint == RoomSpawnPoints.Random)
             {
-                return spawnPointPositions[Random.Range(0, spawnPointPositions.Length)];
+                return spawnPointPositions[UnityEngine.Random.Range(0, spawnPointPositions.Length)];
             }
 
             return spawnPointPositions[(int)spawnPoint];
@@ -163,6 +167,8 @@ namespace ProcGen
             allRoomsInLevel[id].OnRoomCompleted += FinishRoom;
 
             mapUI.Close(() => isGoingToRoom = false);
+
+            OnRoomChanged?.Invoke();
         }
 
         void FinishRoom()
@@ -170,6 +176,8 @@ namespace ProcGen
             CurrentRoom.OnRoomCompleted -= FinishRoom;
 
             mapButton.gameObject.SetActive(true);
+
+            OnRoomComplete?.Invoke();
         }
 
         IEnumerator PlayerTravelToNextRoom()
@@ -188,7 +196,7 @@ namespace ProcGen
             var dir = (Vector3.zero - player.transform.position).normalized;
             float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
             Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.up);
-            player.transform.localRotation = targetRotation * Quaternion.Euler(0, Random.Range(-40f, 40f), 0);
+            player.transform.localRotation = targetRotation * Quaternion.Euler(0, UnityEngine.Random.Range(-40f, 40f), 0);
 
             player.StartMovingToPoint(Vector3.zero, 0.75f);
 
