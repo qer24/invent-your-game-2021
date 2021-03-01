@@ -95,7 +95,7 @@ public class InventoryManager : MonoBehaviour
 
     WeaponPickup GetClosestWeaponPickup()
     {
-        if (ModDrop.draggingMod) return null;
+        if (ModDrop.DraggingMod) return null;
 
         WeaponPickup closestPickup = null;
 

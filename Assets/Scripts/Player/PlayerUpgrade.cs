@@ -61,7 +61,7 @@ public abstract class PlayerUpgrade : MonoBehaviour, IPointerEnterHandler, IPoin
         tooltip.gameObject.SetActive(true);
         tooltip.transform.position = Input.mousePosition;
 
-        if (unlocked || !interactable) return;
+        if (unlocked || !interactable || upgradeManager.levelUpPoints <= 0) return;
 
         LeanTween.value(gameObject, (Color val) => mainImage.color = val, mainImage.color, hoverColor, 0.25f);
         LeanTween.value(gameObject, (Color val) => backgroundImage.color = val, backgroundImage.color, hoverColor, 0.25f);
@@ -71,7 +71,7 @@ public abstract class PlayerUpgrade : MonoBehaviour, IPointerEnterHandler, IPoin
     {
         tooltip.gameObject.SetActive(false);
 
-        if (unlocked || !interactable) return;
+        if (unlocked || !interactable || upgradeManager.levelUpPoints <= 0) return;
 
         LeanTween.cancel(gameObject);
 
@@ -81,7 +81,7 @@ public abstract class PlayerUpgrade : MonoBehaviour, IPointerEnterHandler, IPoin
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (unlocked || !interactable) return;
+        if (unlocked || !interactable || upgradeManager.levelUpPoints <= 0) return;
 
         tooltip.gameObject.SetActive(false);
 
@@ -100,5 +100,8 @@ public abstract class PlayerUpgrade : MonoBehaviour, IPointerEnterHandler, IPoin
         Upgrade();
     }
 
-    public abstract void Upgrade();
+    public virtual void Upgrade()
+    {
+        upgradeManager.UseLevelUpPoint();
+    }
 }

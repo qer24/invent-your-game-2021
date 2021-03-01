@@ -7,6 +7,7 @@ public abstract class Enemy : MonoBehaviour
     [Header("Base script")]
     public Health health;
     [HideInInspector] public EnemyCard enemyCard;
+    [HideInInspector] public int expValue = 1;
 
     protected static string playerTag = "Player";
 
@@ -24,6 +25,7 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void OnDeath()
     {
+        PlayerUpgradeManager.Instance.AddExp(expValue);
         Destroy(gameObject);
     }
 }

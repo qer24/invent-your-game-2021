@@ -30,7 +30,7 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (pickup.isInWorld && ModDrop.draggingMod) return;
+        if (pickup.isInWorld && ModDrop.DraggingMod) return;
 
         UpdateUI();
         tooltip.gameObject.SetActive(true);

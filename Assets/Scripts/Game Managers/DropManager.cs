@@ -27,13 +27,6 @@ public class DropManager : MonoBehaviour
         mainCam = Camera.main;
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.K))
-        {
-            DropWeapon();
-        }
-    }
     public GameObject DropWeapon()
     {
         GameObject go = InstantiateRandomItemFromArray(weaponPool);

@@ -19,7 +19,7 @@ public class ModDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
 
     public bool isInSlot = false;
 
-    public static bool draggingMod;
+    public static bool DraggingMod;
     public static ModDrop modBeingDragged;
 
     private void Start()
@@ -53,7 +53,7 @@ public class ModDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(!draggingMod)
+        if(!DraggingMod)
         {
             LeanTween.value(gameObject, (Color val) => pickupIndicator.color = val, pickupIndicator.color, highlightColor, 0.1f);
             tooltip.gameObject.SetActive(true);
@@ -62,7 +62,7 @@ public class ModDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (!draggingMod)
+        if (!DraggingMod)
         {
             LeanTween.value(gameObject, (Color val) => pickupIndicator.color = val, pickupIndicator.color, startingColor, 0.1f);
             tooltip.gameObject.SetActive(false);
@@ -77,7 +77,7 @@ public class ModDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
             return;
         }
 
-        draggingMod = true;
+        DraggingMod = true;
         tooltip.gameObject.SetActive(false);
 
         modBeingDragged = this;
@@ -93,7 +93,7 @@ public class ModDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        draggingMod = false;
+        DraggingMod = false;
 
         modBeingDragged = null;
         GetComponent<CanvasGroup>().blocksRaycasts = true;

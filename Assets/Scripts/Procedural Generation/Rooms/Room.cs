@@ -131,9 +131,10 @@ namespace ProcGen
 
             foreach (var enemySpawn in waves[0].EnemiesToSpawn)
             {
-                GameObject go = Instantiate(enemySpawn.enemy.gameObject, roomManager.WorldPositionFromSpawnPoint(enemySpawn.spawnPoint), Quaternion.identity);
-                go.GetComponent<Enemy>().enemyCard = enemySpawn.enemyCard;
-                enemiesAlive.Add(go);
+                Enemy enemy = Instantiate(enemySpawn.enemy.gameObject, roomManager.WorldPositionFromSpawnPoint(enemySpawn.spawnPoint), Quaternion.identity).GetComponent<Enemy>();
+                enemy.enemyCard = enemySpawn.enemyCard;
+                enemy.expValue = enemySpawn.expValue;
+                enemiesAlive.Add(enemy.gameObject);
             }
             waves.RemoveAt(0);
         }

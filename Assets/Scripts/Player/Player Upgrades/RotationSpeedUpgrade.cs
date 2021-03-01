@@ -6,6 +6,7 @@ public class RotationSpeedUpgrade : PlayerUpgrade
 {
     public override void Upgrade()
     {
+        base.Upgrade();
         playerController.rotationSpeed *= 2;
     }
 }

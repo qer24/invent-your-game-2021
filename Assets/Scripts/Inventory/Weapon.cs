@@ -84,7 +84,7 @@ public abstract class Weapon : MonoBehaviour
                 value *= modifier.damageMultiplier;
             }
 
-            return value;
+            return Mathf.Round(value * 100f) / 100f;
         }
     }
     public float FinalFireRate => Mathf.Round((baseAttackRate / RarityMultiplier) * 100f) / 100f;

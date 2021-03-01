@@ -40,11 +40,12 @@ namespace ProcGen
                 //get random enemy
                 EnemyCard randomEnemy = GetRandomWeightedEnemy(excludedList.ToArray());
                 //if can afford
-                if(randomEnemy.cost <= creditsLeft)
+                int cost = randomEnemy.cost;
+                if(cost <= creditsLeft)
                 {
                     //add him to the spawn list
-                    EnemiesToSpawn.Add(new EnemySpawn(randomEnemy, RoomSpawnPoints.Random)); //TODO make that so enemies wont spawn on the same spawnpoint
-                    creditsLeft -= randomEnemy.cost;
+                    EnemiesToSpawn.Add(new EnemySpawn(randomEnemy, RoomSpawnPoints.Random, cost)); //TODO make that so enemies wont spawn on the same spawnpoint
+                    creditsLeft -= cost;
                     lastChosenCard = randomEnemy;
                 }
 

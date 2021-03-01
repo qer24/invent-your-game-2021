@@ -3,23 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using ProcGen;
+using System;
+using TMPro;
 
 public class PlayerUpgradeManager : MonoBehaviour
 {
     public FolowMouse mousePos = null;
     [SerializeField] CanvasGroup buttonCanvasGroup = null;
+    [SerializeField] Image levelUpBar = null; 
     [SerializeField] ScaleTween upgradePanel = null;
+
     PlayerUpgrade[] allUpgrades;
     ScaleTween buttonScaleTween;
+    TextMeshProUGUI levelUpBarText;
     Button button;
-
     float alphaTime = 1;
 
     public static bool IsPanelOpen;
+    public static PlayerUpgradeManager Instance;
+
+    int currentExp = 0;
+    int expToNextLevel = 15;
+    int lastExpToLevel = 0;
+    [HideInInspector] public int levelUpPoints = 0;
+    bool readyToLevelUp = false;
 
     void Start()
     {
+        if(Instance == null)
+        {
+            Instance = this;
+        }else
+        {
+            Destroy(this);
+        }
+
         buttonScaleTween = buttonCanvasGroup.GetComponent<ScaleTween>();
+        levelUpBarText = levelUpBar.GetComponentInChildren<TextMeshProUGUI>();
         button = buttonCanvasGroup.GetComponent<Button>();
 
         allUpgrades = upgradePanel.GetComponentsInChildren<PlayerUpgrade>();
@@ -30,8 +50,13 @@ public class PlayerUpgradeManager : MonoBehaviour
         IsPanelOpen = false;
     }
 
-    private void Update()
+    void Update()
     {
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            LevelUp();
+        }
+
         if(buttonCanvasGroup.gameObject.activeSelf)
         {
             alphaTime += Time.deltaTime;
@@ -43,6 +68,11 @@ public class PlayerUpgradeManager : MonoBehaviour
     {
         IsPanelOpen = true;
 
+        if(upgradePanel.gameObject.activeSelf)
+        {
+            upgradePanel.gameObject.SetActive(false);
+            LeanTween.cancel(upgradePanel.gameObject);
+        }
         upgradePanel.gameObject.SetActive(true);
         foreach (var upgrade in allUpgrades)
         {
@@ -59,10 +89,14 @@ public class PlayerUpgradeManager : MonoBehaviour
         {
             upgrade.interactable = false;
         }
+
+        EnableButton();
     }
 
     public void EnableButton()
     {
+        if (!readyToLevelUp) return;
+
         button.interactable = true;
 
         alphaTime = 1;
@@ -75,5 +109,42 @@ public class PlayerUpgradeManager : MonoBehaviour
 
         alphaTime = 1;
         buttonScaleTween.Close();
+    }
+
+    public void AddExp(int amount)
+    {
+        currentExp += amount;
+
+        if(currentExp >= expToNextLevel)
+        {
+            LevelUp();
+        }
+        if(levelUpPoints > 0)
+        {
+            readyToLevelUp = true;
+        }
+
+        float fill = (float)(currentExp - lastExpToLevel) / (expToNextLevel - lastExpToLevel);
+        levelUpBar.fillAmount = fill;
+    }
+
+    void LevelUp()
+    {
+        levelUpPoints += 1;
+        lastExpToLevel = expToNextLevel;
+        expToNextLevel *= 3;
+
+        levelUpBarText.text = levelUpPoints.ToString();
+        levelUpBar.fillAmount = 0;
+    }
+
+    public void UseLevelUpPoint()
+    {
+        levelUpPoints -= 1;
+        if(levelUpPoints == 0)
+        {
+            readyToLevelUp = false;
+        }
+        levelUpBarText.text = levelUpPoints.ToString();
     }
 }
