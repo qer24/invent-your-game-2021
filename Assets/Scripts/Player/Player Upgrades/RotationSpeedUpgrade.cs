@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class RotationSpeedUpgrade : PlayerUpgrade
 {
-    
+    public override void Upgrade()
+    {
+        playerController.rotationSpeed *= 2;
+    }
 }

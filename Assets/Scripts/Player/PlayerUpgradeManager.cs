@@ -6,19 +6,28 @@ using ProcGen;
 
 public class PlayerUpgradeManager : MonoBehaviour
 {
+    public FolowMouse mousePos = null;
     [SerializeField] CanvasGroup buttonCanvasGroup = null;
+    [SerializeField] ScaleTween upgradePanel = null;
+    PlayerUpgrade[] allUpgrades;
     ScaleTween buttonScaleTween;
     Button button;
 
     float alphaTime = 1;
+
+    public static bool IsPanelOpen;
 
     void Start()
     {
         buttonScaleTween = buttonCanvasGroup.GetComponent<ScaleTween>();
         button = buttonCanvasGroup.GetComponent<Button>();
 
+        allUpgrades = upgradePanel.GetComponentsInChildren<PlayerUpgrade>();
+
         RoomManager.OnRoomChanged += DisableButton;
         RoomManager.OnRoomComplete += EnableButton;
+
+        IsPanelOpen = false;
     }
 
     private void Update()
@@ -27,6 +36,28 @@ public class PlayerUpgradeManager : MonoBehaviour
         {
             alphaTime += Time.deltaTime;
             buttonCanvasGroup.alpha = Mathf.Clamp((Mathf.Sin(alphaTime) + 1f) * 0.5f, 0.1f, 1f);
+        }
+    }
+
+    public void OpenUpgradePanel()
+    {
+        IsPanelOpen = true;
+
+        upgradePanel.gameObject.SetActive(true);
+        foreach (var upgrade in allUpgrades)
+        {
+            upgrade.interactable = true;
+        }
+    }
+
+    public void CloseUpgradePanel()
+    {
+        IsPanelOpen = false;
+
+        upgradePanel.Close();
+        foreach (var upgrade in allUpgrades)
+        {
+            upgrade.interactable = false;
         }
     }
 

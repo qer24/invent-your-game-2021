@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float moveForce = 25;
-    [SerializeField] float rotationSpeed = 25;
+    public float moveForce = 25;
+    public float rotationSpeed = 25;
 
     [SerializeField] Transform gfx = null;
     [SerializeField] float gfxRotationSpeed = 5;
