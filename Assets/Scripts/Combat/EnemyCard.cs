@@ -21,4 +21,7 @@ public class EnemyCard : Stats
     public float projectileDamage = 5f;
     public float projectileSpeed = 60;
     public float projectileLifetime = 2f;
+
+    [Header("Other stats")]
+    public float nonProjectileDamage = 0f;
 }

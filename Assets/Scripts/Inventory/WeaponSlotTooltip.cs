@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Localization.Settings;
 
 public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -32,8 +33,24 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         if (pickup.isInWorld && ModDrop.DraggingMod) return;
 
+        StartCoroutine(ForceReloadTooltip());
         UpdateUI();
         tooltip.gameObject.SetActive(true);
+    }
+
+    IEnumerator ForceReloadTooltip()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        var currentLocale = LocalizationSettings.SelectedLocale;
+        //hack to refresh the localised string database
+        if (currentLocale.Identifier == "en")
+            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[1];
+        else
+            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[0];
+
+        yield return null;
+        LocalizationSettings.SelectedLocale = currentLocale;
     }
 
     public void OnPointerExit(PointerEventData eventData)

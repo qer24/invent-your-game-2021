@@ -10,6 +10,7 @@ public class AnnoyingEnemy : Enemy
     public float rotationSpeed = 10f;
     public float moveForce = 25;
     public float boostForce = 2400;
+    //public float playerKnockbackForce = 400f;
 
     public override void Start()
     {
@@ -18,7 +19,7 @@ public class AnnoyingEnemy : Enemy
         screenConfiner.enabled = false;
         StartCoroutine(Behaviour());
     }
-
+    
     IEnumerator Behaviour()
     {
         Vector3 dir = Vector3.zero.normalized - transform.position;
@@ -43,6 +44,17 @@ public class AnnoyingEnemy : Enemy
 
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         rb.AddForce(transform.forward * moveForce * 0.02f);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag != "Player") return;
+
+        if (other.TryGetComponent<IDamagable>(out var damagable))
+        {
+            //other.GetComponent<Rigidbody>().AddForce(transform.forward * playerKnockbackForce);
+            damagable.TakeDamage(enemyCard.nonProjectileDamage);
+        }
     }
 
     void Boost()

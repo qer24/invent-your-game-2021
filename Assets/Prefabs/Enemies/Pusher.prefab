@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1733407292
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1733407293}
+  - component: {fileID: 1733407294}
+  m_Layer: 0
+  m_Name: HitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1733407293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733407292}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.59}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3617158107608288834}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1733407294
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733407292}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.69, y: 0.67, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3617158105945109482
 GameObject:
   m_ObjectHideFlags: 0
@@ -4950,7 +4994,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3617158106750521340}
-  m_Mesh: {fileID: -2422165522289261425, guid: 20421aec6843f4640a24acfc7d01cead, type: 3}
+  m_Mesh: {fileID: -2422165522289261425, guid: c266c75546f69a94ca269456f1c93fb8, type: 3}
 --- !u!23 &3617158106750520834
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9909,6 +9953,7 @@ Transform:
   m_Children:
   - {fileID: 3617158106750521341}
   - {fileID: 3617158105945109483}
+  - {fileID: 1733407293}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9926,6 +9971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 3617158107608288835}
   enemyCard: {fileID: 0}
+  expValue: 1
   screenConfiner: {fileID: 3617158107608288828}
   rotationSpeed: 10
   moveForce: 300
