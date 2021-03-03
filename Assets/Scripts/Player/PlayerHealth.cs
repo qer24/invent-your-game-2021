@@ -13,11 +13,11 @@ public class PlayerHealth : Health
 
     float currentFillAmount;
 
-    public override void Start()
+    public override void Awake()
     {
         stats = playerStats;
 
-        base.Start();
+        base.Awake();
         currentFillAmount = 1;
 
         OnHealthChanged += UpdateUI;

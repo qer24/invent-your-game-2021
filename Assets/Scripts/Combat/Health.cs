@@ -6,7 +6,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [HideInInspector] public Stats stats;
-    [HideInInspector] public float currentHealth = 0;
+    public float currentHealth = 0;
 
     public delegate void HealthAction(float currentHealthAmount);
     public HealthAction OnHealthChanged;
@@ -14,7 +14,7 @@ public class Health : MonoBehaviour
 
     [HideInInspector] public bool isDead;
 
-    public virtual void Start()
+    public virtual void Awake()
     {
         currentHealth = stats.maxHealth;
 

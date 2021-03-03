@@ -45,7 +45,7 @@ namespace ProcGen
                 waves.Add(new ProceduralWave(
                     DifficultyManager.Instance.currentDifficulty, 
                     LevelManager.Instance.currentLevel.allEnemyCardsInLevel, 
-                    3 + DifficultyManager.Instance.currentDifficulty * 2));
+                    4 + DifficultyManager.Instance.currentDifficulty * 2));
             }
 
             dropsInThisRoom = new List<GameObject>();

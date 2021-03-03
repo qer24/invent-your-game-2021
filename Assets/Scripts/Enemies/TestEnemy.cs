@@ -13,8 +13,6 @@ public enum TestEnemyState
 public class TestEnemy : Enemy
 {
     [Header("Test enemy")]
-    public KeepOnScreen screenConfiner;
-
     public float moveForce = 25;
     public GameObject bulletPrefab;
     public Transform shootPoint;
@@ -50,10 +48,10 @@ public class TestEnemy : Enemy
         main.duration = timeBetweenActions;
         main.startLifetime = timeBetweenActions;
 
-        StartCoroutine(SearchAndDestroy(timeBetweenActions));
+        StartCoroutine(Behaviour(timeBetweenActions));
     }
 
-    IEnumerator SearchAndDestroy(float waitTime)
+    IEnumerator Behaviour(float waitTime)
     {
         float distance = Vector3.Distance(transform.position, Vector3.zero);
         rb.AddForce(transform.forward * distance * distance * 0.25f);

@@ -5,8 +5,6 @@ using UnityEngine;
 public class AnnoyingEnemy : Enemy
 {
     [Header("Pusher")]
-    public KeepOnScreen screenConfiner;
-
     public float rotationSpeed = 10f;
     public float moveForce = 25;
     public float boostForce = 2400;

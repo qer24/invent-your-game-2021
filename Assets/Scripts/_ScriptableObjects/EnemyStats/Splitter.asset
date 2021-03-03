@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49f30347387a6e24fba14ccaafe15f5b, type: 3}
+  m_Name: Splitter
+  m_EditorClassIdentifier: 
+  maxHealth: 70
+  prefab: {fileID: 4431970764610135154, guid: d09caba0ca53e7d44932368ee6d734d8, type: 3}
+  weight: 5
+  cost: 5
+  canSpawn: 1
+  projectileDamage: 10
+  projectileSpeed: 25
+  projectileLifetime: 5
+  nonProjectileDamage: 0

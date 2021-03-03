@@ -2562,6 +2562,7 @@ MonoBehaviour:
   allEnemyCardsInLevel:
   - {fileID: 11400000, guid: 61af15c164fd95b44897155fef3c9d7d, type: 2}
   - {fileID: 11400000, guid: 5bd33874473698c4fa6c927ce3a8207a, type: 2}
+  - {fileID: 11400000, guid: 9b945c34d96f4094da349a66f1132b06, type: 2}
 --- !u!1 &1317387948
 GameObject:
   m_ObjectHideFlags: 0
