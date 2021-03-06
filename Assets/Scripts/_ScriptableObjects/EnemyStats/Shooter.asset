@@ -15,8 +15,9 @@ MonoBehaviour:
   maxHealth: 50
   prefab: {fileID: 6670750346828716437, guid: 9bc787fd110d060408150c7feb269fcd, type: 3}
   weight: 10
-  cost: 3
+  cost: 2
   canSpawn: 1
   projectileDamage: 5
   projectileSpeed: 60
   projectileLifetime: 2
+  nonProjectileDamage: 0

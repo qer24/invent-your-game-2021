@@ -21,11 +21,15 @@ public class SnakeEnemy : Enemy
     int randomSign;
     Material enemyMaterial;
 
+    bool ready;
+
     public SnakeEnemy parent;
     public float minDistance = 4f;
     public float followSpeed = 10f;
     public float playerFollowPointAnglePerSecond = 5;
     public float playerFollowPointRadius = 3;
+
+    public SnakeEnemy[] children;
 
     float degrees;
 
@@ -47,11 +51,20 @@ public class SnakeEnemy : Enemy
         main.duration = timeBetweenActions;
         main.startLifetime = timeBetweenActions;
 
-        if (parent != null)
+        if(parent == null)
         {
-            Physics.IgnoreCollision(GetComponent<Collider>(), parent.GetComponent<Collider>());
+            int segmentCount = Random.Range(2, 5);
+            for (int i = children.Length - 1; i >= segmentCount; i--)
+            {
+                Destroy(children[i].gameObject);
+            }
+        }else
+        {
+            transform.parent = null;
         }
 
+
+        ready = false;
         StartCoroutine(Behaviour(timeBetweenActions));
     }
 
@@ -60,11 +73,12 @@ public class SnakeEnemy : Enemy
         if (parent == null)
         {
             float distance = Vector3.Distance(transform.position, Vector3.zero);
-            rb.AddForce(transform.forward * distance * distance * 0.25f);
+            rb.AddForce(transform.forward * distance * distance * 0.125f);
+            yield return new WaitForSeconds(waitTime);
+            screenConfiner.enabled = true;
         }
-        yield return new WaitForSeconds(waitTime);
-        screenConfiner.enabled = true;
         yield return new WaitForSeconds(Random.Range(waitTime * 0.25f, waitTime * 2f));
+        ready = true;
         while (true)
         {
             reloadParticles.Play();
@@ -105,6 +119,8 @@ public class SnakeEnemy : Enemy
             //    rb.AddForce(transform.forward * moveForce * 0.01f * distance);
         }else
         {
+            if (!screenConfiner.enabled && ready) screenConfiner.enabled = true;
+
             degrees += Time.deltaTime * playerFollowPointAnglePerSecond;
             var radians = degrees * Mathf.Deg2Rad;
             var x = Mathf.Cos(radians);

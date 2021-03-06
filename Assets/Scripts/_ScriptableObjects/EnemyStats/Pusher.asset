@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 25
   prefab: {fileID: 7971932343275605917, guid: 59e4315700114ae449cfc55a6a3d1f0d, type: 3}
-  weight: 1
+  weight: 3
   cost: 1
   canSpawn: 1
   projectileDamage: 0
