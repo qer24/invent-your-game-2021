@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49f30347387a6e24fba14ccaafe15f5b, type: 3}
-  m_Name: Snake
+  m_Name: Worm
   m_EditorClassIdentifier: 
   maxHealth: 40
   prefab: {fileID: 7699390064709406831, guid: 2e87053bbc6fcc849bde4834fdd3efcd, type: 3}

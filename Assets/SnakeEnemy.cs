@@ -1,4 +1,5 @@
 using Lean.Pool;
+using ProcGen;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -60,6 +61,7 @@ public class SnakeEnemy : Enemy
             }
         }else
         {
+            Room.enemiesAlive.Add(gameObject);
             transform.parent = null;
         }
 
