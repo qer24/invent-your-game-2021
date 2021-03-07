@@ -19,7 +19,6 @@ public class Projectile : MonoBehaviour
     float scaleThreshold = 2f;
     float disableDamageThreshold = 1f;
 
-    string alliedTag = "Player";
     [HideInInspector] public string enemyTag = "Enemy";
 
     Vector3 startScale;
@@ -29,12 +28,11 @@ public class Projectile : MonoBehaviour
     public Action OnDespawn;
     public Action<Collider> OnCollision;
 
-    public void Init(float _damage, float _velocity, float _lifetime, string _alliedTag, string _enemyTag)
+    public void Init(float _damage, float _velocity, float _lifetime, string _enemyTag)
     {
         damage = _damage;
         velocity = _velocity;
         totalLifeTime = _lifetime;
-        alliedTag = _alliedTag;
         enemyTag = _enemyTag;
 
         lifeTimeLeft = totalLifeTime;

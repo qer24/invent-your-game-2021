@@ -84,10 +84,10 @@ public class PlayerShooter : MonoBehaviour
 
         if(inventory.CurrentWeapon.isProjectile)
         {
-            inventory.CurrentWeapon.Shoot(shootPoint.position, transform.rotation, gameObject.tag, "Enemy", bulletMaterial);
+            inventory.CurrentWeapon.Shoot(shootPoint.position, transform.rotation, "Enemy", bulletMaterial);
         }else
         {
-            inventory.CurrentWeapon.Attack();
+            inventory.CurrentWeapon.Attack("Enemy");
         }
     }
 }

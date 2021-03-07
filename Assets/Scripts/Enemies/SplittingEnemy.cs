@@ -119,7 +119,6 @@ public class SplittingEnemy : Enemy
             enemyCard.projectileDamage * splitMultiplier,
             enemyCard.projectileSpeed * (1 + splitCount * 0.25f),
             enemyCard.projectileLifetime,
-            gameObject.tag,
             playerTag
         );
     }

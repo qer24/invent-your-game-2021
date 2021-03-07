@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [HideInInspector] public Stats stats;
+    public Stats stats;
     public float currentHealth = 0;
 
     public delegate void HealthAction(float currentHealthAmount);

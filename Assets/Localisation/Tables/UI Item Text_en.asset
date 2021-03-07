@@ -37,9 +37,8 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 157668057088
     m_Localized: "Damage - {FinalDamage}\nAttack cooldown - {FinalFireRate}\nProjectile
-      - {projectilePrefab.name}\nProjectile speed - {projectileSpeed}\nProjectile
-      lifetime - {projectileLifetime}\nCharge time - {FinalChargeTime}\n\nImma shooting
-      muh \none singular\nbullet."
+      speed - {projectileSpeed}\nProjectile lifetime - {projectileLifetime}\nCharge
+      time - {FinalChargeTime}\n\nImma shooting muh \none singular\nbullet."
     m_Metadata:
       m_Items:
       - id: 0

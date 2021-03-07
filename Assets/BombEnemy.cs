@@ -53,7 +53,6 @@ public class BombEnemy : Enemy
             enemyCard.projectileDamage,
             enemyCard.projectileSpeed,
             enemyCard.projectileLifetime,
-            gameObject.tag,
             playerTag
         );
     }

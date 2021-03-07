@@ -38,9 +38,8 @@ public class WeaponCustomEditor : Editor
         EditorGUILayout.LabelField("Generic variables", EditorStyles.boldLabel);
         weapon.baseDamage = EditorGUILayout.FloatField("Base Damage", weapon.baseDamage);
         weapon.baseAttackRate = EditorGUILayout.FloatField("Base Attack Rate", weapon.baseAttackRate);
-        weapon.rarity = (WeaponRarities)EditorGUILayout.EnumPopup("Rarity", weapon.rarity);
         weapon.rodzajnik = (Rodzajniki)EditorGUILayout.EnumPopup("Rodzajnik", weapon.rodzajnik);
-        weapon.modSlots = EditorGUILayout.IntField("Base mod slots", weapon.modSlots);
+
         weapon.isCharged = EditorGUILayout.Toggle("Is Charged", weapon.isCharged);
         if (weapon.isCharged)
         {
@@ -53,13 +52,22 @@ public class WeaponCustomEditor : Editor
         if (weapon.isProjectile)
         {
             //EditorGUILayout.LabelField("Projectile weapon variables", EditorStyles.boldLabel);
-            weapon.projectilePrefab = (GameObject)EditorGUILayout.ObjectField("ProjectilePrefab", weapon.projectilePrefab, typeof(GameObject), true);
+            weapon.projectilePrefab = (GameObject)EditorGUILayout.ObjectField("Projectile Prefab", weapon.projectilePrefab, typeof(GameObject), true);
             weapon.projectileSpeed = EditorGUILayout.FloatField("Projectile Speed", weapon.projectileSpeed);
             weapon.projectileLifetime = EditorGUILayout.FloatField("Projectile Lifetime", weapon.projectileLifetime);
             EditorGUILayout.Space();
         }
 
-        if(!weapon.isProjectile && !weapon.isCharged)
+        weapon.isAoe = EditorGUILayout.Toggle("Is Area Of Effect", weapon.isAoe);
+
+        if (weapon.isAoe)
+        {
+            weapon.aoePrefab = (GameObject)EditorGUILayout.ObjectField("Aoe Prefab", weapon.aoePrefab, typeof(GameObject), true); ;
+            weapon.radius = EditorGUILayout.FloatField("Radius", weapon.radius);
+            EditorGUILayout.Space();
+        }
+
+        if (!weapon.isProjectile && !weapon.isCharged)
         {
             EditorGUILayout.Space();
         }

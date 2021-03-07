@@ -155,7 +155,6 @@ public class SnakeEnemy : Enemy
             enemyCard.projectileDamage,
             enemyCard.projectileSpeed,
             enemyCard.projectileLifetime,
-            gameObject.tag,
             playerTag
         );
     }

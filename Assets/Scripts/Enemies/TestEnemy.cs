@@ -117,7 +117,6 @@ public class TestEnemy : Enemy
             enemyCard.projectileDamage, 
             enemyCard.projectileSpeed,
             enemyCard.projectileLifetime,
-            gameObject.tag, 
             playerTag
         );
     }

@@ -46,11 +46,12 @@ public abstract class Weapon : MonoBehaviour
     public float AttackRatePerSecond => Mathf.Round(1 / FinalFireRate * 100f) / 100f;
     public bool isCharged = false;
     public bool isProjectile = true;
+    public bool isAoe = false;
     public WeaponRarities rarity = WeaponRarities.Common;
     public Rodzajniki rodzajnik = Rodzajniki.Meski;
     public string rodzajnikString = string.Empty;
     public string rarityString = "Common";
-    public int modSlots = 0;
+    public int modSlots = 2;
 
     [Header("Charged weapon variables")]
     public float timeToCharge = 0.5f;
@@ -60,10 +61,14 @@ public abstract class Weapon : MonoBehaviour
     public float projectileSpeed = 80f;
     public float projectileLifetime = 2f;
 
+    [Header("Aoe weapon variables")]
+    public GameObject aoePrefab = null;
+    public float radius = 5f;
+
     public Action OnTooltipUpdate;
 
     public Action OnAttack;
-    public Action<Vector3, Quaternion, string, string, Material> OnProjectileAttack;
+    public Action<Vector3, Quaternion, string, Material> OnProjectileAttack;
 
     public List<DamageModifier> damageModifiers;
     public Action<GameObject> OnProjectileCreated;
@@ -263,23 +268,23 @@ public abstract class Weapon : MonoBehaviour
     }
 
     //non projectile weapons
-    public virtual void Attack()
+    public virtual void Attack(string enemyTag)
     {
         Debug.LogWarning("Attack not implemented");
     }
 
     //projectile weapons
-    public virtual void Shoot(Vector3 position, Quaternion rotation, string allyTag, string enemyTag, Material projectileMaterial)
+    public virtual void Shoot(Vector3 position, Quaternion rotation, string enemyTag, Material projectileMaterial)
     {
-        OnProjectileAttack?.Invoke(position, rotation, allyTag, enemyTag, projectileMaterial);
+        OnProjectileAttack?.Invoke(position, rotation, enemyTag, projectileMaterial);
     }
 
-    public void ShootProjectile(Vector3 position, Quaternion rotation, string allyTag, string enemyTag, Material projectileMaterial)
+    public void ShootProjectile(Vector3 position, Quaternion rotation, string enemyTag, Material projectileMaterial)
     {
         GameObject go = LeanPool.Spawn(projectilePrefab, position, rotation);
 
         go.GetComponent<Rigidbody>().AddForce(go.transform.forward * projectileSpeed);
-        go.GetComponent<Projectile>().Init(FinalDamage, projectileSpeed, projectileLifetime, allyTag, enemyTag);
+        go.GetComponent<Projectile>().Init(FinalDamage, projectileSpeed, projectileLifetime, enemyTag);
         go.GetComponent<Renderer>().material = projectileMaterial;
 
         OnProjectileCreated?.Invoke(go);
