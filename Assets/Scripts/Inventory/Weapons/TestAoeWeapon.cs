@@ -17,6 +17,6 @@ public class TestAoeWeapon : Weapon
         Vector3 pos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         pos.y = 0;
         GameObject go = LeanPool.Spawn(aoePrefab, pos, Quaternion.identity);
-        go.GetComponent<Aoe>().Init(FinalDamage, 0.25f, 3f, enemyTag);
+        go.GetComponent<Aoe>().Init(FinalDamage, 0.25f, FinalSize, enemyTag);
     }
 }

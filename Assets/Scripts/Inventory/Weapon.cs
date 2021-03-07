@@ -63,7 +63,8 @@ public abstract class Weapon : MonoBehaviour
 
     [Header("Aoe weapon variables")]
     public GameObject aoePrefab = null;
-    public float radius = 5f;
+    public Vector2 size = Vector2.one;
+    public float aoeLifeTime = 0.25f;
 
     public Action OnTooltipUpdate;
 
@@ -94,6 +95,7 @@ public abstract class Weapon : MonoBehaviour
     }
     public float FinalFireRate => Mathf.Round((baseAttackRate / RarityMultiplier) * 100f) / 100f;
     public float FinalChargeTime => Mathf.Round((timeToCharge / (RarityMultiplier * RarityMultiplier)) * 100f) / 100f;
+    public Vector3 FinalSize => new Vector3(size.x, 1, size.y);
 
     float RarityMultiplier
     {

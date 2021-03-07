@@ -62,8 +62,9 @@ public class WeaponCustomEditor : Editor
 
         if (weapon.isAoe)
         {
-            weapon.aoePrefab = (GameObject)EditorGUILayout.ObjectField("Aoe Prefab", weapon.aoePrefab, typeof(GameObject), true); ;
-            weapon.radius = EditorGUILayout.FloatField("Radius", weapon.radius);
+            weapon.aoePrefab = (GameObject)EditorGUILayout.ObjectField("Aoe Prefab", weapon.aoePrefab, typeof(GameObject), true);
+            weapon.size = EditorGUILayout.Vector2Field("Size", weapon.size);
+            weapon.aoeLifeTime = EditorGUILayout.FloatField("Aoe Lifetime", weapon.aoeLifeTime);
             EditorGUILayout.Space();
         }
 
