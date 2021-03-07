@@ -8,7 +8,6 @@ public class SplittingEnemy : Enemy
 {
     [Header("Splitting enemy")]
     public float moveForce = 25;
-    public GameObject bulletPrefab;
     public Transform shootPoint;
 
     public float timeBetweenActions = 2f;
@@ -16,8 +15,6 @@ public class SplittingEnemy : Enemy
 
     public ParticleSystem reloadParticles, shootParticles;
 
-    float randomAngle;
-    int randomSign;
     Material enemyMaterial;
 
     TestEnemyState currentState;
@@ -37,8 +34,7 @@ public class SplittingEnemy : Enemy
         {
             screenConfiner.enabled = false;
 
-            //once spawned outside of the map go towards the center for x seconds - done
-            Vector3 dir = Vector3.zero.normalized - transform.position;
+            Vector3 dir = (Vector3.zero - transform.position).normalized;
             float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
             Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.up);
             transform.rotation = targetRotation;
@@ -84,10 +80,6 @@ public class SplittingEnemy : Enemy
             }
             currentState = TestEnemyState.Idle;
 
-
-            randomAngle = Random.Range(60, 100);
-            randomSign = Random.value < 0.5f ? 1 : -1;
-
             yield return new WaitForSeconds(waitTime * 0.5f);
 
             currentState = TestEnemyState.Escaping;
@@ -119,7 +111,7 @@ public class SplittingEnemy : Enemy
     {
         shootParticles.Play();
 
-        GameObject go = LeanPool.Spawn(bulletPrefab, shootPoint.position, transform.rotation);
+        GameObject go = LeanPool.Spawn(enemyCard.projectile, shootPoint.position, transform.rotation);
         go.GetComponent<Renderer>().material = enemyMaterial;
         go.GetComponent<Rigidbody>().AddForce(go.transform.forward * enemyCard.projectileSpeed);
         go.transform.localScale *= 2f / (1 + splitCount * 0.5f);

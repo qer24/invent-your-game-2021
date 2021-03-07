@@ -14,7 +14,6 @@ public class TestEnemy : Enemy
 {
     [Header("Test enemy")]
     public float moveForce = 25;
-    public GameObject bulletPrefab;
     public Transform shootPoint;
 
     public float timeBetweenActions = 2f;
@@ -111,7 +110,7 @@ public class TestEnemy : Enemy
     {
         shootParticles.Play();
 
-        GameObject go = LeanPool.Spawn(bulletPrefab, shootPoint.position, transform.rotation);
+        GameObject go = LeanPool.Spawn(enemyCard.projectile, shootPoint.position, transform.rotation);
         go.GetComponent<Renderer>().material = enemyMaterial;
         go.GetComponent<Rigidbody>().AddForce(go.transform.forward * enemyCard.projectileSpeed);
         go.GetComponent<Projectile>().Init(

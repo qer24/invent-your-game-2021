@@ -32,6 +32,7 @@ namespace ProcGen
             int iterations = 50;
             EnemyCard lastChosenCard = null;
             EnemiesToSpawn = new List<EnemySpawn>();
+            List<RoomSpawnPoints> takenSpawnPoints = new List<RoomSpawnPoints>();
             while(creditsLeft > 0 && iterations > 0)
             {
                 //make sure we don't spawn same enemy twice
@@ -43,14 +44,32 @@ namespace ProcGen
                 int cost = randomEnemy.cost;
                 if(cost <= creditsLeft)
                 {
+                    var spawnPoint = GetRandomSpawnPointExcludingList(takenSpawnPoints);
+                    takenSpawnPoints.Add(spawnPoint);
+
                     //add him to the spawn list
-                    EnemiesToSpawn.Add(new EnemySpawn(randomEnemy, RoomSpawnPoints.Random, cost)); //TODO make that so enemies wont spawn on the same spawnpoint
+                    EnemiesToSpawn.Add(new EnemySpawn(randomEnemy, spawnPoint, cost));
                     creditsLeft -= cost;
                     lastChosenCard = randomEnemy;
                 }
 
                 iterations--;
             }
+        }
+
+        RoomSpawnPoints GetRandomSpawnPointExcludingList(List<RoomSpawnPoints> list)
+        {
+            int iterations = 20;
+            while (iterations > 0)
+            {
+                var spawnPoint = (RoomSpawnPoints)Random.Range(0, 20);
+                if (!list.Contains(spawnPoint))
+                {
+                    return spawnPoint;
+                }
+            }
+
+            return RoomSpawnPoints.Random;
         }
 
         EnemyCard GetRandomWeightedEnemy(EnemyCard[] cards)

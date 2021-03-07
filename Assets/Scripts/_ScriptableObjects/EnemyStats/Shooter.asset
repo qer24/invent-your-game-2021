@@ -17,7 +17,8 @@ MonoBehaviour:
   weight: 10
   cost: 2
   canSpawn: 1
+  projectile: {fileID: 8680174522787570404, guid: fa1e27bebc4a44f48b775d8635ffccec, type: 3}
   projectileDamage: 5
-  projectileSpeed: 60
+  projectileSpeed: 50
   projectileLifetime: 2
   nonProjectileDamage: 0

@@ -8,7 +8,6 @@ public class SnakeEnemy : Enemy
 {
     [Header("Snake enemy")]
     public float moveForce = 25;
-    public GameObject bulletPrefab;
     public Transform shootPoint;
     public Transform barrel;
 
@@ -18,8 +17,6 @@ public class SnakeEnemy : Enemy
 
     public ParticleSystem reloadParticles, shootParticles;
 
-    float randomAngle;
-    int randomSign;
     Material enemyMaterial;
 
     bool ready;
@@ -151,7 +148,7 @@ public class SnakeEnemy : Enemy
     {
         shootParticles.Play();
 
-        GameObject go = LeanPool.Spawn(bulletPrefab, shootPoint.position, shootPoint.rotation);
+        GameObject go = LeanPool.Spawn(enemyCard.projectile, shootPoint.position, shootPoint.rotation);
         go.GetComponent<Renderer>().material = enemyMaterial;
         go.GetComponent<Rigidbody>().AddForce(go.transform.forward * enemyCard.projectileSpeed);
         go.GetComponent<Projectile>().Init(

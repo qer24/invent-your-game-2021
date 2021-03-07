@@ -18,6 +18,7 @@ public class EnemyCard : Stats
     public bool canSpawn = true;
 
     [Header("Projectile stats")]
+    public GameObject projectile;
     public float projectileDamage = 5f;
     public float projectileSpeed = 60;
     public float projectileLifetime = 2f;

@@ -24,11 +24,13 @@ public abstract class Enemy : MonoBehaviour
         screenConfiner = GetComponent<KeepOnScreen>();
 
         health.stats = enemyCard;
+        health.currentHealth = enemyCard.maxHealth;
         health.OnDeath += OnDeath;
     }
 
     public virtual void OnDeath()
     {
+        CinemachineShake.Instance.ShakeCamera(7, 0.4f);
         PlayerUpgradeManager.Instance.AddExp(expValue);
         Destroy(gameObject);
     }

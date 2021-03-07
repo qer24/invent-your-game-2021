@@ -79,4 +79,9 @@ public class ScaleTween : MonoBehaviour
 
         gameObject.SetActive(false);
     }
+
+    private void OnDestroy()
+    {
+        LeanTween.cancel(gameObject);
+    }
 }

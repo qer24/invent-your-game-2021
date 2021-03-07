@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49f30347387a6e24fba14ccaafe15f5b, type: 3}
-  m_Name: Splitter
+  m_Name: Bomb
   m_EditorClassIdentifier: 
-  maxHealth: 70
-  prefab: {fileID: 4431970764610135154, guid: d09caba0ca53e7d44932368ee6d734d8, type: 3}
-  weight: 5
-  cost: 5
+  maxHealth: 1
+  prefab: {fileID: 5171060701733723928, guid: 5fa0afcc17335564399c59c7c62f8f7a, type: 3}
+  weight: 2
+  cost: 1
   canSpawn: 1
   projectile: {fileID: 8680174522787570404, guid: fa1e27bebc4a44f48b775d8635ffccec, type: 3}
-  projectileDamage: 10
-  projectileSpeed: 25
-  projectileLifetime: 5
+  projectileDamage: 5
+  projectileSpeed: 60
+  projectileLifetime: 2
   nonProjectileDamage: 0
