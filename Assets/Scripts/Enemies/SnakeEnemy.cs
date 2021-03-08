@@ -60,6 +60,7 @@ public class SnakeEnemy : Enemy
         {
             Room.enemiesAlive.Add(gameObject);
             transform.parent = null;
+            expValue = 1;
         }
 
 

@@ -10,6 +10,8 @@ public class AnnoyingEnemy : Enemy
     public float boostForce = 2400;
     //public float playerKnockbackForce = 400f;
 
+    float hitCooldown = 0f;
+
     public override void Start()
     {
         base.Start();
@@ -42,16 +44,20 @@ public class AnnoyingEnemy : Enemy
 
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         rb.AddForce(transform.forward * moveForce * 0.02f);
+
+        hitCooldown -= Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag != "Player") return;
+        if (hitCooldown > 0) return;
 
         if (other.TryGetComponent<IDamagable>(out var damagable))
         {
             //other.GetComponent<Rigidbody>().AddForce(transform.forward * playerKnockbackForce);
             damagable.TakeDamage(enemyCard.nonProjectileDamage);
+            hitCooldown = 0.1f;
         }
     }
 

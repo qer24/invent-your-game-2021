@@ -26,7 +26,7 @@ public class BombEnemy : Enemy
         float distance = Vector3.Distance(transform.position, Vector3.zero);
         rb.AddForce(dir * distance * distance * 0.25f);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         screenConfiner.enabled = true;
     }

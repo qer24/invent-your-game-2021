@@ -46,17 +46,22 @@ public class PlayerUpgradeManager : MonoBehaviour
 
         RoomManager.OnRoomChanged += DisableButton;
         RoomManager.OnRoomComplete += EnableButton;
+        RoomManager.OnRoomChanged += () => 
+        {
+            IsPanelOpen = false;
+
+            upgradePanel.Close();
+            foreach (var upgrade in allUpgrades)
+            {
+                upgrade.interactable = false;
+            }
+        };
 
         IsPanelOpen = false;
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.K))
-        {
-            LevelUp();
-        }
-
         if(buttonCanvasGroup.gameObject.activeSelf)
         {
             alphaTime += Time.deltaTime;

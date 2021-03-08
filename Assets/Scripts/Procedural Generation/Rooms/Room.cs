@@ -66,7 +66,7 @@ namespace ProcGen
 
         private void Update()
         {
-            if (completed) return;
+            if (completed || PlayerHealth.IsPlayerDead) return;
 
             for (int i = 0; i < enemiesAlive.Count; i++)
             {

@@ -26,6 +26,18 @@ public abstract class Enemy : MonoBehaviour
         health.stats = enemyCard;
         health.currentHealth = enemyCard.maxHealth;
         health.OnDeath += OnDeath;
+
+        PlayerHealth.OnPlayerDeath += Disable;
+    }
+
+    void Disable()
+    {
+        enabled = false;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerHealth.OnPlayerDeath -= Disable;
     }
 
     public virtual void OnDeath()

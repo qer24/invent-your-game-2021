@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using ProcGen;
+using System;
 
 public class PlayerHealth : Health
 {
@@ -14,6 +15,9 @@ public class PlayerHealth : Health
 
     float currentFillAmount;
 
+    public static Action OnPlayerDeath;
+    public static bool IsPlayerDead = false;
+
     public override void Awake()
     {
         stats = playerStats;
@@ -23,6 +27,7 @@ public class PlayerHealth : Health
 
         OnHealthChanged += UpdateUI;
         RoomManager.OnRoomComplete += () => RestoreHealth(stats.maxHealth);
+        OnDeath += PlayerDeath;
     }
 
     private void Update()
@@ -39,5 +44,12 @@ public class PlayerHealth : Health
     void UpdateUI(float currentHealth)
     {
         currentFillAmount = currentHealth / stats.maxHealth;
+    }
+
+    void PlayerDeath()
+    {
+        IsPlayerDead = true;
+        OnPlayerDeath?.Invoke();
+        Destroy(gameObject);
     }
 }
