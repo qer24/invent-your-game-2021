@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using ProcGen;
 
 public class PlayerHealth : Health
 {
@@ -21,6 +22,7 @@ public class PlayerHealth : Health
         currentFillAmount = 1;
 
         OnHealthChanged += UpdateUI;
+        RoomManager.OnRoomComplete += () => RestoreHealth(stats.maxHealth);
     }
 
     private void Update()
