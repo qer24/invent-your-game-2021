@@ -15,6 +15,7 @@ public abstract class Enemy : MonoBehaviour
     protected Rigidbody player;
     protected Rigidbody rb;
     protected KeepOnScreen screenConfiner;
+    protected Damagable damagable;
 
     public virtual void Start()
     {
@@ -22,12 +23,14 @@ public abstract class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         health = GetComponent<Health>();
         screenConfiner = GetComponent<KeepOnScreen>();
+        damagable = GetComponent<Damagable>();
 
         health.stats = enemyCard;
         health.currentHealth = enemyCard.maxHealth;
         health.OnDeath += OnDeath;
 
         PlayerHealth.OnPlayerDeath += Disable;
+        damagable.OnTakeDamage += OnDamageTaken;
     }
 
     void Disable()
@@ -38,10 +41,25 @@ public abstract class Enemy : MonoBehaviour
     private void OnDestroy()
     {
         PlayerHealth.OnPlayerDeath -= Disable;
+        if(damagable != null)
+            damagable.OnTakeDamage -= OnDamageTaken;
+    }
+
+    public virtual void OnDamageTaken()
+    {
+        if (!string.IsNullOrEmpty(enemyCard.onTakeDamageAudio))
+        {
+            AudioManager.Play(enemyCard.onTakeDamageAudio, true);
+        }
     }
 
     public virtual void OnDeath()
     {
+        if(!string.IsNullOrEmpty(enemyCard.onDeathAudio))
+        {
+            AudioManager.Play(enemyCard.onDeathAudio, true);
+        }
+
         CinemachineShake.Instance.ShakeCamera(7, 0.4f);
         PlayerUpgradeManager.Instance.AddExp(expValue);
         Destroy(gameObject);

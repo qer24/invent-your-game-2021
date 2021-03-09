@@ -26,7 +26,8 @@ public class PlayerHealth : Health
         currentFillAmount = 1;
 
         OnHealthChanged += UpdateUI;
-        RoomManager.OnRoomComplete += () => RestoreHealth(stats.maxHealth);
+        //RoomManager.OnRoomComplete += () => RestoreHealth(stats.maxHealth);
+        RoomManager.OnRoomChanged += () => RestoreHealth(stats.maxHealth);
         OnDeath += PlayerDeath;
     }
 

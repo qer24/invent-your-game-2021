@@ -14,12 +14,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637508017614269552
+  lastModified: 637508555842749225
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 8000
+    Value: 16608
   Exists: 1
+--- !u!114 &-6193978598842862774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/EnemyHit
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/EnemyHit
+  guid: 3f4b68a087d01a44a47ba35851fe9fe9
+  Banks:
+  - {fileID: -6788049180760038735}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 522
 --- !u!114 &-4987818936140466207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,13 +82,15 @@ MonoBehaviour:
   - {fileID: 257349266729146592}
   - {fileID: -6788049180760038735}
   EditorEvents:
-  - {fileID: -4987818936140466207}
+  - {fileID: 3246179917254578723}
+  - {fileID: 7851719369351475274}
+  - {fileID: -6193978598842862774}
   EditorParameters: []
   MasterBanks:
   - {fileID: -6788049180760038735}
   StringsBanks:
   - {fileID: 257349266729146592}
-  stringsBankWriteTime: 637508017614319551
+  stringsBankWriteTime: 637508555842819223
   cacheVersion: 3
 --- !u!114 &257349266729146592
 MonoBehaviour:
@@ -81,9 +106,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637508017614319551
+  lastModified: 637508555842819223
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 730
+    Value: 926
   Exists: 1
+--- !u!114 &3246179917254578723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/StartingGunShoot
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/StartingGunShoot
+  guid: 65445fb14b2d18498e57b8502a9bd294
+  Banks:
+  - {fileID: -6788049180760038735}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 547
+--- !u!114 &7851719369351475274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Test
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Test
+  guid: ca7890aa62e6c341abdd014715f84ae8
+  Banks:
+  - {fileID: -6788049180760038735}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 876

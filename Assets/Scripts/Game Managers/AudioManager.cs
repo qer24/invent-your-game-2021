@@ -4,8 +4,14 @@ using UnityEngine;
 
 public static class AudioManager
 {
-    public static void Play(string sound)
+
+    /// <summary>Creates a 2D Oneshot Sound Instance, use 'trimBeginning = true' to 
+    /// cut "event:/" from a string</summary>
+    public static void Play(string sound, bool trimBeginning = false)
     {
+        if (trimBeginning)
+            sound = sound.Substring(7);
+
         try
         {
             RuntimeManager.PlayOneShot($"event:/{sound}");
@@ -17,8 +23,13 @@ public static class AudioManager
         }
     }
 
-    public static void Play(string sound, Vector3 position)
+    /// <summary>Creates a 3D Oneshot Sound Instance, use 'trimBeginning = true' to 
+    /// cut "event:/" from a string</summary>
+    public static void Play(string sound, Vector3 position, bool trimBeginning = false)
     {
+        if (trimBeginning)
+            sound = sound.Split('/')[1];
+
         try
         {
             RuntimeManager.PlayOneShot($"event:/{sound}", position);

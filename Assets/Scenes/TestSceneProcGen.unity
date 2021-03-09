@@ -9133,6 +9133,7 @@ MonoBehaviour:
   rodzajnikString: 
   rarityString: Common
   modSlots: 2
+  onAttackAudio: event:/SFX/StartingGunShoot
   timeToCharge: 0.5
   projectilePrefab: {fileID: 8680174522787570404, guid: fa1e27bebc4a44f48b775d8635ffccec, type: 3}
   projectileSpeed: 80
@@ -9279,7 +9280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: {fileID: 7344807888790913364}
-  immunityTime: 0.05
+  immunityTime: 0.1
   col: {fileID: 154375663174812863}
 --- !u!114 &1019125338736019716
 MonoBehaviour:

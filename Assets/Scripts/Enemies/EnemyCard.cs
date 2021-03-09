@@ -13,6 +13,10 @@ public class EnemyCard : Stats
     public Enemy prefab;
     public int weight = 1;
     public int cost = 1;
+    [FMODUnity.EventRef]
+    public string onTakeDamageAudio;
+    [FMODUnity.EventRef]
+    public string onDeathAudio;
 
     [Header("Conditions //ignore for now")]
     public bool canSpawn = true;

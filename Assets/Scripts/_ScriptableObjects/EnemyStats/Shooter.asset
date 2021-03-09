@@ -16,6 +16,8 @@ MonoBehaviour:
   prefab: {fileID: 6670750346828716437, guid: 9bc787fd110d060408150c7feb269fcd, type: 3}
   weight: 10
   cost: 2
+  onTakeDamageAudio: event:/SFX/EnemyHit
+  onDeathAudio: 
   canSpawn: 1
   projectile: {fileID: 8680174522787570404, guid: fa1e27bebc4a44f48b775d8635ffccec, type: 3}
   projectileDamage: 5

@@ -62,11 +62,6 @@ public class PlayerUpgradeManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.K))
-        {
-            AudioManager.Play("Test");
-        }
-
         if(buttonCanvasGroup.gameObject.activeSelf)
         {
             alphaTime += Time.deltaTime;

@@ -10,6 +10,8 @@ public class WeaponCustomEditor : Editor
     string[] propertiesInBaseClass;
     private Object go;
 
+    SerializedProperty audio;
+
     private void OnEnable()
     {
         FieldInfo[] fields = typeof(Weapon).GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
@@ -18,6 +20,8 @@ public class WeaponCustomEditor : Editor
         {
             propertiesInBaseClass[i] = fields[i].Name;
         }
+
+        audio = serializedObject.FindProperty("onAttackAudio");
     }
 
     public override void OnInspectorGUI()
@@ -38,7 +42,10 @@ public class WeaponCustomEditor : Editor
         EditorGUILayout.LabelField("Generic variables", EditorStyles.boldLabel);
         weapon.baseDamage = EditorGUILayout.FloatField("Base Damage", weapon.baseDamage);
         weapon.baseAttackRate = EditorGUILayout.FloatField("Base Attack Rate", weapon.baseAttackRate);
+        //weapon.onAttackAudio = EditorGUILayout.TextField("On attack audio", weapon.onAttackAudio);
+        EditorGUILayout.PropertyField(audio, new GUIContent("Weapon Audio"));
         weapon.rodzajnik = (Rodzajniki)EditorGUILayout.EnumPopup("Rodzajnik", weapon.rodzajnik);
+        EditorGUILayout.Space();
 
         weapon.isCharged = EditorGUILayout.Toggle("Is Charged", weapon.isCharged);
         if (weapon.isCharged)

@@ -52,6 +52,8 @@ public abstract class Weapon : MonoBehaviour
     public string rodzajnikString = string.Empty;
     public string rarityString = "Common";
     public int modSlots = 2;
+    [FMODUnity.EventRef]
+    public string onAttackAudio;
 
     [Header("Charged weapon variables")]
     public float timeToCharge = 0.5f;

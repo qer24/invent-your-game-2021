@@ -83,7 +83,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        KnockBack(collision.transform);
+        if(!collision.collider.isTrigger)
+            KnockBack(collision.transform);
     }
 
     public void KnockBack(Transform collidee)
