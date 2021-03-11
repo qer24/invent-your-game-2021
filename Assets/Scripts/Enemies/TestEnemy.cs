@@ -56,6 +56,7 @@ public class TestEnemy : Enemy
         rb.AddForce(transform.forward * distance * distance * 0.25f);
         yield return new WaitForSeconds(waitTime);
         screenConfiner.enabled = true;
+        yield return new WaitForSeconds(waitTime * Random.Range(0.1f, 0.8f));
         while (true)
         {
             currentState = TestEnemyState.Reloading;
@@ -109,6 +110,7 @@ public class TestEnemy : Enemy
     void Shoot()
     {
         shootParticles.Play();
+        AudioManager.Play("event:/SFX/Enemies/EnemyShoot", true);
 
         GameObject go = LeanPool.Spawn(enemyCard.projectile, shootPoint.position, transform.rotation);
         go.GetComponent<Renderer>().material = enemyMaterial;

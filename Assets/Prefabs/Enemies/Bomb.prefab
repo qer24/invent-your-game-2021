@@ -53,6 +53,7 @@ MonoBehaviour:
   expValue: 1
   moveForce: 12
   projectileCount: 8
+  explosionSound: event:/SFX/Enemies/EnemyExplosion
 --- !u!114 &5171060701733723934
 MonoBehaviour:
   m_ObjectHideFlags: 0

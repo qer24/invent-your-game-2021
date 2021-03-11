@@ -30,7 +30,7 @@ public class BombEnemy : Enemy
 
         screenConfiner.enabled = true;
     }
-
+    
     void Explode()
     {
         CinemachineShake.Instance.ShakeCamera(20, 0.6f);
@@ -67,6 +67,11 @@ public class BombEnemy : Enemy
 
     public override void OnDeath()
     {
+        if (!string.IsNullOrEmpty(enemyCard.onDeathAudio))
+        {
+            AudioManager.Play(enemyCard.onDeathAudio, true);
+        }
+
         Explode();
 
         PlayerUpgradeManager.Instance.AddExp(expValue);

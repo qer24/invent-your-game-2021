@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerDamagable : MonoBehaviour, IDamagable
 {
@@ -12,6 +13,9 @@ public class PlayerDamagable : MonoBehaviour, IDamagable
     public static Action OnTakeDamage;
     public float immunityTime = 0.05f;
     public Collider col;
+
+    public Volume hitPostProcess;
+    public float hitPostProcessTime = 1f;
 
     float immunityTimer = 0;
 
@@ -37,7 +41,11 @@ public class PlayerDamagable : MonoBehaviour, IDamagable
         if (!enabled) return;
         if (immune) return;
 
+        AudioManager.Play("event:/SFX/Player/PlayerHit", true);
         CinemachineShake.Instance.ShakeCamera(amount * 2f, 0.6f);
+
+        hitPostProcess.weight = 1;
+        LeanTween.value(gameObject, 1, 0, hitPostProcessTime).setOnUpdate((float value) => hitPostProcess.weight = value).setIgnoreTimeScale(true);
         //TimeStopManager.Instance.FreezeTime(onHitFreezeTime);
         //onHitParticles.Play();
 

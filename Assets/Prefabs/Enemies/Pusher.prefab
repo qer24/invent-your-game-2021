@@ -180,8 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyCard: {fileID: 0}
   expValue: 1
-  screenConfiner: {fileID: 3617158107608288828}
-  rotationSpeed: 10
+  rotationSpeed: 4
   moveForce: 300
   boostForce: 800
 --- !u!114 &3617158107608288828
@@ -237,7 +236,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.65
+  m_Radius: 1.72
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3617158107608288830
 Rigidbody:
@@ -254,4 +253,4 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 116
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1

@@ -110,6 +110,7 @@ public class SplittingEnemy : Enemy
     void Shoot()
     {
         shootParticles.Play();
+        AudioManager.Play("event:/SFX/Enemies/EnemyShoot", true);
 
         GameObject go = LeanPool.Spawn(enemyCard.projectile, shootPoint.position, transform.rotation);
         go.GetComponent<Renderer>().material = enemyMaterial;
@@ -125,13 +126,14 @@ public class SplittingEnemy : Enemy
 
     public override void OnDeath()
     {
-        if (splitCount < 3)
+        if (splitCount < 2)
         {
             for (int i = 0; i < 2; i++)
             {
                 SplittingEnemy enemy = Instantiate(gameObject, transform.position + Vector3.one * i, Quaternion.AngleAxis(Random.Range(-180, 180), Vector3.up)).GetComponent<SplittingEnemy>();
                 enemy.enemyCard = enemyCard;
-                enemy.expValue = 1;
+                
+                enemy.expValue = splitCount >= 1 ? 0 : 1;
                 enemy.splitCount = splitCount + 1;
                 enemy.splitMultiplier = splitMultiplier * 0.5f;
 

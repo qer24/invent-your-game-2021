@@ -184,6 +184,7 @@ namespace ProcGen
         {
             player.StartMovingToPoint(WorldPositionFromSpawnPoint(RoomSpawnPoints.Random));
 
+            AudioManager.Play("event:/SFX/Player/PlayerRoomTransition", true);
             yield return new WaitForSeconds(1f);
             roomTransitionUI.SetTrigger("Fade");
             yield return new WaitForSeconds(0.5f);

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{74d8052d-6ba5-44f2-b883-8f7ac460c3d0}">
+		<property name="assetPath">
+			<value>switch30.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.35852607709750567</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{217b7903-9ea2-4f76-b117-be0a72ea9433}</destination>
+		</relationship>
+	</object>
+</objects>

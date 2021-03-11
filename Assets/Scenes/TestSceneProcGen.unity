@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 94847121}
   - component: {fileID: 94847120}
   - component: {fileID: 94847119}
+  - component: {fileID: 94847122}
   m_Layer: 5
   m_Name: Rotation Speed Upgrade
   m_TagString: Untagged
@@ -298,6 +299,21 @@ MonoBehaviour:
   unlockedColor: {r: 0.9137255, g: 0.7176471, b: 0.1764706, a: 1}
   tooltip: {fileID: 68269335}
   interactable: 1
+--- !u!114 &94847122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94847117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ed0b6c6a2e6744b8cf71241251d78f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseOverAudio: 
+  mouseDownAudio: event:/SFX/UI/UIUpgradeButtonClick
+  mouseUpAudio: 
 --- !u!1 &191159359
 GameObject:
   m_ObjectHideFlags: 0
@@ -2021,6 +2037,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106161807}
   m_CullTransparentMesh: 0
+--- !u!1 &1172749346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1172749347}
+  - component: {fileID: 1172749348}
+  m_Layer: 0
+  m_Name: HitPostProcess
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1172749347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172749346}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 154375663174812858}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1172749348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172749346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 0
+  sharedProfile: {fileID: 11400000, guid: 6595c5776916f784eb9ed167ccb28b73, type: 2}
 --- !u!1 &1189873883
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,6 +2098,7 @@ GameObject:
   - component: {fileID: 1189873888}
   - component: {fileID: 1189873887}
   - component: {fileID: 1189873885}
+  - component: {fileID: 1189873886}
   m_Layer: 0
   m_Name: CloseButton
   m_TagString: Untagged
@@ -2073,6 +2138,21 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1189873886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189873883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ed0b6c6a2e6744b8cf71241251d78f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseOverAudio: 
+  mouseDownAudio: event:/SFX/UI/UIButtonHover
+  mouseUpAudio: 
 --- !u!114 &1189873887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2180,6 +2260,7 @@ GameObject:
   - component: {fileID: 1257171256}
   - component: {fileID: 1257171255}
   - component: {fileID: 1257171259}
+  - component: {fileID: 1257171260}
   m_Layer: 0
   m_Name: LevelUpButton
   m_TagString: Untagged
@@ -2343,6 +2424,21 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1257171260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257171253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ed0b6c6a2e6744b8cf71241251d78f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseOverAudio: 
+  mouseDownAudio: event:/SFX/UI/UIButtonHover
+  mouseUpAudio: 
 --- !u!1 &1286258726
 GameObject:
   m_ObjectHideFlags: 0
@@ -2429,7 +2525,6 @@ GameObject:
   - component: {fileID: 1306703124}
   - component: {fileID: 1306703127}
   - component: {fileID: 1306703121}
-  - component: {fileID: 1306703123}
   - component: {fileID: 1306703122}
   - component: {fileID: 1306703125}
   - component: {fileID: 1306703126}
@@ -2477,18 +2572,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
---- !u!114 &1306703123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306703120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c2cfd018ce0cb94bacc1e6c8e9ee733, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1306703124
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2859,6 +2942,7 @@ GameObject:
   - component: {fileID: 1675053163}
   - component: {fileID: 1675053162}
   - component: {fileID: 1675053165}
+  - component: {fileID: 1675053166}
   m_Layer: 0
   m_Name: Map Button
   m_TagString: Untagged
@@ -2906,7 +2990,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.46666667}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -3010,6 +3094,21 @@ MonoBehaviour:
   isClosing: 0
   isOpening: 0
   scaleAxis: 0
+--- !u!114 &1675053166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675053160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ed0b6c6a2e6744b8cf71241251d78f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseOverAudio: event:/SFX/UI/UIButtonHover
+  mouseDownAudio: event:/SFX/UI/UIButtonClick
+  mouseUpAudio: 
 --- !u!1 &1685320920
 GameObject:
   m_ObjectHideFlags: 0
@@ -3576,6 +3675,7 @@ MonoBehaviour:
   buttonCanvasGroup: {fileID: 1257171259}
   levelUpBar: {fileID: 191159363}
   upgradePanel: {fileID: 256438644}
+  levelUpSound: event:/SFX/Player/PlayerLevelUp
   levelUpPoints: 0
 --- !u!114 &154375663174812856
 MonoBehaviour:
@@ -3631,6 +3731,7 @@ Transform:
   - {fileID: 6525414644683535635}
   - {fileID: 6525414645309148836}
   - {fileID: 6525414644255674814}
+  - {fileID: 1172749347}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3656,6 +3757,7 @@ MonoBehaviour:
   movementParticles: {fileID: 154375663209438460}
   screenConfiner: {fileID: 6525414643671217901}
   knockbackForce: 1000
+  shipHummingSound: event:/SFX/Player/PlayerHum
   moveToPoint: 0
   movePoint: {x: 100.38, y: 0, z: 88.1}
 --- !u!135 &154375663174812863
@@ -9133,7 +9235,7 @@ MonoBehaviour:
   rodzajnikString: 
   rarityString: Common
   modSlots: 2
-  onAttackAudio: event:/SFX/StartingGunShoot
+  onAttackAudio: event:/SFX/Weapons/StartingGunShoot
   timeToCharge: 0.5
   projectilePrefab: {fileID: 8680174522787570404, guid: fa1e27bebc4a44f48b775d8635ffccec, type: 3}
   projectileSpeed: 80
@@ -9282,6 +9384,8 @@ MonoBehaviour:
   hp: {fileID: 7344807888790913364}
   immunityTime: 0.1
   col: {fileID: 154375663174812863}
+  hitPostProcess: {fileID: 1172749348}
+  hitPostProcessTime: 0.5
 --- !u!114 &1019125338736019716
 MonoBehaviour:
   m_ObjectHideFlags: 0

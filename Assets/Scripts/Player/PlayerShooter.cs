@@ -82,7 +82,8 @@ public class PlayerShooter : MonoBehaviour
     {
         muzzleFlash.SendEvent("Play");
 
-        AudioManager.Play(inventory.CurrentWeapon.onAttackAudio, true);
+        if(!string.IsNullOrEmpty(inventory.CurrentWeapon.onAttackAudio))
+            AudioManager.Play(inventory.CurrentWeapon.onAttackAudio, true);
 
         if(inventory.CurrentWeapon.isProjectile)
         {

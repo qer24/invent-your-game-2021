@@ -5,8 +5,7 @@ using UnityEngine;
 public static class AudioManager
 {
 
-    /// <summary>Creates a 2D Oneshot Sound Instance, use 'trimBeginning = true' to 
-    /// cut "event:/" from a string</summary>
+    /// <summary>Creates a 2D Oneshot Sound Instance, use 'trimBeginning = true' if you are using [FMODUnity.EventRef] attribute</summary>
     public static void Play(string sound, bool trimBeginning = false)
     {
         if (trimBeginning)
@@ -23,12 +22,11 @@ public static class AudioManager
         }
     }
 
-    /// <summary>Creates a 3D Oneshot Sound Instance, use 'trimBeginning = true' to 
-    /// cut "event:/" from a string</summary>
+    /// <summary>Creates a 3D Oneshot Sound Instance, use 'trimBeginning = true' if you are using [FMODUnity.EventRef] attribute</summary>
     public static void Play(string sound, Vector3 position, bool trimBeginning = false)
     {
         if (trimBeginning)
-            sound = sound.Split('/')[1];
+            sound = sound.Substring(7);
 
         try
         {

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{d722ce63-4871-463d-934f-d8b07ba482dc}">
+		<property name="assetPath">
+			<value>laserSmall_002.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.34426303854875284</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{217b7903-9ea2-4f76-b117-be0a72ea9433}</destination>
+		</relationship>
+	</object>
+</objects>

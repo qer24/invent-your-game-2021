@@ -148,6 +148,7 @@ public class SnakeEnemy : Enemy
     void Shoot()
     {
         shootParticles.Play();
+        AudioManager.Play("event:/SFX/Enemies/EnemyShoot", true);
 
         GameObject go = LeanPool.Spawn(enemyCard.projectile, shootPoint.position, shootPoint.rotation);
         go.GetComponent<Renderer>().material = enemyMaterial;

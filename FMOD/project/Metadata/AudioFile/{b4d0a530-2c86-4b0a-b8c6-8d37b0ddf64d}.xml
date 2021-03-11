@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{b4d0a530-2c86-4b0a-b8c6-8d37b0ddf64d}">
+		<property name="assetPath">
+			<value>FREE Transition Sounds Effects  Swoosh, Swish, Whoosh - Part_1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.3908616780045353</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{217b7903-9ea2-4f76-b117-be0a72ea9433}</destination>
+		</relationship>
+	</object>
+</objects>

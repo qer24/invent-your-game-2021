@@ -33,6 +33,7 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         if (pickup.isInWorld && ModDrop.DraggingMod) return;
 
+        AudioManager.Play("event:/SFX/UI/UIHover", true);
         StartCoroutine(ForceReloadTooltip());
         UpdateUI();
         tooltip.gameObject.SetActive(true);

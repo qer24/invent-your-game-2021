@@ -57,7 +57,7 @@ public class AnnoyingEnemy : Enemy
         {
             //other.GetComponent<Rigidbody>().AddForce(transform.forward * playerKnockbackForce);
             damagable.TakeDamage(enemyCard.nonProjectileDamage);
-            hitCooldown = 0.1f;
+            hitCooldown = 0.5f;
         }
     }
 

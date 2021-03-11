@@ -1,3 +1,4 @@
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,8 +16,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ParticleSystem movementParticles = null;
 
     [SerializeField] KeepOnScreen screenConfiner = null;
-
     public float knockbackForce = 100f;
+
+    [SerializeField, EventRef] string shipHummingSound = null;
+    FMOD.Studio.EventInstance humInstance;
 
     [HideInInspector] public bool moveToPoint = false;
     [HideInInspector] public Vector3 movePoint;
@@ -33,6 +36,10 @@ public class PlayerController : MonoBehaviour
 
         screenConfiner.OnTeleportStart += DisableParticles;
         screenConfiner.OnTeleportEnd += EnableParticles;
+
+        humInstance = RuntimeManager.CreateInstance(shipHummingSound);
+        humInstance.start();
+        humInstance.setPaused(true);
     }
 
     private void OnDisable()
@@ -43,7 +50,16 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (ProcGen.MapPanel.IsOpen || ModDrop.DraggingMod || PlayerUpgradeManager.IsPanelOpen) return;
+        if (ProcGen.MapPanel.IsOpen || ModDrop.DraggingMod || PlayerUpgradeManager.IsPanelOpen)
+        {
+            humInstance.getPaused(out var pause);
+            if (!pause)
+            {
+                humInstance.setPaused(true);
+            }
+            return;
+        }
+
         if (moveToPoint)
         {
             screenConfiner.enabled = false;
@@ -56,9 +72,15 @@ public class PlayerController : MonoBehaviour
 
         RotateToPoint(mainCam.ScreenToWorldPoint(Input.mousePosition));
 
+        humInstance.getPaused(out var paused);
         if (Input.GetMouseButton(0))
         {
+            if(paused)
+                humInstance.setPaused(false);
             rb.AddForce(transform.forward * moveForce * 0.01f);
+        }else if(!paused)
+        {
+            humInstance.setPaused(true);
         }
     }
 
@@ -89,10 +111,13 @@ public class PlayerController : MonoBehaviour
 
     public void KnockBack(Transform collidee)
     {
+        AudioManager.Play("event:/SFX/Player/PlayerKnockback", true);
+
         Vector3 direction = (collidee.position - transform.position).normalized;
         direction.y = 0;
         var colRb = collidee.GetComponent<Rigidbody>();
         float impactForce = colRb.velocity.magnitude * 0.5f * rb.velocity.magnitude * 0.5f;
+        rb.velocity = Vector3.zero;
         rb.AddForce(-direction * knockbackForce * impactForce * 0.0005f, ForceMode.Impulse);
         colRb.AddForce(direction * knockbackForce * impactForce * 0.0001f, ForceMode.Impulse);
     }

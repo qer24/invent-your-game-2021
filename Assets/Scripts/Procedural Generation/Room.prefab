@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2306511851535725218}
   - component: {fileID: 3923252490440601337}
   - component: {fileID: 2138994603}
+  - component: {fileID: 602078298730881016}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -100,10 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a922df0d0349af4998e4f3f69237476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves:
-  - {fileID: 11400000, guid: d2033a3ae22fe074ca16432f1cb7f157, type: 2}
-  - {fileID: 11400000, guid: d2033a3ae22fe074ca16432f1cb7f157, type: 2}
+  waveCount: 2
   maxTimeBetweenWaves: 15
+  dropsInThisRoom: []
 --- !u!222 &3923252490440601337
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -167,3 +167,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &602078298730881016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975706786332780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ed0b6c6a2e6744b8cf71241251d78f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseOverAudio: 
+  mouseDownAudio: event:/SFX/UI/UIButtonClick
+  mouseUpAudio: 

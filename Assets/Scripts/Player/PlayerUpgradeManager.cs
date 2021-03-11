@@ -13,6 +13,8 @@ public class PlayerUpgradeManager : MonoBehaviour
     [SerializeField] Image levelUpBar = null; 
     [SerializeField] ScaleTween upgradePanel = null;
 
+    [SerializeField, FMODUnity.EventRef] string levelUpSound = null;
+
     PlayerUpgrade[] allUpgrades;
     ScaleTween buttonScaleTween;
     TextMeshProUGUI levelUpBarText;
@@ -135,6 +137,8 @@ public class PlayerUpgradeManager : MonoBehaviour
 
     void LevelUp()
     {
+        AudioManager.Play(levelUpSound, true);
+
         levelUpPoints += 1;
         lastExpToLevel = expToNextLevel;
         expToNextLevel *= 3;

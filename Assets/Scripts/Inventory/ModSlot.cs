@@ -28,6 +28,7 @@ public class ModSlot : MonoBehaviour, IDropHandler
     {
         if (!item)
         {
+            AudioManager.Play("event:/SFX/UI/UIButtonClick", true);
 
             ModDrop draggedMod = ModDrop.modBeingDragged;
 
