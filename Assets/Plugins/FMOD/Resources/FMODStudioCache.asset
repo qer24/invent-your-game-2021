@@ -66,6 +66,28 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 522
+--- !u!114 &-8773013727482032563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Weapons/MissileLaunch
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Weapons/MissileLaunch
+  guid: 7cd13a5c105767439617a1cc6b66966c
+  Banks: []
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 542
 --- !u!114 &-7752728909551137508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +245,52 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 542
+--- !u!114 &-3625767155825334988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Weapons/MissileLauncherShoot
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Weapons/MissileLauncherShoot
+  guid: 7cd13a5c105767439617a1cc6b66966c
+  Banks:
+  - {fileID: 3317143177458439958}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 542
+--- !u!114 &-3318254021156802452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Weapons/RailgunShoot
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Weapons/RailgunShoot
+  guid: ff3082345e48404e8ddc91a69b9346a7
+  Banks:
+  - {fileID: 3317143177458439958}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 537
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,13 +325,39 @@ MonoBehaviour:
   - {fileID: 6153255815405568834}
   - {fileID: 7101227293034307075}
   - {fileID: 4844248694323291127}
+  - {fileID: -3625767155825334988}
+  - {fileID: 56635849749720651}
+  - {fileID: -3318254021156802452}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3317143177458439958}
   StringsBanks:
   - {fileID: 3387716632853148843}
-  stringsBankWriteTime: 637511078426195152
+  stringsBankWriteTime: 637511567158521486
   cacheVersion: 3
+--- !u!114 &56635849749720651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Weapons/MissileExplosion
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Weapons/MissileExplosion
+  guid: a2eec86c7696e04bb14c8358a0164e42
+  Banks:
+  - {fileID: 3317143177458439958}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1553
 --- !u!114 &257349266729146592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,11 +503,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637511078426145155
+  lastModified: 637511567158461503
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 163904
+    Value: 186976
   Exists: 1
 --- !u!114 &3387716632853148843
 MonoBehaviour:
@@ -429,11 +523,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637511078426195152
+  lastModified: 637511567158521486
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1612
+    Value: 1770
   Exists: 1
 --- !u!114 &3579225909492302592
 MonoBehaviour:

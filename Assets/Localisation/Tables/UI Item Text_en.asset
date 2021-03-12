@@ -32,20 +32,9 @@ MonoBehaviour:
       m_Items:
       - id: 0
   - m_Id: 8663256868560896
-    m_Localized: 'Damage - {FinalDamage}
-
-      Attack rate - {AttackRatePerSecond}
-      / s
-
-      Projectile - {projectilePrefab.name}
-
-      Projectile speed - {projectileSpeed}
-
-      Projectile
-      lifetime - {projectileLifetime}
-
-
-      Devastating in close range.'
+    m_Localized: "Damage - {FinalDamage}\nAttack rate - {AttackRatePerSecond} / s\nProjectile
+      - {projectilePrefab.name}\nProjectile speed - {projectileSpeed}\nProjectile
+      lifetime - {projectileLifetime}\n\nDevastating in \nclose range."
     m_Metadata:
       m_Items:
       - id: 0
@@ -53,9 +42,33 @@ MonoBehaviour:
     m_Localized: Shotgun
     m_Metadata:
       m_Items: []
+  - m_Id: 8855926982328320
+    m_Localized: "Missile \nlauncher"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8855995240431616
+    m_Localized: "Damage - {FinalDamage}\nAttack cooldown - {FinalFireRate}\nProjectile
+      - {projectilePrefab.name}\nProjectile speed - {projectileSpeed}\nProjectile
+      lifetime - {projectileLifetime}\nCharge time - {FinalChargeTime}\nAoe size
+      - {FinalSize.x}\n\nMay cause mild \natom separation."
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 8885679617490944
+    m_Localized: Railgun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8885950963793920
+    m_Localized: "Damage - {FinalDamage}\nAttack cooldown - {FinalFireRate}\nProjectile
+      - {projectilePrefab.name}\nProjectile speed - {projectileSpeed}\nProjectile
+      lifetime - {projectileLifetime}\nCharge time - {FinalChargeTime}\n\nShoots
+      extremely high \nvelocity piercing bullets.\nElegant way to \ndestroy covid."
+    m_Metadata:
+      m_Items:
+      - id: 0
   references:
     version: 1
     00000000:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00a0ff3a1700000000a0bfb52400000000a03fac2fc71e00
+        m_Entries: 00a0ff3a1700000000a0bfb52400000000a03fac2fc71e00004070127b761f000040b0aeb9911f00

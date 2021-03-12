@@ -31,6 +31,22 @@ MonoBehaviour:
     m_Key: Shotgun description
     m_Metadata:
       m_Items: []
+  - m_Id: 8855926982328320
+    m_Key: Missile launcher name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8855995240431616
+    m_Key: Missile launcher description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8885679617490944
+    m_Key: Railgun name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8885950963793920
+    m_Key: Railgun description
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

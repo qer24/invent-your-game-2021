@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ProjectileMissile : Projectile
 {
+    [FMODUnity.EventRef] public string explosionAudio;
+
     GameObject aoePrefab;
     float aoeLifetime;
     Vector3 aoeSize;
@@ -31,6 +33,8 @@ public class ProjectileMissile : Projectile
 
     public void Explode(Collider col)
     {
+        AudioManager.Play(explosionAudio, true);
+
         Aoe aoe = Lean.Pool.LeanPool.Spawn(aoePrefab, transform.position, Quaternion.identity).GetComponent<Aoe>();
         aoe.Init(missileDamage, aoeLifetime, aoeSize, enemyTag);
     }

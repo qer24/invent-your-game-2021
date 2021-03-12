@@ -177,6 +177,7 @@ MonoBehaviour:
   impactPrefab: {fileID: 0}
   enemyTag: Enemy
   despawnOnCollision: 1
+  explosionAudio: event:/SFX/Weapons/MissileExplosion
 --- !u!114 &1221280919417535829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5186cbad62b334144abe14603bfe661c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableHomingOnDespawn: 0
+  disableOnDespawn: 0
 --- !u!1 &8630030103202870475
 GameObject:
   m_ObjectHideFlags: 0

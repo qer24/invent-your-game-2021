@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HomingProjectileBehaviour : ProjectileBehaviour
 {
-    public bool disableHomingOnDespawn = true;
     static float rotationSpeed = 8f;
     static float seekDistance = 25f;
     string enemyTag = "Enemy";
@@ -60,11 +59,5 @@ public class HomingProjectileBehaviour : ProjectileBehaviour
         direction.Normalize();
         float rotateAmount = Vector3.Cross(direction, transform.forward).y;
         projectile.rb.angularVelocity = new Vector3(0, -rotationSpeed * rotateAmount, 0);
-    }
-
-    public override void DestroyBehaviour()
-    {
-        if(disableHomingOnDespawn)
-            base.DestroyBehaviour();
     }
 }
