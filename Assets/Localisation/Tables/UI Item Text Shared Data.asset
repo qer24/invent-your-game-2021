@@ -23,14 +23,12 @@ MonoBehaviour:
     m_Key: Test gun description
     m_Metadata:
       m_Items: []
-  - m_Id: 124826656768
-    m_Key: Test charged gun name
+  - m_Id: 8663212144697344
+    m_Key: Shotgun name
     m_Metadata:
       m_Items: []
-  - m_Id: 157668057088
-    m_Key: 'Test charged gun description
-
-'
+  - m_Id: 8663256868560896
+    m_Key: Shotgun description
     m_Metadata:
       m_Items: []
   m_Metadata:

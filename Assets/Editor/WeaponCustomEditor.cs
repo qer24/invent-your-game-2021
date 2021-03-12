@@ -81,6 +81,7 @@ public class WeaponCustomEditor : Editor
         }
 
         DrawPropertiesExcluding(serializedObject, propertiesInBaseClass);
+        serializedObject.ApplyModifiedProperties();
 
         if (EditorGUI.EndChangeCheck())
         {

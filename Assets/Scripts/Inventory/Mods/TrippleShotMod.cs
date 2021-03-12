@@ -40,7 +40,11 @@ public class TrippleShotMod : Mod
 
     void ShootAdditionalBullets(Vector3 position, Quaternion rotation, string enemyTag, Material projectileMaterial)
     {
-        attachedWeapon.ShootProjectile(position, rotation * Quaternion.AngleAxis(angle, Vector3.up), enemyTag, projectileMaterial);
-        attachedWeapon.ShootProjectile(position, rotation * Quaternion.AngleAxis(-angle, Vector3.up), enemyTag, projectileMaterial);
+        attachedWeapon.OnProjectileAttack -= ShootAdditionalBullets;
+
+        attachedWeapon.Shoot(position, rotation * Quaternion.AngleAxis(angle, Vector3.up), enemyTag, projectileMaterial);
+        attachedWeapon.Shoot(position, rotation * Quaternion.AngleAxis(-angle, Vector3.up), enemyTag, projectileMaterial);
+
+        attachedWeapon.OnProjectileAttack += ShootAdditionalBullets;
     }
 }

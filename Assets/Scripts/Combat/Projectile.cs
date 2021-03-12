@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] AnimationCurve scalingCurve = null;
     [SerializeField] GameObject impactPrefab = null;
 
-    float damage = 0;
+    protected float damage = 0;
 
     float velocity = 500;
     float totalLifeTime = 5f;
@@ -70,8 +70,11 @@ public class Projectile : MonoBehaviour
         {
             OnCollision?.Invoke(other);
 
-            GameObject go = LeanPool.Spawn(impactPrefab, transform.position + Vector3.up * 3f, Quaternion.identity);
-            LeanPool.Despawn(go, 2f);
+            if (impactPrefab != null)
+            {
+                GameObject go = LeanPool.Spawn(impactPrefab, transform.position + Vector3.up * 3f, Quaternion.identity);
+                LeanPool.Despawn(go, 2f);
+            }
 
             if(despawnOnCollision)
                 Despawn();

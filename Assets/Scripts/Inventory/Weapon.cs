@@ -283,13 +283,30 @@ public abstract class Weapon : MonoBehaviour
         OnProjectileAttack?.Invoke(position, rotation, enemyTag, projectileMaterial);
     }
 
-    public void ShootProjectile(Vector3 position, Quaternion rotation, string enemyTag, Material projectileMaterial)
+    public void ShootProjectile(Vector3 position, Quaternion rotation, string enemyTag, Material projectileMaterial, float damageMultiplier = 1, float speedMultiplier = 1, float sizeMultiplier = 1)
     {
         GameObject go = LeanPool.Spawn(projectilePrefab, position, rotation);
 
-        go.GetComponent<Rigidbody>().AddForce(go.transform.forward * projectileSpeed);
-        go.GetComponent<Projectile>().Init(FinalDamage, projectileSpeed, projectileLifetime, enemyTag);
+        go.GetComponent<Rigidbody>().AddForce(go.transform.forward * projectileSpeed * speedMultiplier);
+        go.GetComponent<Projectile>().Init(FinalDamage * damageMultiplier, projectileSpeed * speedMultiplier, projectileLifetime, enemyTag);
         go.GetComponent<Renderer>().material = projectileMaterial;
+
+        go.transform.localScale *= sizeMultiplier;
+
+        OnProjectileCreated?.Invoke(go);
+    }
+
+    public void ShootProjectile(Vector3 position, Quaternion rotation, string enemyTag, Material projectileMaterial, out GameObject projectileGameObject,float damageMultiplier = 1, float speedMultiplier = 1, float sizeMultiplier = 1)
+    {
+        GameObject go = LeanPool.Spawn(projectilePrefab, position, rotation);
+
+        go.GetComponent<Rigidbody>().AddForce(go.transform.forward * projectileSpeed * speedMultiplier);
+        go.GetComponent<Projectile>().Init(FinalDamage * damageMultiplier, projectileSpeed * speedMultiplier, projectileLifetime, enemyTag);
+        go.GetComponent<Renderer>().material = projectileMaterial;
+
+        go.transform.localScale *= sizeMultiplier;
+
+        projectileGameObject = go;
 
         OnProjectileCreated?.Invoke(go);
     }

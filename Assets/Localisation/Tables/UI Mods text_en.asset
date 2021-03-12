@@ -23,8 +23,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 50734276608
-    m_Localized: "+2 projectiles\nx0.6 damage\n\nFor non projectile \nweapons: x1.25
-      damage"
+    m_Localized: "Weapon shoots additional 2 times\nShots from this weapon have \na
+      12 degree angle between them.\nx0.6 damage\n\nFor non projectile \nweapons:
+      x1.25 damage"
     m_Metadata:
       m_Items: []
   - m_Id: 696433376206848

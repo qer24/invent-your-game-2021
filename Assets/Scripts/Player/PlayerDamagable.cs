@@ -44,8 +44,9 @@ public class PlayerDamagable : MonoBehaviour, IDamagable
         AudioManager.Play("event:/SFX/Player/PlayerHit", true);
         CinemachineShake.Instance.ShakeCamera(amount * 2f, 0.6f);
 
+        LeanTween.cancel(hitPostProcess.gameObject);
         hitPostProcess.weight = 1;
-        LeanTween.value(gameObject, 1, 0, hitPostProcessTime).setOnUpdate((float value) => hitPostProcess.weight = value).setIgnoreTimeScale(true);
+        LeanTween.value(hitPostProcess.gameObject, 1, 0, hitPostProcessTime).setOnUpdate((float value) => hitPostProcess.weight = value).setIgnoreTimeScale(true);
         //TimeStopManager.Instance.FreezeTime(onHitFreezeTime);
         //onHitParticles.Play();
 

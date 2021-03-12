@@ -26,26 +26,26 @@ MonoBehaviour:
   - m_Id: 99774078976
     m_Localized: "Obra\u017Cenia - {FinalDamage}\nPr\u0119dko\u015B\u0107 ataku -
       {AttackRatePerSecond} / s\nPocisk - {projectilePrefab.name}\nSzybko\u015B\u0107
-      pocisku - {projectileSpeed}\nCzas \u017Cycia pocisku - {projectileLifetime}\n\nCa\u0142kiem
-      standardowa\nbro\u0144 anty covidowa."
+      pocisku - {projectileSpeed}\nCzas \u017Cycia pocisku - {projectileLifetime}\n\nStandardowa
+      bro\u0144\nanty covidowa."
     m_Metadata:
       m_Items:
       - id: 0
-  - m_Id: 124826656768
-    m_Localized: "\u0141adowacz"
+  - m_Id: 8663256868560896
+    m_Localized: "Obra\u017Cenia - {FinalDamage}\nPr\u0119dko\u015B\u0107 ataku -
+      {AttackRatePerSecond} / s\nPocisk - {projectilePrefab.name}\nSzybko\u015B\u0107
+      pocisku - {projectileSpeed}\nCzas \u017Cycia pocisku - {projectileLifetime}\n\nNieziemsko
+      skuteczna na\nkr\xF3tkim dystansie."
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 8663212144697344
+    m_Localized: Strzelba
     m_Metadata:
       m_Items: []
-  - m_Id: 157668057088
-    m_Localized: "Obra\u017Cenia - {FinalDamage}\nCzas odnowienia - {FinalFireRate}\nSzybko\u015B\u0107
-      pocisku - {projectileSpeed}\nCzas \u017Cycia pocisku - {projectileLifetime}\nCzas
-      \u0142adowania - {FinalChargeTime}\n\nStzelam pojedy\u0144cz\u0105\nkul\u0105,
-      brrr"
-    m_Metadata:
-      m_Items:
-      - id: 0
   references:
     version: 1
     00000000:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00a0ff3a1700000000a0bfb524000000
+        m_Entries: 00a0ff3a1700000000a0bfb52400000000a03fac2fc71e00

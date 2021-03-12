@@ -13,7 +13,7 @@ public class ProjectileBehaviour : MonoBehaviour
         projectile.OnDespawn += DestroyBehaviour;
     }
 
-    void DestroyBehaviour()
+    public virtual void DestroyBehaviour()
     {
         projectile.OnDespawn -= DestroyBehaviour;
 

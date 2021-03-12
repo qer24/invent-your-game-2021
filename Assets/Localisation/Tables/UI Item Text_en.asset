@@ -31,20 +31,31 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - id: 0
-  - m_Id: 124826656768
-    m_Localized: Charger
-    m_Metadata:
-      m_Items: []
-  - m_Id: 157668057088
-    m_Localized: "Damage - {FinalDamage}\nAttack cooldown - {FinalFireRate}\nProjectile
-      speed - {projectileSpeed}\nProjectile lifetime - {projectileLifetime}\nCharge
-      time - {FinalChargeTime}\n\nImma shooting muh \none singular\nbullet."
+  - m_Id: 8663256868560896
+    m_Localized: 'Damage - {FinalDamage}
+
+      Attack rate - {AttackRatePerSecond}
+      / s
+
+      Projectile - {projectilePrefab.name}
+
+      Projectile speed - {projectileSpeed}
+
+      Projectile
+      lifetime - {projectileLifetime}
+
+
+      Devastating in close range.'
     m_Metadata:
       m_Items:
       - id: 0
+  - m_Id: 8663212144697344
+    m_Localized: Shotgun
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00a0ff3a1700000000a0bfb524000000
+        m_Entries: 00a0ff3a1700000000a0bfb52400000000a03fac2fc71e00

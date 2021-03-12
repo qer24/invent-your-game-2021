@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: event:/SFX/Player/PlayerLevelUp
   guid: b23d8849d944bb4b872b2c71849951fd
   Banks:
-  - {fileID: 1048278704631350256}
+  - {fileID: 3317143177458439958}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -42,7 +42,7 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 1558
-  Exists: 1
+  Exists: 0
 --- !u!114 &-8900901451709586521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
   Path: event:/SFX/Enemies/EnemyHit
   guid: 3f4b68a087d01a44a47ba35851fe9fe9
   Banks:
-  - {fileID: 1048278704631350256}
+  - {fileID: 3317143177458439958}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -81,7 +81,7 @@ MonoBehaviour:
   Path: event:/SFX/Enemies/EnemyExplosion
   guid: 7ab0d532a8e1a440a3f3850f13046d16
   Banks:
-  - {fileID: 1048278704631350256}
+  - {fileID: 3317143177458439958}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -104,7 +104,7 @@ MonoBehaviour:
   Path: event:/SFX/UI/UIWoosh
   guid: b1792af17cd19e47b0155eb3ee19c0db
   Banks:
-  - {fileID: 1048278704631350256}
+  - {fileID: 3317143177458439958}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -192,7 +192,7 @@ MonoBehaviour:
   Path: event:/SFX/Enemies/EnemyDeath
   guid: d0fa87d982070c48a93eca3d94f48b36
   Banks:
-  - {fileID: 1048278704631350256}
+  - {fileID: 3317143177458439958}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -215,7 +215,7 @@ MonoBehaviour:
   Path: event:/SFX/Player/PlayerKnockback
   guid: ea1f789799644e469862286d6e2519e3
   Banks:
-  - {fileID: 1048278704631350256}
+  - {fileID: 3317143177458439958}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -236,8 +236,8 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -8964453756744383036}
-  - {fileID: 1048278704631350256}
+  - {fileID: 3387716632853148843}
+  - {fileID: 3317143177458439958}
   EditorEvents:
   - {fileID: 7851719369351475274}
   - {fileID: -8900901451709586521}
@@ -256,12 +256,13 @@ MonoBehaviour:
   - {fileID: -4544838148328259137}
   - {fileID: 6153255815405568834}
   - {fileID: 7101227293034307075}
+  - {fileID: 4844248694323291127}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 1048278704631350256}
+  - {fileID: 3317143177458439958}
   StringsBanks:
-  - {fileID: -8964453756744383036}
-  stringsBankWriteTime: 637510925137207265
+  - {fileID: 3387716632853148843}
+  stringsBankWriteTime: 637511078426195152
   cacheVersion: 3
 --- !u!114 &257349266729146592
 MonoBehaviour:
@@ -298,7 +299,7 @@ MonoBehaviour:
   Path: event:/SFX/UI/UIButtonClick
   guid: 96b8e104e336d649b06cded8268bdcae
   Banks:
-  - {fileID: 1048278704631350256}
+  - {fileID: 3317143177458439958}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -321,7 +322,7 @@ MonoBehaviour:
   Path: event:/SFX/Player/PlayerRoomTransition
   guid: 291c2458e20c3c4a9eef03c71135138c
   Banks:
-  - {fileID: 1048278704631350256}
+  - {fileID: 3317143177458439958}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -348,7 +349,7 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 149344
-  Exists: 1
+  Exists: 0
 --- !u!114 &2906871375499600677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,7 +365,7 @@ MonoBehaviour:
   Path: event:/SFX/Player/PlayerHum
   guid: ef5f50ffec712a4d83779f8c85f0e16e
   Banks:
-  - {fileID: 1048278704631350256}
+  - {fileID: 3317143177458439958}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -394,6 +395,46 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 547
+--- !u!114 &3317143177458439958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637511078426145155
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 163904
+  Exists: 1
+--- !u!114 &3387716632853148843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.strings.bank
+  SubDir: 
+  lastModified: 637511078426195152
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1612
+  Exists: 1
 --- !u!114 &3579225909492302592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,7 +450,7 @@ MonoBehaviour:
   Path: event:/SFX/Enemies/EnemyShoot
   guid: e3928c89a890184ba003eb7bcde87bd9
   Banks:
-  - {fileID: 1048278704631350256}
+  - {fileID: 3317143177458439958}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -417,6 +458,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 520
+--- !u!114 &4844248694323291127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Weapons/ShotgunShoot
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Weapons/ShotgunShoot
+  guid: 23c321f64756684b9fb3febf671c2086
+  Banks:
+  - {fileID: 3317143177458439958}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 700
 --- !u!114 &6153255815405568834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,7 +496,7 @@ MonoBehaviour:
   Path: event:/SFX/UI/UIUpgradeButtonClick
   guid: 0646d53116b0e04aa25a3780be0da1b5
   Banks:
-  - {fileID: 1048278704631350256}
+  - {fileID: 3317143177458439958}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -455,7 +519,7 @@ MonoBehaviour:
   Path: event:/SFX/UI/UISwitch
   guid: db4a61cd5d807746b2d852a5921e4336
   Banks:
-  - {fileID: 1048278704631350256}
+  - {fileID: 3317143177458439958}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -478,7 +542,7 @@ MonoBehaviour:
   Path: event:/SFX/Player/PlayerHit
   guid: dc444e5344f39841953e5801f52942f3
   Banks:
-  - {fileID: 1048278704631350256}
+  - {fileID: 3317143177458439958}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -523,7 +587,7 @@ MonoBehaviour:
   Path: event:/SFX/UI/UIButtonHover
   guid: 9c43c557b0a1a14b8bbd2d26bdadfeca
   Banks:
-  - {fileID: 1048278704631350256}
+  - {fileID: 3317143177458439958}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -546,7 +610,7 @@ MonoBehaviour:
   Path: event:/SFX/Test
   guid: ca7890aa62e6c341abdd014715f84ae8
   Banks:
-  - {fileID: 1048278704631350256}
+  - {fileID: 3317143177458439958}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -569,7 +633,7 @@ MonoBehaviour:
   Path: event:/SFX/Weapons/StartingGunShoot
   guid: 65445fb14b2d18498e57b8502a9bd294
   Banks:
-  - {fileID: 1048278704631350256}
+  - {fileID: 3317143177458439958}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -592,7 +656,7 @@ MonoBehaviour:
   Path: event:/SFX/UI/UIHover
   guid: 4eaece7ab9838b47bb1a6bd593096f04
   Banks:
-  - {fileID: 1048278704631350256}
+  - {fileID: 3317143177458439958}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1

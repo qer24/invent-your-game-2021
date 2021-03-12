@@ -86,7 +86,8 @@ public class InventoryManager : MonoBehaviour
             Vector3 pos = mainCam.WorldToScreenPoint(new Vector3(Random.Range(-6, 6f), 0, Random.Range(-6f, 6f)));
             LeanTween.move(weapons[slot].gameObject, pos, 0.5f).setEase(LeanTweenType.easeOutQuart);
             weapons[slot].GetComponent<WeaponPickup>().isInWorld = true;
-            ProcGen.RoomManager.CurrentRoom.dropsInThisRoom.Add(weapons[slot].gameObject);
+            if(ProcGen.RoomManager.CurrentRoom != null)
+                ProcGen.RoomManager.CurrentRoom.dropsInThisRoom.Add(weapons[slot].gameObject);
         }
         currentClosestWeaponPickup.transform.SetParent(weaponSlots[slot].transform);
         currentClosestWeaponPickup.isInWorld = false;

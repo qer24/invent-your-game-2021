@@ -20,9 +20,11 @@ public class Damagable : MonoBehaviour, IDamagable
     {
         if (hp.isDead) return;
         if (!enabled) return;
+        if (amount <= 0) return;
 
         OnTakeDamage?.Invoke();
         hp.RemoveHealth(amount);
+
 
         Lean.Pool.LeanPool.Spawn(
             damagePopup,
