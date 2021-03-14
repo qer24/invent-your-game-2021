@@ -91,7 +91,11 @@ public class InventoryManager : MonoBehaviour
         }
         currentClosestWeaponPickup.transform.SetParent(weaponSlots[slot].transform);
         currentClosestWeaponPickup.isInWorld = false;
-        weapons[slot] = currentClosestWeaponPickup.GetComponent<Weapon>();
+
+        Weapon pickedUpWeapon = currentClosestWeaponPickup.GetComponent<Weapon>();
+        pickedUpWeapon.OnEquip?.Invoke();
+
+        weapons[slot] = pickedUpWeapon;
     }
 
     WeaponPickup GetClosestWeaponPickup()

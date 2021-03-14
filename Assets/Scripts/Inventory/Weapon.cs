@@ -73,6 +73,7 @@ public abstract class Weapon : MonoBehaviour
     public Action OnAttack;
     public Action<Vector3, Quaternion, string, Material> OnProjectileAttack;
 
+    public Action OnEquip;
     public List<DamageModifier> damageModifiers;
     public Action<GameObject> OnProjectileCreated;
 

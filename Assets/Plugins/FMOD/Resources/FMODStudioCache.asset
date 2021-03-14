@@ -328,12 +328,13 @@ MonoBehaviour:
   - {fileID: -3625767155825334988}
   - {fileID: 56635849749720651}
   - {fileID: -3318254021156802452}
+  - {fileID: 5273796133487317005}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3317143177458439958}
   StringsBanks:
   - {fileID: 3387716632853148843}
-  stringsBankWriteTime: 637511567158521486
+  stringsBankWriteTime: 637512868643130611
   cacheVersion: 3
 --- !u!114 &56635849749720651
 MonoBehaviour:
@@ -503,11 +504,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637511567158461503
+  lastModified: 637512868643060612
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 186976
+    Value: 204000
   Exists: 1
 --- !u!114 &3387716632853148843
 MonoBehaviour:
@@ -523,11 +524,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637511567158521486
+  lastModified: 637512868643130611
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1770
+    Value: 1814
   Exists: 1
 --- !u!114 &3579225909492302592
 MonoBehaviour:
@@ -575,6 +576,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 700
+--- !u!114 &5273796133487317005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Weapons/BeamGunShoot
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Weapons/BeamGunShoot
+  guid: 8afbd58a98ee7544aa85f02f423d2c67
+  Banks:
+  - {fileID: 3317143177458439958}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 920
 --- !u!114 &6153255815405568834
 MonoBehaviour:
   m_ObjectHideFlags: 0

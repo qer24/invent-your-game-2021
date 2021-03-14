@@ -47,6 +47,14 @@ MonoBehaviour:
     m_Key: Railgun description
     m_Metadata:
       m_Items: []
+  - m_Id: 9419233791328256
+    m_Key: Laserbeam name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9419259242364928
+    m_Key: Laserbeam description
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

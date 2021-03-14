@@ -8,6 +8,9 @@ public class ShotgunWeapon : Weapon
     public int bullets = 5;
     public float randomAngleMax = 40;
 
+    public string ShotgunDamage { get => $"{FinalDamage * 0.6f}-{FinalDamage}"; }
+    public string ShotgunBulletSpeed { get => $"{projectileSpeed * 0.6f}-{projectileSpeed}"; }
+
     public override void Shoot(Vector3 position, Quaternion rotation, string enemyTag, Material projectileMaterial)
     {
         base.Shoot(position, rotation, enemyTag, projectileMaterial);
