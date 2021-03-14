@@ -77,9 +77,20 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - id: 0
+  - m_Id: 9617425346609152
+    m_Localized: "Wybuch \nMagnetyczny"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9617447849050112
+    m_Localized: "Obra\u017Cenia - {FinalDamage}\nPr\u0119dko\u015B\u0107 ataku -
+      {AttackRatePerSecond} / s\nWielko\u015B\u0107 Aoe - {FinalSize.x}\n\nTworzy
+      pole \nelektrostatyczne\ndziesi\u0105tkuj\u0105ce\nwszystko w polu \nra\u017Cenia."
+    m_Metadata:
+      m_Items:
+      - id: 0
   references:
     version: 1
     00000000:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00a0ff3a1700000000a0bfb52400000000a03fac2fc71e00004070127b761f000040b0aeb9911f0000403031c4762100
+        m_Entries: 00a0ff3a1700000000a0bfb52400000000a03fac2fc71e00004070127b761f000040b0aeb9911f0000403031c47621000040b092042b2200

@@ -55,6 +55,14 @@ MonoBehaviour:
     m_Key: Laserbeam description
     m_Metadata:
       m_Items: []
+  - m_Id: 9617425346609152
+    m_Key: Nova name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9617447849050112
+    m_Key: Nova Description
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
