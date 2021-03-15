@@ -27,6 +27,7 @@ public class Projectile : MonoBehaviour
 
     public Action OnDespawn;
     public Action<Collider> OnCollision;
+    public Action OnUpdate;
 
     public void Init(float _damage, float _velocity, float _lifetime, string _enemyTag)
     {
@@ -61,6 +62,8 @@ public class Projectile : MonoBehaviour
             Vector3 scale = Vector3.Lerp(startScale, Vector3.zero, 1 - scalingCurve.Evaluate((scaleThreshold - lifeTimeLeft) / scaleThreshold));
             transform.localScale = scale;
         }
+
+        OnUpdate?.Invoke();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -72,7 +75,7 @@ public class Projectile : MonoBehaviour
 
             if (impactPrefab != null)
             {
-                GameObject go = LeanPool.Spawn(impactPrefab, transform.position + Vector3.up * 3f, Quaternion.identity);
+                GameObject go = LeanPool.Spawn(impactPrefab, other.transform.position + Vector3.up * 3f, Quaternion.identity);
                 LeanPool.Despawn(go, 2f);
             }
 

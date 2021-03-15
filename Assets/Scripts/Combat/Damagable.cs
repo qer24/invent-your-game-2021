@@ -28,7 +28,7 @@ public class Damagable : MonoBehaviour, IDamagable
 
         Lean.Pool.LeanPool.Spawn(
             damagePopup,
-            transform.position + new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 2.5f),
+            transform.position + new Vector3(Random.Range(-0.5f, 0.5f), 2.5f, Random.Range(-0.5f, 0.5f)),
             damagePopup.transform.rotation
             ).Init((int)amount);
     }

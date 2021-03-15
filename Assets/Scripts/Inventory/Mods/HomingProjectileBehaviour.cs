@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HomingProjectileBehaviour : ProjectileBehaviour
 {
-    static float rotationSpeed = 8f;
-    static float seekDistance = 25f;
+    public float rotationSpeed = 8f;
+    public float seekDistance = 25f;
     string enemyTag = "Enemy";
 
     public override void Start()

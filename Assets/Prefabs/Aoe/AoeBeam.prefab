@@ -47,6 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inType: 27
   outType: 4
+  constantDamage: 0
+  ticksPerDamage: 30
 --- !u!65 &7396552957383660054
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -58,7 +60,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.25, y: 2, z: 1}
+  m_Size: {x: 1.5, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0.5}
 --- !u!1 &5302088414133702143
 GameObject:

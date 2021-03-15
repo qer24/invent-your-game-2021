@@ -16,6 +16,10 @@ public class Aoe : MonoBehaviour
 
     public Action OnDespawn;
 
+    public bool constantDamage = false;
+    public int ticksPerDamage = 30;
+    int currentTick = 0;
+
     public void Init(float _damage, float _lifetime, Vector3 _size, string _enemyTag)
     {
         damage = _damage;
@@ -29,11 +33,32 @@ public class Aoe : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
+        if (constantDamage) return;
+
         if (col.CompareTag(enemyTag))
         {
             if (col.TryGetComponent<IDamagable>(out var damagable))
             {
                 damagable.TakeDamage(damage);
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider col)
+    {
+        if (!constantDamage) return;
+
+        if (col.CompareTag(enemyTag))
+        {
+            currentTick++;
+
+            if (currentTick >= ticksPerDamage)
+            {
+                currentTick = 0;
+                if (col.TryGetComponent<IDamagable>(out var damagable))
+                {
+                    damagable.TakeDamage(damage);
+                }
             }
         }
     }

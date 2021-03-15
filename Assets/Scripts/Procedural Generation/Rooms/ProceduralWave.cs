@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace ProcGen
@@ -10,6 +11,8 @@ namespace ProcGen
         EnemyCard[] enemyCards;
         int creditsLeft;
 
+        HashSet<int> possibleSpawnPoints;
+
         public List<EnemySpawn> EnemiesToSpawn { get; private set; }
 
         public ProceduralWave(int _difficulty, EnemyCard[] _enemyCards, int _credits)
@@ -17,6 +20,12 @@ namespace ProcGen
             difficulty = _difficulty;
             enemyCards = _enemyCards;
             creditsLeft = _credits;
+
+            possibleSpawnPoints = new HashSet<int>();
+            for (int i = 0; i < 20; i++)
+            {
+                possibleSpawnPoints.Add(i);
+            }
 
             GenerateWave();
         }
@@ -32,7 +41,7 @@ namespace ProcGen
             int iterations = 50;
             EnemyCard lastChosenCard = null;
             EnemiesToSpawn = new List<EnemySpawn>();
-            List<RoomSpawnPoints> takenSpawnPoints = new List<RoomSpawnPoints>();
+            //HashSet<RoomSpawnPoints> takenSpawnPoints = new HashSet<RoomSpawnPoints>();
             while(creditsLeft > 0 && iterations > 0)
             {
                 //make sure we don't spawn same enemy twice
@@ -44,8 +53,11 @@ namespace ProcGen
                 int cost = randomEnemy.cost;
                 if(cost <= creditsLeft)
                 {
-                    var spawnPoint = GetRandomSpawnPointExcludingList(takenSpawnPoints);
-                    takenSpawnPoints.Add(spawnPoint);
+                    //var excludedHashset = new HashSet<RoomSpawnPoints>();
+                    //var spawnPoint = GetRandomSpawnPointExcludingHashset(takenSpawnPoints);
+                    //takenSpawnPoints.Add(spawnPoint);
+
+                    var spawnPoint = GetRandomFreePoint();
 
                     //add him to the spawn list
                     EnemiesToSpawn.Add(new EnemySpawn(randomEnemy, spawnPoint, cost));
@@ -57,16 +69,14 @@ namespace ProcGen
             }
         }
 
-        RoomSpawnPoints GetRandomSpawnPointExcludingList(List<RoomSpawnPoints> list)
+        RoomSpawnPoints GetRandomFreePoint()
         {
-            int iterations = 20;
-            while (iterations > 0)
+            if (possibleSpawnPoints.Count > 0)
             {
-                var spawnPoint = (RoomSpawnPoints)Random.Range(0, 20);
-                if (!list.Contains(spawnPoint))
-                {
-                    return spawnPoint;
-                }
+                int randomIndex = possibleSpawnPoints.ElementAt(Random.Range(0, possibleSpawnPoints.Count));
+                possibleSpawnPoints.Remove(randomIndex);
+
+                return (RoomSpawnPoints)randomIndex;
             }
 
             return RoomSpawnPoints.Random;
