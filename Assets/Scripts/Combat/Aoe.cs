@@ -31,6 +31,14 @@ public class Aoe : MonoBehaviour
             );
     }
 
+    public void Init(float _damage, float _lifetime, Vector3 _size, string _enemyTag, Action ScaleFunction)
+    {
+        damage = _damage;
+        enemyTag = _enemyTag;
+
+        ScaleFunction();
+    }
+
     private void OnTriggerEnter(Collider col)
     {
         if (constantDamage) return;
@@ -63,7 +71,7 @@ public class Aoe : MonoBehaviour
         }
     }
 
-    void Despawn()
+    public void Despawn()
     {
         OnDespawn?.Invoke();
 

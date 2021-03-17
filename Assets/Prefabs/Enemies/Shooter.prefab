@@ -9890,7 +9890,7 @@ GameObject:
   - component: {fileID: 6670750346828716439}
   - component: {fileID: 6670750346828716438}
   m_Layer: 0
-  m_Name: TestEnemy
+  m_Name: Shooter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9924,11 +9924,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0129c49b28865bb4bb1cc1fa35c268d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 6670750346828716523}
-  stats: {fileID: 11400000, guid: 5bd33874473698c4fa6c927ce3a8207a, type: 2}
-  screenConfiner: {fileID: 6670750346828716436}
+  enemyCard: {fileID: 0}
+  expValue: 1
   moveForce: 400
-  bulletPrefab: {fileID: 8680174522787570404, guid: fa1e27bebc4a44f48b775d8635ffccec, type: 3}
   shootPoint: {fileID: 6670750345304007747}
   timeBetweenActions: 2
   rotationSpeed: 3

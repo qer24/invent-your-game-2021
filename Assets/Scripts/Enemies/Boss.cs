@@ -1,4 +1,5 @@
 using Lean.Pool;
+using ProcGen;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,12 +25,28 @@ public class Boss : Enemy
 
     [Header("Beam attack")]
     public LineRenderer beamIndicatorLine;
-
     public Aoe beamPrefab;
     public float beamDamage;
     public Vector2 beamSize;
     public float beamLifetime;
     public int beamTicksPerDamage = 30;
+
+    [Header("Spawn adds")]
+    public Transform[] spawnPositions;
+    public EnemyCard pusherCard;
+    public EnemyCard shooterCard;
+
+    [Header("Orb attack")]
+    public Projectile orbProjectile;
+    public Aoe orbAoePrefab;
+    public float orbAoeDamage = 1;
+    public Vector3 orbAoeSize = Vector3.one * 3f;
+
+    [Header("Shield")]
+    public GameObject shield;
+
+    [Header("Multishot attack")]
+    public Projectile bullet;
 
     Material enemyMaterial;
 
@@ -87,7 +104,7 @@ public class Boss : Enemy
     IEnumerator Behaviour(float waitTime)
     {
         float distance = Vector3.Distance(transform.position, Vector3.zero);
-        rb.AddForce(transform.forward * distance * distance * 1.6f);
+        rb.AddForce(transform.forward * distance * distance * 0.25f);
         yield return new WaitForSeconds(waitTime);
         screenConfiner.enabled = true;
         //wave attack
@@ -101,7 +118,9 @@ public class Boss : Enemy
             float startWidth = beamIndicatorLine.widthMultiplier;
             beamIndicatorLine.widthMultiplier = 0;
             LeanTween.value(gameObject, 0, beamSize.x * 0.6f, waitTime).setOnUpdate((float val) => beamIndicatorLine.widthMultiplier = val).setEase(LeanTweenType.easeInCubic);
+
             yield return new WaitForSeconds(waitTime);
+
             ShootBeam();
             beamIndicatorLine.widthMultiplier = startWidth;
             beamIndicatorLine.enabled = false;
@@ -110,7 +129,42 @@ public class Boss : Enemy
 
             yield return new WaitForSeconds(beamLifetime);
 
+            // spawn pusher bois or shooty bois
+
+            if(Random.value > 0.5f)
+                SpawnPushers();
+            else
+                SpawnShooters();
+
+            yield return new WaitForSeconds(beamLifetime);
+
             moving = true;
+
+            yield return new WaitForSeconds(waitTime);
+
+            // random attack either laser (5%) or spawn orbs (35%) or shield phase (60%)
+            float randomValue = Random.value;
+            if(randomValue <= 0.05f)
+            {
+                //beam
+                beamIndicatorLine.enabled = true;
+                beamIndicatorLine.widthMultiplier = 0;
+                LeanTween.value(gameObject, 0, beamSize.x * 0.6f, waitTime).setOnUpdate((float val) => beamIndicatorLine.widthMultiplier = val).setEase(LeanTweenType.easeInCubic);
+
+                yield return new WaitForSeconds(waitTime);
+
+                ShootBeam();
+                beamIndicatorLine.widthMultiplier = startWidth;
+                beamIndicatorLine.enabled = false;
+            }else if(randomValue > 0.05f && randomValue <= 0.35f)
+            {
+                //orbs
+            }else
+            {
+                //shield
+            }
+
+            // shoot 5 bullets
         }
     }
 
@@ -142,7 +196,7 @@ public class Boss : Enemy
         rend.material.SetFloat("_NoiseScale", 0f);
         proj.GetComponent<Rigidbody>().AddForce(proj.transform.forward * enemyCard.projectileSpeed);
         proj.transform.Rotate(0, angle, 0);
-        proj.transform.localScale = new Vector3(1.5f, 1f, 1.1f);
+        proj.transform.localScale = new Vector3(1.3f, 1f, 1.1f);
         proj.Init(
             enemyCard.projectileDamage,
             enemyCard.projectileSpeed,
@@ -162,6 +216,34 @@ public class Boss : Enemy
         aoe.ticksPerDamage = beamTicksPerDamage;
 
         beamTransform = aoe.transform;
+    }
+
+    void SpawnPushers()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            shootParticles.transform.position = spawnPositions[i].position;
+            shootParticles.Play();
+
+            Enemy enemy = Instantiate(pusherCard.prefab, spawnPositions[i].position, Quaternion.identity).GetComponent<Enemy>();
+            enemy.enemyCard = pusherCard;
+            enemy.expValue = 1;
+            Room.enemiesAlive.Add(enemy.gameObject);
+        }
+    }
+
+    void SpawnShooters()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            shootParticles.transform.position = spawnPositions[i].position;
+            shootParticles.Play();
+
+            Enemy enemy = Instantiate(shooterCard.prefab, spawnPositions[i].position, Quaternion.identity).GetComponent<Enemy>();
+            enemy.enemyCard = shooterCard;
+            enemy.expValue = 1;
+            Room.enemiesAlive.Add(enemy.gameObject);
+        }
     }
 
     void UpdateUI(float currentHealth)

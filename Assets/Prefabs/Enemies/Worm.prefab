@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7699390064709406824}
   - component: {fileID: 7699390064709406825}
   m_Layer: 8
-  m_Name: Snake
+  m_Name: Worm
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,6 @@ MonoBehaviour:
   enemyCard: {fileID: 11400000, guid: 31b5442a1fc08b84f95ca24602f13d6d, type: 2}
   expValue: 1
   moveForce: 400
-  bulletPrefab: {fileID: 8680174522787570404, guid: fa1e27bebc4a44f48b775d8635ffccec, type: 3}
   shootPoint: {fileID: 7699390066401996220}
   barrel: {fileID: 7775202771965865528}
   timeBetweenActions: 1
@@ -10201,7 +10200,6 @@ MonoBehaviour:
   enemyCard: {fileID: 11400000, guid: 31b5442a1fc08b84f95ca24602f13d6d, type: 2}
   expValue: 1
   moveForce: 400
-  bulletPrefab: {fileID: 8680174522787570404, guid: fa1e27bebc4a44f48b775d8635ffccec, type: 3}
   shootPoint: {fileID: 7775202771742318072}
   barrel: {fileID: 7775202771710039079}
   timeBetweenActions: 1
@@ -30098,7 +30096,6 @@ MonoBehaviour:
   enemyCard: {fileID: 11400000, guid: 31b5442a1fc08b84f95ca24602f13d6d, type: 2}
   expValue: 1
   moveForce: 400
-  bulletPrefab: {fileID: 8680174522787570404, guid: fa1e27bebc4a44f48b775d8635ffccec, type: 3}
   shootPoint: {fileID: 7775202770536011876}
   barrel: {fileID: 7775202770280771969}
   timeBetweenActions: 1
@@ -39994,7 +39991,6 @@ MonoBehaviour:
   enemyCard: {fileID: 11400000, guid: 31b5442a1fc08b84f95ca24602f13d6d, type: 2}
   expValue: 1
   moveForce: 400
-  bulletPrefab: {fileID: 8680174522787570404, guid: fa1e27bebc4a44f48b775d8635ffccec, type: 3}
   shootPoint: {fileID: 7775202770132609410}
   barrel: {fileID: 7775202771779929701}
   timeBetweenActions: 1
@@ -50618,7 +50614,6 @@ MonoBehaviour:
   enemyCard: {fileID: 11400000, guid: 31b5442a1fc08b84f95ca24602f13d6d, type: 2}
   expValue: 1
   moveForce: 400
-  bulletPrefab: {fileID: 8680174522787570404, guid: fa1e27bebc4a44f48b775d8635ffccec, type: 3}
   shootPoint: {fileID: 7775202771558264486}
   barrel: {fileID: 7775202771442344715}
   timeBetweenActions: 1

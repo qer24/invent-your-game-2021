@@ -182,7 +182,7 @@ MonoBehaviour:
   expValue: 1
   rotationSpeed: 4
   moveForce: 300
-  boostForce: 800
+  boostForce: 1200
 --- !u!114 &3617158107608288828
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5048,7 +5048,6 @@ MonoBehaviour:
   enemyCard: {fileID: 11400000, guid: 9b945c34d96f4094da349a66f1132b06, type: 2}
   expValue: 1
   moveForce: 500
-  bulletPrefab: {fileID: 8680174522787570404, guid: fa1e27bebc4a44f48b775d8635ffccec, type: 3}
   shootPoint: {fileID: 4431970763991554465}
   timeBetweenActions: 2
   rotationSpeed: 2

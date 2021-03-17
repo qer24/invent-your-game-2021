@@ -20,7 +20,7 @@ MonoBehaviour:
   onDeathAudio: event:/SFX/Enemies/EnemyDeath
   canSpawn: 1
   projectile: {fileID: 8680174522787570404, guid: fa1e27bebc4a44f48b775d8635ffccec, type: 3}
-  projectileDamage: 5
+  projectileDamage: 3.5
   projectileSpeed: 50
   projectileLifetime: 2
   nonProjectileDamage: 0

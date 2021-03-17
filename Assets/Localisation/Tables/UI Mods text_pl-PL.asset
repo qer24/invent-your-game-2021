@@ -23,8 +23,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 50734276608
-    m_Localized: "Bro\u0144 strzela dodatkowe 2 strza\u0142y.\nStrza\u0142y z tej
-      broni maj\u0105 \nk\u0105t 12 stopni pomi\u0119dzy sob\u0105.\nx0.6 obra\u017Ce\u0144\n\nDla
+    m_Localized: "Bro\u0144 wystrzeliwuje naraz\ntrzy strza\u0142y\nx0.6 obra\u017Ce\u0144\n\nDla
       broni nie-pociskowych: \nx1.25 obra\u017Ce\u0144"
     m_Metadata:
       m_Items: []
