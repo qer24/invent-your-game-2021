@@ -303,7 +303,7 @@ public abstract class Weapon : MonoBehaviour
 
         go.GetComponent<Rigidbody>().AddForce(go.transform.forward * projectileSpeed * speedMultiplier);
         go.GetComponent<Projectile>().Init(FinalDamage * damageMultiplier, projectileSpeed * speedMultiplier, projectileLifetime, enemyTag);
-        go.GetComponent<Renderer>().material = projectileMaterial;
+        go.GetComponentInChildren<Renderer>().material = projectileMaterial;
 
         go.transform.localScale *= sizeMultiplier;
 

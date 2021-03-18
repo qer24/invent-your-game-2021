@@ -6,7 +6,7 @@ public class HomingProjectileBehaviour : ProjectileBehaviour
 {
     public float rotationSpeed = 8f;
     public float seekDistance = 25f;
-    string enemyTag = "Enemy";
+    public string enemyTag = "Enemy";
 
     public override void Start()
     {

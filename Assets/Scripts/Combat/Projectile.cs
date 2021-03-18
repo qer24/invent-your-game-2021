@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
 
     protected float damage = 0;
 
-    float velocity = 500;
+    protected float velocity = 500;
     float totalLifeTime = 5f;
     float lifeTimeLeft = 5f;
 
@@ -46,7 +46,7 @@ public class Projectile : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         rb.velocity = transform.forward.normalized * velocity;
 
@@ -82,14 +82,14 @@ public class Projectile : MonoBehaviour
             if(despawnOnCollision)
                 Despawn();
 
-            if (other.TryGetComponent<IDamagable>(out var damagable))
+            if (other.TryGetComponent<IDamagable>(out var damagable) && damage > 0)
             {
                 damagable.TakeDamage(damage);
             }
         }
     }
 
-    void Despawn()
+    protected void Despawn()
     {
         OnDespawn?.Invoke();
 

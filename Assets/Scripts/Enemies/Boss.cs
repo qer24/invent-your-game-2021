@@ -37,10 +37,15 @@ public class Boss : Enemy
     public EnemyCard shooterCard;
 
     [Header("Orb attack")]
-    public Projectile orbProjectile;
+    public ProjectileBossOrb orbProjectile;
     public Aoe orbAoePrefab;
-    public float orbAoeDamage = 1;
-    public Vector3 orbAoeSize = Vector3.one * 3f;
+    public float orbAoeDamage = 1f;
+    public Vector2 orbAoeSize = Vector2.one * 3f;
+    public float orbAoeScaleTime = 0.25f;
+    public float orbSpeed = 25f;
+    public float orbChargeTime = 2f;
+    public float orbProjectileSize = 3f;
+    public int orbTicksPerDamage = 5;
 
     [Header("Shield")]
     public GameObject shield;
@@ -51,6 +56,7 @@ public class Boss : Enemy
     Material enemyMaterial;
 
     Transform beamTransform;
+    Transform orbTransform;
 
     bool moving = true;
 
@@ -90,7 +96,7 @@ public class Boss : Enemy
         Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.up);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
-        if(moving)
+        if (moving)
             rb.AddForce(transform.forward * moveForce * 0.02f);
 
         if (beamTransform != null)
@@ -98,6 +104,11 @@ public class Boss : Enemy
             beamTransform.position = transform.position;
             beamTransform.rotation = transform.rotation;
             Physics.SyncTransforms();
+        }
+        if (orbTransform != null)
+        {
+            orbTransform.position = shootPoint.position;
+            orbTransform.rotation = shootPoint.rotation;
         }
     }
 
@@ -109,6 +120,7 @@ public class Boss : Enemy
         screenConfiner.enabled = true;
         //wave attack
         StartCoroutine(RepeatedWaveAttack(waitTime));
+
         while (true)
         {
             yield return new WaitForSeconds(waitTime * 2f);
@@ -131,7 +143,7 @@ public class Boss : Enemy
 
             // spawn pusher bois or shooty bois
 
-            if(Random.value > 0.5f)
+            if (Random.value > 0.5f)
                 SpawnPushers();
             else
                 SpawnShooters();
@@ -142,11 +154,12 @@ public class Boss : Enemy
 
             yield return new WaitForSeconds(waitTime);
 
-            // random attack either laser (5%) or spawn orbs (35%) or shield phase (60%)
+            // random attack either laser (5%) or spawn orb (55%) or shield phase (45%)
             float randomValue = Random.value;
-            if(randomValue <= 0.05f)
+            if (randomValue <= 0.05f)
             {
                 //beam
+
                 beamIndicatorLine.enabled = true;
                 beamIndicatorLine.widthMultiplier = 0;
                 LeanTween.value(gameObject, 0, beamSize.x * 0.6f, waitTime).setOnUpdate((float val) => beamIndicatorLine.widthMultiplier = val).setEase(LeanTweenType.easeInCubic);
@@ -156,10 +169,39 @@ public class Boss : Enemy
                 ShootBeam();
                 beamIndicatorLine.widthMultiplier = startWidth;
                 beamIndicatorLine.enabled = false;
-            }else if(randomValue > 0.05f && randomValue <= 0.35f)
+            }
+            else if (randomValue > 0.05f && randomValue <= 0.55f)
             {
-                //orbs
-            }else
+                //orb
+
+                Vector3 dirToPlayer = (player.position - shootPoint.position).normalized;
+                float angle = Mathf.Atan2(dirToPlayer.x, dirToPlayer.z) * Mathf.Rad2Deg;
+                Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.up);
+                var orb = LeanPool.Spawn(orbProjectile, shootPoint.position, targetRotation);
+
+                orb.gameObject.SetActive(true);
+                var rend = orb.GetComponentInChildren<Renderer>();
+                orb.InitOrb(
+                    orbAoeDamage,
+                    orbAoePrefab.gameObject,
+                    new Vector3(orbAoeSize.x, orb.transform.localScale.y, orbAoeSize.y),
+                    orbAoeScaleTime,
+                    orbSpeed,
+                    999,
+                    "Player",
+                    orbTicksPerDamage
+                );
+                orb.transform.localScale = Vector3.zero;
+                LeanTween.scale(orb.gameObject, new Vector3(orbProjectileSize, orbProjectileSize, orbProjectileSize * 0.825f), orbChargeTime * 0.9f);
+
+                orbTransform = orb.transform;
+
+                yield return new WaitForSeconds(orbChargeTime);
+
+                orb.FinishOrb();
+                orbTransform = null;
+            }
+            else
             {
                 //shield
             }
@@ -167,7 +209,6 @@ public class Boss : Enemy
             // shoot 5 bullets
         }
     }
-
 
     IEnumerator RepeatedWaveAttack(float waitTime)
     {
