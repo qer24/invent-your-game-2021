@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
+using FMODUnity;
 
 public class Boss : Enemy
 {
@@ -18,6 +19,8 @@ public class Boss : Enemy
 
     public Transform shootPoint;
     public ParticleSystem reloadParticles, shootParticles;
+
+    public GameObject warningSign;
 
     [Header("Wave attack")]
     public Projectile waveProjectile;
@@ -48,17 +51,36 @@ public class Boss : Enemy
     public int orbTicksPerDamage = 5;
 
     [Header("Shield")]
-    public GameObject shield;
+    public BossShield shield;
+    public float shieldScaleTime = 1f;
+    public LeanTweenType shieldScaleEaseType;
 
     [Header("Multishot attack")]
     public Projectile bullet;
+    public float bulletSpeed;
+    public float bulletLifetime;
+
+    [Header("Audio")]
+    [EventRef] public string warningAudio;
+    [EventRef] public string waveAttackAudio;
+    [EventRef] public string beamAttackAudio;
+    [EventRef] public string beamAttackAudioEnd;
+    [EventRef] public string spawnAddsAudio;
+    [EventRef] public string orbAttackAudio;
+    [EventRef] public string shieldAudioStart;
+    [EventRef] public string shieldAudioEnd;
+    [EventRef] public string bulletAttackAudio;
+
+    FMOD.Studio.EventInstance beamAudioInstance;
 
     Material enemyMaterial;
 
     Transform beamTransform;
-    Transform orbTransform;
+    Transform orbTransform = null;
 
     bool moving = true;
+    Vector3 shieldSize;
+    Collider mainCol;
 
     public override void Start()
     {
@@ -80,6 +102,12 @@ public class Boss : Enemy
         beamIndicatorLine.enabled = false;
 
         health.OnHealthChanged += UpdateUI;
+
+        shieldSize = shield.transform.localScale;
+        mainCol = GetComponent<Collider>();
+        shield.enemyMaterial = enemyMaterial;
+
+        beamAudioInstance = RuntimeManager.CreateInstance(beamAttackAudio);
 
         StartCoroutine(Behaviour(timeBetweenActions));
     }
@@ -114,8 +142,21 @@ public class Boss : Enemy
 
     IEnumerator Behaviour(float waitTime)
     {
+        moving = false;
+        yield return new WaitForSeconds(1f);
+
+        for (int i = 0; i < 3; i++)
+        {
+            AudioManager.Play(warningAudio, true);
+            warningSign.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+            warningSign.SetActive(false);
+            yield return new WaitForSeconds(0.2f);
+        }
+        moving = true;
+
         float distance = Vector3.Distance(transform.position, Vector3.zero);
-        rb.AddForce(transform.forward * distance * distance * 0.25f);
+        rb.AddForce(transform.forward * distance * distance * 0.5f);
         yield return new WaitForSeconds(waitTime);
         screenConfiner.enabled = true;
         //wave attack
@@ -134,21 +175,25 @@ public class Boss : Enemy
             yield return new WaitForSeconds(waitTime);
 
             ShootBeam();
+            beamAudioInstance.start();
             beamIndicatorLine.widthMultiplier = startWidth;
             beamIndicatorLine.enabled = false;
 
             moving = false;
 
             yield return new WaitForSeconds(beamLifetime);
+            beamAudioInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            AudioManager.Play(beamAttackAudioEnd, true);
+            yield return new WaitForSeconds(waitTime);
 
             // spawn pusher bois or shooty bois
 
             if (Random.value > 0.5f)
-                SpawnPushers();
+                StartCoroutine(SpawnPushers());
             else
-                SpawnShooters();
+                StartCoroutine(SpawnShooters());
 
-            yield return new WaitForSeconds(beamLifetime);
+            yield return new WaitForSeconds(waitTime * 2f);
 
             moving = true;
 
@@ -167,17 +212,24 @@ public class Boss : Enemy
                 yield return new WaitForSeconds(waitTime);
 
                 ShootBeam();
+                beamAudioInstance.start();
                 beamIndicatorLine.widthMultiplier = startWidth;
                 beamIndicatorLine.enabled = false;
+
+                yield return new WaitForSeconds(beamLifetime);
+                beamAudioInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                AudioManager.Play(beamAttackAudioEnd, true);
+                yield return new WaitForSeconds(waitTime);
             }
             else if (randomValue > 0.05f && randomValue <= 0.55f)
             {
                 //orb
 
+
                 Vector3 dirToPlayer = (player.position - shootPoint.position).normalized;
                 float angle = Mathf.Atan2(dirToPlayer.x, dirToPlayer.z) * Mathf.Rad2Deg;
                 Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.up);
-                var orb = LeanPool.Spawn(orbProjectile, shootPoint.position, targetRotation);
+                var orb = Instantiate(orbProjectile, shootPoint.position, targetRotation);
 
                 orb.gameObject.SetActive(true);
                 var rend = orb.GetComponentInChildren<Renderer>();
@@ -192,6 +244,7 @@ public class Boss : Enemy
                     orbTicksPerDamage
                 );
                 orb.transform.localScale = Vector3.zero;
+                AudioManager.Play(orbAttackAudio, true);
                 LeanTween.scale(orb.gameObject, new Vector3(orbProjectileSize, orbProjectileSize, orbProjectileSize * 0.825f), orbChargeTime * 0.9f);
 
                 orbTransform = orb.transform;
@@ -204,9 +257,35 @@ public class Boss : Enemy
             else
             {
                 //shield
+
+                moving = false;
+
+                shield.gameObject.SetActive(true);
+                mainCol.enabled = false;
+
+                shield.transform.localScale = Vector3.zero;
+
+                LeanTween.scale(shield.gameObject, shieldSize, shieldScaleTime).setEase(shieldScaleEaseType);
+                AudioManager.Play(shieldAudioStart, true);
+
+                yield return new WaitForSeconds(shieldScaleTime + waitTime * 4f);
+
+                LeanTween.scale(shield.gameObject, Vector3.zero, shieldScaleTime * 0.25f).setOnComplete(() => shield.gameObject.SetActive(false));
+
+                mainCol.enabled = true;
+                yield return new WaitForSeconds(shieldScaleTime * 0.25f);
+
+                moving = true;
             }
 
-            // shoot 5 bullets
+            yield return new WaitForSeconds(waitTime);
+
+            reloadParticles.Play();
+            yield return new WaitForSeconds(waitTime);
+            AudioManager.Play(bulletAttackAudio, true);
+            ShootBullets();
+
+            yield return new WaitForSeconds(waitTime);
         }
     }
 
@@ -229,7 +308,7 @@ public class Boss : Enemy
     void ShootWave(float angle, Vector3 pos)
     {
         shootParticles.Play();
-        //AudioManager.Play("event:/SFX/Enemies/EnemyShoot", true);
+        AudioManager.Play(waveAttackAudio, true);
 
         var proj = LeanPool.Spawn(waveProjectile, pos, shootPoint.rotation);
         var rend = proj.GetComponentInChildren<Renderer>();
@@ -248,7 +327,8 @@ public class Boss : Enemy
 
     void ShootBeam()
     {
-        var aoe = LeanPool.Spawn(beamPrefab, transform.position, transform.rotation);
+        var aoe = LeanPool.Spawn(beamPrefab, transform.position, transform.rotation, null);
+        aoe.gameObject.SetActive(true);
         var rend = aoe.GetComponentInChildren<Renderer>();
         rend.material = enemyMaterial;
         rend.material.SetFloat("_NoiseScale", 0f);
@@ -259,10 +339,13 @@ public class Boss : Enemy
         beamTransform = aoe.transform;
     }
 
-    void SpawnPushers()
+    IEnumerator SpawnPushers()
     {
+        yield return null;
         for (int i = 0; i < 2; i++)
         {
+            AudioManager.Play(spawnAddsAudio, true);
+
             shootParticles.transform.position = spawnPositions[i].position;
             shootParticles.Play();
 
@@ -270,13 +353,18 @@ public class Boss : Enemy
             enemy.enemyCard = pusherCard;
             enemy.expValue = 1;
             Room.enemiesAlive.Add(enemy.gameObject);
+
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
-    void SpawnShooters()
+    IEnumerator SpawnShooters()
     {
+        yield return null;
         for (int i = 0; i < 2; i++)
         {
+            AudioManager.Play(spawnAddsAudio, true);
+
             shootParticles.transform.position = spawnPositions[i].position;
             shootParticles.Play();
 
@@ -284,6 +372,30 @@ public class Boss : Enemy
             enemy.enemyCard = shooterCard;
             enemy.expValue = 1;
             Room.enemiesAlive.Add(enemy.gameObject);
+
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    void ShootBullets()
+    {
+        shootParticles.transform.position = shootPoint.position;
+        shootParticles.Play();
+
+        for (int i = -2; i <= 2; i++)
+        {
+            float angle = i * 20;
+
+            var spawnedBullet = LeanPool.Spawn(bullet, shootPoint.position, shootPoint.rotation * Quaternion.AngleAxis(angle, Vector3.up));
+            spawnedBullet.GetComponent<Renderer>().material = enemyMaterial;
+            spawnedBullet.GetComponent<Rigidbody>().AddForce(spawnedBullet.transform.forward * enemyCard.projectileSpeed);
+            spawnedBullet.transform.localScale *= 1.6f;
+            spawnedBullet.GetComponent<Projectile>().Init(
+                enemyCard.projectileDamage,
+                bulletSpeed,
+                bulletLifetime,
+                playerTag
+            );
         }
     }
 

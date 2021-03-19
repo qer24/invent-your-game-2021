@@ -10,10 +10,10 @@ public class Projectile : MonoBehaviour
     [SerializeField] AnimationCurve scalingCurve = null;
     [SerializeField] GameObject impactPrefab = null;
 
-    protected float damage = 0;
+    [HideInInspector] public float damage = 0;
 
-    protected float velocity = 500;
-    float totalLifeTime = 5f;
+    [HideInInspector] public float velocity = 500;
+    [HideInInspector] public float totalLifeTime = 5f;
     float lifeTimeLeft = 5f;
 
     float scaleThreshold = 2f;

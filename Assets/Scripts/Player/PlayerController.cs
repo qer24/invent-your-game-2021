@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
     {
         screenConfiner.OnTeleportStart -= DisableParticles;
         screenConfiner.OnTeleportEnd -= EnableParticles;
+
+        humInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 
     private void FixedUpdate()

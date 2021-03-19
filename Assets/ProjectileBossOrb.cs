@@ -97,6 +97,6 @@ public class ProjectileBossOrb : Projectile
         aoe.constantDamage = true;
         aoe.ticksPerDamage = aoeTicksPerDamage;
 
-        Despawn();
+        Destroy(gameObject);
     }
 }
