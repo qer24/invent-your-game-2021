@@ -44,7 +44,7 @@ public class ModSlot : MonoBehaviour, IDropHandler
 
             draggedMod.transform.SetParent(transform);
             draggedMod.isInSlot = true;
-            LeanTween.move(draggedMod.gameObject, transform.position, 0.1f).setEase(LeanTweenType.easeOutExpo);
+            LeanTween.moveLocal(draggedMod.gameObject, Vector3.zero, 0.1f).setEase(LeanTweenType.easeOutExpo);
 
             draggedMod.GetComponent<Mod>().AttachWeapon(weapon);
 

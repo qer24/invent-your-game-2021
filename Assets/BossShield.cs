@@ -20,7 +20,7 @@ public class BossShield : MonoBehaviour
             rot = new Vector3(rot.x, rot.y + randomRot, rot.z);
             proj.transform.rotation = Quaternion.Euler(rot);
 
-            proj.Init(proj.damage, proj.velocity, proj.totalLifeTime, "Player");
+            proj.Init(proj.damage * 0.25f, proj.velocity, proj.totalLifeTime, "Player");
             proj.GetComponent<Renderer>().material = enemyMaterial;
         }
     }

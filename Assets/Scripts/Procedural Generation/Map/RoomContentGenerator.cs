@@ -101,7 +101,6 @@ namespace ProcGen
             img.color = mainColor;
         }
 
-        //TODO: Proc gen
         private void PickWaves()
         {
             switch (type)
@@ -113,6 +112,13 @@ namespace ProcGen
                     break;
                 case RoomTypes.Boss:
                     thisRoom.waveCount = 0;
+                    thisRoom.waves = new List<ProceduralWave>();
+                    thisRoom.waves.Add(new ProceduralWave
+                    (
+                        DifficultyManager.Instance.currentDifficulty,
+                        LevelManager.Instance.currentLevel.bossCards,
+                        1)
+                    );
                     break;
             }
         }

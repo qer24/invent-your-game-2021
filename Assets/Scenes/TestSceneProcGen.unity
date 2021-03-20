@@ -2653,6 +2653,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9b945c34d96f4094da349a66f1132b06, type: 2}
   - {fileID: 11400000, guid: 31b5442a1fc08b84f95ca24602f13d6d, type: 2}
   - {fileID: 11400000, guid: 80ab4834f02639d4c83d81b64d7044ce, type: 2}
+  bossCards:
+  - {fileID: 11400000, guid: 2561ff9fe76bc3a489fe53e9499cf21c, type: 2}
 --- !u!1 &1317387948
 GameObject:
   m_ObjectHideFlags: 0

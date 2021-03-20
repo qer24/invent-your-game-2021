@@ -11,13 +11,13 @@ namespace ProcGen
     public class Room : MonoBehaviour
     {
         public float waveCount = 2;
-        List<ProceduralWave> waves;
+        public List<ProceduralWave> waves;
 
         public float maxTimeBetweenWaves = 15;
 
         public ProceduralRoom mapRoom = null;
 
-        RoomManager roomManager;
+        [HideInInspector] public RoomManager roomManager;
         int id = 0;
 
         public static List<GameObject> enemiesAlive = new List<GameObject>();
@@ -38,16 +38,19 @@ namespace ProcGen
             waveTimer = 3;
             waveFinished = true;
 
-            enemiesAlive = new List<GameObject>();
-            waves = new List<ProceduralWave>();
-            for (int i = 0; i < waveCount; i++)
+            if(mapRoom.type != RoomTypes.Boss)
             {
-                waves.Add(new ProceduralWave(
-                    DifficultyManager.Instance.currentDifficulty, 
-                    LevelManager.Instance.currentLevel.allEnemyCardsInLevel, 
-                    4 + DifficultyManager.Instance.currentDifficulty * 2));
+                waves = new List<ProceduralWave>();
+                for (int i = 0; i < waveCount; i++)
+                {
+                    waves.Add(new ProceduralWave(
+                        DifficultyManager.Instance.currentDifficulty,
+                        LevelManager.Instance.currentLevel.allEnemyCardsInLevel,
+                        4 + DifficultyManager.Instance.currentDifficulty * 2));
+                }
             }
 
+            enemiesAlive = new List<GameObject>();
             dropsInThisRoom = new List<GameObject>();
 
             completed = false;

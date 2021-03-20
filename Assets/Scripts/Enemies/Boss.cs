@@ -82,6 +82,8 @@ public class Boss : Enemy
     Vector3 shieldSize;
     Collider mainCol;
 
+    public static Action OnBossDeath;
+
     public override void Start()
     {
         base.Start();
@@ -108,6 +110,8 @@ public class Boss : Enemy
         shield.enemyMaterial = enemyMaterial;
 
         beamAudioInstance = RuntimeManager.CreateInstance(beamAttackAudio);
+
+        transform.position = RoomManager.CurrentRoom.roomManager.WorldPositionFromSpawnPoint(RoomSpawnPoints.Right);
 
         StartCoroutine(Behaviour(timeBetweenActions));
     }
@@ -143,7 +147,7 @@ public class Boss : Enemy
     IEnumerator Behaviour(float waitTime)
     {
         moving = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
 
         for (int i = 0; i < 3; i++)
         {
@@ -153,6 +157,7 @@ public class Boss : Enemy
             warningSign.SetActive(false);
             yield return new WaitForSeconds(0.2f);
         }
+        healthSlider.gameObject.SetActive(true);        
         moving = true;
 
         float distance = Vector3.Distance(transform.position, Vector3.zero);
@@ -396,6 +401,20 @@ public class Boss : Enemy
                 bulletLifetime,
                 playerTag
             );
+        }
+    }
+
+    private void OnDestroy()
+    {
+        OnBossDeath?.Invoke();
+        beamAudioInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        if(beamTransform != null)
+        {
+            Destroy(beamTransform.gameObject);
+        }
+        if(orbTransform != null)
+        {
+            Destroy(orbTransform.gameObject);
         }
     }
 

@@ -5,4 +5,5 @@ using UnityEngine;
 public class Level : MonoBehaviour
 {
     public EnemyCard[] allEnemyCardsInLevel;
+    public EnemyCard[] bossCards;
 }

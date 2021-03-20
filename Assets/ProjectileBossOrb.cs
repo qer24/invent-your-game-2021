@@ -37,6 +37,8 @@ public class ProjectileBossOrb : Projectile
         despawnOnCollision = false;
 
         gfx = GetComponentInChildren<Renderer>().transform;
+
+        Boss.OnBossDeath += () => Destroy(gameObject);
     }
 
     protected override void Update()
@@ -97,6 +99,7 @@ public class ProjectileBossOrb : Projectile
         aoe.constantDamage = true;
         aoe.ticksPerDamage = aoeTicksPerDamage;
 
+        Boss.OnBossDeath += () => LeanTween.scale(aoe.gameObject, Vector3.zero, 0.5f).setOnComplete(() => Destroy(aoe.gameObject));
         Destroy(gameObject);
     }
 }
