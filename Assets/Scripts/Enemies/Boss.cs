@@ -138,7 +138,7 @@ public class Boss : Enemy
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
         if (moving)
-            rb.AddForce(transform.forward * moveForce * 0.02f);
+            rb.AddForce(transform.forward * moveForce * 2f * Time.deltaTime);
 
         if (beamTransform != null)
         {
