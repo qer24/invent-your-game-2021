@@ -43,7 +43,7 @@ namespace ProcGen
         static Vector3[] spawnPointPositions;
 
         public ProceduralRoom[,] roomMap;
-        Room[] allRoomsInLevel;
+        [HideInInspector] public Room[] allRoomsInLevel;
         public static Room CurrentRoom = null;
 
         Camera mainCam;

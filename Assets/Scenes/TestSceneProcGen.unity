@@ -1371,6 +1371,7 @@ MonoBehaviour:
   - {x: -0.1, y: 1}
   - {x: 0, y: 1.1}
   - {x: 0.25, y: 1.1}
+  allRoomsInLevel: []
 --- !u!1 &687164519
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,6 +1401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2cfd018ce0cb94bacc1e6c8e9ee733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomManager: {fileID: 662062480}
 --- !u!4 &687164521
 Transform:
   m_ObjectHideFlags: 0

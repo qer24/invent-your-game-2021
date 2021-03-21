@@ -61,7 +61,7 @@ public class BombEnemy : Enemy
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            GetComponent<Damagable>().TakeDamage(1);
+            GetComponent<Damagable>().TakeDamage(health.currentHealth);
         }
     }
 

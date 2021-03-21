@@ -31,18 +31,12 @@ public abstract class Enemy : MonoBehaviour
         health.currentHealth = FinalHealth;
         health.OnDeath += OnDeath;
 
-        PlayerHealth.OnPlayerDeath += Disable;
+        PlayerHealth.OnPlayerDeath += () => { if (this != null) enabled = false; };
         damagable.OnTakeDamage += OnDamageTaken;
-    }
-
-    void Disable()
-    {
-        enabled = false;
     }
 
     private void OnDestroy()
     {
-        PlayerHealth.OnPlayerDeath -= Disable;
         if(damagable != null)
             damagable.OnTakeDamage -= OnDamageTaken;
     }
