@@ -29,6 +29,7 @@ namespace ProcGen
         [HideInInspector] public List<GameObject> dropsInThisRoom;
 
         bool completed = false;
+        bool waveGenerated = false;
 
         private void Start()
         {
@@ -38,7 +39,16 @@ namespace ProcGen
             waveTimer = 3;
             waveFinished = true;
 
-            if(mapRoom.type != RoomTypes.Boss)
+            enemiesAlive = new List<GameObject>();
+            dropsInThisRoom = new List<GameObject>();
+
+            completed = false;
+            enabled = false;
+        }
+
+        public void GenerateWaves()
+        {
+            if (mapRoom.type != RoomTypes.Boss)
             {
                 waves = new List<ProceduralWave>();
                 for (int i = 0; i < waveCount; i++)
@@ -46,15 +56,10 @@ namespace ProcGen
                     waves.Add(new ProceduralWave(
                         DifficultyManager.Instance.currentDifficulty,
                         LevelManager.Instance.currentLevel.allEnemyCardsInLevel,
-                        4 + DifficultyManager.Instance.currentDifficulty * 2));
+                        2 + DifficultyManager.Instance.currentDifficulty * 2));
                 }
             }
-
-            enemiesAlive = new List<GameObject>();
-            dropsInThisRoom = new List<GameObject>();
-
-            completed = false;
-            enabled = false;
+            waveGenerated = true;
         }
 
         public void DisableDrops()
@@ -69,7 +74,7 @@ namespace ProcGen
 
         private void Update()
         {
-            if (completed || PlayerHealth.IsPlayerDead) return;
+            if (completed || PlayerHealth.IsPlayerDead || !waveGenerated) return;
 
             for (int i = 0; i < enemiesAlive.Count; i++)
             {
@@ -126,6 +131,7 @@ namespace ProcGen
         public void GoToThisRoom()
         {
             roomManager.GoToRoom(id);
+            GenerateWaves();
         }
 
         void NextWave()

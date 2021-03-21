@@ -17,16 +17,18 @@ public abstract class Enemy : MonoBehaviour
     protected KeepOnScreen screenConfiner;
     protected Damagable damagable;
 
+    protected float FinalHealth { get => enemyCard.maxHealth * (1 + 0.1f * DifficultyManager.Instance.currentDifficulty); }
+
     public virtual void Start()
     {
-        player = GameObject.FindGameObjectWithTag(playerTag).GetComponent<Rigidbody>();
+        player = PlayerPersistencyMenager.Instance.GetComponent<Rigidbody>();
         rb = GetComponent<Rigidbody>();
         health = GetComponent<Health>();
         screenConfiner = GetComponent<KeepOnScreen>();
         damagable = GetComponent<Damagable>();
 
         health.stats = enemyCard;
-        health.currentHealth = enemyCard.maxHealth;
+        health.currentHealth = FinalHealth;
         health.OnDeath += OnDeath;
 
         PlayerHealth.OnPlayerDeath += Disable;

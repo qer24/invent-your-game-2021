@@ -16,6 +16,7 @@ public class CinemachineShake : MonoBehaviour {
     private void Awake()
     {
         Instance = this;
+
         cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
         cinemachineBasicMultiChannelPerlin = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }

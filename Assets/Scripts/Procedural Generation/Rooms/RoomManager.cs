@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace ProcGen
@@ -58,7 +59,7 @@ namespace ProcGen
         void Start()
         {
             mainCam = Camera.main;
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            player = PlayerPersistencyMenager.Instance.GetComponent<PlayerController>();
             ConvertScreenSpawnpointsToWorld();
 
             allRoomsInLevel = GetComponentsInChildren<Room>();
@@ -208,32 +209,48 @@ namespace ProcGen
             player.StopMovingToPoint();
         }
 
-        // TODO: obliterate, cease this function, let it be gone.
-        private void OnDrawGizmosSelected()
+        public void GoToNextLevel() => StartCoroutine(PlayerTravelToNextLevel());
+
+        IEnumerator PlayerTravelToNextLevel()
         {
-            if (spawnPointViewportPositions == null) return;
-            if (spawnPointViewportPositions.Length < 1) return;
+            player.StartMovingToPoint(WorldPositionFromSpawnPoint(RoomSpawnPoints.Random));
 
-            mainCam = Camera.main;
-            ConvertScreenSpawnpointsToWorld();
+            AudioManager.Play("event:/SFX/Player/PlayerRoomTransition", true);
+            yield return new WaitForSeconds(1f);
+            roomTransitionUI.SetTrigger("Fade");
+            yield return new WaitForSeconds(0.5f);
+            player.StopMovingToPoint();
 
-            Gizmos.color = Color.cyan;
-            foreach (var position in spawnPointPositions)
-            {
-                Gizmos.DrawWireSphere(position, 5f);
-            }
-
-            if (roomMap == null) return;
-
-            Gizmos.color = Color.white;
-            foreach (ProceduralRoom room in roomMap)
-            {
-                if (room == null) continue;
-
-                var pos = new Vector3(room.gridPos.x, 0, room.gridPos.y);
-
-                Gizmos.DrawCube(pos, Vector3.one * 0.9f);
-            }
+            DifficultyManager.Instance.currentDifficulty++;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+
+        // TODO: obliterate, cease this function, let it be gone.
+        //private void OnDrawGizmosSelected()
+        //{
+        //    if (spawnPointViewportPositions == null) return;
+        //    if (spawnPointViewportPositions.Length < 1) return;
+
+        //    mainCam = Camera.main;
+        //    ConvertScreenSpawnpointsToWorld();
+
+        //    Gizmos.color = Color.cyan;
+        //    foreach (var position in spawnPointPositions)
+        //    {
+        //        Gizmos.DrawWireSphere(position, 5f);
+        //    }
+
+        //    if (roomMap == null) return;
+
+        //    Gizmos.color = Color.white;
+        //    foreach (ProceduralRoom room in roomMap)
+        //    {
+        //        if (room == null) continue;
+
+        //        var pos = new Vector3(room.gridPos.x, 0, room.gridPos.y);
+
+        //        Gizmos.DrawCube(pos, Vector3.one * 0.9f);
+        //    }
+        //}
     }
 }

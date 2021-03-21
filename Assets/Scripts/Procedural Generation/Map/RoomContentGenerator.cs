@@ -112,13 +112,13 @@ namespace ProcGen
                     break;
                 case RoomTypes.Boss:
                     thisRoom.waveCount = 0;
-                    thisRoom.waves = new List<ProceduralWave>();
-                    thisRoom.waves.Add(new ProceduralWave
-                    (
-                        DifficultyManager.Instance.currentDifficulty,
-                        LevelManager.Instance.currentLevel.bossCards,
+                    thisRoom.waves = new List<ProceduralWave>
+                    { new ProceduralWave
+                        (
+                            DifficultyManager.Instance.currentDifficulty,
+                            LevelManager.Instance.currentLevel.bossCards,
                         1)
-                    );
+                    };
                     break;
             }
         }

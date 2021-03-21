@@ -88,6 +88,10 @@ public class Boss : Enemy
     {
         base.Start();
 
+        timeBetweenActions = (timeBetweenActions * 0.5f) + (timeBetweenActions * 0.5f - (0.025f * DifficultyManager.Instance.currentDifficulty));
+        moveForce *= (1 + 0.05f * DifficultyManager.Instance.currentDifficulty);
+        rotationSpeed *= (1 + 0.05f * DifficultyManager.Instance.currentDifficulty);
+
         Vector3 dir = Vector3.zero.normalized - transform.position;
         float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
         Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.up);
@@ -110,6 +114,9 @@ public class Boss : Enemy
         shield.enemyMaterial = enemyMaterial;
 
         beamAudioInstance = RuntimeManager.CreateInstance(beamAttackAudio);
+
+        PauseManager.OnPause += () => beamAudioInstance.setPaused(true);
+        PauseManager.OnUnpause += () => beamAudioInstance.setPaused(false);
 
         transform.position = RoomManager.CurrentRoom.roomManager.WorldPositionFromSpawnPoint(RoomSpawnPoints.Right);
 

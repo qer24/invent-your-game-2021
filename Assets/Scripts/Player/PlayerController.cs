@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -40,6 +41,13 @@ public class PlayerController : MonoBehaviour
         humInstance = RuntimeManager.CreateInstance(shipHummingSound);
         humInstance.start();
         humInstance.setPaused(true);
+
+        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode loadSceneMode) => 
+        {
+            mainCam = Camera.main;
+            transform.position = Vector3.zero;
+            rb.velocity = Vector3.zero;
+        };
     }
 
     private void OnDisable()
@@ -52,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (ProcGen.MapPanel.IsOpen || ModDrop.DraggingMod || PlayerUpgradeManager.IsPanelOpen)
+        if (ProcGen.MapPanel.IsOpen || ModDrop.DraggingMod || PlayerUpgradeManager.IsPanelOpen || PauseManager.paused)
         {
             humInstance.getPaused(out var pause);
             if (!pause)

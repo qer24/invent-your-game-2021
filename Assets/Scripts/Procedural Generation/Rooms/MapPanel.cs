@@ -33,5 +33,12 @@ namespace ProcGen
 
             LeanTween.scaleX(gameObject, 0, duration).setEase(outType).setIgnoreTimeScale(true).setOnComplete(callback);
         }
+
+        public void Close()
+        {
+            IsOpen = false;
+
+            LeanTween.scaleX(gameObject, 0, duration).setEase(outType).setIgnoreTimeScale(true);
+        }
     }
 }

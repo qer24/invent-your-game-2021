@@ -5,13 +5,6 @@ using UnityEngine;
 
 public class TestAoeWeapon : Weapon
 {
-    Camera mainCam = null;
-
-    private void Start()
-    {
-        mainCam = Camera.main;
-    }
-
     public override void Attack(string enemyTag)
     {
         Vector3 pos = mainCam.ScreenToWorldPoint(Input.mousePosition);

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class KeepOnScreen : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class KeepOnScreen : MonoBehaviour
 
     void Start()
     {
+        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode loadSceneMode) => mainCam = Camera.main;
         mainCam = Camera.main;
     }
 

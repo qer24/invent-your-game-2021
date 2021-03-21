@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -29,6 +30,7 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
+        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode loadSceneMode) => mainCam = Camera.main;
         mainCam = Camera.main;
         switchCooldownTimer = tweenDuration;
 

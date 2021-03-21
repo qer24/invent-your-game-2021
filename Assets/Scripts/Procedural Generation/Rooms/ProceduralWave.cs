@@ -51,6 +51,13 @@ namespace ProcGen
                 EnemyCard randomEnemy = GetRandomWeightedEnemy(excludedList.ToArray());
                 //if can afford
                 int cost = randomEnemy.cost;
+                if (cost < 0.15f * creditsLeft)
+                {
+                    // TOO CHEAP
+
+                    iterations--;
+                    continue;
+                }
                 if(cost <= creditsLeft)
                 {
                     //var excludedHashset = new HashSet<RoomSpawnPoints>();

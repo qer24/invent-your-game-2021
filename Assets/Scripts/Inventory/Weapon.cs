@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public enum WeaponRarities
@@ -121,12 +122,17 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
+    protected Camera mainCam;
+
     private void Awake()
     {
         damageModifiers = new List<DamageModifier>();
         damageModifiers.Add(new DamageModifier(0, RarityMultiplier));
 
         UpdateRarityString();
+
+        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode loadSceneMode) => mainCam = Camera.main;
+        mainCam = Camera.main;
     }
 
     public void GenerateWeapon()
