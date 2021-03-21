@@ -39,6 +39,8 @@ public class InventoryManager : MonoBehaviour
 
     public void Update()
     {
+        if (PauseManager.paused) return;
+
         currentClosestWeaponPickup = GetClosestWeaponPickup();
         if (currentClosestWeaponPickup != null)
         {

@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
             transform.position = Vector3.zero;
             rb.velocity = Vector3.zero;
         };
+
+        PauseManager.OnPause += () => humInstance.setPaused(true);
     }
 
     private void OnDisable()
@@ -60,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (ProcGen.MapPanel.IsOpen || ModDrop.DraggingMod || PlayerUpgradeManager.IsPanelOpen || PauseManager.paused)
+        if (ProcGen.MapPanel.IsOpen || ModDrop.DraggingMod || PlayerUpgradeManager.IsPanelOpen)
         {
             humInstance.getPaused(out var pause);
             if (!pause)
@@ -128,7 +130,8 @@ public class PlayerController : MonoBehaviour
         var colRb = collidee.GetComponent<Rigidbody>();
         float impactForce = colRb.velocity.magnitude * 0.5f * rb.velocity.magnitude * 0.5f;
         rb.velocity = Vector3.zero;
-        rb.AddForce(-direction * knockbackForce * impactForce * 0.0005f, ForceMode.Impulse);
+        rb.AddForce(-direction * knockbackForce * impactForce * 0.00035f, ForceMode.Impulse);
+        colRb.velocity = Vector3.zero;
         colRb.AddForce(direction * knockbackForce * impactForce * 0.0001f, ForceMode.Impulse);
     }
 

@@ -31,14 +31,22 @@ namespace ProcGen
         {
             IsOpen = false;
 
-            LeanTween.scaleX(gameObject, 0, duration).setEase(outType).setIgnoreTimeScale(true).setOnComplete(callback);
+            LeanTween.scaleX(gameObject, 0, duration).setEase(outType)
+                .setIgnoreTimeScale(true)
+                .setOnComplete(() => 
+                {
+                    transform.localScale = new Vector3(0, transform.localScale.y, transform.localScale.z);
+                    callback();
+                });
         }
 
         public void Close()
         {
             IsOpen = false;
 
-            LeanTween.scaleX(gameObject, 0, duration).setEase(outType).setIgnoreTimeScale(true);
+            LeanTween.scaleX(gameObject, 0, duration).setEase(outType)
+                .setIgnoreTimeScale(true)
+                .setOnComplete(() => transform.localScale = new Vector3(0, transform.localScale.y, transform.localScale.z));
         }
     }
 }

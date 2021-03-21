@@ -17,6 +17,7 @@ public class HomingProjectileBehaviour : ProjectileBehaviour
 
     private void LateUpdate()
     {
+        if (PauseManager.paused) return;
         if (seekDistance <= 0) return;
 
         Transform target = FindClosestTarget();

@@ -29,7 +29,6 @@ public class PlayerDamagable : MonoBehaviour, IDamagable
 
         if (immunityTimer > immunityTime)
         {
-            col.enabled = true;
             immune = false;
             immunityTimer = 0;
         }
@@ -53,7 +52,6 @@ public class PlayerDamagable : MonoBehaviour, IDamagable
         OnTakeDamage?.Invoke();
         hp.RemoveHealth(amount);
 
-        col.enabled = false;
         immune = true;
     }
 }

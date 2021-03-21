@@ -82,6 +82,7 @@ public class TestEnemy : Enemy
     }
     void Update()
     {
+        if (PauseManager.paused) return;
         if (currentState == TestEnemyState.Idle) return;
 
         Vector3 dirToPlayer = PredictedPosition(player.position, player.velocity, enemyCard.projectileSpeed) - transform.position;
