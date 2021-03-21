@@ -134,7 +134,7 @@ public class SnakeEnemy : Enemy
             targetRotation = Quaternion.AngleAxis(angle, Vector3.up);
 
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-            rb.AddForce(transform.forward * moveForce * 0.02f);
+            rb.AddForce(transform.forward * moveForce * 2f * Time.deltaTime);
         }
     }
 

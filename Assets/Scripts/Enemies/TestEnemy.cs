@@ -97,13 +97,13 @@ public class TestEnemy : Enemy
             case TestEnemyState.Reloading:
                 //rotate towards player for 1-2sec - done
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-                rb.AddForce(transform.forward * moveForce * 0.0025f);
+                rb.AddForce(transform.forward * moveForce * 0.25f * Time.deltaTime);
                 break;
 
             case TestEnemyState.Escaping:
                 //rotate in a random direction away from the player and escape - done
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation * Quaternion.AngleAxis(randomAngle * randomSign, Vector3.up), rotationSpeed * Time.deltaTime);
-                rb.AddForce(transform.forward * moveForce * 0.02f);
+                rb.AddForce(transform.forward * moveForce * 2f * Time.deltaTime);
                 break;
         }
     }
