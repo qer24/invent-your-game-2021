@@ -602,7 +602,7 @@ MonoBehaviour:
   m_text: Gun
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 033f086aa7a78b74e92a514ac12ba08c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -980,7 +980,7 @@ MonoBehaviour:
     \nbullets."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 033f086aa7a78b74e92a514ac12ba08c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1599,15 +1599,20 @@ MonoBehaviour:
   baseAttackRate: 0.2
   isCharged: 0
   isProjectile: 1
+  isAoe: 0
   rarity: 0
   rodzajnik: 2
   rodzajnikString: 
   rarityString: Common
   modSlots: 3
+  onAttackAudio: 
   timeToCharge: 0.5
   projectilePrefab: {fileID: 8680174522787570404, guid: fa1e27bebc4a44f48b775d8635ffccec, type: 3}
   projectileSpeed: 80
   projectileLifetime: 2
+  aoePrefab: {fileID: 0}
+  size: {x: 1, y: 1}
+  aoeLifeTime: 0.25
 --- !u!114 &7552023131095397022
 MonoBehaviour:
   m_ObjectHideFlags: 0
