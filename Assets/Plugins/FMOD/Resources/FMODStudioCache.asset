@@ -490,7 +490,6 @@ MonoBehaviour:
   - {fileID: 3387716632853148843}
   - {fileID: 3317143177458439958}
   EditorEvents:
-  - {fileID: 7851719369351475274}
   - {fileID: -8900901451709586521}
   - {fileID: 8200093760143234683}
   - {fileID: 8068562801445388890}
@@ -528,7 +527,7 @@ MonoBehaviour:
   - {fileID: 3317143177458439958}
   StringsBanks:
   - {fileID: 3387716632853148843}
-  stringsBankWriteTime: 637517178066164211
+  stringsBankWriteTime: 637520194634118806
   cacheVersion: 3
 --- !u!114 &56635849749720651
 MonoBehaviour:
@@ -721,11 +720,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637517178066094280
+  lastModified: 637520194634048803
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 283968
+    Value: 277280
   Exists: 1
 --- !u!114 &3387716632853148843
 MonoBehaviour:
@@ -741,11 +740,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637517178066164211
+  lastModified: 637520194634118806
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2324
+    Value: 2338
   Exists: 1
 --- !u!114 &3579225909492302592
 MonoBehaviour:
@@ -967,8 +966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/SFX/Test
   guid: ca7890aa62e6c341abdd014715f84ae8
-  Banks:
-  - {fileID: 3317143177458439958}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 1

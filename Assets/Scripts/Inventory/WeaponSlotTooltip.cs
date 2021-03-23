@@ -41,7 +41,7 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     IEnumerator ForceReloadTooltip()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return null;
 
         var currentLocale = LocalizationSettings.SelectedLocale;
         //hack to refresh the localised string database

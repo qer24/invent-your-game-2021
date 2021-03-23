@@ -53,10 +53,14 @@
 			<destination>{f9fdab98-3ee5-466e-a64d-1b7338c61e0c}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{684f5b60-7d21-470a-90ca-c7795c14c64b}</destination>
+			<destination>{cbe2f96b-a92f-4bf9-85e4-aae439b27117}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{92ce89c4-f455-4835-b7b4-a9fd2022e55e}" />
+	<object class="EventAutomatableProperties" id="{92ce89c4-f455-4835-b7b4-a9fd2022e55e}">
+		<property name="triggerCooldown">
+			<value>80</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{daad18dc-d8f3-49a2-8708-378bc0b6f90a}" />
 	<object class="GroupTrack" id="{2d6442eb-8fb4-4829-b974-56df31249f57}">
 		<relationship name="modules">
@@ -131,7 +135,7 @@
 			<value>pitch</value>
 		</property>
 		<property name="amount">
-			<value>20</value>
+			<value>2.5</value>
 		</property>
 	</object>
 	<object class="MixerBusEffectChain" id="{3906f136-ef00-45eb-af86-4fe4f723de8a}">
