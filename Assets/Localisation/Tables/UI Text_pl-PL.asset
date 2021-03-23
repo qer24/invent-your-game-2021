@@ -99,7 +99,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 12846727139704832
-    m_Localized: "Pe\u0142ny ekran|W oknie|W oknie bez ramek"
+    m_Localized: "Pe\u0142ny ekran|Okno bez ramek|Okno"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12875254127935488
+    m_Localized: Graj
     m_Metadata:
       m_Items: []
   references:

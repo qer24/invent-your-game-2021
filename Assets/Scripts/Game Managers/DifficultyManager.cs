@@ -35,4 +35,10 @@ public class DifficultyManager : MonoBehaviour
             return;
         }
     }
+
+    public void Restart()
+    {
+        currentDifficulty = 1;
+        roomsCompleted = -1;
+    }
 }

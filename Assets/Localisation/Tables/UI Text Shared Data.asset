@@ -101,6 +101,10 @@ MonoBehaviour:
     m_Key: Fullscreen Mode Dropdown
     m_Metadata:
       m_Items: []
+  - m_Id: 12875254127935488
+    m_Key: Play
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

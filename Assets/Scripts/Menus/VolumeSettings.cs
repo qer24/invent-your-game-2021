@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class VolumeSettings : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class VolumeSettings : MonoBehaviour
 
     [SerializeField] Toggle muteInBackgroundToggle = null;
 
+    float time;
+
     private void Awake()
     {
         Music = RuntimeManager.GetBus("bus:/Master/Music");
@@ -30,6 +33,11 @@ public class VolumeSettings : MonoBehaviour
 
         SetVolume();
         UpdateUI();
+
+        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode loadSceneMode) => 
+        {
+            time = 0;
+        };
     }
 
     public void SetVolume()
@@ -45,9 +53,14 @@ public class VolumeSettings : MonoBehaviour
         SetVolume();
     }
 
+    private void Update()
+    {
+        if (time < 1) time += Time.deltaTime;
+    }
+
     public void UpdateSFXVolume(float vol)
     {
-        if(Time.frameCount > 10)
+        if(time >= 1)
             AudioManager.Play(sfxTest, true);
 
         sfxVolume = vol;

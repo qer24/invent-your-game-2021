@@ -17,8 +17,17 @@ namespace ProcGen
         public Transform mapRoot;
         public RoomManager roomManager;
 
-        void Start()
+        bool doneRooms = false;
+        bool doneMap = false;
+        public static bool doneGenerating = false;
+
+        IEnumerator Start()
         {
+            doneGenerating = false;
+            doneRooms = false;
+            doneMap = false;
+            yield return null;
+
             if (numberOfRooms >= (worldSize.x * 2) * (worldSize.y * 2))
             {
                 // make sure we dont try to make more rooms than can fit in our grid
@@ -29,10 +38,20 @@ namespace ProcGen
             gridSizeY = Mathf.RoundToInt(worldSize.y);
 
             CreateRooms(); //lays out the actual map
+            while (!doneRooms)
+            {
+                yield return null;
+            }
             DrawMap(); //instantiates objects to make up a map
                        //GetComponent<SheetAssigner>().Assign(rooms); //passes room info to another script which handles generatating the level geometry
+            while (!doneMap)
+            {
+                yield return null;
+            }
             roomManager.roomMap = rooms;
             roomManager.enabled = true;
+
+            doneGenerating = true;
         }
 
         void CreateRooms()
@@ -77,6 +96,8 @@ namespace ProcGen
                 
                 takenPositions.Insert(0, checkPos);
             }
+
+            doneRooms = true;
         }
 
         Vector2 NewPosition()
@@ -224,6 +245,8 @@ namespace ProcGen
                     mapper.gameObject.transform.SetAsFirstSibling();
                 }
             }
+
+            doneMap = true;
         }
     }
 }

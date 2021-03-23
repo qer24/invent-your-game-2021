@@ -9,6 +9,7 @@ using UnityEngine.Localization;
 public class LocalizeDropdown : MonoBehaviour
 {
     TMP_Dropdown dropdown;
+    [SerializeField] char splitCharacter = '|';
     [SerializeField] LocalizedString stringReference = new LocalizedString();
 
     private void Awake()
@@ -40,7 +41,7 @@ public class LocalizeDropdown : MonoBehaviour
 
     void UpdateDropdownText(string text)
     {
-        string[] split = text.Split('|');
+        string[] split = text.Split(splitCharacter);
         for (int i = 0; i < split.Length; i++)
         {
             dropdown.options[i].text = split[i];

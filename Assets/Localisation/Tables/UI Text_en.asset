@@ -102,5 +102,9 @@ MonoBehaviour:
     m_Localized: Fullscreen|Windowed borderless|Windowed
     m_Metadata:
       m_Items: []
+  - m_Id: 12875254127935488
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

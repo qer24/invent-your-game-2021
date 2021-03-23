@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,15 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
-        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode loadSceneMode) => currentLevel = GameObject.FindGameObjectWithTag("Level").GetComponent<Level>();
+        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode loadSceneMode) => 
+        {
+            try
+            {
+                currentLevel = GameObject.FindGameObjectWithTag("Level").GetComponent<Level>();
+            }catch(Exception)
+            {
+                Debug.LogWarning("Didn't find level");
+            }
+        };
     }
 }

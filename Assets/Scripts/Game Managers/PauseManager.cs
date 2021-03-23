@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class PauseManager : MonoBehaviour
     public LeanTweenType transitionType;
 
     bool optionsToggled = false;
-    float unpausedTimescale = 1;
+    public static float unpausedTimescale = 1;
 
     IEnumerator Start()
     {
@@ -44,7 +45,7 @@ public class PauseManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex != 0)
         {
             if(paused)
             {
@@ -58,7 +59,7 @@ public class PauseManager : MonoBehaviour
 
     private void OnApplicationFocus(bool focus)
     {
-        if(!focus && !paused)
+        if(!focus && !paused && SceneManager.GetActiveScene().buildIndex != 0)
         {
             Pause();
         }
