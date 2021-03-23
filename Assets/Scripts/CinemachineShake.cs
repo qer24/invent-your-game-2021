@@ -23,6 +23,8 @@ public class CinemachineShake : MonoBehaviour {
 
     public void ShakeCamera(float intensity, float time)
     {
+        if (!GameplaySettings.DoScreenShake) return;
+
         cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = intensity;
 
         startingIntensity = intensity;

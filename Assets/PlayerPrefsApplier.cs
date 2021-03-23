@@ -6,6 +6,7 @@ public class PlayerPrefsApplier : MonoBehaviour
 {
     public VolumeSettings volumeSettings;
     public VideoSettings videoSettings;
+    public GameplaySettings gameplaySettings;
 
     public void ResetToDefault()
     {
@@ -39,6 +40,15 @@ public class PlayerPrefsApplier : MonoBehaviour
 
         videoSettings.SetQuality(2);
         videoSettings.qualityDropdown.value = 2;
+
+        PlayerPrefs.SetInt("SelectedLanguage", 0);
+        PlayerPrefs.SetInt("ScreenShake", 1);
+
+        gameplaySettings.languageDropdown.value = 0;
+        gameplaySettings.ToggleScreenShake(true);
+        gameplaySettings.screenShakeToggle.isOn = true;
+
+        PlayerPrefs.Save();
     }
 
     public void Apply()
@@ -46,11 +56,15 @@ public class PlayerPrefsApplier : MonoBehaviour
         PlayerPrefs.SetFloat("MasterVol", volumeSettings.masterVolume);
         PlayerPrefs.SetFloat("SFXVol", volumeSettings.sfxVolume);
         PlayerPrefs.SetFloat("MusicVol", volumeSettings.musicVolume);
-        PlayerPrefs.SetInt("MuteInBackground", BackgroundAudioManager.muteInBackground ? 1 : 0);
+        PlayerPrefs.SetInt("MuteInBackground", BackgroundAudioManager.MuteInBackground ? 1 : 0);
 
         PlayerPrefs.SetInt("FullscreenMode", (int)videoSettings.fullscreenMode);
         PlayerPrefs.SetInt("CurrentResolutionIndex", videoSettings.currentResolutionIndex);
         PlayerPrefs.SetInt("Vsync", videoSettings.vsyncCount);
+        PlayerPrefs.SetInt("Quality", videoSettings.currentQualitySettings);
+
+        PlayerPrefs.SetInt("SelectedLanguage", gameplaySettings.selectedLanguageIndex);
+        PlayerPrefs.SetInt("ScreenShake", GameplaySettings.DoScreenShake ? 1 : 0);
 
         PlayerPrefs.Save();
     }

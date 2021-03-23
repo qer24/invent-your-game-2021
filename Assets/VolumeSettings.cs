@@ -61,7 +61,7 @@ public class VolumeSettings : MonoBehaviour
 
     public void UpdateMuteInBackground(bool mute)
     {
-        BackgroundAudioManager.muteInBackground = mute;
+        BackgroundAudioManager.MuteInBackground = mute;
     }
 
     void OnEnable()
@@ -89,6 +89,6 @@ public class VolumeSettings : MonoBehaviour
         musicSlider.value = musicVolume;
         sfxSlider.value = sfxVolume;
         masterSlider.value = masterVolume;
-        muteInBackgroundToggle.isOn = BackgroundAudioManager.muteInBackground;
+        muteInBackgroundToggle.isOn = BackgroundAudioManager.MuteInBackground;
     }
 }

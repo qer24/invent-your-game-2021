@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BackgroundAudioManager : MonoBehaviour
 {
-    public static bool muteInBackground = true;
+    public static bool MuteInBackground = true;
     bool muted = false;
 
     FMOD.Studio.Bus Master;
@@ -13,12 +13,12 @@ public class BackgroundAudioManager : MonoBehaviour
     private void Awake()
     {
         Master = RuntimeManager.GetBus("bus:/Master");
-        muteInBackground = PlayerPrefs.GetInt("MuteInBackground", 1) == 1;
+        MuteInBackground = PlayerPrefs.GetInt("MuteInBackground", 1) == 1;
     }
 
     private void OnApplicationFocus(bool focus)
     {
-        if (!focus && muteInBackground && !muted)
+        if (!focus && MuteInBackground && !muted)
         {
             muted = true;
         }
