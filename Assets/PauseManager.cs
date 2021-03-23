@@ -21,7 +21,7 @@ public class PauseManager : MonoBehaviour
     bool optionsToggled = false;
     float unpausedTimescale = 1;
 
-    void Awake()
+    IEnumerator Start()
     {
         if (Instance == null)
         {
@@ -31,13 +31,15 @@ public class PauseManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
-            return;
+            yield break;
         }
 
         mainGroup = mainPanel.GetComponent<CanvasGroup>();
         optionsGroup = optionsPanel.GetComponent<CanvasGroup>();
 
-        //pausePanel.SetActive(false);
+        pausePanel.SetActive(true);
+        yield return new WaitForSeconds(Time.deltaTime);
+        pausePanel.SetActive(false);
     }
 
     private void Update()
