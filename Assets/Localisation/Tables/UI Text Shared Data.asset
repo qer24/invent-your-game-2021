@@ -25,6 +25,82 @@ MonoBehaviour:
 '
     m_Metadata:
       m_Items: []
+  - m_Id: 12829770629791744
+    m_Key: Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12829780243136512
+    m_Key: Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12829792893157376
+    m_Key: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12829978457554944
+    m_Key: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12829995612258304
+    m_Key: Video
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12830009377964032
+    m_Key: Gameplay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12830020979408896
+    m_Key: Ok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12830080370753536
+    m_Key: Reset to default
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12831746851618816
+    m_Key: Master volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12831771405074432
+    m_Key: Music volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12831785338552320
+    m_Key: SFX volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12831801822167040
+    m_Key: Mute in background
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12832736069828608
+    m_Key: Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12832747029544960
+    m_Key: Fullscreen Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12832768303054848
+    m_Key: Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12832784723755008
+    m_Key: Screen shake
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12832802801205248
+    m_Key: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12845293660815360
+    m_Key: Quality Dropdown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12846727139704832
+    m_Key: Fullscreen Mode Dropdown
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

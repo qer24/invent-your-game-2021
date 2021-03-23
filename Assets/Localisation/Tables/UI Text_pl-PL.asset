@@ -26,5 +26,81 @@ MonoBehaviour:
     m_Localized: Ulepszenia
     m_Metadata:
       m_Items: []
+  - m_Id: 12830020979408896
+    m_Localized: Ok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12829780243136512
+    m_Localized: Opcje
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12829770629791744
+    m_Localized: "Wzn\xF3w"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12829792893157376
+    m_Localized: "Wyjd\u017A"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12829978457554944
+    m_Localized: "D\u017Awi\u0119k"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12829995612258304
+    m_Localized: Wideo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12830009377964032
+    m_Localized: Rozgrywka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12830080370753536
+    m_Localized: "Domy\u015Blne ustawienia"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12831746851618816
+    m_Localized: "G\u0142o\u015Bno\u015B\u0107 og\xF3lna"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12831771405074432
+    m_Localized: "G\u0142o\u015Bno\u015B\u0107 muzyki"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12831785338552320
+    m_Localized: "G\u0142o\u015Bno\u015B\u0107 SFX"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12831801822167040
+    m_Localized: Wycisz, gdy gra jest w tle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12832736069828608
+    m_Localized: "Jako\u015B\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12832747029544960
+    m_Localized: Tryb ekranu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12832768303054848
+    m_Localized: "Rozdzielczo\u015B\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12832784723755008
+    m_Localized: Wibracje ekranu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12832802801205248
+    m_Localized: "J\u0119zyk"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12845293660815360
+    m_Localized: "Niska|\u015Arednia|Wysoka"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12846727139704832
+    m_Localized: "Pe\u0142ny ekran|W oknie|W oknie bez ramek"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

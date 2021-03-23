@@ -47,8 +47,9 @@ public class VolumeSettings : MonoBehaviour
 
     public void UpdateSFXVolume(float vol)
     {
-        if (Time.time > 2f)
+        if(Time.frameCount > 10)
             AudioManager.Play(sfxTest, true);
+
         sfxVolume = vol;
         SetVolume();
     }

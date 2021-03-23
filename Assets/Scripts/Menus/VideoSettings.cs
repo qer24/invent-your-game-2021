@@ -31,8 +31,8 @@ public class VideoSettings : MonoBehaviour
     public VerticalLayoutGroup tabLayoutGroup;
 
     RectTransform resolutionDropdownRectTransform;
-    float resolutionDropdownNormalY = -200;
-    float resolutionDropdownPushedY = -350;
+    float resolutionDropdownNormalY = 0;
+    float resolutionDropdownPushedY = 0;
 
     [HideInInspector] public FullScreenMode fullscreenMode = FullScreenMode.ExclusiveFullScreen;
 
@@ -73,7 +73,9 @@ public class VideoSettings : MonoBehaviour
         resolutions = resolutionList.ToArray();
 
         resolutionDropdownRectTransform = resolutionDropdown.transform.parent.GetComponent<RectTransform>();
-        Invoke(nameof(DisableLayoutGroup), 0.05f);
+        resolutionDropdownNormalY = 0;
+        resolutionDropdownPushedY = 0;
+        Invoke(nameof(DisableLayoutGroup), 0.1f);
 
         fullscreenMode = (FullScreenMode)PlayerPrefs.GetInt("FullscreenMode", 1);
         UpdateFullScreenDropdown();
@@ -102,19 +104,21 @@ public class VideoSettings : MonoBehaviour
     {
         tabLayoutGroup.enabled = false;
 
-        resolutionDropdownNormalY = -resolutionDropdownRectTransform.anchoredPosition.y;
-        resolutionDropdownPushedY = -resolutionDropdownRectTransform.anchoredPosition.y + fullscreenDropdown.template.GetComponent<RectTransform>().sizeDelta.y;
+        resolutionDropdownNormalY = resolutionDropdownRectTransform.anchoredPosition3D.y;
+        resolutionDropdownPushedY = resolutionDropdownRectTransform.anchoredPosition3D.y - fullscreenDropdown.template.GetComponent<RectTransform>().sizeDelta.y;
     }
 
     private void Update()
     {
-        if (fullscreenDropdown.transform.childCount != 3 && !tabLayoutGroup.enabled)
+        if (resolutionDropdownPushedY == resolutionDropdownNormalY) return;
+
+        if (fullscreenDropdown.transform.childCount != 3)
         {
-            resolutionDropdownRectTransform.anchoredPosition = new Vector2(resolutionDropdownRectTransform.anchoredPosition.x, -resolutionDropdownPushedY);
+            resolutionDropdownRectTransform.anchoredPosition = new Vector2(resolutionDropdownRectTransform.anchoredPosition.x, resolutionDropdownPushedY);
         }
         else
         {
-            resolutionDropdownRectTransform.anchoredPosition = new Vector2(resolutionDropdownRectTransform.anchoredPosition.x, -resolutionDropdownNormalY);
+            resolutionDropdownRectTransform.anchoredPosition = new Vector2(resolutionDropdownRectTransform.anchoredPosition.x, resolutionDropdownNormalY);
         }
     }
 
