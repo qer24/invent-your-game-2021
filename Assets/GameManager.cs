@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     List<AsyncOperation> loadingOperations = new List<AsyncOperation>();
 
+    public static bool LoadedGame = false;
+
     IEnumerator Start()
     {
         if (Instance == null)
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour
             yield break;
         }
 
+        LoadedGame = false;
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
     }
 
@@ -62,5 +65,6 @@ public class GameManager : MonoBehaviour
         loadingScreen.SetActive(false);
 
         Time.timeScale = PauseManager.unpausedTimescale;
+        LoadedGame = true;
     }
 }

@@ -416,6 +416,12 @@ public class Boss : Enemy
     private void OnDestroy()
     {
         OnBossDeath?.Invoke();
+        foreach (Action a in OnBossDeath.GetInvocationList())
+        {
+            OnBossDeath -= a;
+        }
+
+
         beamAudioInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         if(beamTransform != null)
         {

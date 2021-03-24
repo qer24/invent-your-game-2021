@@ -169,6 +169,7 @@ public abstract class Weapon : MonoBehaviour
 
         damageModifiers = new List<DamageModifier>();
         damageModifiers.Add(new DamageModifier(0, RarityMultiplier));
+        damageModifiers.Add(new DamageModifier(0, 1 + 0.1f * DifficultyManager.Instance.currentDifficulty));
 
         StartCoroutine(nameof(ForceReloadTooltip));
         UpdateRarityString();

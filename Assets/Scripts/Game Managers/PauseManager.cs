@@ -45,7 +45,7 @@ public class PauseManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex != 0)
+        if (Input.GetKeyDown(KeyCode.Escape) && GameManager.LoadedGame)
         {
             if(paused)
             {

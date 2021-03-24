@@ -29,7 +29,7 @@ public class DropManager : MonoBehaviour
 
     public GameObject DropWeapon()
     {
-        GameObject go = InstantiateRandomItemFromArray(weaponPool);
+        GameObject go = InstantiateRandomItemFromArray(weaponPool, 5);
         go.GetComponent<Weapon>().GenerateWeapon();
 
         return go;
@@ -40,10 +40,10 @@ public class DropManager : MonoBehaviour
         return InstantiateRandomItemFromArray(modPool);
     }
 
-    GameObject InstantiateRandomItemFromArray(MonoBehaviour[] array)
+    GameObject InstantiateRandomItemFromArray(MonoBehaviour[] array, float zOffset = 0)
     {
         int random = Random.Range(0, array.Length);
-        Vector3 pos = mainCam.WorldToScreenPoint(new Vector3(Random.Range(-6, 6f), 0, Random.Range(-6f, 6f)));
+        Vector3 pos = mainCam.WorldToScreenPoint(new Vector3(Random.Range(-6, 6f), 0, zOffset + Random.Range(-6f, 6f)));
         //pos.y = 0;
         GameObject go = Instantiate(array[random], pos, Quaternion.identity, transform).gameObject;
         go.transform.localScale = Vector3.zero;

@@ -2570,6 +2570,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OptionsPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 7874097590741027895, guid: f0530be13b319304988dcd70da81bae1, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7874097590803582226, guid: f0530be13b319304988dcd70da81bae1, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0

@@ -104,7 +104,7 @@ public class SplittingEnemy : Enemy
                 rb.AddForce(transform.forward * moveForce * 0.25f * Time.deltaTime);
                 break;
             case TestEnemyState.Escaping:
-                rb.AddForce(transform.forward * moveForce * 2f);
+                rb.AddForce(transform.forward * moveForce * 2f * Time.deltaTime);
                 break;
         }
     }
