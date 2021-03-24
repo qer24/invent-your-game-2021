@@ -45,4 +45,9 @@ public class MenuManager : MonoBehaviour
     {
         GameManager.Instance.LoadGame(level);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
