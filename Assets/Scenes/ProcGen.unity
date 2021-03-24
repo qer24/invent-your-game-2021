@@ -11275,7 +11275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   description: 
-  baseDamage: 999
+  baseDamage: 5
   baseAttackRate: 0.2
   isCharged: 0
   isProjectile: 1

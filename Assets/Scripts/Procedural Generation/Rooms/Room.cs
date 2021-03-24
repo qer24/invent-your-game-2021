@@ -48,6 +48,18 @@ namespace ProcGen
 
         public void GenerateWaves()
         {
+            int currentDif = DifficultyManager.Instance.currentDifficulty;
+            if(currentDif <= 5)
+            {
+                waveCount = 1;
+            }else if(currentDif > 5 && currentDif <= 15)
+            {
+                waveCount = 2;
+            }else
+            {
+                waveCount = 3;
+            }
+
             if (mapRoom.type != RoomTypes.Boss)
             {
                 waves = new List<ProceduralWave>();

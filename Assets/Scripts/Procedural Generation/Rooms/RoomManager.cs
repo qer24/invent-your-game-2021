@@ -225,7 +225,7 @@ namespace ProcGen
             yield return new WaitForSeconds(0.5f);
             player.StopMovingToPoint();
 
-            DifficultyManager.Instance.currentDifficulty++;
+            DifficultyManager.Instance.currentDifficulty += 2;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
