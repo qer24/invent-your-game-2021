@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 5eac0b49b83345c47a3d39a9b7e2489a
   - enabled: 1
-    path: Assets/Scenes/TestSceneProcGen.unity
+    path: Assets/Scenes/ProcGen.unity
     guid: 7aead2a8d9086cc48903f631299d8c49
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 512b1688d4fb021478f2e32165bd5fec, type: 2}

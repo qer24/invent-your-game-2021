@@ -36,6 +36,7 @@ namespace ProcGen
     public class RoomManager : MonoBehaviour
     {
         [SerializeField] Button mapButton = null;
+        [SerializeField] Button nextLevelButton = null;
         [SerializeField] MapPanel mapUI = null;
         [SerializeField] Animator roomTransitionUI = null;
 
@@ -64,6 +65,9 @@ namespace ProcGen
 
             allRoomsInLevel = GetComponentsInChildren<Room>();
             GoToRoom(0);
+
+            nextLevelButton.gameObject.SetActive(false);
+            Boss.OnBossDeath += () => nextLevelButton.gameObject.SetActive(true);
         }
 
         void ConvertScreenSpawnpointsToWorld()

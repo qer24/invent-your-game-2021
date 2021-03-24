@@ -1829,6 +1829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapButton: {fileID: 1675053162}
+  nextLevelButton: {fileID: 892804380}
   mapUI: {fileID: 768971018}
   roomTransitionUI: {fileID: 966628262}
   spawnPointViewportPositions:
