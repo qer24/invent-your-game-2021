@@ -20,12 +20,24 @@ MonoBehaviour:
   - m_GUID: 579bd1636b0f4f94b8aad596f83d19ce
     m_Address: English (en)
     m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale
+    m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: ad39469956250ca429887ac102a3940f
     m_Address: Polish (pl)
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 33a656cee3fc37049a5884a7353b439c
+    m_Address: English (en) 1
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 4858fa98f7153854697bcf365d7b91f7
+    m_Address: Polish (pl) 1
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale

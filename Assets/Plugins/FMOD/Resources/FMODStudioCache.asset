@@ -527,7 +527,7 @@ MonoBehaviour:
   - {fileID: 3317143177458439958}
   StringsBanks:
   - {fileID: 3387716632853148843}
-  stringsBankWriteTime: 637520194634118806
+  stringsBankWriteTime: 637521494370000000
   cacheVersion: 3
 --- !u!114 &56635849749720651
 MonoBehaviour:
@@ -720,7 +720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637520194634048803
+  lastModified: 637521494370000000
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -740,7 +740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637520194634118806
+  lastModified: 637521494370000000
   LoadResult: 0
   FileSizes:
   - Name: Desktop
