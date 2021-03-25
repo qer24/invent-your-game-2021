@@ -40,7 +40,7 @@ public class ProjectileBossOrb : Projectile
 
         Boss.OnBossDeath += () => 
         {
-            if (gameObject == null) return;
+            if (!this) return;
             Destroy(gameObject);
         };
     }
@@ -103,7 +103,11 @@ public class ProjectileBossOrb : Projectile
         aoe.constantDamage = true;
         aoe.ticksPerDamage = aoeTicksPerDamage;
 
-        Boss.OnBossDeath += () => LeanTween.scale(aoe.gameObject, Vector3.zero, 0.5f).setOnComplete(() => Destroy(aoe.gameObject));
+        Boss.OnBossDeath += () =>
+        {
+            if (aoe == null) return;
+            LeanTween.scale(aoe.gameObject, Vector3.zero, 0.5f).setOnComplete(() => Destroy(aoe.gameObject));
+        };
         Destroy(gameObject);
     }
 }

@@ -21,7 +21,7 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void Start()
     {
-        player = PlayerPersistencyMenager.Instance.GetComponent<Rigidbody>();
+
         rb = GetComponent<Rigidbody>();
         health = GetComponent<Health>();
         screenConfiner = GetComponent<KeepOnScreen>();
@@ -31,6 +31,8 @@ public abstract class Enemy : MonoBehaviour
         health.currentHealth = FinalHealth;
         health.OnDeath += OnDeath;
 
+        if (PlayerPersistencyMenager.Instance == null) return;
+        player = PlayerPersistencyMenager.Instance.GetComponent<Rigidbody>();
         PlayerHealth.OnPlayerDeath += () => { if (this != null) enabled = false; };
         damagable.OnTakeDamage += OnDamageTaken;
     }

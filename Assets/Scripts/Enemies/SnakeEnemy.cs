@@ -90,7 +90,7 @@ public class SnakeEnemy : Enemy
     }
     void Update()
     {
-        if (PauseManager.paused) return;
+        if (PauseManager.paused || player == null) return;
 
         Vector3 dirToPlayer = PredictedPosition(player.position, player.velocity, enemyCard.projectileSpeed) - transform.position;
         float angle = Mathf.Atan2(dirToPlayer.x, dirToPlayer.z) * Mathf.Rad2Deg;

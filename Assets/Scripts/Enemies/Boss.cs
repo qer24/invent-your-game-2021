@@ -138,6 +138,7 @@ public class Boss : Enemy
             }
             return;
         }
+        if (player == null) return;
 
         Vector3 dirToPlayer = (player.position - transform.position).normalized;
         float angle = Mathf.Atan2(dirToPlayer.x, dirToPlayer.z) * Mathf.Rad2Deg;
@@ -428,10 +429,13 @@ public class Boss : Enemy
         MusicManager.Stop();
 
         OnBossDeath?.Invoke();
-        foreach (Action a in OnBossDeath.GetInvocationList())
+        if(OnBossDeath != null)
         {
-            if(a != null)
-                OnBossDeath -= a;
+            foreach (Action a in OnBossDeath.GetInvocationList())
+            {
+                if (a != null)
+                    OnBossDeath -= a;
+            }
         }
 
         beamAudioInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);

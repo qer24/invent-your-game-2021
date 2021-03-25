@@ -14,13 +14,19 @@ public class GameplaySettings : MonoBehaviour
     public int selectedLanguageIndex = 0;
     public TMP_Dropdown languageDropdown;
 
+    static bool initialized = false;
+
     IEnumerator Start()
     {
         DoScreenShake = PlayerPrefs.GetInt("ScreenShake", 1) == 1;
         screenShakeToggle.isOn = DoScreenShake;
 
-        // Wait for the localization system to initialize, loading Locales, preloading etc.
-        yield return LocalizationSettings.InitializationOperation;
+        if (!initialized)
+        {
+            // Wait for the localization system to initialize, loading Locales, preloading etc.
+            yield return LocalizationSettings.InitializationOperation;
+            initialized = true;
+        }
 
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[PlayerPrefs.GetInt("SelectedLanguage", 0)];
 
@@ -43,10 +49,12 @@ public class GameplaySettings : MonoBehaviour
 
     void LocaleSelected(int index)
     {
+        Debug.Log(LocalizationSettings.SelectedLocale);
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
         selectedLanguageIndex = index;
 
         PlayerPrefs.SetInt("SelectedLanguage", index);
+        Debug.Log(LocalizationSettings.SelectedLocale);
     }
 
     public void ToggleScreenShake(bool shake)

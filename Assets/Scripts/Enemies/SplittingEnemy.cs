@@ -89,7 +89,7 @@ public class SplittingEnemy : Enemy
     }
     void Update()
     {
-        if (PauseManager.paused) return;
+        if (PauseManager.paused || player == null) return;
 
         Vector3 dirToPlayer = (player.position - transform.position).normalized;
         float angle = Mathf.Atan2(dirToPlayer.x, dirToPlayer.z) * Mathf.Rad2Deg;

@@ -21,7 +21,7 @@ public class BossShield : MonoBehaviour
             proj.transform.rotation = Quaternion.Euler(rot);
 
             proj.Init(proj.damage * 0.25f, proj.velocity, proj.totalLifeTime, "Player");
-            proj.GetComponent<Renderer>().material = enemyMaterial;
+            proj.GetComponentInChildren<Renderer>().material = enemyMaterial;
         }
     }
 }
