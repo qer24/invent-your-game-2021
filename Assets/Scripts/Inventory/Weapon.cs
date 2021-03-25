@@ -131,8 +131,8 @@ public abstract class Weapon : MonoBehaviour
 
         UpdateRarityString();
 
-        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode loadSceneMode) => mainCam = Camera.main;
-        mainCam = Camera.main;
+        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode loadSceneMode) => mainCam = CameraManager.Instance.mainCam;
+        mainCam = CameraManager.Instance.mainCam;
     }
 
     public void GenerateWeapon()

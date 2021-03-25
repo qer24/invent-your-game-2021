@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class CinemachineShake : MonoBehaviour {
 
@@ -15,7 +16,10 @@ public class CinemachineShake : MonoBehaviour {
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+            Instance = this;
+        else
+            return;
 
         cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
         cinemachineBasicMultiChannelPerlin = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();

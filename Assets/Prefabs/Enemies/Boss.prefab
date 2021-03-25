@@ -6691,6 +6691,7 @@ MonoBehaviour:
   reloadParticles: {fileID: 6335191469965634313}
   shootParticles: {fileID: 6335191470790005325}
   warningSign: {fileID: 3748258842028703043}
+  music: event:/Music/Boss
   waveProjectile: {fileID: 1837442607817484262, guid: 0bb7d651335c0414eb019419fb6e1de5, type: 3}
   waveShootPoints:
   - {fileID: 3748258842666009259}

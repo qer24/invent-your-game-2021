@@ -125,17 +125,7 @@ namespace ProcGen
         {
             completed = true;
 
-            if (id != 0)
-            {
-                if (Random.value > 0.5f)
-                {
-                    dropsInThisRoom.Add(DropManager.Instance.DropWeapon());
-                }
-                else
-                {
-                    dropsInThisRoom.Add(DropManager.Instance.DropMod());
-                }
-            }
+            dropsInThisRoom.Add(DropManager.Instance.RandomDrop());
 
             OnRoomCompleted?.Invoke();
         }

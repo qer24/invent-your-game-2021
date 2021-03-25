@@ -59,7 +59,7 @@ namespace ProcGen
         // Start is called before the first frame update
         void Start()
         {
-            mainCam = Camera.main;
+            mainCam = CameraManager.Instance.mainCam;
             player = PlayerPersistencyMenager.Instance.GetComponent<PlayerController>();
             ConvertScreenSpawnpointsToWorld();
 
@@ -67,7 +67,17 @@ namespace ProcGen
             GoToRoom(0);
 
             nextLevelButton.gameObject.SetActive(false);
-            Boss.OnBossDeath += () => nextLevelButton.gameObject.SetActive(true);
+            Boss.OnBossDeath += DisableButton;
+        }
+
+        private void OnDisable()
+        {
+            Boss.OnBossDeath -= DisableButton;
+        }
+
+        void DisableButton()
+        {
+            nextLevelButton.gameObject.SetActive(true);
         }
 
         void ConvertScreenSpawnpointsToWorld()
@@ -210,6 +220,11 @@ namespace ProcGen
             roomTransitionUI.SetTrigger("Fade");
             yield return new WaitForSeconds(0.25f);
 
+            if(MusicManager.isStopped)
+            {
+                MusicManager.Play(GetComponentInParent<Level>().backgroundMusic);
+            }
+
             player.StopMovingToPoint();
         }
 
@@ -226,7 +241,13 @@ namespace ProcGen
             player.StopMovingToPoint();
 
             DifficultyManager.Instance.currentDifficulty += 2;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            if(GameManager.LoadedGame)
+            {
+                GameManager.Instance.LoadLevel();
+            }else
+            {
+                SceneManager.LoadScene(2);
+            }
         }
 
         // TODO: obliterate, cease this function, let it be gone.
@@ -235,7 +256,7 @@ namespace ProcGen
         //    if (spawnPointViewportPositions == null) return;
         //    if (spawnPointViewportPositions.Length < 1) return;
 
-        //    mainCam = Camera.main;
+        //    mainCam = CameraManager.Instance.mainCam;
         //    ConvertScreenSpawnpointsToWorld();
 
         //    Gizmos.color = Color.cyan;

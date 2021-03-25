@@ -33,7 +33,7 @@ public abstract class PlayerUpgrade : MonoBehaviour, IPointerEnterHandler, IPoin
         playerController = upgradeManager.GetComponent<PlayerController>();
         playerShooter = upgradeManager.GetComponent<PlayerShooter>();
 
-        mainCam = Camera.main;
+        mainCam = CameraManager.Instance.mainCam;
 
         tooltip.transform.SetParent(transform.parent.parent);
     }

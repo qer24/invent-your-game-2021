@@ -27,7 +27,6 @@ public class PauseManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -45,7 +44,10 @@ public class PauseManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && GameManager.LoadedGame)
+#if !UNITY_EDITOR
+        if (!GameManager.LoadedGame) return;
+#endif
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if(paused)
             {
@@ -110,5 +112,16 @@ public class PauseManager : MonoBehaviour
             LeanTween.moveX(mainPanel, 0, transitionTime).setEase(transitionType).setIgnoreTimeScale(true);
             LeanTween.moveX(optionsPanel, optionsPanel.sizeDelta.x, transitionTime).setEase(transitionType).setIgnoreTimeScale(true);
         }
+    }
+
+    public void ReturnToMenu()
+    {
+        Destroy(LevelManager.Instance.gameObject);
+        if(PlayerPersistencyMenager.Instance != null)
+            Destroy(PlayerPersistencyMenager.Instance.gameObject);
+        Unpause();
+
+        MusicManager.Stop();
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 }

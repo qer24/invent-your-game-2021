@@ -9,12 +9,14 @@ public class FolowMouse : MonoBehaviour
 
     private void Start()
     {
-        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode loadSceneMode) => mainCam = Camera.main;
-        mainCam = Camera.main;
+        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode loadSceneMode) => mainCam = CameraManager.Instance.mainCam;
+        mainCam = CameraManager.Instance.mainCam;
     }
 
     void LateUpdate()
     {
+        if (mainCam == null) return;
+
         Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         mousePos.y = 0;
         transform.position = mousePos;

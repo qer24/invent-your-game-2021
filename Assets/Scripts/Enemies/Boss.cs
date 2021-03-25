@@ -22,6 +22,8 @@ public class Boss : Enemy
 
     public GameObject warningSign;
 
+    [EventRef] public string music;
+
     [Header("Wave attack")]
     public Projectile waveProjectile;
     public Transform[] waveShootPoints;
@@ -115,9 +117,6 @@ public class Boss : Enemy
 
         beamAudioInstance = RuntimeManager.CreateInstance(beamAttackAudio);
 
-        PauseManager.OnPause += () => beamAudioInstance.setPaused(true);
-        PauseManager.OnUnpause += () => beamAudioInstance.setPaused(false);
-
         transform.position = RoomManager.CurrentRoom.roomManager.WorldPositionFromSpawnPoint(RoomSpawnPoints.Right);
 
         StartCoroutine(Behaviour(timeBetweenActions));
@@ -130,7 +129,15 @@ public class Boss : Enemy
 
     private void Update()
     {
-        if (PauseManager.paused) return;
+        if (PauseManager.paused)
+        {
+            beamAudioInstance.getPaused(out var pause);
+            if (!pause)
+            {
+                beamAudioInstance.setPaused(true);
+            }
+            return;
+        }
 
         Vector3 dirToPlayer = (player.position - transform.position).normalized;
         float angle = Mathf.Atan2(dirToPlayer.x, dirToPlayer.z) * Mathf.Rad2Deg;
@@ -142,6 +149,7 @@ public class Boss : Enemy
 
         if (beamTransform != null)
         {
+            beamAudioInstance.setPaused(false);
             beamTransform.position = transform.position;
             beamTransform.rotation = transform.rotation;
             Physics.SyncTransforms();
@@ -155,6 +163,7 @@ public class Boss : Enemy
 
     IEnumerator Behaviour(float waitTime)
     {
+        MusicManager.Stop();
         moving = false;
         yield return new WaitForSeconds(3f);
 
@@ -169,6 +178,7 @@ public class Boss : Enemy
         healthSlider.gameObject.SetActive(true);        
         moving = true;
 
+        MusicManager.Play(music);
         float distance = Vector3.Distance(transform.position, Vector3.zero);
         rb.AddForce(transform.forward * distance * distance * 0.5f);
         yield return new WaitForSeconds(waitTime);
@@ -415,12 +425,14 @@ public class Boss : Enemy
 
     private void OnDestroy()
     {
+        MusicManager.Stop();
+
         OnBossDeath?.Invoke();
         foreach (Action a in OnBossDeath.GetInvocationList())
         {
-            OnBossDeath -= a;
+            if(a != null)
+                OnBossDeath -= a;
         }
-
 
         beamAudioInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         if(beamTransform != null)
@@ -435,6 +447,6 @@ public class Boss : Enemy
 
     void UpdateUI(float currentHealth)
     {
-        LeanTween.value(gameObject, healthSlider.value, currentHealth / enemyCard.maxHealth, 0.4f).setOnUpdate((float val) => healthSlider.value = val).setEase(LeanTweenType.easeOutCubic);
+        LeanTween.value(gameObject, healthSlider.value, currentHealth / FinalHealth, 0.4f).setOnUpdate((float val) => healthSlider.value = val).setEase(LeanTweenType.easeOutCubic);
     }
 }

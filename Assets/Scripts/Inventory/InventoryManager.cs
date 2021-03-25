@@ -30,13 +30,21 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
-        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode loadSceneMode) =>
-        {
-            mainCam = Camera.main;
-            dropsCanvas = DropManager.Instance.GetComponent<Canvas>();
-        };
-        mainCam = Camera.main;
+        mainCam = CameraManager.Instance.mainCam;
+        dropsCanvas = DropManager.Instance.GetComponent<Canvas>();
+        SceneManager.sceneLoaded += ResetInventoryManager;
         switchCooldownTimer = tweenDuration;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= ResetInventoryManager;
+    }
+
+    void ResetInventoryManager(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        mainCam = CameraManager.Instance.mainCam;
+        dropsCanvas = DropManager.Instance.GetComponent<Canvas>();
     }
 
     public void Update()

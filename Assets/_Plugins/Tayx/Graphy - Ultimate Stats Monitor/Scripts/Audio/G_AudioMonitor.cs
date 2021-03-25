@@ -1,4 +1,4 @@
-﻿/* ---------------------------------------
+/* ---------------------------------------
  * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
  * Collaborators:   Lars Aalbertsen (@Rockylars)
  * Project:         Graphy - Ultimate Stats Monitor
@@ -19,7 +19,6 @@ namespace Tayx.Graphy.Audio
         /* ----- TODO: ----------------------------
          * Add summaries to the variables.
          * Add summaries to the functions.
-         * Make the "FindAudioListener" not constantly use "Camera.main".
          * --------------------------------------*/
 
         #region Variables -> Private
@@ -182,7 +181,7 @@ namespace Tayx.Graphy.Audio
         /// </summary>
         private AudioListener FindAudioListener()
         {
-            Camera mainCamera = Camera.main;
+            Camera mainCamera = CameraManager.Instance.mainCam;
 
             if (mainCamera != null)
             {

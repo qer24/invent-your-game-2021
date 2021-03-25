@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainCam = Camera.main;
+        mainCam = CameraManager.Instance.mainCam;
         rb = GetComponent<Rigidbody>();
 
         screenConfiner.OnTeleportStart += DisableParticles;
@@ -42,14 +42,18 @@ public class PlayerController : MonoBehaviour
         humInstance.start();
         humInstance.setPaused(true);
 
-        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode loadSceneMode) => 
-        {
-            mainCam = Camera.main;
-            transform.position = Vector3.zero;
-            rb.velocity = Vector3.zero;
-        };
+        SceneManager.sceneLoaded += ResetPlayer;
 
         PauseManager.OnPause += () => humInstance.setPaused(true);
+
+        MusicManager.Play("event:/Music/Level");
+    }
+
+    void ResetPlayer(Scene scene, LoadSceneMode loadSceneMod)
+    {
+        mainCam = CameraManager.Instance.mainCam;
+        transform.position = Vector3.zero;
+        rb.velocity = Vector3.zero;
     }
 
     private void OnDisable()
@@ -58,6 +62,7 @@ public class PlayerController : MonoBehaviour
         screenConfiner.OnTeleportEnd -= EnableParticles;
 
         humInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        SceneManager.sceneLoaded -= ResetPlayer;
     }
 
     private void FixedUpdate()
@@ -82,7 +87,8 @@ public class PlayerController : MonoBehaviour
             screenConfiner.enabled = true;
         }
 
-        RotateToPoint(mainCam.ScreenToWorldPoint(Input.mousePosition));
+        if(mainCam != null)
+            RotateToPoint(mainCam.ScreenToWorldPoint(Input.mousePosition));
 
         humInstance.getPaused(out var paused);
         if (Input.GetMouseButton(0))

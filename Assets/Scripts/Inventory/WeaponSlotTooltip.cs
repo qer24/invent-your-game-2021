@@ -1,3 +1,4 @@
+using ProcGen;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -31,6 +32,7 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (Room.enemiesAlive.Count > 0) return;
         if (pickup.isInWorld && ModDrop.DraggingMod) return;
 
         AudioManager.Play("event:/SFX/UI/UIHover", true);

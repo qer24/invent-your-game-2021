@@ -12,7 +12,7 @@ public class Billboard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cam = Camera.main.transform;
+        cam = CameraManager.Instance.mainCam.transform;
     }
 
     // Update is called once per frame

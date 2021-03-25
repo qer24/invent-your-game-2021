@@ -10,12 +10,13 @@ public class PlayerChargeBarPosition : MonoBehaviour
 
     private void Start()
     {
-        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode loadSceneMode) => mainCam = Camera.main;
-        mainCam = Camera.main;
+        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode loadSceneMode) => mainCam = CameraManager.Instance.mainCam;
+        mainCam = CameraManager.Instance.mainCam;
     }
 
     void FixedUpdate()
     {
-        chargeBar.position = mainCam.WorldToScreenPoint(transform.position);
+        if(mainCam != null)
+            chargeBar.position = mainCam.WorldToScreenPoint(transform.position);
     }
 }

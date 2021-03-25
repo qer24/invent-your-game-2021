@@ -245,6 +245,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 522
+--- !u!114 &-5813958353942755786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Music.bank
+  SubDir: 
+  lastModified: 637522804246501445
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 2443584
+  Exists: 1
 --- !u!114 &-5583826176870465843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,6 +448,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 537
+--- !u!114 &-3075842911462523624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Level
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Level
+  guid: 215debb1d97974499bb2a224c8d24995
+  Banks:
+  - {fileID: -5813958353942755786}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 120000
 --- !u!114 &-1649383783105206735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,6 +532,7 @@ MonoBehaviour:
   EditorBanks:
   - {fileID: 3387716632853148843}
   - {fileID: 3317143177458439958}
+  - {fileID: -5813958353942755786}
   EditorEvents:
   - {fileID: -8900901451709586521}
   - {fileID: 8200093760143234683}
@@ -522,12 +566,14 @@ MonoBehaviour:
   - {fileID: -7598924573837509321}
   - {fileID: -6831163080303197630}
   - {fileID: -1458587124650165070}
+  - {fileID: -3075842911462523624}
+  - {fileID: 1855655234186653878}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3317143177458439958}
   StringsBanks:
   - {fileID: 3387716632853148843}
-  stringsBankWriteTime: 637521494370000000
+  stringsBankWriteTime: 637522804246181442
   cacheVersion: 3
 --- !u!114 &56635849749720651
 MonoBehaviour:
@@ -661,6 +707,29 @@ MonoBehaviour:
   - Name: Desktop
     Value: 149344
   Exists: 0
+--- !u!114 &1855655234186653878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Boss
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Boss
+  guid: 4ac3afb781b7f44080a9e91f51b27d69
+  Banks:
+  - {fileID: -5813958353942755786}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 77296
 --- !u!114 &2906871375499600677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -720,7 +789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637521494370000000
+  lastModified: 637522804246091447
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -740,11 +809,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637521494370000000
+  lastModified: 637522804246181442
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2338
+    Value: 2486
   Exists: 1
 --- !u!114 &3579225909492302592
 MonoBehaviour:

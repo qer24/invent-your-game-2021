@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
                 currentLevel = GameObject.FindGameObjectWithTag("Level").GetComponent<Level>();
             }catch(Exception)
             {
-                Debug.LogWarning("Didn't find level");
+                Debug.Log("Didn't find level");
             }
         };
     }

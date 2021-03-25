@@ -38,7 +38,11 @@ public class ProjectileBossOrb : Projectile
 
         gfx = GetComponentInChildren<Renderer>().transform;
 
-        Boss.OnBossDeath += () => Destroy(gameObject);
+        Boss.OnBossDeath += () => 
+        {
+            if (gameObject == null) return;
+            Destroy(gameObject);
+        };
     }
 
     protected override void Update()

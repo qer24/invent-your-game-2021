@@ -187,7 +187,7 @@ MonoBehaviour:
   m_text: Triple shot
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 033f086aa7a78b74e92a514ac12ba08c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 1810412622746223944}
   - component: {fileID: 5015381336863782772}
   m_Layer: 5
-  m_Name: ModDrop TripleShot
+  m_Name: TripleShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -572,7 +572,7 @@ MonoBehaviour:
   m_text: "+2 projectiles\nx0.6 damage\n\nFor non projectile \nweapons: x1.25 damage"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 033f086aa7a78b74e92a514ac12ba08c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

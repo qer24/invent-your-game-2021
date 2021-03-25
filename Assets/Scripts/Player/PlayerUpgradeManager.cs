@@ -48,18 +48,27 @@ public class PlayerUpgradeManager : MonoBehaviour
 
         RoomManager.OnRoomChanged += DisableButton;
         RoomManager.OnRoomComplete += EnableButton;
-        RoomManager.OnRoomChanged += () => 
-        {
-            IsPanelOpen = false;
-
-            upgradePanel.Close();
-            foreach (var upgrade in allUpgrades)
-            {
-                upgrade.interactable = false;
-            }
-        };
+        RoomManager.OnRoomChanged += DisablePanel;
 
         IsPanelOpen = false;
+    }
+
+    private void DisablePanel()
+    {
+        IsPanelOpen = false;
+
+        upgradePanel.Close();
+        foreach (var upgrade in allUpgrades)
+        {
+            upgrade.interactable = false;
+        }
+    }
+
+    private void OnDisable()
+    {
+        RoomManager.OnRoomChanged -= DisableButton;
+        RoomManager.OnRoomComplete -= EnableButton;
+        RoomManager.OnRoomChanged -= DisablePanel;
     }
 
     void Update()

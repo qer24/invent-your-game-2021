@@ -12,6 +12,9 @@ public class DropManager : MonoBehaviour
 
     Camera mainCam;
 
+    public static bool FirstWeaponDropped = false;
+    MonoBehaviour lastDrop = null;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -24,7 +27,25 @@ public class DropManager : MonoBehaviour
             return;
         }
 
-        mainCam = Camera.main;
+        mainCam = CameraManager.Instance.mainCam;
+    }
+
+    public GameObject RandomDrop()
+    {
+        if(!FirstWeaponDropped)
+        {
+            FirstWeaponDropped = true;
+            return DropWeapon();
+        }
+
+        if (Random.value > 0.5f)
+        {
+            return DropWeapon();
+        }
+        else
+        {
+            return DropMod();
+        }
     }
 
     public GameObject DropWeapon()
@@ -42,14 +63,23 @@ public class DropManager : MonoBehaviour
 
     GameObject InstantiateRandomItemFromArray(MonoBehaviour[] array, float zOffset = 0)
     {
-        int random = Random.Range(0, array.Length);
+        MonoBehaviour[] exceptArray = {lastDrop};
+        var newlist = array.Except(exceptArray).ToList();
+
+        int random = Random.Range(0, newlist.Count);
         Vector3 pos = mainCam.WorldToScreenPoint(new Vector3(Random.Range(-6, 6f), 0, zOffset + Random.Range(-6f, 6f)));
         //pos.y = 0;
-        GameObject go = Instantiate(array[random], pos, Quaternion.identity, transform).gameObject;
+        GameObject go = Instantiate(newlist[random], pos, Quaternion.identity, transform).gameObject;
         go.transform.localScale = Vector3.zero;
         LeanTween.scale(go, Vector3.one, 0.4f).setEase(LeanTweenType.easeOutBack);
-        go.name = array[random].gameObject.name;
+        go.name = newlist[random].gameObject.name;
 
+        lastDrop = newlist[random];
         return go;
+    }
+
+    public static void ResetDrops()
+    {
+        FirstWeaponDropped = false;
     }
 }

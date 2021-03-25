@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject loadingScreen;
 
-    List<AsyncOperation> loadingOperations = new List<AsyncOperation>();
+    public static List<AsyncOperation> loadingOperations = new List<AsyncOperation>();
 
     public static bool LoadedGame = false;
 
@@ -40,7 +40,17 @@ public class GameManager : MonoBehaviour
         StartCoroutine(GetSceneLoadProgress());
     }
 
-    IEnumerator GetSceneLoadProgress()
+    public void LoadLevel()
+    {
+        loadingScreen.SetActive(true);
+
+        loadingOperations.Add(SceneManager.UnloadSceneAsync(2));
+        loadingOperations.Add(SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive));
+
+        StartCoroutine(GetSceneLoadProgress(true));
+    }
+
+    IEnumerator GetSceneLoadProgress(bool loadingLevel = false)
     {
         PauseManager.unpausedTimescale = Time.timeScale;
         Time.timeScale = 0;
@@ -57,12 +67,15 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log($"Finished loading in {Mathf.Round((Time.realtimeSinceStartup - startTime) * 1000)} ms");
+        Debug.Log($"Finished generating map in {Mathf.Round((Time.realtimeSinceStartup - startTime) * 1000)} ms");
 
         yield return new WaitForSecondsRealtime(0.5f);
 
         loadingOperations.Clear();
         loadingScreen.SetActive(false);
+
+        if(!loadingLevel)
+            DropManager.ResetDrops();
 
         Time.timeScale = PauseManager.unpausedTimescale;
         LoadedGame = true;
