@@ -83,11 +83,27 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 12525015655268352
-    m_Localized: "x2 szybko\u015Bci ataku\nx0.5 czasu \u0142adowania\nx0.6x obra\u017Ce\u0144"
+    m_Localized: "x2 szybko\u015Bci ataku\nx0.5 czasu \u0142adowania\nx0.6 obra\u017Ce\u0144"
     m_Metadata:
       m_Items: []
   - m_Id: 12524997737201664
     m_Localized: Wartki Atak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12538801355243520
+    m_Localized: "Zab\xF3jczy Atak"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12538824872706048
+    m_Localized: "x0.4 szybko\u015Bci ataku\nx2.25 czasu \u0142adowania\nx2 obra\u017Ce\u0144"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559389016735744
+    m_Localized: Zwinny Atak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559405659734016
+    m_Localized: "x1.3 obra\u017Ce\u0144 podczas poruszania si\u0119"
     m_Metadata:
       m_Items: []
   references:

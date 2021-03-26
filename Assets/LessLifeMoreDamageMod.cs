@@ -25,6 +25,7 @@ public class LessLifeMoreDamageMod : Mod
             if (attachedWeapon.damageModifiers.Contains(damageModifier))
             {
                 attachedWeapon.damageModifiers.Remove(damageModifier);
+                attachedWeapon.StartCoroutine(attachedWeapon.ForceReloadTooltip());
             }
         }
         else
@@ -32,6 +33,7 @@ public class LessLifeMoreDamageMod : Mod
             if(!attachedWeapon.damageModifiers.Contains(damageModifier))
             {
                 attachedWeapon.damageModifiers.Add(damageModifier);
+                attachedWeapon.StartCoroutine(attachedWeapon.ForceReloadTooltip());
             }
         }
     }

@@ -81,6 +81,22 @@ MonoBehaviour:
     m_Key: QuickStrike description
     m_Metadata:
       m_Items: []
+  - m_Id: 12538801355243520
+    m_Key: DeadlyStrike name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12538824872706048
+    m_Key: DeadlyStrike description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559389016735744
+    m_Key: MovingStrike name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559405659734016
+    m_Key: MovingStrke description
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

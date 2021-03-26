@@ -98,11 +98,31 @@ MonoBehaviour:
 
       x0.5 charge time
 
-      x0.6x damage'
+      x0.6 damage'
     m_Metadata:
       m_Items: []
   - m_Id: 12524997737201664
     m_Localized: Rapid Strike
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12538801355243520
+    m_Localized: Deadly Strike
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12538824872706048
+    m_Localized: 'x0.4 attack rate
+
+      x2.25 charge time
+
+      x2 damage'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559389016735744
+    m_Localized: Agile Strike
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559405659734016
+    m_Localized: x1.3 damage while moving
     m_Metadata:
       m_Items: []
   references:

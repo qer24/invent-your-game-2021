@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     Camera mainCam;
     Rigidbody rb;
 
+    public Action<float> OnVelocityChange;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,6 +100,8 @@ public class PlayerController : MonoBehaviour
         {
             humInstance.setPaused(true);
         }
+
+        OnVelocityChange?.Invoke(rb.velocity.magnitude);
     }
 
     public void StartMovingToPoint(Vector3 newPoint, float newVelocityScale = 1)
