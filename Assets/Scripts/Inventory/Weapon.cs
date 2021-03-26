@@ -2,6 +2,7 @@ using Lean.Pool;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
@@ -78,6 +79,10 @@ public abstract class Weapon : MonoBehaviour
     public List<DamageModifier> damageModifiers;
     public Action<GameObject> OnProjectileCreated;
 
+    public List<float> chargeTimeModifiers;
+    public List<float> sizeModifiers;
+    public List<float> fireRateModifiers;
+
     public float FinalDamage
     {
         get
@@ -97,9 +102,54 @@ public abstract class Weapon : MonoBehaviour
             return Mathf.Round(value * 100f) / 100f;
         }
     }
-    public float FinalFireRate => Mathf.Round((baseAttackRate / RarityMultiplier) * 100f) / 100f;
-    public float FinalChargeTime => Mathf.Round((timeToCharge / (RarityMultiplier * RarityMultiplier)) * 100f) / 100f;
-    public Vector3 FinalSize => new Vector3(size.x, 1, size.y);
+    public float FinalFireRate
+    {
+        get
+        {
+            if(fireRateModifiers.Count == 0)
+                return Mathf.Round((baseAttackRate / RarityMultiplier) * 100f) / 100f;
+
+            float totalModifier = 1;
+            foreach (var modifier in fireRateModifiers)
+            {
+                totalModifier += modifier - 1;
+            }
+
+            return Mathf.Round(((baseAttackRate / RarityMultiplier) / totalModifier) * 100f) / 100f;
+        }
+    }
+
+    public float FinalChargeTime
+    {
+        get
+        {
+            if (chargeTimeModifiers.Count == 0) return Mathf.Round((timeToCharge / (RarityMultiplier * RarityMultiplier)) * 100f) / 100f; ;
+
+            float totalChargeTimeModifier = 1;
+            foreach (var modifier in chargeTimeModifiers)
+            {
+                totalChargeTimeModifier += modifier - 1;
+            }
+
+            return Mathf.Round((timeToCharge / (RarityMultiplier * RarityMultiplier) * totalChargeTimeModifier) * 100f) / 100f;
+        }
+    }
+
+    public Vector3 FinalSize
+    {
+        get
+        {
+            if(sizeModifiers.Count == 0) return new Vector3(size.x, 1, size.y);
+
+            float totalSizeModifier = 1;
+            foreach (var modifier in sizeModifiers)
+            {
+                totalSizeModifier += modifier - 1;
+            }
+
+            return new Vector3(size.x * totalSizeModifier, 1, size.y * totalSizeModifier);
+        }
+    }
 
     float RarityMultiplier
     {
@@ -175,19 +225,16 @@ public abstract class Weapon : MonoBehaviour
         UpdateRarityString();
     }
 
-    System.Collections.IEnumerator ForceReloadTooltip()
+    public System.Collections.IEnumerator ForceReloadTooltip()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return null;
 
-        var currentLocale = LocalizationSettings.SelectedLocale;
-        //hack to refresh the localised string database
-        if (currentLocale.Identifier == "en")
-            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[1];
-        else
-            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[0];
+        foreach (var str in GetComponents<LocalizeStringEvent>())
+        {
+            str.RefreshString();
+        }
 
         yield return null;
-        LocalizationSettings.SelectedLocale = currentLocale;
 
         OnTooltipUpdate?.Invoke();
     }

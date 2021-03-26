@@ -76,6 +76,8 @@ public class GameManager : MonoBehaviour
 
         if(!loadingLevel)
             DropManager.ResetDrops();
+        else
+            EndScreen.ResetStats();
         ProcGen.Room.enemiesAlive = new List<GameObject>();
         PlayerHealth.IsPlayerDead = false;
 

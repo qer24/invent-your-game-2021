@@ -126,6 +126,7 @@ namespace ProcGen
             completed = true;
 
             dropsInThisRoom.Add(DropManager.Instance.RandomDrop());
+            EndScreen.RoomsCleared++;
 
             OnRoomCompleted?.Invoke();
         }

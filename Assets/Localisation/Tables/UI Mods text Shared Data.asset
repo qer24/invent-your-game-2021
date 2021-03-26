@@ -57,6 +57,30 @@ MonoBehaviour:
     m_Key: Punch shot description
     m_Metadata:
       m_Items: []
+  - m_Id: 12500673290584064
+    m_Key: LessLifeMoreDamage name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12500794174619648
+    m_Key: LessLifeMoreDamage description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12505626981711872
+    m_Key: BigCharge name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12505658032144384
+    m_Key: BigCharge description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12524997737201664
+    m_Key: QuickStrike name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12525015655268352
+    m_Key: QuickStrike description
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

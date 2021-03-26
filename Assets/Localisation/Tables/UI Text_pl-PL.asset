@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: pl-PL
   m_SharedData: {fileID: 11400000, guid: 71739676c9cb41b4fabe49f3ce5c3b6e, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - id: 0
   m_TableData:
   - m_Id: 6228516864
     m_Localized: 'Modyfikatory:'
@@ -106,5 +107,35 @@ MonoBehaviour:
     m_Localized: Graj
     m_Metadata:
       m_Items: []
+  - m_Id: 13739474994348032
+    m_Localized: 'Koniec
+
+      Gry'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13739460393975808
+    m_Localized: "Zdobyte Exp: {ExpGained}\nZdobyte Poziomy: {LevelsGained}\nIlo\u015B\u0107
+      strza\u0142\xF3w: {TotalShots}\nBossowie Pokonani: {BossesDestroyed}"
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 13739446519218176
+    m_Localized: "Zadane Obra\u017Cenia: {DamageDealt}\nOtrzymane Obra\u017Cenia:
+      {DamageTaken}\nPokoje Wyczyszczone: {RoomsCleared}\nPrzeciwnicy Pokonani: {EnemiesDestroyed}"
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 13739493365399552
+    m_Localized: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13740840445820928
+    m_Localized: Generowanie...
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
+    00000000:
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00403068f7cf30000040302df4cf3000

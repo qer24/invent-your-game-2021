@@ -60,6 +60,7 @@ public abstract class Enemy : MonoBehaviour
 
         CinemachineShake.Instance.ShakeCamera(7, 0.4f);
         PlayerUpgradeManager.Instance.AddExp(expValue);
+        EndScreen.EnemiesDestroyed++;
         Destroy(gameObject);
     }
 }

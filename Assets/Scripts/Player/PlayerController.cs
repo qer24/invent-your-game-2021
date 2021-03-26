@@ -45,8 +45,6 @@ public class PlayerController : MonoBehaviour
         SceneManager.sceneLoaded += ResetPlayer;
 
         PauseManager.OnPause += () => humInstance.setPaused(true);
-
-        MusicManager.Play("event:/Music/Level");
     }
 
     void ResetPlayer(Scene scene, LoadSceneMode loadSceneMod)

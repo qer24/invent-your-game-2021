@@ -63,5 +63,32 @@ MonoBehaviour:
       broni nie-pociskowych: \nx1.15 obra\u017Ce\u0144"
     m_Metadata:
       m_Items: []
+  - m_Id: 12500673290584064
+    m_Localized: 'Preoniczny
+
+      Akumulator'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12500794174619648
+    m_Localized: "x1.4 obra\u017Ce\u0144 poni\u017Cej 25% zdrowia"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12505626981711872
+    m_Localized: "Pot\u0119\u017Cne \u0141adowanie"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12505658032144384
+    m_Localized: "Dla broni \u0142adowanych aoe:\nx2 czasu \u0142adowania\nx2 wielko\u015Bci
+      aoe\nx2 obra\u017Ce\u0144\n\nDla innych broni:\nx1.15 obra\u017Ce\u0144"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12525015655268352
+    m_Localized: "x2 szybko\u015Bci ataku\nx0.5 czasu \u0142adowania\nx0.6x obra\u017Ce\u0144"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12524997737201664
+    m_Localized: Wartki Atak
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

@@ -75,6 +75,7 @@ public class BombEnemy : Enemy
         Explode();
 
         PlayerUpgradeManager.Instance.AddExp(expValue);
+        EndScreen.EnemiesDestroyed++;
         Destroy(gameObject);
     }
 }

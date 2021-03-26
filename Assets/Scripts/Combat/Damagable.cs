@@ -24,7 +24,7 @@ public class Damagable : MonoBehaviour, IDamagable
 
         OnTakeDamage?.Invoke();
         hp.RemoveHealth(amount);
-
+        EndScreen.DamageDealt += (int)amount;
 
         Lean.Pool.LeanPool.Spawn(
             damagePopup,

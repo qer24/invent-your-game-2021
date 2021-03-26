@@ -12,6 +12,7 @@ public class PlayerHealth : Health
 
     [SerializeField] Slider healthSlider = null;
     [SerializeField] float healthLerpSpeed = 3f;
+    [SerializeField] GameObject OnDeathScreen = null;
 
     float currentFillAmount;
 
@@ -52,5 +53,7 @@ public class PlayerHealth : Health
         IsPlayerDead = true;
         OnPlayerDeath?.Invoke();
         Destroy(gameObject);
+
+        Instantiate(OnDeathScreen);
     }
 }

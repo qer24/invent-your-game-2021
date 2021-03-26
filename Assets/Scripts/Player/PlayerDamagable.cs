@@ -36,6 +36,7 @@ public class PlayerDamagable : MonoBehaviour, IDamagable
 
     public virtual void TakeDamage(float amount)
     {
+        EndScreen.DamageTaken += (int)amount;
         if (hp.isDead) return;
         if (!enabled) return;
         if (immune) return;

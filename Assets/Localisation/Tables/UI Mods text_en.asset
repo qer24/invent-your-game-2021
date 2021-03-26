@@ -63,5 +63,47 @@ MonoBehaviour:
       \nweapons: x1.15 damage"
     m_Metadata:
       m_Items: []
+  - m_Id: 12500673290584064
+    m_Localized: 'Preonic
+
+      Accumulator'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12500794174619648
+    m_Localized: x1.4 damage under 25% healh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12505626981711872
+    m_Localized: Forceful Charge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12505658032144384
+    m_Localized: 'For charged aoe weapons:
+
+      x2 total charge time
+
+      x2
+      aoe radius
+
+      x2 damage
+
+
+      For others:
+
+      x1.15 damage'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12525015655268352
+    m_Localized: 'x2 attack rate
+
+      x0.5 charge time
+
+      x0.6x damage'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12524997737201664
+    m_Localized: Rapid Strike
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

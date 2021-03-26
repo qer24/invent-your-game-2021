@@ -426,6 +426,7 @@ public class Boss : Enemy
 
     private void OnDestroy()
     {
+        EndScreen.BossesDestroyed++;
         MusicManager.Stop();
 
         OnBossDeath?.Invoke();
@@ -447,6 +448,7 @@ public class Boss : Enemy
         {
             Destroy(orbTransform.gameObject);
         }
+
     }
 
     void UpdateUI(float currentHealth)

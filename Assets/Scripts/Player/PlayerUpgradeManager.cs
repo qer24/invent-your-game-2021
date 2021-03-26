@@ -142,6 +142,8 @@ public class PlayerUpgradeManager : MonoBehaviour
 
         float fill = (float)(currentExp - lastExpToLevel) / (expToNextLevel - lastExpToLevel);
         levelUpBar.fillAmount = fill;
+
+        EndScreen.ExpGained += amount;
     }
 
     void LevelUp()
@@ -154,6 +156,8 @@ public class PlayerUpgradeManager : MonoBehaviour
 
         levelUpBarText.text = levelUpPoints.ToString();
         levelUpBar.fillAmount = 0;
+
+        EndScreen.LevelsGained++;
     }
 
     public void UseLevelUpPoint()

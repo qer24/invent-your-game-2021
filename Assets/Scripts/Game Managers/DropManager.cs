@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,10 @@ public class DropManager : MonoBehaviour
     Camera mainCam;
 
     public static bool FirstWeaponDropped = false;
+    public static bool FirstModDropped = false;
     MonoBehaviour lastDrop = null;
+
+    public static Action OnFirstModDrop;
 
     // Start is called before the first frame update
     void Awake()
@@ -38,7 +42,7 @@ public class DropManager : MonoBehaviour
             return DropWeapon();
         }
 
-        if (Random.value > 0.5f)
+        if (UnityEngine.Random.value > 0.5f)
         {
             return DropWeapon();
         }
@@ -58,6 +62,11 @@ public class DropManager : MonoBehaviour
 
     public GameObject DropMod()
     {
+        if(!FirstModDropped)
+        {
+            FirstModDropped = true;
+            OnFirstModDrop?.Invoke();
+        }
         return InstantiateRandomItemFromArray(modPool);
     }
 
@@ -66,8 +75,8 @@ public class DropManager : MonoBehaviour
         MonoBehaviour[] exceptArray = {lastDrop};
         var newlist = array.Except(exceptArray).ToList();
 
-        int random = Random.Range(0, newlist.Count);
-        Vector3 pos = mainCam.WorldToScreenPoint(new Vector3(Random.Range(-6, 6f), 0, zOffset + Random.Range(-6f, 6f)));
+        int random = UnityEngine.Random.Range(0, newlist.Count);
+        Vector3 pos = mainCam.WorldToScreenPoint(new Vector3(UnityEngine.Random.Range(-6, 6f), 0, zOffset + UnityEngine.Random.Range(-6f, 6f)));
         //pos.y = 0;
         GameObject go = Instantiate(newlist[random], pos, Quaternion.identity, transform).gameObject;
         go.transform.localScale = Vector3.zero;

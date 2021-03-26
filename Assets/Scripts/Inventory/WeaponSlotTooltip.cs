@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Components;
 using UnityEngine.Localization.Settings;
 
 public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -16,10 +18,14 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
     [SerializeField] TextMeshProUGUI nameText = null;
     [SerializeField] TextMeshProUGUI descriptionText = null;
 
+    LocalizeStringEvent[] localizedStrings;
+
     private void Start()
     {
         weapon = GetComponent<Weapon>();
         pickup = GetComponent<WeaponPickup>();
+
+        localizedStrings = GetComponents<LocalizeStringEvent>();
 
         weapon.OnTooltipUpdate += UpdateUI;
     }
@@ -45,15 +51,12 @@ public class WeaponSlotTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         yield return null;
 
-        var currentLocale = LocalizationSettings.SelectedLocale;
-        //hack to refresh the localised string database
-        if (currentLocale.Identifier == "en")
-            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[1];
-        else
-            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[0];
+        foreach (var str in localizedStrings)
+        {
+            str.RefreshString();
+        }
 
         yield return null;
-        LocalizationSettings.SelectedLocale = currentLocale;
     }
 
     public void OnPointerExit(PointerEventData eventData)

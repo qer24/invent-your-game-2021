@@ -105,6 +105,26 @@ MonoBehaviour:
     m_Key: Play
     m_Metadata:
       m_Items: []
+  - m_Id: 13739446519218176
+    m_Key: Left Stats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13739460393975808
+    m_Key: Right Stats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13739474994348032
+    m_Key: Game Over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13739493365399552
+    m_Key: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13740840445820928
+    m_Key: Loading
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

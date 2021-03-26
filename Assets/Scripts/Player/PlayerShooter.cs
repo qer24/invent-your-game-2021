@@ -97,5 +97,7 @@ public class PlayerShooter : MonoBehaviour
         {
             inventory.CurrentWeapon.Attack("Enemy");
         }
+
+        EndScreen.TotalShots++;
     }
 }

@@ -12,22 +12,7 @@ public abstract class Mod : MonoBehaviour
     {
         attachedWeapon = weapon;
 
-        StartCoroutine(UpdateWeaponTooltip());
-    }
-
-    IEnumerator UpdateWeaponTooltip()
-    {
-        var currentLocale = LocalizationSettings.SelectedLocale;
-        //hack to refresh the localised string database
-        if (currentLocale.Identifier == "en")
-            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[1];
-        else
-            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[0];
-
-        yield return null;
-        LocalizationSettings.SelectedLocale = currentLocale;
-
-        attachedWeapon.OnTooltipUpdate?.Invoke();
+        attachedWeapon.StartCoroutine(attachedWeapon.ForceReloadTooltip());
     }
 
     private void OnDestroy()
