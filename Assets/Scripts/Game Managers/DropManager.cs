@@ -42,7 +42,7 @@ public class DropManager : MonoBehaviour
             return DropWeapon();
         }
 
-        if (UnityEngine.Random.value > 0.4f)
+        if (UnityEngine.Random.value < 0.35f)
         {
             return DropWeapon();
         }
