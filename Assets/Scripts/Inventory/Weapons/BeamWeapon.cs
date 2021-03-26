@@ -6,14 +6,12 @@ public class BeamWeapon : Weapon
 {
     [Header("Beam weapon")]
     public float knockbackForce = 5f;
-    PlayerShooter shooter;
     Rigidbody playerRb;
 
     private void Start()
     {
         OnEquip += () => 
         {
-            shooter = GetComponentInParent<PlayerShooter>();
             playerRb = GetComponentInParent<Rigidbody>();
         };
     }
@@ -23,7 +21,6 @@ public class BeamWeapon : Weapon
         playerRb.velocity = Vector3.zero;
         playerRb.AddForce(-playerRb.transform.forward * knockbackForce, ForceMode.Impulse);
 
-        GameObject go = Lean.Pool.LeanPool.Spawn(aoePrefab, shooter.shootPoint.position, shooter.shootPoint.rotation);
-        go.GetComponent<Aoe>().Init(FinalDamage, aoeLifeTime, FinalSize, enemyTag);
+        CreateAoe(enemyTag, aoePrefab, playerShooter.shootPoint.position, playerShooter.shootPoint.rotation, FinalDamage, aoeLifeTime, FinalSize);
     }
 }

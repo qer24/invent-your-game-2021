@@ -103,7 +103,31 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 12559405659734016
-    m_Localized: "x1.3 obra\u017Ce\u0144 podczas poruszania si\u0119"
+    m_Localized: "x1.2 obra\u017Ce\u0144 podczas \nporuszania si\u0119"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12561438831820800
+    m_Localized: "Nag\u0142y Atak"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12561468661710848
+    m_Localized: "x1.5 obra\u017Ce\u0144 podczas\nstania w miejscu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12579433058680832
+    m_Localized: "Bro\u0144 strzela seri\u0105 3 pocisk\xF3w\nx0.3 obra\u017Ce\u0144"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12579404319309824
+    m_Localized: "Ogie\u0144\nZaporowy"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12641942306308096
+    m_Localized: Kosa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12641992516321280
+    m_Localized: "Natychmiast niszcz przeciwnik\xF3w\nponi\u017Cej 10% zdrowia"
     m_Metadata:
       m_Items: []
   references:

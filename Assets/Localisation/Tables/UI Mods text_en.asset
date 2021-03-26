@@ -122,7 +122,33 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 12559405659734016
-    m_Localized: x1.3 damage while moving
+    m_Localized: x1.2 damage while moving
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12561438831820800
+    m_Localized: Assassin's Strike
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12561468661710848
+    m_Localized: "x1.5 damage while \nstanding still"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12579433058680832
+    m_Localized: 'Weapon shoots in a 3-round burst
+
+      x0.3 damage'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12579404319309824
+    m_Localized: Barrage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12641942306308096
+    m_Localized: Cull
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12641992516321280
+    m_Localized: "Instantly kill enemies \nbelow 10% health"
     m_Metadata:
       m_Items: []
   references:

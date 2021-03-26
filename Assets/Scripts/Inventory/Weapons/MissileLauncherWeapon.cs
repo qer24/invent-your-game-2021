@@ -9,6 +9,6 @@ public class MissileLauncherWeapon : Weapon
         base.Shoot(position, rotation, enemyTag, projectileMaterial);
 
         ShootProjectile(position, rotation, enemyTag, projectileMaterial, out var missile);
-        missile.GetComponent<ProjectileMissile>().InitMissile(FinalDamage, projectileSpeed, projectileLifetime, enemyTag, aoePrefab, FinalSize, aoeLifeTime);
+        missile.GetComponent<ProjectileMissile>().InitMissile(FinalDamage, projectileSpeed, projectileLifetime, enemyTag, aoePrefab, FinalSize, aoeLifeTime, this);
     }
 }

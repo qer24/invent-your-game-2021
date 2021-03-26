@@ -4,7 +4,12 @@ using UnityEngine;
 using Lean.Pool;
 using System;
 
-public class Projectile : MonoBehaviour
+public interface IDamager
+{
+    Action<float, Transform> OnDealDamage { get; set; }
+}
+
+public class Projectile : MonoBehaviour, IDamager
 {
     public Rigidbody rb = null;
     [SerializeField] AnimationCurve scalingCurve = null;
@@ -28,6 +33,8 @@ public class Projectile : MonoBehaviour
     public Action OnDespawn;
     public Action<Collider> OnCollision;
     public Action OnUpdate;
+
+    public Action<float, Transform> OnDealDamage { get; set; }
 
     public void Init(float _damage, float _velocity, float _lifetime, string _enemyTag)
     {
@@ -85,6 +92,7 @@ public class Projectile : MonoBehaviour
             if (other.TryGetComponent<IDamagable>(out var damagable) && damage > 0)
             {
                 damagable.TakeDamage(damage);
+                OnDealDamage?.Invoke(damage, other.transform);   
             }
         }
     }
@@ -92,6 +100,11 @@ public class Projectile : MonoBehaviour
     protected void Despawn()
     {
         OnDespawn?.Invoke();
+
+        foreach (var item in GetComponentsInChildren<OnDamageBehaviour>())
+        {
+            Destroy(item);
+        }
 
         LeanPool.Despawn(gameObject);
     }

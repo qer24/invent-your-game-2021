@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Aoe : MonoBehaviour
+public class Aoe : MonoBehaviour, IDamager
 {
     public LeanTweenType inType;
     public LeanTweenType outType;
@@ -19,6 +19,8 @@ public class Aoe : MonoBehaviour
     public bool constantDamage = false;
     public int ticksPerDamage = 30;
     int currentTick = 0;
+
+    public Action<float, Transform> OnDealDamage { get; set; }
 
     public void Init(float _damage, float _lifetime, Vector3 _size, string _enemyTag)
     {
@@ -48,6 +50,7 @@ public class Aoe : MonoBehaviour
             if (col.TryGetComponent<IDamagable>(out var damagable))
             {
                 damagable.TakeDamage(damage);
+                OnDealDamage?.Invoke(damage, col.transform);
             }
         }
     }
@@ -66,6 +69,7 @@ public class Aoe : MonoBehaviour
                 if (col.TryGetComponent<IDamagable>(out var damagable))
                 {
                     damagable.TakeDamage(damage);
+                    OnDealDamage?.Invoke(damage, col.transform);
                 }
             }
         }
@@ -74,6 +78,11 @@ public class Aoe : MonoBehaviour
     public void Despawn()
     {
         OnDespawn?.Invoke();
+
+        foreach (var behaviour in GetComponentsInChildren<OnDamageBehaviour>())
+        {
+            Destroy(behaviour);
+        }
 
         LeanPool.Despawn(gameObject);
     }

@@ -97,6 +97,30 @@ MonoBehaviour:
     m_Key: MovingStrke description
     m_Metadata:
       m_Items: []
+  - m_Id: 12561438831820800
+    m_Key: AssassinsStrike name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12561468661710848
+    m_Key: AssassinsStrike description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12579404319309824
+    m_Key: BurstAttack name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12579433058680832
+    m_Key: BurstAttack description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12641942306308096
+    m_Key: CullingStrike name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12641992516321280
+    m_Key: CullingStrike description
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

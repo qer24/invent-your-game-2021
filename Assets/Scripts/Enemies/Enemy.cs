@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     [Header("Base script")]
-    protected Health health;
+    public Health health;
     public EnemyCard enemyCard;
     [HideInInspector] public int expValue = 1;
 
@@ -17,7 +17,7 @@ public abstract class Enemy : MonoBehaviour
     protected KeepOnScreen screenConfiner;
     protected Damagable damagable;
 
-    protected float FinalHealth { get => enemyCard.maxHealth * (1 + 0.1f * DifficultyManager.Instance.currentDifficulty); }
+    public float FinalHealth { get => enemyCard.maxHealth * (1 + 0.1f * DifficultyManager.Instance.currentDifficulty); }
 
     public virtual void Start()
     {

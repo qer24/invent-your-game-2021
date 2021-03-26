@@ -4,6 +4,7 @@ using UnityEngine;
 using Lean.Pool;
 using UnityEngine.VFX;
 using UnityEngine.UI;
+using System;
 
 public class PlayerShooter : MonoBehaviour
 {
@@ -16,9 +17,11 @@ public class PlayerShooter : MonoBehaviour
 
     [SerializeField] VisualEffect muzzleFlash = null;
 
-    float shootTimer;
+    [HideInInspector] public float shootTimer;
     float chargeTimer;
     Material bulletMaterial;
+
+    public Action OnAttack;
 
     private void Start()
     {
@@ -56,7 +59,7 @@ public class PlayerShooter : MonoBehaviour
             {
                 chargeTimer = 0;
                 shootTimer = inventory.CurrentWeapon.FinalFireRate;
-                Shoot();
+                Shoot(transform.rotation);
             }else if (Input.GetMouseButtonUp(1))
             {
                 chargeTimer = 0;
@@ -67,7 +70,7 @@ public class PlayerShooter : MonoBehaviour
             if (Input.GetMouseButton(1) && shootTimer <= 0) //left mouse button
             {
                 shootTimer = inventory.CurrentWeapon.FinalFireRate;
-                Shoot();
+                Shoot(transform.rotation);
             }
             else
             {
@@ -83,8 +86,9 @@ public class PlayerShooter : MonoBehaviour
         shootTimer = 0.1f;
     }
 
-    private void Shoot()
+    public void Shoot(Quaternion rot)
     {
+        OnAttack?.Invoke();
         muzzleFlash.SendEvent("Play");
 
         if(!string.IsNullOrEmpty(inventory.CurrentWeapon.onAttackAudio))
@@ -92,7 +96,7 @@ public class PlayerShooter : MonoBehaviour
 
         if(inventory.CurrentWeapon.isProjectile)
         {
-            inventory.CurrentWeapon.Shoot(shootPoint.position, transform.rotation, "Enemy", bulletMaterial);
+            inventory.CurrentWeapon.Shoot(shootPoint.position, rot, "Enemy", bulletMaterial);
         }else
         {
             inventory.CurrentWeapon.Attack("Enemy");

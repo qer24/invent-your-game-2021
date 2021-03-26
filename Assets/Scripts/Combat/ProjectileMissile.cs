@@ -14,7 +14,9 @@ public class ProjectileMissile : Projectile
     public float explosionCooldown = 0.25f;
     float explosionTimer = 0;
 
-    public void InitMissile(float _damage, float _velocity, float _lifetime, string _enemyTag, GameObject _aoePrefab, Vector3 _aoeSize, float _aoeLifetime)
+    Weapon weapon;
+
+    public void InitMissile(float _damage, float _velocity, float _lifetime, string _enemyTag, GameObject _aoePrefab, Vector3 _aoeSize, float _aoeLifetime, Weapon _weapon)
     {
         Init(_damage, _velocity, _lifetime, _enemyTag);
         missileDamage = _damage;
@@ -22,6 +24,8 @@ public class ProjectileMissile : Projectile
         aoePrefab = _aoePrefab;
         aoeSize = _aoeSize;
         aoeLifetime = _aoeLifetime;
+
+        weapon = _weapon;
     }
 
     private void Start()
@@ -57,7 +61,6 @@ public class ProjectileMissile : Projectile
 
         AudioManager.Play(explosionAudio, true);
 
-        Aoe aoe = Lean.Pool.LeanPool.Spawn(aoePrefab, transform.position, Quaternion.identity).GetComponent<Aoe>();
-        aoe.Init(missileDamage, aoeLifetime, aoeSize, enemyTag);
+        weapon.CreateAoe(enemyTag, aoePrefab, transform.position, Quaternion.identity, missileDamage, aoeLifetime, aoeSize);
     }
 }

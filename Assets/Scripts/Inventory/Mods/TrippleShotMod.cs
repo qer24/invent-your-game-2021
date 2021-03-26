@@ -27,6 +27,12 @@ public class TrippleShotMod : Mod
         }
     }
 
+    private void OnDestroy()
+    {
+        if(attachedWeapon != null)
+            attachedWeapon.OnProjectileAttack -= ShootAdditionalBullets;
+    }
+
     public override void DetachWeapon()
     {
         if (attachedWeapon.isProjectile)

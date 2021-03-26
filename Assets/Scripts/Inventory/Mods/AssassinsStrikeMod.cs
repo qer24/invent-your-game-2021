@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingStrike : Mod
+public class AssassinsStrikeMod : Mod
 {
     public float damageMultiplier;
     public float velocityThreshold = 3f;
@@ -22,7 +22,7 @@ public class MovingStrike : Mod
 
     void SetMultiplier(float currentVelocity)
     {
-        if (currentVelocity > velocityThreshold)
+        if (currentVelocity < velocityThreshold)
         {
             if (!attachedWeapon.damageModifiers.Contains(damageModifier))
             {

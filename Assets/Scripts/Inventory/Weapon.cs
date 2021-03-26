@@ -83,6 +83,8 @@ public abstract class Weapon : MonoBehaviour
     public List<float> sizeModifiers;
     public List<float> fireRateModifiers;
 
+    public List<GameObject> OnDamageBehaviours;
+
     public float FinalDamage
     {
         get
@@ -118,7 +120,6 @@ public abstract class Weapon : MonoBehaviour
             return Mathf.Round(((baseAttackRate / RarityMultiplier) / totalModifier) * 100f) / 100f;
         }
     }
-
     public float FinalChargeTime
     {
         get
@@ -134,7 +135,6 @@ public abstract class Weapon : MonoBehaviour
             return Mathf.Round((timeToCharge / (RarityMultiplier * RarityMultiplier) * totalChargeTimeModifier) * 100f) / 100f;
         }
     }
-
     public Vector3 FinalSize
     {
         get
@@ -173,6 +173,7 @@ public abstract class Weapon : MonoBehaviour
     }
 
     protected Camera mainCam;
+    protected PlayerShooter playerShooter;
 
     private void Awake()
     {
@@ -183,6 +184,7 @@ public abstract class Weapon : MonoBehaviour
 
         SceneManager.sceneLoaded += (Scene scene, LoadSceneMode loadSceneMode) => mainCam = CameraManager.Instance.mainCam;
         mainCam = CameraManager.Instance.mainCam;
+        playerShooter = PlayerPersistencyMenager.Instance.GetComponent<PlayerShooter>();
     }
 
     public void GenerateWeapon()
@@ -348,6 +350,11 @@ public abstract class Weapon : MonoBehaviour
 
         go.transform.localScale *= sizeMultiplier;
 
+        foreach (var behaviour in OnDamageBehaviours)
+        {
+            Instantiate(behaviour, go.transform);
+        }
+
         OnProjectileCreated?.Invoke(go);
     }
 
@@ -361,8 +368,24 @@ public abstract class Weapon : MonoBehaviour
 
         go.transform.localScale *= sizeMultiplier;
 
+        foreach (var behaviour in OnDamageBehaviours)
+        {
+            Instantiate(behaviour, go.transform);
+        }
+
         projectileGameObject = go;
 
         OnProjectileCreated?.Invoke(go);
+    }
+
+    public void CreateAoe(string enemyTag, GameObject prefab, Vector3 pos, Quaternion rot, float damage, float lifeTime, Vector3 size)
+    {
+        GameObject go = LeanPool.Spawn(prefab, pos, rot);
+        go.GetComponent<Aoe>().Init(damage, lifeTime, size, enemyTag);
+
+        foreach (var behaviour in OnDamageBehaviours)
+        {
+            Instantiate(behaviour, go.transform);
+        }
     }
 }
