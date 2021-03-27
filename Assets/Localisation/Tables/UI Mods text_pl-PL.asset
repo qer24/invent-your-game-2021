@@ -24,7 +24,7 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 50734276608
     m_Localized: "Bro\u0144 wystrzeliwuje naraz\ntrzy strza\u0142y\nx0.6 obra\u017Ce\u0144\n\nDla
-      broni nie-pociskowych: \nx1.25 obra\u017Ce\u0144"
+      broni nie-pociskowych: \nx1.2 obra\u017Ce\u0144"
     m_Metadata:
       m_Items: []
   - m_Id: 696461842948096
@@ -151,7 +151,18 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 12888976779132928
-    m_Localized: sad
+    m_Localized: "Pociski przechodz\u0105\nprzez granice ekranu\n\nDla broni nie-pociskowych:
+      \nx1.1 obra\u017Ce\u0144"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12980919089512448
+    m_Localized: Kontaminacja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12980948671938560
+    m_Localized: "Ataki nag\u0142adaj\u0105 zatrucie\n\nZadaj 1 pkt. obra\u017Ce\u0144
+      za ka\u017Cdy\n\u0142adunek zatrucia na przeciwniku\nco sekund\u0119\n\nMax
+      5 \u0142adunk\xF3w zatrucia na przeciwniku"
     m_Metadata:
       m_Items: []
   references:

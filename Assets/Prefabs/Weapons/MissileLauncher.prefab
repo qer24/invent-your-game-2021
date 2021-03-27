@@ -1596,7 +1596,7 @@ MonoBehaviour:
   name: 
   description: 
   baseDamage: 45
-  baseAttackRate: 0.5
+  baseAttackRate: 1
   isCharged: 1
   isProjectile: 1
   isAoe: 1
@@ -1606,13 +1606,17 @@ MonoBehaviour:
   rarityString: Common
   modSlots: 2
   onAttackAudio: event:/SFX/Weapons/MissileLauncherShoot
-  timeToCharge: 0.8
+  timeToCharge: 1.2
   projectilePrefab: {fileID: 7573632492174193182, guid: f654c9d6671d7034497351160e32028a, type: 3}
   projectileSpeed: 30
   projectileLifetime: 5
   aoePrefab: {fileID: 842638256815277088, guid: 2adf11034867e0e4e951fbb562bdfea2, type: 3}
   size: {x: 10, y: 10}
   aoeLifeTime: 0.2
+  chargeTimeModifiers: []
+  sizeModifiers: []
+  fireRateModifiers: []
+  OnDamageBehaviours: []
 --- !u!114 &9025163339607622361
 MonoBehaviour:
   m_ObjectHideFlags: 0

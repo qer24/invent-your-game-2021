@@ -5,17 +5,34 @@ using UnityEngine;
 public class IncreasedAoeMod : Mod
 {
     public float aoeMultiplier = 1.5f;
+    public float nonAoeDamageMultiplier = 1.05f;
+
+    DamageModifier damageModifier;
 
     public override void AttachWeapon(Weapon weapon)
     {
         base.AttachWeapon(weapon);
 
-        attachedWeapon.sizeModifiers.Add(aoeMultiplier);
+        if(attachedWeapon.isAoe)
+        {
+            attachedWeapon.sizeModifiers.Add(aoeMultiplier);
+        }else
+        {
+            damageModifier = new DamageModifier(0, nonAoeDamageMultiplier);
+            attachedWeapon.damageModifiers.Add(damageModifier);
+        }
     }
 
     public override void DetachWeapon()
     {
-        attachedWeapon.sizeModifiers.Remove(aoeMultiplier);
+        if (attachedWeapon.isAoe)
+        {
+            attachedWeapon.sizeModifiers.Remove(aoeMultiplier);
+        }
+        else
+        {
+            attachedWeapon.damageModifiers.Remove(damageModifier);
+        }
 
         base.DetachWeapon();
     }

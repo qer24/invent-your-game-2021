@@ -375,7 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angle: 10
   damageMultiplierForProjectile: 0.6
-  damageMultiplierForNonProjectile: 2
+  damageMultiplierForNonProjectile: 1.2
 --- !u!114 &521032844397647717
 MonoBehaviour:
   m_ObjectHideFlags: 0

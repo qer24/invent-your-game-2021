@@ -145,6 +145,14 @@ MonoBehaviour:
     m_Key: ContinousShot description
     m_Metadata:
       m_Items: []
+  - m_Id: 12980919089512448
+    m_Key: ContagiousStrike name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12980948671938560
+    m_Key: ContagiousStrike description
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

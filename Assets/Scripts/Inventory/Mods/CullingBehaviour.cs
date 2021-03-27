@@ -6,15 +6,25 @@ public class CullingBehaviour : OnDamageBehaviour
 {
     private void Start()
     {
-        damager.OnDealDamage += (float damage, Transform damagable) =>
+        damager.OnDealDamage += Cull;
+    }
+
+    private void OnDestroy()
+    {
+        if(damager != null)
         {
-            if (damagable.TryGetComponent(out Enemy enemy))
+            damager.OnDealDamage -= Cull;
+        }
+    }
+
+    private static void Cull(float damage, Transform damagable)
+    {
+        if (damagable.TryGetComponent(out Enemy enemy))
+        {
+            if (enemy.health.currentHealth < enemy.FinalHealth * 0.1f)
             {
-                if (enemy.health.currentHealth < enemy.FinalHealth * 0.1f)
-                {
-                    enemy.GetComponent<Damagable>().TakeDamage(enemy.health.currentHealth + 1);
-                }
+                enemy.GetComponent<Damagable>().TakeDamage(enemy.health.currentHealth + 1);
             }
-        };
+        }
     }
 }

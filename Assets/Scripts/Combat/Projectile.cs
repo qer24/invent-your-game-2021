@@ -19,14 +19,15 @@ public class Projectile : MonoBehaviour, IDamager
 
     [HideInInspector] public float velocity = 500;
     [HideInInspector] public float totalLifeTime = 5f;
-    float lifeTimeLeft = 5f;
+    [HideInInspector] public float lifeTimeLeft = 5f;
 
-    float scaleThreshold = 2f;
-    float disableDamageThreshold = 1f;
+    [HideInInspector] public float ingoreCollisionTime = 0f;
+    [HideInInspector] public float scaleThreshold = 2f;
+    [HideInInspector] public float disableDamageThreshold = 1f;
 
     [HideInInspector] public string enemyTag = "Enemy";
 
-    Vector3 startScale;
+    [HideInInspector] public Vector3 startScale;
 
     [HideInInspector] public bool despawnOnCollision = true;
 
@@ -36,7 +37,7 @@ public class Projectile : MonoBehaviour, IDamager
 
     public Action<float, Transform> OnDealDamage { get; set; }
 
-    public void Init(float _damage, float _velocity, float _lifetime, string _enemyTag)
+    public void Init(float _damage, float _velocity, float _lifetime, string _enemyTag, float _ignoreCollisionTime = 0f)
     {
         damage = _damage;
         velocity = _velocity;
@@ -49,12 +50,19 @@ public class Projectile : MonoBehaviour, IDamager
         scaleThreshold = totalLifeTime * 0.6f;
         disableDamageThreshold = totalLifeTime * 0.2f;
 
+        ingoreCollisionTime = _ignoreCollisionTime;
+
         despawnOnCollision = true;
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
+        if(ingoreCollisionTime > 0)
+        {
+            ingoreCollisionTime -= Time.deltaTime;
+        }
+
         rb.velocity = transform.forward.normalized * velocity;
 
         lifeTimeLeft -= Time.deltaTime;
@@ -75,7 +83,7 @@ public class Projectile : MonoBehaviour, IDamager
 
     private void OnTriggerEnter(Collider other)
     {
-        if (lifeTimeLeft < disableDamageThreshold) return;
+        if (lifeTimeLeft < disableDamageThreshold || ingoreCollisionTime > 0) return;
         if (other.CompareTag(enemyTag))
         {
             OnCollision?.Invoke(other);

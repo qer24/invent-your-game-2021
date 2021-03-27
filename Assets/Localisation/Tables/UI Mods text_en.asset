@@ -24,7 +24,7 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 50734276608
     m_Localized: "Weapon shoots additional 2 times\nx0.6 damage\n\nFor non projectile
-      \nweapons: x1.25 damage"
+      \nweapons: x1.2 damage"
     m_Metadata:
       m_Items: []
   - m_Id: 696433376206848
@@ -177,7 +177,17 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 12888976779132928
-    m_Localized: ds
+    m_Localized: "Projectiles go through \nscreen borders\n\nFor non projectile weapons:
+      \nx1.1 obra\u017Ce\u0144"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12980919089512448
+    m_Localized: Contagion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12980948671938560
+    m_Localized: "Attacks apply poison\n\nDeal 1 damage for every \nstack of poison
+      on enemy\nper second\n\nMax 5 stacks of poison per enemy"
     m_Metadata:
       m_Items: []
   references:
