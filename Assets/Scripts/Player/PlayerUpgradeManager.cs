@@ -24,7 +24,7 @@ public class PlayerUpgradeManager : MonoBehaviour
     public static bool IsPanelOpen;
     public static PlayerUpgradeManager Instance;
 
-    int currentExp = 0;
+    [HideInInspector]public int currentExp = 0;
     int expToNextLevel = 15;
     int lastExpToLevel = 0;
     [HideInInspector] public int levelUpPoints = 0;

@@ -151,5 +151,34 @@ MonoBehaviour:
     m_Localized: "Instantly kill enemies \nbelow 10% health"
     m_Metadata:
       m_Items: []
+  - m_Id: 12870670739324928
+    m_Localized: Exp Bag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12870710883008512
+    m_Localized: "Get double exp \nfrom killing enemies"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12884915426181120
+    m_Localized: Rapid Expansion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12884962213642240
+    m_Localized: 'x1.25 aoe radius
+
+
+      For non aoe weapons:
+
+      x1.05 damage'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12888945657397248
+    m_Localized: Continuity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12888976779132928
+    m_Localized: ds
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

@@ -66,7 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   description: 
-  baseDamage: 50
+  baseDamage: 40
   baseAttackRate: 1
   isCharged: 1
   isProjectile: 0
@@ -84,6 +84,10 @@ MonoBehaviour:
   aoePrefab: {fileID: 2507170884523211913, guid: 6341b8e5621d7044f9de55d0780ba24d, type: 3}
   size: {x: 5, y: 200}
   aoeLifeTime: 0.2
+  chargeTimeModifiers: []
+  sizeModifiers: []
+  fireRateModifiers: []
+  OnDamageBehaviours: []
   knockbackForce: 25
 --- !u!114 &4093121723676035109
 MonoBehaviour:

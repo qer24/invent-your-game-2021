@@ -22,6 +22,8 @@ public class AssassinsStrikeMod : Mod
 
     void SetMultiplier(float currentVelocity)
     {
+        if (attachedWeapon == null) return;
+
         if (currentVelocity < velocityThreshold)
         {
             if (!attachedWeapon.damageModifiers.Contains(damageModifier))

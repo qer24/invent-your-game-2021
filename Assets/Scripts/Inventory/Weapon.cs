@@ -352,7 +352,7 @@ public abstract class Weapon : MonoBehaviour
 
         foreach (var behaviour in OnDamageBehaviours)
         {
-            Instantiate(behaviour, go.transform);
+            Instantiate(behaviour, go.transform).SetActive(true);
         }
 
         OnProjectileCreated?.Invoke(go);
@@ -370,7 +370,7 @@ public abstract class Weapon : MonoBehaviour
 
         foreach (var behaviour in OnDamageBehaviours)
         {
-            Instantiate(behaviour, go.transform);
+            Instantiate(behaviour, go.transform).SetActive(true);
         }
 
         projectileGameObject = go;
@@ -385,7 +385,7 @@ public abstract class Weapon : MonoBehaviour
 
         foreach (var behaviour in OnDamageBehaviours)
         {
-            Instantiate(behaviour, go.transform);
+            Instantiate(behaviour, go.transform).SetActive(true);
         }
     }
 }

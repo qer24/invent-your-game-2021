@@ -12,9 +12,8 @@ public class CullingBehaviour : OnDamageBehaviour
             {
                 if (enemy.health.currentHealth < enemy.FinalHealth * 0.1f)
                 {
-                    enemy.GetComponent<Damagable>().TakeDamage(enemy.FinalHealth);
+                    enemy.GetComponent<Damagable>().TakeDamage(enemy.health.currentHealth + 1);
                 }
-
             }
         };
     }
