@@ -18,9 +18,16 @@ public class LessLifeMoreDamageMod : Mod
         playerHealth.OnHealthChanged += SetMultiplier;
     }
 
+    private void OnDestroy()
+    {
+        if (playerHealth != null) playerHealth.OnHealthChanged -= SetMultiplier;
+    }
+
     void SetMultiplier(float currentHealth)
     {
-        if(currentHealth / playerHealth.stats.maxHealth > 0.25f)
+        if(attachedWeapon == null) playerHealth.OnHealthChanged -= SetMultiplier;
+
+        if (currentHealth / playerHealth.stats.maxHealth > 0.25f)
         {
             if (attachedWeapon.damageModifiers.Contains(damageModifier))
             {

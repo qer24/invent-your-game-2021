@@ -40,6 +40,7 @@ public class BurstFireMod : Mod
 
     void Burst()
     {
+        if (playerShooter.inventory.CurrentWeapon != attachedWeapon) return;
         playerShooter.OnAttack -= Burst;
 
         Invoke(nameof(DelayedShot), burstDelay);

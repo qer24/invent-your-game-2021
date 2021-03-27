@@ -21,5 +21,13 @@ public class UtilityBehaviors : MonoBehaviour
                     room.mapRoom.worldRoom.Reveal();
             }
         }
+        if(Input.GetKeyDown("y"))
+        {
+            DropManager.Instance.DropWeapon();
+        }
+        if (Input.GetKeyDown("u"))
+        {
+            DropManager.Instance.DropMod();
+        }
 	}
 }

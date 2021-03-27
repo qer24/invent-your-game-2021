@@ -86,7 +86,7 @@ MonoBehaviour:
       m_Items:
       - id: 0
   - m_Id: 9617425346609152
-    m_Localized: Magnetic nova
+    m_Localized: Magnetic Nova
     m_Metadata:
       m_Items: []
   - m_Id: 9617447849050112
@@ -96,9 +96,33 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - id: 0
+  - m_Id: 14437991140311040
+    m_Localized: Electric Halo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14438004239122432
+    m_Localized: 'Damage - {FinalDamage}
+
+      Attack cooldown - {FinalFireRate}
+
+      Charge
+      time - {FinalChargeTime}
+
+      Aoe size - {FinalSize.x}
+
+
+      Has a label
+      that says:
+
+      "Tech X"
+
+      Wonder why?'
+    m_Metadata:
+      m_Items:
+      - id: 0
   references:
     version: 1
     00000000:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00a0ff3a1700000000a0bfb52400000000a03fac2fc71e00004070127b761f000040b0aeb9911f0000403031c47621000040b092042b2200
+        m_Entries: 00a0ff3a1700000000a0bfb52400000000a03fac2fc71e00004070127b761f000040b0aeb9911f0000403031c47621000040b092042b22000040f0d1494b3300

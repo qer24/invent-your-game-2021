@@ -15,7 +15,8 @@ public class MoreExpBehaviour : OnDamageBehaviour
                     PlayerUpgradeManager.Instance.AddExp(enemy.expValue);
                 }else
                 {
-                    Destroy(gameObject);
+                    if(gameObject)
+                        Destroy(gameObject);
                 }
             }
         };

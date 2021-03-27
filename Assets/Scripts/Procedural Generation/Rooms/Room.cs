@@ -68,7 +68,7 @@ namespace ProcGen
                     waves.Add(new ProceduralWave(
                         DifficultyManager.Instance.currentDifficulty,
                         LevelManager.Instance.currentLevel.allEnemyCardsInLevel,
-                        2 + DifficultyManager.Instance.currentDifficulty * 2));
+                        1 + DifficultyManager.Instance.currentDifficulty * 2));
                 }
             }
             waveGenerated = true;

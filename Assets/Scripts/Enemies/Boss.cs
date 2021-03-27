@@ -189,6 +189,7 @@ public class Boss : Enemy
 
         while (true)
         {
+            if (player == null) break;
             yield return new WaitForSeconds(waitTime * 2f);
 
             // beam attack
@@ -250,7 +251,7 @@ public class Boss : Enemy
             {
                 //orb
 
-
+                if (player == null) break;
                 Vector3 dirToPlayer = (player.position - shootPoint.position).normalized;
                 float angle = Mathf.Atan2(dirToPlayer.x, dirToPlayer.z) * Mathf.Rad2Deg;
                 Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.up);

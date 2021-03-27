@@ -63,6 +63,14 @@ MonoBehaviour:
     m_Key: Nova Description
     m_Metadata:
       m_Items: []
+  - m_Id: 14437991140311040
+    m_Key: Ring name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14438004239122432
+    m_Key: Ring description
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

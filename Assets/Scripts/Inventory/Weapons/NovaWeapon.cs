@@ -28,6 +28,11 @@ public class NovaWeapon : Weapon
         GameObject go = Lean.Pool.LeanPool.Spawn(aoePrefab, playerShooter.transform.position, playerShooter.transform.rotation);
         go.GetComponent<Aoe>().Init(FinalDamage, aoeLifeTime, FinalSize, enemyTag);
 
+        foreach (var behaviour in OnDamageBehaviours)
+        {
+            Instantiate(behaviour, go.transform).SetActive(true);
+        }
+
         novas.Add(go.transform);
     }
 }
