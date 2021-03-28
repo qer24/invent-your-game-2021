@@ -125,7 +125,6 @@ public class InventoryManager : MonoBehaviour
 
             Vector3 worldPos = mainCam.ScreenToWorldPoint(pickup.transform.position);
             worldPos.y = 0;
-            Debug.DrawLine(mouseFollowPoint.transform.position, worldPos);
             float distance = Vector3.Distance(worldPos, mouseFollowPoint.position);
             if (distance < minDistance)
             {

@@ -141,7 +141,8 @@ public class PlayerUpgradeManager : MonoBehaviour
         }
 
         float fill = (float)(currentExp - lastExpToLevel) / (expToNextLevel - lastExpToLevel);
-        levelUpBar.fillAmount = fill;
+        if(levelUpBar != null)
+            levelUpBar.fillAmount = fill;
 
         EndScreen.ExpGained += amount;
     }

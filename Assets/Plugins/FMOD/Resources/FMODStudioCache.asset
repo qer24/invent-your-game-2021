@@ -259,7 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Music.bank
   SubDir: 
-  lastModified: 637524810531490670
+  lastModified: 637525014979176839
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -569,12 +569,13 @@ MonoBehaviour:
   - {fileID: -3075842911462523624}
   - {fileID: 1855655234186653878}
   - {fileID: 4951669794433154090}
+  - {fileID: 1935004236647020978}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3317143177458439958}
   StringsBanks:
   - {fileID: 3387716632853148843}
-  stringsBankWriteTime: 637524810530390515
+  stringsBankWriteTime: 637525014978976804
   cacheVersion: 3
 --- !u!114 &56635849749720651
 MonoBehaviour:
@@ -731,6 +732,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 77296
+--- !u!114 &1935004236647020978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Weapons/MinesShoot
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Weapons/MinesShoot
+  guid: aaea680e88f83744b2540e03a4030bbe
+  Banks:
+  - {fileID: 3317143177458439958}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 522
 --- !u!114 &2906871375499600677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,11 +814,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637524810530320533
+  lastModified: 637525014978916812
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 280064
+    Value: 286272
   Exists: 1
 --- !u!114 &3387716632853148843
 MonoBehaviour:
@@ -810,11 +834,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637524810530390515
+  lastModified: 637525014978976804
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2536
+    Value: 2588
   Exists: 1
 --- !u!114 &3579225909492302592
 MonoBehaviour:

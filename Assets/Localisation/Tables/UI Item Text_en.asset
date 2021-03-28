@@ -60,8 +60,7 @@ MonoBehaviour:
   - m_Id: 8885950963793920
     m_Localized: "Damage - {FinalDamage}\nAttack cooldown - {FinalFireRate}\nProjectile
       speed - {projectileSpeed}\nProjectile lifetime - {projectileLifetime}\nCharge
-      time - {FinalChargeTime}\n\nShoots extremely high \nvelocity piercing bullets.\nElegant
-      way to \ndestroy covid."
+      time - {FinalChargeTime}\n\nShoots extremely high \nvelocity piercing bullets."
     m_Metadata:
       m_Items:
       - id: 0
@@ -136,7 +135,31 @@ MonoBehaviour:
 
 
       Like
-      legos, but spicy'
+      legos, but spicy
+
+      and less deadly.'
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 14655334462275584
+    m_Localized: 'Energy
+
+      Discharge'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14655344755097600
+    m_Localized: 'Damage - {FinalDamage}
+
+      Attack rate - {AttackRatePerSecond}
+      / s
+
+
+      Arcs between enemies
+
+      with static electricity.
+
+      Shockingly
+      effective!'
     m_Metadata:
       m_Items:
       - id: 0
@@ -145,4 +168,4 @@ MonoBehaviour:
     00000000:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00a0ff3a1700000000a0bfb52400000000a03fac2fc71e00004070127b761f000040b0aeb9911f0000403031c47621000040b092042b22000040f0d1494b3300004030308f873300
+        m_Entries: 00a0ff3a1700000000a0bfb52400000000a03fac2fc71e00004070127b761f000040b0aeb9911f0000403031c47621000040b092042b22000040f0d1494b3300004030308f8733000040305af5103400

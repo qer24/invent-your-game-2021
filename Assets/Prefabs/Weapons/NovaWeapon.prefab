@@ -1605,6 +1605,10 @@ MonoBehaviour:
   aoePrefab: {fileID: 7879132621394376116, guid: 530dbce2b4e566948b4b4f3e8a017f61, type: 3}
   size: {x: 15, y: 15}
   aoeLifeTime: 0.25
+  chargeTimeModifiers: []
+  sizeModifiers: []
+  fireRateModifiers: []
+  OnDamageBehaviours: []
 --- !u!222 &6409882342717123875
 CanvasRenderer:
   m_ObjectHideFlags: 0
