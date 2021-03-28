@@ -120,9 +120,29 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - id: 0
+  - m_Id: 14504260266901504
+    m_Localized: Minefield
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14504272870785024
+    m_Localized: 'Damage - {FinalDamage}
+
+      Attack rate - {AttackRatePerSecond}
+      / s
+
+      Projectile speed - {projectileSpeed}
+
+      Aoe size - {FinalSize.x}
+
+
+      Like
+      legos, but spicy'
+    m_Metadata:
+      m_Items:
+      - id: 0
   references:
     version: 1
     00000000:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00a0ff3a1700000000a0bfb52400000000a03fac2fc71e00004070127b761f000040b0aeb9911f0000403031c47621000040b092042b22000040f0d1494b3300
+        m_Entries: 00a0ff3a1700000000a0bfb52400000000a03fac2fc71e00004070127b761f000040b0aeb9911f0000403031c47621000040b092042b22000040f0d1494b3300004030308f873300

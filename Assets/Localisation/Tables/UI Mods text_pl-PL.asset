@@ -165,5 +165,13 @@ MonoBehaviour:
       5 \u0142adunk\xF3w zatrucia na przeciwniku"
     m_Metadata:
       m_Items: []
+  - m_Id: 13051944431009792
+    m_Localized: "M\u0119cze\u0144stwo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13051965670965248
+    m_Localized: "Przeciwnicy wybuchaj\u0105 przy zniszeniu"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

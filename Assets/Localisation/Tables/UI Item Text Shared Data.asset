@@ -71,6 +71,14 @@ MonoBehaviour:
     m_Key: Ring description
     m_Metadata:
       m_Items: []
+  - m_Id: 14504260266901504
+    m_Key: Mines name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14504272870785024
+    m_Key: Mines description
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

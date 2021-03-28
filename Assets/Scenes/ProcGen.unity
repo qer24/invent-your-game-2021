@@ -5130,6 +5130,7 @@ MonoBehaviour:
   levelUpBar: {fileID: 191159363}
   upgradePanel: {fileID: 256438644}
   levelUpSound: event:/SFX/Player/PlayerLevelUp
+  currentExp: 0
   levelUpPoints: 0
 --- !u!114 &154375663174812854
 MonoBehaviour:
@@ -5174,6 +5175,7 @@ MonoBehaviour:
   inventory: {fileID: 6525414644888670570}
   chargeUI: {fileID: 6525414645262803863}
   muzzleFlash: {fileID: 154375664590830982}
+  shootTimer: 0
 --- !u!54 &154375663174812857
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10705,7 +10707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   description: 
-  baseDamage: 500
+  baseDamage: 5
   baseAttackRate: 0.2
   isCharged: 0
   isProjectile: 1
@@ -10723,6 +10725,10 @@ MonoBehaviour:
   aoePrefab: {fileID: 0}
   size: {x: 1, y: 1}
   aoeLifeTime: 0.25
+  chargeTimeModifiers: []
+  sizeModifiers: []
+  fireRateModifiers: []
+  OnDamageBehaviours: []
 --- !u!4 &409487421942753629
 Transform:
   m_ObjectHideFlags: 0

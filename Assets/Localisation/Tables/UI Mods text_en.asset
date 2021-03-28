@@ -190,5 +190,13 @@ MonoBehaviour:
       on enemy\nper second\n\nMax 5 stacks of poison per enemy"
     m_Metadata:
       m_Items: []
+  - m_Id: 13051944431009792
+    m_Localized: Martyrdom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13051965670965248
+    m_Localized: Enemies explode on death
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
