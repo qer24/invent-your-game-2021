@@ -65,6 +65,8 @@ public class PlayerUpgradeManager : MonoBehaviour
         {
             upgrade.interactable = false;
         }
+
+        PlayerGUIOrderManager.Instance.ShowOnTop(false);
     }
 
     private void OnDisable()
@@ -97,6 +99,8 @@ public class PlayerUpgradeManager : MonoBehaviour
         {
             upgrade.interactable = true;
         }
+
+        PlayerGUIOrderManager.Instance.ShowOnTop(true);
     }
 
     public void CloseUpgradePanel()
@@ -110,6 +114,8 @@ public class PlayerUpgradeManager : MonoBehaviour
         }
 
         EnableButton();
+
+        PlayerGUIOrderManager.Instance.ShowOnTop(false);
     }
 
     public void EnableButton()

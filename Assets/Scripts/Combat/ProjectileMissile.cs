@@ -6,17 +6,17 @@ public class ProjectileMissile : Projectile
 {
     [FMODUnity.EventRef] public string explosionAudio;
 
-    GameObject aoePrefab;
-    float aoeLifetime;
-    Vector3 aoeSize;
-    float missileDamage = 0;
+    protected GameObject aoePrefab;
+    protected float aoeLifetime;
+    protected Vector3 aoeSize;
+    protected float missileDamage = 0;
 
     public float explosionCooldown = 0.25f;
-    float explosionTimer = 0;
+    protected float explosionTimer = 0;
 
     Weapon weapon;
 
-    public void InitMissile(float _damage, float _velocity, float _lifetime, string _enemyTag, GameObject _aoePrefab, Vector3 _aoeSize, float _aoeLifetime, Weapon _weapon)
+    public void InitMissile(float _damage, float _velocity, float _lifetime, string _enemyTag, GameObject _aoePrefab, Vector3 _aoeSize, float _aoeLifetime, Weapon _weapon = null)
     {
         Init(_damage, _velocity, _lifetime, _enemyTag);
         missileDamage = _damage;
@@ -53,7 +53,7 @@ public class ProjectileMissile : Projectile
         Explode(null);
     }
 
-    public void Explode(Collider col)
+    public virtual void Explode(Collider col)
     {
         if (explosionTimer > 0) return;
 
@@ -61,6 +61,6 @@ public class ProjectileMissile : Projectile
 
         AudioManager.Play(explosionAudio, true);
 
-        weapon.CreateAoe(enemyTag, aoePrefab, transform.position, Quaternion.identity, missileDamage, aoeLifetime, aoeSize);
+        weapon.CreateAoe(enemyTag, aoePrefab, transform.position, Quaternion.identity, missileDamage, aoeLifetime, aoeSize, GetComponentInChildren<Renderer>().material);
     }
 }

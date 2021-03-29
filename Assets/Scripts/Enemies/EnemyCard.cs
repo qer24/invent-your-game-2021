@@ -18,9 +18,6 @@ public class EnemyCard : Stats
     [FMODUnity.EventRef]
     public string onDeathAudio;
 
-    [Header("Conditions //ignore for now")]
-    public bool canSpawn = true;
-
     [Header("Projectile stats")]
     public GameObject projectile;
     public float projectileDamage = 5f;

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 70
   prefab: {fileID: 4431970764610135154, guid: d09caba0ca53e7d44932368ee6d734d8, type: 3}
-  weight: 5
+  weight: 3
   cost: 5
   onTakeDamageAudio: event:/SFX/Enemies/EnemyHit
   onDeathAudio: event:/SFX/Enemies/EnemyDeath

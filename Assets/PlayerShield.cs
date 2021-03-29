@@ -14,6 +14,7 @@ public class PlayerShield : MonoBehaviour
         if (other.TryGetComponent<Projectile>(out var proj))
         {
             if (proj.enemyTag == "Enemy") return;
+            if (proj.GetComponentInChildren<ProjectileBossOrb>() != null) return;
 
             AudioManager.Play(bounceAudio, true);
             Lean.Pool.LeanPool.Despawn(proj.gameObject);

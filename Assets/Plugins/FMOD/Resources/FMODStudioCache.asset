@@ -259,11 +259,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Music.bank
   SubDir: 
-  lastModified: 637525813980679630
+  lastModified: 637526392390302689
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2443584
+    Value: 2990912
   Exists: 1
 --- !u!114 &-5583826176870465843
 MonoBehaviour:
@@ -571,12 +571,13 @@ MonoBehaviour:
   - {fileID: 4951669794433154090}
   - {fileID: 1935004236647020978}
   - {fileID: 6511900082622916305}
+  - {fileID: 603649842026983365}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3317143177458439958}
   StringsBanks:
   - {fileID: 3387716632853148843}
-  stringsBankWriteTime: 637525813979679608
+  stringsBankWriteTime: 637526392389972691
   cacheVersion: 3
 --- !u!114 &56635849749720651
 MonoBehaviour:
@@ -621,6 +622,29 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1558
   Exists: 1
+--- !u!114 &603649842026983365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Menu
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Menu
+  guid: 47b5b113bd36044a966175696aa1dcb4
+  Banks:
+  - {fileID: -5813958353942755786}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 60055
 --- !u!114 &753192037231909086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -815,7 +839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637525813979609620
+  lastModified: 637526392389882688
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -835,11 +859,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637525813979679608
+  lastModified: 637526392389972691
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2630
+    Value: 2666
   Exists: 1
 --- !u!114 &3579225909492302592
 MonoBehaviour:

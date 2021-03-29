@@ -21,6 +21,8 @@ public class ShieldUpgrade : PlayerUpgrade
 
     private void OnDestroy()
     {
-        Destroy(shield);
+        if (shield == null) return;
+        if (shield.transform.parent.gameObject != null)
+            Destroy(shield.transform.parent.gameObject);
     }
 }

@@ -378,10 +378,15 @@ public abstract class Weapon : MonoBehaviour
         OnProjectileCreated?.Invoke(go);
     }
 
-    public void CreateAoe(string enemyTag, GameObject prefab, Vector3 pos, Quaternion rot, float damage, float lifeTime, Vector3 size)
+    public void CreateAoe(string enemyTag, GameObject prefab, Vector3 pos, Quaternion rot, float damage, float lifeTime, Vector3 size, Material mat = null)
     {
         GameObject go = LeanPool.Spawn(prefab, pos, rot);
         go.GetComponent<Aoe>().Init(damage, lifeTime, size, enemyTag);
+
+        if(mat != null)
+        {
+            go.GetComponentInChildren<Renderer>().material = mat;
+        }
 
         foreach (var behaviour in OnDamageBehaviours)
         {

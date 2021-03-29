@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49f30347387a6e24fba14ccaafe15f5b, type: 3}
+  m_Name: Shooter Missile
+  m_EditorClassIdentifier: 
+  maxHealth: 65
+  prefab: {fileID: 1713398532638745322, guid: 5e955dbca0d7b2a4780ed00facd0e04b, type: 3}
+  weight: 2
+  cost: 4
+  onTakeDamageAudio: event:/SFX/Enemies/EnemyHit
+  onDeathAudio: event:/SFX/Enemies/EnemyDeath
+  projectile: {fileID: 8973632298531204601, guid: 820fa9eec1d79ab47b3da43e5dd7d2c2, type: 3}
+  projectileDamage: 10
+  projectileSpeed: 20
+  projectileLifetime: 5
+  nonProjectileDamage: 0

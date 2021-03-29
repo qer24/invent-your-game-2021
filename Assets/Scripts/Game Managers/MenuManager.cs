@@ -18,6 +18,8 @@ public class MenuManager : MonoBehaviour
     {
         mainGroup = mainPanel.GetComponent<CanvasGroup>();
         optionsGroup = optionsPanel.GetComponent<CanvasGroup>();
+
+        MusicManager.Play("event:/Music/Menu");
     }
 
     public void ToggleOptions()

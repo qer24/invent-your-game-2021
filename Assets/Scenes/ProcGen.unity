@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -548,6 +548,29 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &396741389 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 521776857573409156, guid: db28a040c4a6a1042912651ae034e3fa, type: 3}
+  m_PrefabInstance: {fileID: 6751836208475714710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &396741393 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 521776857573409160, guid: db28a040c4a6a1042912651ae034e3fa, type: 3}
+  m_PrefabInstance: {fileID: 6751836208475714710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &396741394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396741389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e6cc83075a76140959d945f855e3ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 396741393}
 --- !u!1 &480448741
 GameObject:
   m_ObjectHideFlags: 0
@@ -2075,6 +2098,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9b945c34d96f4094da349a66f1132b06, type: 2}
   - {fileID: 11400000, guid: 31b5442a1fc08b84f95ca24602f13d6d, type: 2}
   - {fileID: 11400000, guid: 80ab4834f02639d4c83d81b64d7044ce, type: 2}
+  - {fileID: 11400000, guid: e0555bad9e6b84b4db0f8894acbeb4eb, type: 2}
+  - {fileID: 11400000, guid: f1d6ebb18a99a5247bdaab6849825170, type: 2}
+  - {fileID: 11400000, guid: 5c0cc24d08d4ae145822b772c49d5736, type: 2}
+  - {fileID: 11400000, guid: 5814d646330ef1b4d8351908db23c2a8, type: 2}
   bossCards:
   - {fileID: 11400000, guid: 2561ff9fe76bc3a489fe53e9499cf21c, type: 2}
   backgroundMusic: event:/Music/Level

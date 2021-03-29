@@ -18,7 +18,6 @@ MonoBehaviour:
   cost: 1
   onTakeDamageAudio: event:/SFX/Enemies/EnemyHit
   onDeathAudio: event:/SFX/Enemies/EnemyDeath
-  canSpawn: 1
   projectile: {fileID: 0}
   projectileDamage: 0
   projectileSpeed: 0
