@@ -356,33 +356,35 @@ namespace FMODUnity
         {
             #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN || UNITY_XBOXONE || UNITY_WINRT_8_1 || UNITY_WSA_10_0
                 string pluginFileName = pluginName + ".dll";
-            #elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
+#elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
                 string pluginFileName = pluginName + ".bundle";
-            #elif UNITY_PS4
+#elif UNITY_PS4
                 string pluginFileName = pluginName + ".prx";
-            #elif UNITY_ANDROID || UNITY_STANDALONE_LINUX
+#elif UNITY_ANDROID || UNITY_STANDALONE_LINUX
                 string pluginFileName = "lib" + pluginName + ".so";
-            #elif UNITY_WEBGL
+#elif UNITY_WEBGL
                 string pluginFileName = pluginName + ".bc";
-            #endif
+#endif
 
+#pragma warning disable CS0219
             string fmodLibPath = "/Plugins/FMOD/lib";
             #if UNITY_EDITOR_WIN && UNITY_EDITOR_64
                 string pluginFolder = Application.dataPath + fmodLibPath + "/win/X86_64/";
-            #elif UNITY_EDITOR_WIN
+#elif UNITY_EDITOR_WIN
                 string pluginFolder = Application.dataPath + fmodLibPath + "/win/X86/";
-            #elif UNITY_EDITOR_OSX
+#elif UNITY_EDITOR_OSX
                 string pluginFolder = Application.dataPath + fmodLibPath + "/mac/";
-            #elif UNITY_STANDALONE_WIN || UNITY_PS4 || UNITY_XBOXONE || UNITY_STANDALONE_OSX || UNITY_WEBGL
+#elif UNITY_STANDALONE_WIN || UNITY_PS4 || UNITY_XBOXONE || UNITY_STANDALONE_OSX || UNITY_WEBGL
                 string pluginFolder = Application.dataPath + "/Plugins/";
-            #elif UNITY_STANDALONE_LINUX
+#elif UNITY_STANDALONE_LINUX
                 string pluginFolder = Application.dataPath + fmodLibPath + ((IntPtr.Size == 8) ? "/linux/x86_64/" : "/linux/x86/");
-            #elif UNITY_WSA || UNITY_ANDROID
+#elif UNITY_WSA || UNITY_ANDROID
                 string pluginFolder = "";
-            #else
+#else
                 string pluginFileName = "";
                 string pluginFolder = "";
-            #endif
+#endif
+#pragma warning restore CS0219
 
             return pluginFolder + pluginFileName;
         }
@@ -408,6 +410,7 @@ namespace FMODUnity
         #if UNITY_EDITOR
         public static FMODPlatform GetEditorFMODPlatform()
         {
+#pragma warning disable CS0618
             switch (EditorUserBuildSettings.activeBuildTarget)
             {
                 case BuildTarget.Android:
@@ -442,7 +445,8 @@ namespace FMODUnity
                 default:
                     return FMODPlatform.None;
             }
+#pragma warning restore CS0618
         }
-        #endif
+#endif
     }
 }
