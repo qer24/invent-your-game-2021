@@ -757,4 +757,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 842638256815277088, guid: 2adf11034867e0e4e951fbb562bdfea2, type: 3}
   explosionLifeTime: 0.15
-  explosionSize: {x: 4, y: 4}
+  explosionSize: {x: 8, y: 8}

@@ -22,4 +22,4 @@ MonoBehaviour:
   projectileDamage: 0
   projectileSpeed: 0
   projectileLifetime: 0
-  nonProjectileDamage: 5
+  nonProjectileDamage: 7

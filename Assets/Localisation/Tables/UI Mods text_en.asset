@@ -114,7 +114,9 @@ MonoBehaviour:
 
       x2.25 charge time
 
-      x2 damage'
+      x2 damage
+
+'
     m_Metadata:
       m_Items: []
   - m_Id: 12559389016735744
@@ -178,7 +180,7 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 12888976779132928
     m_Localized: "Projectiles go through \nscreen borders\n\nFor non projectile weapons:
-      \nx1.1 obra\u017Ce\u0144"
+      \nx1.1 damage"
     m_Metadata:
       m_Items: []
   - m_Id: 12980919089512448

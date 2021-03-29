@@ -37,6 +37,8 @@ public class Projectile : MonoBehaviour, IDamager
 
     public Action<float, Transform> OnDealDamage { get; set; }
 
+    float damageCooldown = 0f;
+
     public void Init(float _damage, float _velocity, float _lifetime, string _enemyTag, float _ignoreCollisionTime = 0f)
     {
         damage = _damage;
@@ -79,11 +81,13 @@ public class Projectile : MonoBehaviour, IDamager
         }
 
         OnUpdate?.Invoke();
+        damageCooldown -= Time.deltaTime;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (lifeTimeLeft < disableDamageThreshold || ingoreCollisionTime > 0) return;
+        if (lifeTimeLeft < disableDamageThreshold || ingoreCollisionTime > 0 || damageCooldown > 0) return;
+        damageCooldown = 0.1f;
         if (other.CompareTag(enemyTag))
         {
             OnCollision?.Invoke(other);

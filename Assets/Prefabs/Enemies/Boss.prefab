@@ -6704,10 +6704,10 @@ MonoBehaviour:
   - {fileID: 3748258842969916346}
   beamIndicatorLine: {fileID: 3748258841774434875}
   beamPrefab: {fileID: 9194670421487890689}
-  beamDamage: 1
+  beamDamage: 3
   beamSize: {x: 1.5, y: 200}
   beamLifetime: 5
-  beamTicksPerDamage: 3
+  beamTicksPerDamage: 10
   spawnPositions:
   - {fileID: 3748258841013934756}
   - {fileID: 3748258841974657441}
@@ -6717,11 +6717,11 @@ MonoBehaviour:
   orbAoePrefab: {fileID: 3748258842714303252}
   orbAoeDamage: 1
   orbAoeSize: {x: 7.5, y: 7.8125}
-  orbAoeScaleTime: 1
+  orbAoeScaleTime: 3
   orbSpeed: 15
   orbChargeTime: 3
   orbProjectileSize: 2
-  orbTicksPerDamage: 10
+  orbTicksPerDamage: 15
   shield: {fileID: 3748258842978661455}
   shieldScaleTime: 1
   shieldScaleEaseType: 27
@@ -6778,6 +6778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 2561ff9fe76bc3a489fe53e9499cf21c, type: 2}
   currentHealth: 0
+  maxHealth: 0
   isDead: 0
 --- !u!65 &6335191470173433594
 BoxCollider:

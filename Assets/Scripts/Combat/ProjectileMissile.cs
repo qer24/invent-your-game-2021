@@ -18,7 +18,7 @@ public class ProjectileMissile : Projectile
 
     public void InitMissile(float _damage, float _velocity, float _lifetime, string _enemyTag, GameObject _aoePrefab, Vector3 _aoeSize, float _aoeLifetime, Weapon _weapon = null)
     {
-        Init(_damage, _velocity, _lifetime, _enemyTag);
+        Init(_damage, _velocity, _lifetime, _enemyTag, 0.1f);
         missileDamage = _damage;
         damage = 0;
         aoePrefab = _aoePrefab;

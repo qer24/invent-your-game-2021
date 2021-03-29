@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f30347387a6e24fba14ccaafe15f5b, type: 3}
   m_Name: PusherRing
   m_EditorClassIdentifier: 
-  maxHealth: 40
+  maxHealth: 100
   prefab: {fileID: 6619701801399084800, guid: 81159da3bbe7255489e21c98441b749d, type: 3}
   weight: 1
   cost: 3
@@ -22,4 +22,4 @@ MonoBehaviour:
   projectileDamage: 0
   projectileSpeed: 0
   projectileLifetime: 0
-  nonProjectileDamage: 1
+  nonProjectileDamage: 2.5

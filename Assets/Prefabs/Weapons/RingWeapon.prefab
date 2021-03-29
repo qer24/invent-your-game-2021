@@ -58,7 +58,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   description: 
-  baseDamage: 4
+  baseDamage: 6
   baseAttackRate: 0.5
   isCharged: 1
   isProjectile: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
   rarityString: Common
   modSlots: 2
   onAttackAudio: event:/SFX/Weapons/RingShoot
-  timeToCharge: 0.5
+  timeToCharge: 0.45
   projectilePrefab: {fileID: 0}
   projectileSpeed: 80
   projectileLifetime: 2

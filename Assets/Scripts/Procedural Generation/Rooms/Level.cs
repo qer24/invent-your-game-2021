@@ -13,5 +13,6 @@ public class Level : MonoBehaviour
     private void Start()
     {
         MusicManager.Play(backgroundMusic);
+        PlayerPersistencyMenager.Instance.GetComponent<PlayerHealth>().OnDeath += () => gameObject.SetActive(false);
     }
 }

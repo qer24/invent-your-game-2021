@@ -73,7 +73,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 87075914268672
-    m_Localized: Reduce all incoming damage by 2
+    m_Localized: 'Reduce all incoming damage by a flat amount.
+
+      This is extremely
+      effective against small hits'
     m_Metadata:
       m_Items: []
   - m_Id: 87021124075520

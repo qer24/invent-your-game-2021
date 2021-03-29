@@ -51,7 +51,7 @@ MonoBehaviour:
   inType: 27
   outType: 4
   constantDamage: 1
-  ticksPerDamage: 6
+  ticksPerDamage: 4
 --- !u!135 &3752657399904229528
 SphereCollider:
   m_ObjectHideFlags: 0

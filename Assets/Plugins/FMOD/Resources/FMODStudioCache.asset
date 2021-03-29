@@ -259,7 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Music.bank
   SubDir: 
-  lastModified: 637526392390302689
+  lastModified: 637526489655755989
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -577,7 +577,7 @@ MonoBehaviour:
   - {fileID: 3317143177458439958}
   StringsBanks:
   - {fileID: 3387716632853148843}
-  stringsBankWriteTime: 637526392389972691
+  stringsBankWriteTime: 637526489653311706
   cacheVersion: 3
 --- !u!114 &56635849749720651
 MonoBehaviour:
@@ -839,7 +839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637526392389882688
+  lastModified: 637526489653241704
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -859,7 +859,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637526392389972691
+  lastModified: 637526489653311706
   LoadResult: 0
   FileSizes:
   - Name: Desktop
