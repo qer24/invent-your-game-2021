@@ -77,7 +77,12 @@ MonoBehaviour:
   damage: 0
   velocity: 500
   totalLifeTime: 5
+  lifeTimeLeft: 5
+  ingoreCollisionTime: 0
+  scaleThreshold: 2
+  disableDamageThreshold: 1
   enemyTag: Enemy
+  startScale: {x: 0, y: 0, z: 0}
   despawnOnCollision: 1
   explosionAudio: event:/SFX/Enemies/Boss/BossOrbExplosion
   explodingTime: 1
@@ -6640,7 +6645,7 @@ GameObject:
   - component: {fileID: 6335191470173433475}
   - component: {fileID: 6335191470173433594}
   - component: {fileID: 6335191470173433598}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -6681,6 +6686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b7de6a07371b449966ced415999a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 0}
   enemyCard: {fileID: 11400000, guid: 2561ff9fe76bc3a489fe53e9499cf21c, type: 2}
   expValue: 1
   moveForce: 3500

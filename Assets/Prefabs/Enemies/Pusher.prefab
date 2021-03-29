@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 3617158107608288835}
   - component: {fileID: 3617158107608288831}
   - component: {fileID: 3617158107608288830}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pusher
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d0f04d491ea1a469c25b6e51fc36ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 0}
   enemyCard: {fileID: 0}
   expValue: 1
   rotationSpeed: 4

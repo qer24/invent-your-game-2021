@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public abstract class PlayerUpgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public Image backgroundImage, mainImage;
-    public Color baseColor, hoverColor, unlockedColor;
+    public Color baseColor = new Color32(233, 183, 45, 45), hoverColor = new Color32(233, 183, 45, 119), unlockedColor = new Color32(233, 183, 45, 255);
     public ScaleTween tooltip = null;
 
     public bool interactable = true;
@@ -21,7 +21,7 @@ public abstract class PlayerUpgrade : MonoBehaviour, IPointerEnterHandler, IPoin
     protected PlayerController playerController;
     protected PlayerShooter playerShooter;
 
-    private void Start()
+    private void Awake()
     {
         mainImage.color = baseColor;
         backgroundImage.color = baseColor;

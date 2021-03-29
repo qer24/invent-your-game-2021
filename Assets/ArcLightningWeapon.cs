@@ -21,6 +21,8 @@ public class ArcLightningWeapon : Weapon, IDamager
     public int chainCount = 3;
     public float chainDistance = 25f;
 
+    public LayerMask enemyLayerMask;
+
     HashSet<Collider> alreadyHitEnemies = new HashSet<Collider>();
     Collider lastHitEnemy = null;
 
@@ -49,7 +51,7 @@ public class ArcLightningWeapon : Weapon, IDamager
         lastHitEnemy = null;
 
         Ray ray = new Ray(playerShooter.shootPoint.position, playerShooter.shootPoint.transform.forward);
-        if(Physics.Raycast(ray, out var hit, zapRange))
+        if(Physics.Raycast(ray, out var hit, zapRange, enemyLayerMask))
         {
             alreadyHitEnemies.Add(hit.collider);
             lastHitEnemy = hit.collider;
@@ -78,7 +80,7 @@ public class ArcLightningWeapon : Weapon, IDamager
         {
             if (lastHitEnemy == null) yield break;
 
-            var colInRadius = Physics.OverlapSphere(lastHitEnemy.transform.position, chainDistance);
+            var colInRadius = Physics.OverlapSphere(lastHitEnemy.transform.position, chainDistance, enemyLayerMask);
             if (colInRadius.Length > 0)
             {
                 Collider closestEnemy = null;
@@ -183,7 +185,7 @@ public class ArcLightningWeapon : Weapon, IDamager
         HashSet<Collider> enemiesInRange = new HashSet<Collider>();
         foreach (var point in points)
         {
-            var colliders = Physics.OverlapSphere(point, checkRadius);
+            var colliders = Physics.OverlapSphere(point, checkRadius, enemyLayerMask);
             foreach (var col in colliders)
             {
                 if(col.CompareTag("Enemy"))

@@ -10,7 +10,7 @@ public class PlayerHealth : Health
 {
     public Stats playerStats;
 
-    [SerializeField] Slider healthSlider = null;
+    public Slider healthSlider = null;
     [SerializeField] float healthLerpSpeed = 3f;
     [SerializeField] GameObject OnDeathScreen = null;
 
@@ -45,7 +45,17 @@ public class PlayerHealth : Health
 
     void UpdateUI(float currentHealth)
     {
-        currentFillAmount = currentHealth / stats.maxHealth;
+        currentFillAmount = currentHealth / maxHealth;
+    }
+
+    public override void RemoveHealth(float amount)
+    {
+        
+
+        currentHealth = Mathf.Max(0, currentHealth - amount);
+        OnHealthChanged?.Invoke(currentHealth);
+
+        if (currentHealth <= 0) Death();
     }
 
     void PlayerDeath()

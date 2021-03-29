@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
 
     public Action<float> OnVelocityChange;
+    public Action<Transform, float> OnKnockback;
 
     // Start is called before the first frame update
     void Start()
@@ -132,6 +133,7 @@ public class PlayerController : MonoBehaviour
     public void KnockBack(Transform collidee)
     {
         AudioManager.Play("event:/SFX/Player/PlayerKnockback", true);
+        OnKnockback?.Invoke(collidee, rb.velocity.magnitude);
 
         Vector3 direction = (collidee.position - transform.position).normalized;
         direction.y = 0;
@@ -141,6 +143,7 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(-direction * knockbackForce * impactForce * 0.00035f, ForceMode.Impulse);
         colRb.velocity = Vector3.zero;
         colRb.AddForce(direction * knockbackForce * impactForce * 0.0001f, ForceMode.Impulse);
+
     }
 
     private void RotateToPoint(Vector3 target, float multiplier = 1f)

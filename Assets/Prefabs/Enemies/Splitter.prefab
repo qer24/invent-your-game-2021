@@ -5010,7 +5010,7 @@ GameObject:
   - component: {fileID: 4431970764610135049}
   - component: {fileID: 4431970764610135157}
   - component: {fileID: 4431970764610135156}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Splitter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -5045,6 +5045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5401bb63f2da504bb0555a72439cbce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 0}
   enemyCard: {fileID: 11400000, guid: 9b945c34d96f4094da349a66f1132b06, type: 2}
   expValue: 1
   moveForce: 500

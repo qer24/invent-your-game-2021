@@ -1588,7 +1588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   description: 
-  baseDamage: 26
+  baseDamage: 20
   baseAttackRate: 0.7
   isCharged: 0
   isProjectile: 0
@@ -1619,6 +1619,9 @@ MonoBehaviour:
   checkRadius: 10
   chainCount: 3
   chainDistance: 40
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!222 &2399848622411402173
 CanvasRenderer:
   m_ObjectHideFlags: 0

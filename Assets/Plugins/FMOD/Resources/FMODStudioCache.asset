@@ -259,7 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Music.bank
   SubDir: 
-  lastModified: 637525014979176839
+  lastModified: 637525813980679630
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -570,12 +570,13 @@ MonoBehaviour:
   - {fileID: 1855655234186653878}
   - {fileID: 4951669794433154090}
   - {fileID: 1935004236647020978}
+  - {fileID: 6511900082622916305}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3317143177458439958}
   StringsBanks:
   - {fileID: 3387716632853148843}
-  stringsBankWriteTime: 637525014978976804
+  stringsBankWriteTime: 637525813979679608
   cacheVersion: 3
 --- !u!114 &56635849749720651
 MonoBehaviour:
@@ -814,11 +815,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637525014978916812
+  lastModified: 637525813979609620
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 286272
+    Value: 287680
   Exists: 1
 --- !u!114 &3387716632853148843
 MonoBehaviour:
@@ -834,11 +835,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/invent-your-game-2021/FMOD/project/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637525014978976804
+  lastModified: 637525813979679608
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2588
+    Value: 2630
   Exists: 1
 --- !u!114 &3579225909492302592
 MonoBehaviour:
@@ -978,6 +979,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 920
+--- !u!114 &6511900082622916305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/PlayerShieldBounce
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/PlayerShieldBounce
+  guid: d218b4cc1311dd4bbce0aeb4462d4c49
+  Banks:
+  - {fileID: 3317143177458439958}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 520
 --- !u!114 &7101227293034307075
 MonoBehaviour:
   m_ObjectHideFlags: 0

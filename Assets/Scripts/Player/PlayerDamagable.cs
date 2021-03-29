@@ -21,6 +21,9 @@ public class PlayerDamagable : MonoBehaviour, IDamagable
 
     bool immune = false;
 
+    [HideInInspector] public float damageToTake = 0;
+    public Action<float> OnPlayerTakeDamage;
+
     private void Update()
     {
         if (!immune) return;
@@ -41,8 +44,13 @@ public class PlayerDamagable : MonoBehaviour, IDamagable
         if (!enabled) return;
         if (immune) return;
 
+        damageToTake = amount;
+        OnPlayerTakeDamage?.Invoke(damageToTake);
+
+        if (damageToTake <= 0) return;
+
         AudioManager.Play("event:/SFX/Player/PlayerHit", true);
-        CinemachineShake.Instance.ShakeCamera(amount * 2f, 0.6f);
+        CinemachineShake.Instance.ShakeCamera(damageToTake * 2f, 0.6f);
 
         LeanTween.cancel(hitPostProcess.gameObject);
         hitPostProcess.weight = 1;
@@ -51,7 +59,7 @@ public class PlayerDamagable : MonoBehaviour, IDamagable
         //onHitParticles.Play();
 
         OnTakeDamage?.Invoke();
-        hp.RemoveHealth(amount);
+        hp.RemoveHealth(damageToTake);
 
         immune = true;
     }

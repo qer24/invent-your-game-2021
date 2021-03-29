@@ -12,16 +12,19 @@ public class Health : MonoBehaviour
     public HealthAction OnHealthChanged;
     public Action OnDeath;
 
+    public float maxHealth;
+
     [HideInInspector] public bool isDead;
 
     public virtual void Awake()
     {
-        currentHealth = stats.maxHealth;
+        maxHealth = stats.maxHealth;
+        currentHealth = maxHealth;
 
         isDead = false;
     }
 
-    public void RemoveHealth(float amount)
+    public virtual void RemoveHealth(float amount)
     {
         currentHealth = Mathf.Max(0, currentHealth - amount);
         OnHealthChanged?.Invoke(currentHealth);
@@ -31,11 +34,11 @@ public class Health : MonoBehaviour
 
     public void RestoreHealth(float amount)
     {
-        currentHealth = Mathf.Min(stats.maxHealth, currentHealth + amount);
+        currentHealth = Mathf.Min(maxHealth, currentHealth + amount);
         OnHealthChanged?.Invoke(currentHealth);
     }
 
-    void Death()
+    protected void Death()
     {
         if (isDead) return;
 

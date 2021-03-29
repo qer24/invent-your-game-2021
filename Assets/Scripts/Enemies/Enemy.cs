@@ -17,7 +17,7 @@ public abstract class Enemy : MonoBehaviour
     protected KeepOnScreen screenConfiner;
     protected Damagable damagable;
 
-    public float FinalHealth { get => enemyCard.maxHealth * (1 + 0.1f * DifficultyManager.Instance.currentDifficulty); }
+    public float FinalHealth { get => enemyCard.maxHealth * (1 + 0.11f * (DifficultyManager.Instance.currentDifficulty - 1)); }
 
     public virtual void Start()
     {

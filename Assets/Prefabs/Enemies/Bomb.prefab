@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5171060701733724001}
   - component: {fileID: 5171060701733723933}
   - component: {fileID: 5171060701733723932}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bomb
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b7b3da5bc39904a8bcab9c2761c55b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 0}
   enemyCard: {fileID: 11400000, guid: 80ab4834f02639d4c83d81b64d7044ce, type: 2}
   expValue: 1
   moveForce: 12

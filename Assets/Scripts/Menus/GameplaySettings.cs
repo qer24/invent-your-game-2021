@@ -49,12 +49,10 @@ public class GameplaySettings : MonoBehaviour
 
     void LocaleSelected(int index)
     {
-        Debug.Log(LocalizationSettings.SelectedLocale);
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
         selectedLanguageIndex = index;
 
         PlayerPrefs.SetInt("SelectedLanguage", index);
-        Debug.Log(LocalizationSettings.SelectedLocale);
     }
 
     public void ToggleScreenShake(bool shake)

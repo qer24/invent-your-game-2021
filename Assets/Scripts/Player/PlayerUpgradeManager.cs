@@ -30,6 +30,8 @@ public class PlayerUpgradeManager : MonoBehaviour
     [HideInInspector] public int levelUpPoints = 0;
     bool readyToLevelUp = false;
 
+    [HideInInspector] public int currentLevel = 1;
+
     void Start()
     {
         if(Instance == null)
@@ -51,6 +53,7 @@ public class PlayerUpgradeManager : MonoBehaviour
         RoomManager.OnRoomChanged += DisablePanel;
 
         IsPanelOpen = false;
+        upgradePanel.gameObject.SetActive(false);
     }
 
     private void DisablePanel()
@@ -153,11 +156,15 @@ public class PlayerUpgradeManager : MonoBehaviour
 
         levelUpPoints += 1;
         lastExpToLevel = expToNextLevel;
-        expToNextLevel *= 3;
+        expToNextLevel = Mathf.RoundToInt(expToNextLevel * 3.5f);
 
-        levelUpBarText.text = levelUpPoints.ToString();
-        levelUpBar.fillAmount = 0;
+        if(levelUpBar != null)
+        {
+            levelUpBarText.text = levelUpPoints.ToString();
+            levelUpBar.fillAmount = 0;
+        }
 
+        currentLevel++;
         EndScreen.LevelsGained++;
     }
 

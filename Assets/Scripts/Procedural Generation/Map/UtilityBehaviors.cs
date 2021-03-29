@@ -29,5 +29,10 @@ public class UtilityBehaviors : MonoBehaviour
         {
             DropManager.Instance.DropMod();
         }
-	}
+        if (Input.GetKeyDown("i"))
+        {
+            PlayerPersistencyMenager.Instance.GetComponent<PlayerUpgradeManager>().AddExp(99);
+            PlayerPersistencyMenager.Instance.GetComponent<PlayerUpgradeManager>().EnableButton();
+        }
+    }
 }
