@@ -196,7 +196,7 @@ public class Boss : Enemy
             beamIndicatorLine.enabled = true;
             float startWidth = beamIndicatorLine.widthMultiplier;
             beamIndicatorLine.widthMultiplier = 0;
-            LeanTween.value(gameObject, 0, beamSize.x * 0.6f, waitTime).setOnUpdate((float val) => beamIndicatorLine.widthMultiplier = val).setEase(LeanTweenType.easeInCubic);
+            LeanTween.value(beamIndicatorLine.gameObject, 0, beamSize.x * 0.6f, waitTime).setOnUpdate((float val) => beamIndicatorLine.widthMultiplier = val).setEase(LeanTweenType.easeInCubic);
 
             yield return new WaitForSeconds(waitTime);
 
@@ -233,7 +233,7 @@ public class Boss : Enemy
 
                 beamIndicatorLine.enabled = true;
                 beamIndicatorLine.widthMultiplier = 0;
-                LeanTween.value(gameObject, 0, beamSize.x * 0.6f, waitTime).setOnUpdate((float val) => beamIndicatorLine.widthMultiplier = val).setEase(LeanTweenType.easeInCubic);
+                LeanTween.value(beamIndicatorLine.gameObject, 0, beamSize.x * 0.6f, waitTime).setOnUpdate((float val) => beamIndicatorLine.widthMultiplier = val).setEase(LeanTweenType.easeInCubic);
 
                 yield return new WaitForSeconds(waitTime);
 
@@ -454,6 +454,7 @@ public class Boss : Enemy
 
     void UpdateUI(float currentHealth)
     {
+        LeanTween.cancel(gameObject);
         LeanTween.value(gameObject, healthSlider.value, currentHealth / FinalHealth, 0.4f).setOnUpdate((float val) => healthSlider.value = val).setEase(LeanTweenType.easeOutCubic);
     }
 }
